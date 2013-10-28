@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="ui segment">
+    <div packery=".context" class="spaces">
+
+      <div ng-repeat="feedItem in items" class="context" prepended>
+        <div contenteditable="true" ng-model="feedItem.name" when-blur="update(feedItem)"></div>
+        {{ feedItem._rev}}
+      </div>
+
+      <div class="context">
+        again
+      </div>
+
+      <div class="context">
+        <div>
+          hi
+      </div>
+
+    </div>
+  </div>
+</div>

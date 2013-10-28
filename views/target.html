@@ -1,0 +1,33 @@
+So what exactly is a living document?
+
+It's essentially markup on steroids.
+
+A living document lets you define the relationships between things to create a layer of interactivity that most platforms do not have.
+
+For example, here's a list of my ideas:
+
+<ideatable/>
+
+<idea>
+
+</idea>
+
+
+
+{
+  "name": "cool idea"
+}
+
+
+
+===
+
+ideas = map('//idea')
+ideas.publish('idea', {
+  'name': data.get('./name'),
+  'description': data.get('./description')
+})
+
+ideatable.on('idea', {
+  
+})

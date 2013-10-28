@@ -1,0 +1,25 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hide {visibility: hidden;}
+.reshow {visibility: visible;}
+
+
+.window {
+  margin-left: auto;
+  margin-right: auto;
+  top: 10%;
+  left: 5%;
+  width: 90vw;
+  height: 75vh;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 10pt;
+  position: absolute;
+  margin-left: 1em;
+  overflow: scroll;
+  background-color: white;
+  margin-top: 1em;
+}

@@ -1,0 +1,35 @@
+<div taxindex="0" class="ui grid" contenteditable="false" ng-mouseleave="show(false)">
+  <div class="four wide column" ng-class="{hide: !open}">
+    <div class="ui segment attached top">
+      <div class="ui floating label">
+        List
+      </div>
+      
+      <ol contenteditable="true" class="reshow" ng-mouseover="show(true)">
+        <li ng-repeat="listText in activeField.items" ng-model="listText.text" tabindex="0" ng-class="{focus: $first, reshow: open}" contenteditable="true"></li>
+      </ol>
+    </div>
+
+<div class="ui menu attached bottom stacked">
+  <a class="red item">
+    <i class="sort attributes descending icon"></i>
+  </a>
+  <a class="teal item">
+    <i class="sort attributes descending icon"></i>
+  </a>
+  <a class="green item">
+    <i class="code icon"></i>
+  </a>
+
+  <a class="green item">
+    <i class="wrench icon"></i>
+    <div class="ui floating label">
+      Connect
+    </div>
+  </a>
+</div>
+
+  </div>
+  
+
+</div>

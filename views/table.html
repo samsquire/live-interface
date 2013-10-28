@@ -1,0 +1,18 @@
+<table class="ui table segment small compact">
+  <thead>
+    <tr>
+      <th ng-repeat="field in activeField.fields">{{field}}</th>
+  </tr>
+</thead>
+  <tbody>
+    <tr ng-repeat="row in activeField.rows">
+      <td ng-repeat="cell in row">{{cell}}</td>
+    </tr>
+    
+  </tbody>
+  <tfoot>
+    <tr><th colspan="3">
+      <div class="ui blue labeled icon button"><i class="user icon"></i> Add Row</div>
+    </th>
+  </tr></tfoot>
+</table>
