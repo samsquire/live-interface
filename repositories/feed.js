@@ -14,24 +14,42 @@ angular.module('system').factory('feed', [function () {
       return !item._deleted;
     };
 
+
+    self.ids = {};
+    self.items = [];
+
+    self.addition = function (docs) {
+      docs.forEach(function (doc) {
+        if (self.ids.hasOwnProperty(doc._id)) {
+          console.log("Change to existing document:", doc._id);
+          // console.log('already existing doc', doc, doc._id);
+          $.extend(true, self.ids[doc._id], doc);
+
+        } else {
+          self.ids[doc._id] = doc;
+          self.items.push(doc);
+        }
+      });
+    };
+
     self.sync = function () {
       
       var opts = {continuous: true, complete: function (err) {
-        console.log('complete handler', err)
+        // console.log('complete handler', err)
       }};
       db.replicate.to(remoteCouch, opts);
       db.replicate.from(remoteCouch, opts);
     };
 
-    self.items = function (callback) {
+    self.fetch = function (callback) {
       self.sync();
       db.info(function(err, info) {
         var seq = info.update_seq;
-        console.log(info);
         
         db.allDocs({include_docs: true, ascending: false}, function (err, docs) {
           if (!err) {
-            callback(docs.rows.map(extractDocs).filter(undeleted));
+            self.addition(docs.rows.map(extractDocs).filter(undeleted));
+            callback(self.items);
           }
       });
 
@@ -40,9 +58,10 @@ angular.module('system').factory('feed', [function () {
           include_docs: true,
           continuous: true,
           onChange: function(change) {
-            console.log('change occurred', change.doc);
+//            console.log('change occurred', change.doc);
             if (!change.doc._deleted) {
-              callback([change.doc]);
+              self.addition([change.doc])
+              callback(self.items);
             }
           }
         });
@@ -56,11 +75,12 @@ angular.module('system').factory('feed', [function () {
     };
 
     self.update = function (feedItem) {
-      console.log('updated', feedItem);
+      console.log('Updated', feedItem);
       var rev = feedItem._rev;
       db.remove(feedItem);
-      feedItem._rev = (parseInt(feedItem._rev.substr(0, 1), 10) + 1) + feedItem._rev.substr(1)
-      console.log('trying to put', feedItem._id, rev, 'as', feedItem._rev);
+      var revNumber = (parseInt(feedItem._rev.substr(0, 2), 10) + 1);
+      feedItem._rev = revNumber + feedItem._rev.substring(feedItem._rev.indexOf("-"));
+      console.log(revNumber, 'From', rev, 'to', feedItem._rev);
       db.put(feedItem, {}, function (err) {
         console.log(err);
       });

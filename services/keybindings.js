@@ -6,7 +6,7 @@ angular.module('system').factory('keybinding', ['$rootScope', function ($rootSco
         key(combination, function(e) {
           $rootScope.$emit(event);
           e.preventDefault();
-          return false;
+          return true;
         });
       };
     };

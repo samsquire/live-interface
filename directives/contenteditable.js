@@ -1,23 +1,31 @@
 angular.module('system').directive('contenteditable', function() {
   return {
     require: '?ngModel',
-    link: function(scope, elm, attrs, ngModel) {
+    link: function($scope, $element, attrs, ngModel) {
       if (!ngModel) {
-        console.log('exit');
         return;
       }
       // view -> model
-      elm.on('blur', function() {
-          ngModel.$setViewValue(elm.html());
+      $element.on('blur', function () {
+          ngModel.$setViewValue($element.html());
       });
       
+      $element.on('keydown', function () {
+        console.log('change');
+      });
+
+      // Sometimes we want to use the original HTML and other
+      // times we want to use what's already in the model.
+      if (!$element.html()) {
+        $element.html(ngModel.$viewValue);
+      } else {
+        ngModel.$setViewValue($element.html());
+      }
+
       // model -> view
       ngModel.$render = function() {
-        elm.html(ngModel.$viewValue);
+        $element.html(ngModel.$viewValue);
       };
- 
-      // load init value from DOM
-      elm.html(ngModel.$viewValue);
     }
   };
 });

@@ -1,8 +1,6 @@
 angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootScope', function ($scope, $state, $rootScope) {
-  console.log('autocomplete controller');
-
   $scope.open = false;
-
+  var escapeListener = null;
   $scope.options = [
   [
     {title: 'Embed', type: 'stateChange', action: 'home.embed'},
@@ -15,6 +13,9 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
 
   ]];
 
+  $scope.close = function () {
+    $scope.open = false;
+  };
     
 
   $scope.toggle = function () {
@@ -46,7 +47,28 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
     $rootScope.$emit('toggle-editor-expand');
   };
 
+  listen();
   
-  $rootScope.$on('escape-pressed', $scope.toggle);
+
+  function listen() {
+    console.log('listening to escape events');
+    escapeListener = $rootScope.$on('escape-pressed', $scope.toggle);
+  }
+
+  $rootScope.$on('enable-autocomplete', function () {
+    if (!escapeListener) {
+     listen();
+    }
+  });
+
+  $rootScope.$on('disable-autocomplete', function () {
+    if (escapeListener) {
+      escapeListener();
+      escapeListener = null;
+    }
+  });
+  $rootScope.$on('close-autocomplete', function () {
+    $scope.close();
+  });
 
 }]);

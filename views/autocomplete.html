@@ -1,4 +1,4 @@
-<div ng-show="open" directional-focus="ol">
+<div ng-show="open" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
   <ol ng-class="{start: $first}" ng-repeat="optionList in options">
     <li focus-when="$parent.$first && $first && $parent.open"
     tabindex="{{$index + 1 + options[$parent.$index - 1].length}}"

@@ -7,19 +7,117 @@ body {
 .hide {visibility: hidden;}
 .reshow {visibility: visible;}
 
+.codeView {
+  /*display: inline-block;*/
 
-.window {
-  margin-left: auto;
-  margin-right: auto;
+
+}
+
+.codeView ul, .codeView ul ul {
+  list-style-type: none;
+ }
+
+.codeView ul, .codeView ul ul {
+ background: url('/images/vline.png') repeat-y;
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+}
+
+.codeView li.last {
+  background: white  url('/images/lastnode.png') no-repeat;
+}
+
+.codeView ul ul {
+ margin-left: 10px;
+}
+
+.transposed-parent {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.transposed-wrapper {
+  margin-bottom: 1em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100vw;
+}
+
+.codeView ul.transposed-child li {
+  background: none;
+  padding: 0;
+}
+
+.codeView ul.transposed-child li:before {
+  display: block;
+  height: 5px; 
+  content: "";
+  border-top: 1px solid rgb(136,136,136);
+  border-left: 1px solid rgb(136,136,136);
+}
+
+.codeView ul.transposed-child li.last:before {
+ border-top: none;
+}
+
+.codeView ul.transposed-child, .codeView ul.transposed-child ul {
+  background: none;
+}
+
+.transposed-child {
+  display: inline;
+  float: left;
+}
+
+.codeView ul li {
+ margin: 0;
+ padding: 0 12px;
+ line-height: 20px;
+ background: url('/images/node.png') no-repeat;
+ font-weight: bold;
+}
+
+.embedded-context {
+  
+}
+
+
+.connect .ui.grid.connectMain {
+  margin: 0;
+}
+
+.focal-window {
   top: 10%;
   left: 5%;
   width: 90vw;
   height: 75vh;
+  z-index: 10000;
+  margin-left: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+.mask {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+
+}
+
+.window {
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 10pt;
   position: absolute;
-  margin-left: 1em;
   overflow: scroll;
   background-color: white;
-  margin-top: 1em;
 }

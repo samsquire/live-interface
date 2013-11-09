@@ -4,11 +4,11 @@ angular.module('system').directive('follow', function () {
       
       var sel = window.getSelection();
       if (sel.rangeCount === 0) {
-        return;
+        return true;
       }
       var rects = sel.getRangeAt(0).getClientRects();
       if (rects.length === 0) {
-        return;
+        return true;
       }
       var pos = rects[0];
       var dropdown = $(attrs.follow);

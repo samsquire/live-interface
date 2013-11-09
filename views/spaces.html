@@ -1,21 +1,15 @@
-<div class="container">
-  <div class="ui segment">
-    <div packery=".context" class="spaces">
+<!-- <div class="container"> -->
 
-      <div ng-repeat="feedItem in items" class="context" prepended>
-        <div contenteditable="true" ng-model="feedItem.name" when-blur="update(feedItem)"></div>
-        {{ feedItem._rev}}
+
+  <!-- <div packery=".context" class="spaces"> -->
+  <div packery=".context" class="spaces">
+
+    <div ng-repeat="feedItem in items" class="context window" prepended>
+      <div class="fifteen column wide">
+      <div class="row">
+        <div angular-content="feedItem.contents" document-index="$index" contenteditable="true" when-blur="update(feedItem)"></div>
       </div>
-
-      <div class="context">
-        again
-      </div>
-
-      <div class="context">
-        <div>
-          hi
-      </div>
-
+    </div>
     </div>
   </div>
 </div>

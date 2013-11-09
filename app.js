@@ -46,7 +46,21 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/embed.html',
       controller: 'embed'
     })
-
+    .state('home.connect', {
+      url: '/connect/:documentId/:fieldIndex/:instanceName',
+      templateUrl: 'views/connect.html',
+      controller: 'connect'
+    })
+    .state('view', {
+      url: '/view',
+      templateUrl: 'views/demo.html',
+      controller: 'viewer',
+      resolve: {
+        demoData: function ($http) {
+          return $http.get('example.json');
+        }
+      }
+    })
     
     ;
 

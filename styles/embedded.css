@@ -2,3 +2,7 @@
   height: 5em;
   width: 10em;
 }
+
+a[rel='embedded'] {
+  display: none;
+}

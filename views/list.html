@@ -1,35 +1,73 @@
-<div taxindex="0" class="ui grid" contenteditable="false" ng-mouseleave="show(false)">
+<div tabindex="0" class="ui grid embedded-context" contenteditable="false" ng-mouseleave="show(false)">
+  <div class="row">
   <div class="four wide column" ng-class="{hide: !open}">
-    <div class="ui segment attached top">
-      <div class="ui floating label">
-        List
-      </div>
-      
-      <ol contenteditable="true" class="reshow" ng-mouseover="show(true)">
-        <li ng-repeat="listText in activeField.items" ng-model="listText.text" tabindex="0" ng-class="{focus: $first, reshow: open}" contenteditable="true"></li>
-      </ol>
-    </div>
+            <div class="ui segment attached top">
+              <div class="ui floating label">
+                List
+              </div>
+              
+              <ol contenteditable="true" class="focus reshow" ng-mouseover="show(true)">
 
-<div class="ui menu attached bottom stacked">
-  <a class="red item">
-    <i class="sort attributes descending icon"></i>
-  </a>
-  <a class="teal item">
-    <i class="sort attributes descending icon"></i>
-  </a>
-  <a class="green item">
-    <i class="code icon"></i>
-  </a>
+                <li ng-repeat="listText in activeField.items" ng-model="listText.text" tabindex="0" ng-class="{focus: $first, reshow: open}" contenteditable="true"></li>
 
-  <a class="green item">
-    <i class="wrench icon"></i>
-    <div class="ui floating label">
-      Connect
-    </div>
-  </a>
-</div>
+              </ol>
 
+            </div>
+
+        <div class="ui menu attached bottom stacked">
+          <a class="red item">
+            <i class="sort attributes descending icon"></i>
+          </a>
+          <a class="teal item">
+            <i class="sort attributes descending icon"></i>
+          </a>
+          <a class="green item" ng-click="toggleCode()">
+            <i class="code icon"></i>
+          </a>
+
+          <a class="green item" ng-click="connect()">
+            <i class="wrench icon"></i>
+            <div class="ui floating label">
+              Connect
+            </div>
+          </a>
+        </div>
   </div>
-  
 
+<script type="text/ng-template" id="draw_object">
+  <ul ng-app="system" ng-controller="dataobject" ng-init="init($parent.field, $parent.key)" ng-class="{'transposed-child': transposed}">
+      <li ng-repeat="currentKey in keys" ng-switch="type(field[key])" ng-class="{last: $last, 'transposed-child': transposed}">
+        {{ currentKey }}
+        <span ng-switch-when="Object" ng-init="field = field[key]; key = currentKey" ng-include="'draw_object'" ng-class="{'transposed-child': transposed}"></span>
+        <span ng-switch-when="Array"><div ng-init="field = field[key]; key = currentKey" ng-include="'draw_object'" ng-class="{'transposed-child': transposed}"></span>
+      </li>
+
+      <li ng-switch="type(field[key])" ng-show="keys.length == 0" ng-class="{last: $last, 'transposed-child': transposed}" >
+        <span class="ui form" ng-switch-when="String" ng-class="{'transposed-child': transposed}">
+          <span class="field">
+            <input type="text" ng-model="field[key]"/>
+          </span>
+        </span>
+        <input type="checkbox" ng-switch-when="Boolean" ng-model="field[key]"/>
+      </li>
+    </ul>
+</script>
+
+      <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
+      <div class="ui floating label">
+        Structure
+      </div>
+
+      <div class="ui menu attached top stacked right">
+          <a class="red item" ng-click="transpose()">
+            <i class="undo icon"></i>
+          </a>
+        </div>
+      
+        
+        <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
+              <div class="" ng-init="field = this; key = 'activeField'" ng-include="'draw_object'" ng-class="{'transposed-wrapper': transposed}">
+              </div>
+        </div>
+  </div>
 </div>

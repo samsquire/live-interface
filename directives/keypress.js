@@ -26,38 +26,62 @@ return {
   };
 }]);
 
+angular.module('system').directive('numberedFocus', [function () {
+
+return {
+  link: function ($scope, $element, $attrs) {
+    var validOptions = $attrs.numberedFocus;
+    
+    $element.on('keydown', function (event) {
+      if (event.keyCode < 47 || event.keyCode > 57) {
+        return true;
+      }
+
+      var index = event.keyCode - 48;
+      var selected = $element.find(validOptions).get(index - 1)
+      console.log(index, selected);
+      selected.focus();
+      selected.click();
+      return true;
+    });
+  }
+
+  };
+}]);
+
 angular.module('system').directive('directionalFocus', [function () {
 return {
   link: function ($scope, $element, $attrs) {
-    var validElement = $attrs.directionalFocus;
+    var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);
+    var validElement = settings.container;
+    var validItems = settings.items;
 
     $element.bind('keydown', function (event) {
       
         var nextList, newItemIndex;
         var $focused = $(':focus');
         var currentListIndex = $focused.index();
-        var ol = $focused.closest(validElement);
-        
+        var currentList = $focused.closest(validElement);
 
         switch (event.keyCode) {
           case 39: // right
-            nextList = ol.next(validElement);
+            nextList = currentList.next(validElement);
             newItemIndex = currentListIndex;
             break;
           case 37: // left
-            nextList = ol.prev(validElement);
+            nextList = currentList.prev(validElement);
             newItemIndex = currentListIndex;
             break;
           case 38: // up
-            nextList = ol;
+            nextList = currentList;
             newItemIndex = currentListIndex - 1;
             break;
           case 40: // or down
-            nextList = ol;
+            nextList = currentList;
             newItemIndex = currentListIndex + 1;
             break;
           case 13:
-            // event.preventDefault();
+            event.preventDefault();
             return true;
             break;
           default:
@@ -65,11 +89,11 @@ return {
             return true;
         };
         event.preventDefault();
-        var potentialListItems = nextList.find('li');
+        var potentialListItems = nextList.find(validItems);
         
         if (potentialListItems.length === 0) {
           // we cannt move any further in this direction
-          return;
+          return true;
         }
 
         if (newItemIndex < 0) {
@@ -77,15 +101,17 @@ return {
           newItemIndex = potentialListItems.length - 1;
         }
 
-        if (newItemIndex > potentialListItems.length - 1) {
+        if (currentList == nextList && newItemIndex > potentialListItems.length - 1) {
           // we've tried to move past the bottom so loop back
           newItemIndex = 0;
         }
 
-        if (potentialListItems.length < newItemIndex) {
+        if (newItemIndex > potentialListItems.length - 1) {
           // move to next most reasonable position
           newItemIndex = potentialListItems.length - 1;
         }
+
+        
         potentialListItems.get(newItemIndex).focus();
         return true;
     });

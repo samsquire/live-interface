@@ -1,23 +1,20 @@
-angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope', 'feed', function ($scope, $state, $rootScope, feed) {
+angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope', 'feed',
+  function ($scope, $state, $rootScope, feed, feedRepository) {
 
-  $scope.items = [];
-  $scope.ids = {};
-
-  feed.items(function (docs) {
-      docs.forEach(function (doc) {
-        if ($scope.ids.hasOwnProperty(doc._id)) {
-          console.log('already existing doc', doc, doc._id);
-          $.extend($scope.ids[doc._id], doc);  
-        } else {
-          $scope.ids[doc._id] = doc;
-          $scope.items.push(doc);
-        }
-      });
+  feed.fetch(function (docs) {
       // $scope.items.push.apply($scope.items, docs);
-      $scope.$apply(true);
+      // $scope.items.push.apply($scope.items, docs);
+      $scope.$apply();
+      console.log("Retrieved", docs);
   });
 
+  $scope.items = feed.items;
+  
+  console.log('loaded feed items', feed.items);
+  
+
   $scope.update = function (feedItem) {
+    console.log(JSON.stringify(feedItem, null, 4));
     feed.update(feedItem);
   };
   

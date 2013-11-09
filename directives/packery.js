@@ -5,7 +5,7 @@ return function ($scope, $element, $attrs) {
     "itemSelector": $attrs.packery,
     "gutter": 10
   };
-  console.log(packeryConfig)
+
  $scope.packery = new Packery($element[0], packeryConfig);
 
   $(document).on('ready', function () {

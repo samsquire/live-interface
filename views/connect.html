@@ -1,0 +1,62 @@
+<div class="mask" ng-show="open"></div>
+
+<div class="focal-window window connect">
+
+  <div class="ui inverted segment connectLocation">
+    <div class="ui huge breadcrumb">
+      <a class="section">Connect</a>
+      <div class="divider"> / </div>
+      <a class="section">Document {{ id }}</a>
+
+      <div class="divider"> / </div>
+      <a class="section">Data {{ fieldIndex }}</a>
+      <div class="divider"> / </div>
+      <div class="active section">Instance {{ instanceName }}</div>
+    </div>
+
+<div class="circular inverted white ui icon button floated right" ng-click="close()">
+  <i class="icon remove"></i></div>
+</div>
+
+
+
+
+<h2 class="ui header">
+  <i class="sitemap icon"></i>
+  <div class="content">
+    Connect Data
+    <div class="sub header">Create a relationship between pieces of data.</div>
+  </div>
+</h2>
+
+<div class="container">
+  <div class="ui grid connectMain">
+  <div class="column three wide"></div>
+  <div class="column three wide">
+    <div class="ui icon header">
+      <i class="circular wrench icon"></i>Use the Data
+      <div class="sub header">Use the underlying data.</div>
+    </div>
+  </div>
+
+  <div class="column three wide">
+    <div class="ui icon header">
+      <i class="circular camera icon"></i>Use this Instance
+      <div class="sub header">Use the current instance.</div>
+    </div>
+  </div>
+
+    <div class="column three wide">
+    <div class="ui icon header">
+      <i class="unhide icon"></i>Expose the data
+      <div class="sub header">Expose this data to be used externally.</div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+</div>
+
+</div>

@@ -1,3 +1,62 @@
-<div class="window" focus-when="">
+<div class="focal-window window">
+  
 
+<div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
+  <ol ng-class="start">
+    <li tabindex="0" ng-repeat="field in activeDocument.fields" ng-bind="field.type" ng-click="embed($index)" focus-when="$first"></li>
+    
+  </ol>
+</div>
+
+
+
+
+<!--
+<div class="ui vertical menu" directional-focus="{container: '.menu', items: '.item'}" numbered-focus=".item">
+  <div taxbindex="0" class="header item">
+    <i class="user icon"></i>
+    Communities
+  </div>
+  <div taxbindex="0"  class="item">
+    College
+    <div class="menu">
+      <a focus-when="open" tabindex="0" class="item">Baseball</a>
+      <a tabindex="0" class="item">Basketball</a>
+      <a tabindex="0" class="item">Golf</a>
+    </div>
+  </div>
+  <a tabindex="0" class="item">
+    Dance
+  </a>
+  <a tabindex="0" class="item">
+    Aerobics
+  </a>
+  <div tabindex="0" class="header item">
+    <i class="globe icon"></i>
+    Cities
+  </div>
+  <a tabindex="0" class="item">
+    New York
+  </a>
+  <a tabindex="0" class="item">
+    Montreal
+  </a>
+  <a tabindex="0" class="item">
+    Los Angeles
+  </a>
+  <a tabindex="0" class="item">
+    San Francisco
+  </a>
+  <div tabindex="0" class="header item">
+    <i class="icon calendar"></i>
+    Months
+  </div>
+  <a tabindex="0" class="item">
+    August
+  </a>
+  <a tabindex="0" class="item">
+    June
+  </a>
+</div>
+-->
 </div>
