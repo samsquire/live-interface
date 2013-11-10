@@ -21,8 +21,22 @@ angular.module('system').controller('connect', ['$rootScope', '$state', '$scope'
     $scope.close();
   });
 
+  $rootScope.$on('')
+
+
+  var decisionListener = $scope.$on('$stateChangeSuccess',
+    function(event, toState, toParams, fromState, fromParams){
+      if ($state.is("home.connect")) {
+        $scope.madeDecision = false;
+      }
+  });
+
+  $scope.$on('$destroy', function () {
+    decisionListener();
+  });
 
   $scope.use = function () {
+    $scope.madeDecision = true;
     $state.transitionTo('home.connect.use', $stateParams);
   };
 

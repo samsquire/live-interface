@@ -62,10 +62,7 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('home.connect.use', {
-      url: '/use',
-      data: {
-        madeDecision: true
-      }
+      url: '/use'
     })
     .state('view', {
       url: '/view',
