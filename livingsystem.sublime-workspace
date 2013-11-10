@@ -1,0 +1,2614 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"mongo",
+				"mongodb_statuses"
+			],
+			[
+				"app",
+				"app_status"
+			],
+			[
+				"not",
+				"not_replica_set"
+			],
+			[
+				"any",
+				"any_primaries"
+			],
+			[
+				"flou",
+				"flourish_status"
+			],
+			[
+				"status",
+				"statuses"
+			],
+			[
+				"node",
+				"node_statuses"
+			],
+			[
+				"group",
+				"group_status"
+			],
+			[
+				"fet",
+				"fetch-internal"
+			],
+			[
+				"do",
+				"document-url"
+			],
+			[
+				"first",
+				"first-article"
+			],
+			[
+				"defa",
+				"default-art-fields"
+			],
+			[
+				"trans",
+				"translation-fields-updated"
+			],
+			[
+				"firs",
+				"first-article"
+			],
+			[
+				"tran",
+				"translation-fields"
+			],
+			[
+				"transal",
+				"translation-fields"
+			],
+			[
+				"crea",
+				"create-article"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 11189,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/editor.js",
+			"settings":
+			{
+				"buffer_size": 6049,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/code.js",
+			"settings":
+			{
+				"buffer_size": 302,
+				"line_ending": "Unix",
+				"name": "angular.module('system').factory('CodeModel', [fun"
+			}
+		},
+		{
+			"file": "views/code.html",
+			"settings":
+			{
+				"buffer_size": 230,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/list.js",
+			"settings":
+			{
+				"buffer_size": 208,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/list.html",
+			"settings":
+			{
+				"buffer_size": 3062,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/autocomplete.js",
+			"settings":
+			{
+				"buffer_size": 1721,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "directives/context.js",
+			"settings":
+			{
+				"buffer_size": 2196,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 1723,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "styles/main.css",
+			"settings":
+			{
+				"buffer_size": 1929,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/context-controller.js",
+			"settings":
+			{
+				"buffer_size": 819,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/editor.html",
+			"settings":
+			{
+				"buffer_size": 929,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/connect.html",
+			"settings":
+			{
+				"buffer_size": 870,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/connect-picker.html",
+			"settings":
+			{
+				"buffer_size": 826,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/home.html",
+			"settings":
+			{
+				"buffer_size": 194,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/connect.js",
+			"settings":
+			{
+				"buffer_size": 895,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 299 files for \"console.log\"\n\n/Users/ssquire/Documents/projects/liveinterface/components/angular/angular.js:\n 3110   * @param {object} document jQuery wrapped document.\n 3111   * @param {function()} XHR XMLHttpRequest constructor.\n 3112:  * @param {object} $log console.log or an object with the same interface.\n 3113   * @param {object} $sniffer $sniffer service\n 3114   */\n ....\n 5920      function consoleLog(type) {\n 5921        var console = $window.console || {},\n 5922:           logFn = console[type] || console.log || noop;\n 5923  \n 5924        if (logFn.apply) {\n ....\n 5933  \n 5934        // we are IE which either doesn't have window.console => this is noop and we do nothing,\n 5935:       // or we are IE where console.log doesn't have apply so we log at least first 2 args\n 5936        return function(arg1, arg2) {\n 5937          logFn(arg1, arg2);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/search/searchcursor.js:\n  107        for (;;) {\n  108          if (this.pos = this.matches(reverse, pos)) {\n  109:           if (!this.pos.from || !this.pos.to) { console.log(this.matches, this.pos); }\n  110            this.atOccurrence = true;\n  111            return this.pos.match || true;\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/tern/tern.js:\n  591          });\n  592        } else if (data.type == \"debug\") {\n  593:         console.log(data.message);\n  594        } else if (data.id && pending[data.id]) {\n  595          pending[data.id](data.err, data.body);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/diff/index.html:\n   29  -        autoMatchBrackets: true\n   30  +        autoMatchBrackets: true,\n   31: +      onGutterClick: function(x){console.log(x);}\n   32         });\n   33       </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/gfm/index.html:\n   37  ```javascript\n   38  for (var i = 0; i &lt; items.length; i++) {\n   39:     console.log(items[i], i); // log them\n   40  }\n   41  ```\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/less/less.js:\n  128          //commment out these 2 comment if you want the minus sign to be parsed as null -500px\n  129          //stream.backUp(stream.current().length-1);\n  130:         //return ret(null, ch); //console.log( stream.current() );\n  131          return ret(\"number\", \"unit\");\n  132        }else if( /\\/|[\\s\\)]/.test(stream.peek() || stream.eol() || (stream.eatSpace() && stream.peek() == \"/\")) && stream.current().indexOf(\".\") !== -1){\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/sass/sass.js:\n   55  \n   56        /*\n   57:       console.log(\"previousChar: \" + previousChar);\n   58:       console.log(\"nextChar: \" + nextChar);\n   59:       console.log(\"peekChar: \" + peekChar);\n   60:       console.log(\"ending: \" + endingString);\n   61        */\n   62  \n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/smarty/index.html:\n   88  <script>\n   89  function test() {\n   90: 	console.log(\"Smarty 3 permits single curly braces followed by whitespace to NOT slip into Smarty mode.\");\n   91  }\n   92  </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/vb/index.html:\n   22    var i = 0;\n   23    function callback(token, style, lineNo, pos){\n   24: 		//console.log(String(token) + \" \" + String(style) + \" \" + String(lineNo) + \" \" + String(pos));\n   25      var result = [String(token), String(style)];\n   26      if (golden[i][0] != result[0] || golden[i][1] != result[1]){\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/autocomplete.js:\n   53  \n   54    function listen() {\n   55:     console.log('listening to escape events');\n   56      escapeListener = $rootScope.$on('escape-pressed', $scope.toggle);\n   57    }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js:\n   24  \n   25    $scope.use = function () {\n   26:     console.log(\"now using\");\n   27      \n   28      $state.transitionTo('home.connect.use', $stateParams);\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js:\n   17  \n   18    $scope.transpose = function () {\n   19:     console.log('transposing');\n   20      $scope.transposed = !$scope.transposed;\n   21    };\n   22  \n   23    $scope.connect = function (item) {\n   24:     // console.log($scope.activeField, $scope.activeDocument._id);\n   25  \n   26      $state.transitionTo('home.connect', {\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n   33  \n   34    $rootScope.$on('demote', function () {\n   35:     console.log('demote');\n   36    });\n   37    $rootScope.$on('promote', function () {\n   38:     console.log('promote');\n   39    });\n   40    $rootScope.$on('move-right', function () {\n   41:     console.log('move-right');\n   42    });\n   43    $rootScope.$on('move-up', function () {\n   44:     console.log('move-up');\n   45    });\n   46    $rootScope.$on('move-down', function () {\n   47:     console.log('move-down');\n   48    });\n   49    $rootScope.$on('move-left', function () {\n   50:     console.log('move-left');\n   51    });\n   52  \n   ..\n   56      contents.remove('.embedded-context,.CodeMirror');\n   57      var html = elements.html();\n   58:     console.log('Saving', html);\n   59  \n   60      feed.save({\n   ..\n   67  \n   68    $scope.saved = function (err, response) {\n   69:     console.log('saved', err, response);\n   70    };\n   71  \n   ..\n   75  \n   76    $rootScope.$on('embed-field', function (event, field) {\n   77:     console.log('Embedding', field);\n   78      $scope[$scope.activeDocument.fields[field].type](field);\n   79    });\n   ..\n   85      });\n   86      if (node.nodeType !== 3) {\n   87:       console.log(\"Not a text node. Ensuring flattened structure.\", node.parentNode);\n   88        // node = $(node).parentsUntil('.post-body')[0];\n   89        var oneDeep = $(node).parentsUntil('.post-body');\n   ..\n  101          \n  102        } else {\n  103:         console.log(\"Inserting before the selected node\");\n  104         node = node.previousSibling;\n  105        }\n  ...\n  109      \n  110      if (parents.length === 1) {\n  111:       console.log(node.textContent.length);\n  112        if (node.textContent.length === $scope.selection.anchorOffset) {\n  113:         console.log(\"Insert at end of line\");\n  114          var firstParent = $(node).parentsUntil('.post-body')[0];\n  115          $(firstParent).after(newNode);\n  ...\n  120          $(node).wrap(\"<div>\");\n  121          $(remaining).wrap(\"<div>\");\n  122:         console.log(\"Text split at\", $scope.selection.anchorOffset);\n  123        }\n  124      } else {\n  125        $('.post-body').append(newNode);\n  126:       console.log('selection not inside text area');\n  127      }\n  128      if (newNode.nodeType === 3) {\n  ...\n  147      var model;\n  148     if (modelIndex === undefined) {\n  149:       console.log(\"Creating empty model.\");\n  150        model = modelConstructor();\n  151        \n  152        $scope.activeDocument.fields.push(model);\n  153      } else {\n  154:       console.log(\"Using pre-existing model.\");\n  155        model = $scope.activeDocument.fields[modelIndex];\n  156      }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js:\n    6        // $scope.items.push.apply($scope.items, docs);\n    7        $scope.$apply();\n    8:       console.log(\"Retrieved\", docs);\n    9    });\n   10  \n   11    $scope.items = feed.items;\n   12    \n   13:   console.log('loaded feed items', feed.items);\n   14    \n   15  \n   16    $scope.update = function (feedItem) {\n   17:     console.log(JSON.stringify(feedItem, null, 4));\n   18      feed.update(feedItem);\n   19    };\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js:\n    1  angular.module('system').controller('viewer', ['$scope', 'demoData',\n    2    function ($scope, demoData) {\n    3:     console.log('data from promise', demoData.data);\n    4    angular.extend($scope, demoData.data);\n    5  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js:\n    8        var documentIndex = $scope.$eval($attrs.documentIndex);\n    9  \n   10:       console.log(\"linking run angular\", documentIndex);\n   11        var model = $scope.items[documentIndex];\n   12        \n   ..\n   17        var newContent = $.trim(template);\n   18        $compile(newContent)(subDocumentScope, function (rendered) {\n   19:         console.log(rendered);\n   20          $element.append(rendered);\n   21:         console.log(\"DONE angular content\", rendered);\n   22          \n   23          \n\n/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js:\n   12        \n   13        $element.on('keydown', function () {\n   14:         console.log('change');\n   15        });\n   16  \n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    4    function importTemplate(url) {\n    5      $http.get(url).then(function (templateData) {\n    6:       console.log(\"Imported template for\", url);\n    7        $templateCache.put(url, templateData.data);\n    8      });\n    .\n   36          instanceName: $element.attr('href')\n   37        };\n   38:       console.log(\"Active Document is\", $scope.activeDocument);\n   39        model = $scope.activeDocument.fields[metadata.fieldIndex];\n   40:       console.log('Encountered context', model);\n   41  \n   42        contextTemplateUrl = 'views/' + metadata.kind + '.html';\n   ..\n   56          // wait for all the other bindings in the template have finished\n   57          $element.after(embeddedContent);\n   58:         // console.log(\"DONE context insertion\", embeddedContent.html());\n   59          var focusNodes = embeddedContent.find('.focus');\n   60  \n   ..\n   67        \n   68  \n   69:       // console.log(contextTemplateUrl);\n   70:       // console.log('Got template HTML', templateHtml);\n   71      }\n   72    };\n\n/Users/ssquire/Documents/projects/liveinterface/directives/follow.js:\n   16        pos = _.pick(pos, ['left', 'top']);\n   17        \n   18:       // console.log(\"Keypress:\", $(this).text(), sel, sel.focusNode, $(sel.focusNode.parentElement).position());\n   19        var rightEdge = pos.left + dropdown.width();\n   20        \n   ..\n   22        \n   23        if (rightEdge >= windowWidth) {\n   24:         console.log(\"Over the edge,\", rightEdge, windowWidth, pos);\n   25          var newLeft = pos.left - (rightEdge - windowWidth);\n   26          pos.left = newLeft;\n\n/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js:\n   40        var index = event.keyCode - 48;\n   41        var selected = $element.find(validOptions).get(index - 1)\n   42:       console.log(index, selected);\n   43        selected.focus();\n   44        selected.click();\n   ..\n   53  return {\n   54    link: function ($scope, $element, $attrs) {\n   55:     var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);\n   56      var validElement = settings.container;\n   57      var validItems = settings.items;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n   22        docs.forEach(function (doc) {\n   23          if (self.ids.hasOwnProperty(doc._id)) {\n   24:           console.log(\"Change to existing document:\", doc._id);\n   25:           // console.log('already existing doc', doc, doc._id);\n   26            $.extend(true, self.ids[doc._id], doc);\n   27  \n   ..\n   36        \n   37        var opts = {continuous: true, complete: function (err) {\n   38:         // console.log('complete handler', err)\n   39        }};\n   40        db.replicate.to(remoteCouch, opts);\n   ..\n   59            continuous: true,\n   60            onChange: function(change) {\n   61: //            console.log('change occurred', change.doc);\n   62              if (!change.doc._deleted) {\n   63                self.addition([change.doc])\n   ..\n   76  \n   77      self.update = function (feedItem) {\n   78:       console.log('Updated', feedItem);\n   79        var rev = feedItem._rev;\n   80        db.remove(feedItem);\n   81        var revNumber = (parseInt(feedItem._rev.substr(0, 2), 10) + 1);\n   82        feedItem._rev = revNumber + feedItem._rev.substring(feedItem._rev.indexOf(\"-\"));\n   83:       console.log(revNumber, 'From', rev, 'to', feedItem._rev);\n   84        db.put(feedItem, {}, function (err) {\n   85:         console.log(err);\n   86        });\n   87      };\n\n60 matches across 21 files\n\n\nSearching 299 files for \"console.log\"\n\n/Users/ssquire/Documents/projects/liveinterface/components/angular/angular.js:\n 3110   * @param {object} document jQuery wrapped document.\n 3111   * @param {function()} XHR XMLHttpRequest constructor.\n 3112:  * @param {object} $log console.log or an object with the same interface.\n 3113   * @param {object} $sniffer $sniffer service\n 3114   */\n ....\n 5920      function consoleLog(type) {\n 5921        var console = $window.console || {},\n 5922:           logFn = console[type] || console.log || noop;\n 5923  \n 5924        if (logFn.apply) {\n ....\n 5933  \n 5934        // we are IE which either doesn't have window.console => this is noop and we do nothing,\n 5935:       // or we are IE where console.log doesn't have apply so we log at least first 2 args\n 5936        return function(arg1, arg2) {\n 5937          logFn(arg1, arg2);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/search/searchcursor.js:\n  107        for (;;) {\n  108          if (this.pos = this.matches(reverse, pos)) {\n  109:           if (!this.pos.from || !this.pos.to) { console.log(this.matches, this.pos); }\n  110            this.atOccurrence = true;\n  111            return this.pos.match || true;\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/tern/tern.js:\n  591          });\n  592        } else if (data.type == \"debug\") {\n  593:         console.log(data.message);\n  594        } else if (data.id && pending[data.id]) {\n  595          pending[data.id](data.err, data.body);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/diff/index.html:\n   29  -        autoMatchBrackets: true\n   30  +        autoMatchBrackets: true,\n   31: +      onGutterClick: function(x){console.log(x);}\n   32         });\n   33       </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/gfm/index.html:\n   37  ```javascript\n   38  for (var i = 0; i &lt; items.length; i++) {\n   39:     console.log(items[i], i); // log them\n   40  }\n   41  ```\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/less/less.js:\n  128          //commment out these 2 comment if you want the minus sign to be parsed as null -500px\n  129          //stream.backUp(stream.current().length-1);\n  130:         //return ret(null, ch); //console.log( stream.current() );\n  131          return ret(\"number\", \"unit\");\n  132        }else if( /\\/|[\\s\\)]/.test(stream.peek() || stream.eol() || (stream.eatSpace() && stream.peek() == \"/\")) && stream.current().indexOf(\".\") !== -1){\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/sass/sass.js:\n   55  \n   56        /*\n   57:       console.log(\"previousChar: \" + previousChar);\n   58:       console.log(\"nextChar: \" + nextChar);\n   59:       console.log(\"peekChar: \" + peekChar);\n   60:       console.log(\"ending: \" + endingString);\n   61        */\n   62  \n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/smarty/index.html:\n   88  <script>\n   89  function test() {\n   90: 	console.log(\"Smarty 3 permits single curly braces followed by whitespace to NOT slip into Smarty mode.\");\n   91  }\n   92  </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/vb/index.html:\n   22    var i = 0;\n   23    function callback(token, style, lineNo, pos){\n   24: 		//console.log(String(token) + \" \" + String(style) + \" \" + String(lineNo) + \" \" + String(pos));\n   25      var result = [String(token), String(style)];\n   26      if (golden[i][0] != result[0] || golden[i][1] != result[1]){\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/autocomplete.js:\n   53  \n   54    function listen() {\n   55:     console.log('listening to escape events');\n   56      escapeListener = $rootScope.$on('escape-pressed', $scope.toggle);\n   57    }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js:\n   24  \n   25    $scope.use = function () {\n   26:     console.log(\"now using\");\n   27      \n   28      $state.transitionTo('home.connect.use', $stateParams);\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js:\n   17  \n   18    $scope.transpose = function () {\n   19:     console.log('transposing');\n   20      $scope.transposed = !$scope.transposed;\n   21    };\n   22  \n   23    $scope.connect = function (item) {\n   24:     // console.log($scope.activeField, $scope.activeDocument._id);\n   25  \n   26      $state.transitionTo('home.connect', {\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n   33  \n   34    $rootScope.$on('demote', function () {\n   35:     console.log('demote');\n   36    });\n   37    $rootScope.$on('promote', function () {\n   38:     console.log('promote');\n   39    });\n   40    $rootScope.$on('move-right', function () {\n   41:     console.log('move-right');\n   42    });\n   43    $rootScope.$on('move-up', function () {\n   44:     console.log('move-up');\n   45    });\n   46    $rootScope.$on('move-down', function () {\n   47:     console.log('move-down');\n   48    });\n   49    $rootScope.$on('move-left', function () {\n   50:     console.log('move-left');\n   51    });\n   52  \n   ..\n   56      contents.remove('.embedded-context,.CodeMirror');\n   57      var html = elements.html();\n   58:     console.log('Saving', html);\n   59  \n   60      feed.save({\n   ..\n   67  \n   68    $scope.saved = function (err, response) {\n   69:     console.log('saved', err, response);\n   70    };\n   71  \n   ..\n   75  \n   76    $rootScope.$on('embed-field', function (event, field) {\n   77:     console.log('Embedding', field);\n   78      $scope[$scope.activeDocument.fields[field].type](field);\n   79    });\n   ..\n   85      });\n   86      if (node.nodeType !== 3) {\n   87:       console.log(\"Not a text node. Ensuring flattened structure.\", node.parentNode);\n   88        // node = $(node).parentsUntil('.post-body')[0];\n   89        var oneDeep = $(node).parentsUntil('.post-body');\n   ..\n  101          \n  102        } else {\n  103:         console.log(\"Inserting before the selected node\");\n  104         node = node.previousSibling;\n  105        }\n  ...\n  109      \n  110      if (parents.length === 1) {\n  111:       console.log(node.textContent.length);\n  112        if (node.textContent.length === $scope.selection.anchorOffset) {\n  113:         console.log(\"Insert at end of line\");\n  114          var firstParent = $(node).parentsUntil('.post-body')[0];\n  115          $(firstParent).after(newNode);\n  ...\n  120          $(node).wrap(\"<div>\");\n  121          $(remaining).wrap(\"<div>\");\n  122:         console.log(\"Text split at\", $scope.selection.anchorOffset);\n  123        }\n  124      } else {\n  125        $('.post-body').append(newNode);\n  126:       console.log('selection not inside text area');\n  127      }\n  128      if (newNode.nodeType === 3) {\n  ...\n  147      var model;\n  148     if (modelIndex === undefined) {\n  149:       console.log(\"Creating empty model.\");\n  150        model = modelConstructor();\n  151        \n  152        $scope.activeDocument.fields.push(model);\n  153      } else {\n  154:       console.log(\"Using pre-existing model.\");\n  155        model = $scope.activeDocument.fields[modelIndex];\n  156      }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js:\n    6        // $scope.items.push.apply($scope.items, docs);\n    7        $scope.$apply();\n    8:       console.log(\"Retrieved\", docs);\n    9    });\n   10  \n   11    $scope.items = feed.items;\n   12    \n   13:   console.log('loaded feed items', feed.items);\n   14    \n   15  \n   16    $scope.update = function (feedItem) {\n   17:     console.log(JSON.stringify(feedItem, null, 4));\n   18      feed.update(feedItem);\n   19    };\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js:\n    1  angular.module('system').controller('viewer', ['$scope', 'demoData',\n    2    function ($scope, demoData) {\n    3:     console.log('data from promise', demoData.data);\n    4    angular.extend($scope, demoData.data);\n    5  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js:\n    8        var documentIndex = $scope.$eval($attrs.documentIndex);\n    9  \n   10:       console.log(\"linking run angular\", documentIndex);\n   11        var model = $scope.items[documentIndex];\n   12        \n   ..\n   17        var newContent = $.trim(template);\n   18        $compile(newContent)(subDocumentScope, function (rendered) {\n   19:         console.log(rendered);\n   20          $element.append(rendered);\n   21:         console.log(\"DONE angular content\", rendered);\n   22          \n   23          \n\n/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js:\n   12        \n   13        $element.on('keydown', function () {\n   14:         console.log('change');\n   15        });\n   16  \n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    4    function importTemplate(url) {\n    5      $http.get(url).then(function (templateData) {\n    6:       console.log(\"Imported template for\", url);\n    7        $templateCache.put(url, templateData.data);\n    8      });\n    .\n   36          instanceName: $element.attr('href')\n   37        };\n   38:       console.log(\"Active Document is\", $scope.activeDocument);\n   39        model = $scope.activeDocument.fields[metadata.fieldIndex];\n   40:       console.log('Encountered context', model);\n   41  \n   42        contextTemplateUrl = 'views/' + metadata.kind + '.html';\n   ..\n   56          // wait for all the other bindings in the template have finished\n   57          $element.after(embeddedContent);\n   58:         // console.log(\"DONE context insertion\", embeddedContent.html());\n   59          var focusNodes = embeddedContent.find('.focus');\n   60  \n   ..\n   67        \n   68  \n   69:       // console.log(contextTemplateUrl);\n   70:       // console.log('Got template HTML', templateHtml);\n   71      }\n   72    };\n\n/Users/ssquire/Documents/projects/liveinterface/directives/follow.js:\n   16        pos = _.pick(pos, ['left', 'top']);\n   17        \n   18:       // console.log(\"Keypress:\", $(this).text(), sel, sel.focusNode, $(sel.focusNode.parentElement).position());\n   19        var rightEdge = pos.left + dropdown.width();\n   20        \n   ..\n   22        \n   23        if (rightEdge >= windowWidth) {\n   24:         console.log(\"Over the edge,\", rightEdge, windowWidth, pos);\n   25          var newLeft = pos.left - (rightEdge - windowWidth);\n   26          pos.left = newLeft;\n\n/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js:\n   40        var index = event.keyCode - 48;\n   41        var selected = $element.find(validOptions).get(index - 1)\n   42:       console.log(index, selected);\n   43        selected.focus();\n   44        selected.click();\n   ..\n   53  return {\n   54    link: function ($scope, $element, $attrs) {\n   55:     var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);\n   56      var validElement = settings.container;\n   57      var validItems = settings.items;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n   22        docs.forEach(function (doc) {\n   23          if (self.ids.hasOwnProperty(doc._id)) {\n   24:           console.log(\"Change to existing document:\", doc._id);\n   25:           // console.log('already existing doc', doc, doc._id);\n   26            $.extend(true, self.ids[doc._id], doc);\n   27  \n   ..\n   36        \n   37        var opts = {continuous: true, complete: function (err) {\n   38:         // console.log('complete handler', err)\n   39        }};\n   40        db.replicate.to(remoteCouch, opts);\n   ..\n   59            continuous: true,\n   60            onChange: function(change) {\n   61: //            console.log('change occurred', change.doc);\n   62              if (!change.doc._deleted) {\n   63                self.addition([change.doc])\n   ..\n   76  \n   77      self.update = function (feedItem) {\n   78:       console.log('Updated', feedItem);\n   79        var rev = feedItem._rev;\n   80        db.remove(feedItem);\n   81        var revNumber = (parseInt(feedItem._rev.substr(0, 2), 10) + 1);\n   82        feedItem._rev = revNumber + feedItem._rev.substring(feedItem._rev.indexOf(\"-\"));\n   83:       console.log(revNumber, 'From', rev, 'to', feedItem._rev);\n   84        db.put(feedItem, {}, function (err) {\n   85:         console.log(err);\n   86        });\n   87      };\n\n60 matches across 21 files\n\n\nSearching 299 files for \"console.log\"\n\n/Users/ssquire/Documents/projects/liveinterface/components/angular/angular.js:\n 3110   * @param {object} document jQuery wrapped document.\n 3111   * @param {function()} XHR XMLHttpRequest constructor.\n 3112:  * @param {object} $log console.log or an object with the same interface.\n 3113   * @param {object} $sniffer $sniffer service\n 3114   */\n ....\n 5920      function consoleLog(type) {\n 5921        var console = $window.console || {},\n 5922:           logFn = console[type] || console.log || noop;\n 5923  \n 5924        if (logFn.apply) {\n ....\n 5933  \n 5934        // we are IE which either doesn't have window.console => this is noop and we do nothing,\n 5935:       // or we are IE where console.log doesn't have apply so we log at least first 2 args\n 5936        return function(arg1, arg2) {\n 5937          logFn(arg1, arg2);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/search/searchcursor.js:\n  107        for (;;) {\n  108          if (this.pos = this.matches(reverse, pos)) {\n  109:           if (!this.pos.from || !this.pos.to) { console.log(this.matches, this.pos); }\n  110            this.atOccurrence = true;\n  111            return this.pos.match || true;\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/tern/tern.js:\n  591          });\n  592        } else if (data.type == \"debug\") {\n  593:         console.log(data.message);\n  594        } else if (data.id && pending[data.id]) {\n  595          pending[data.id](data.err, data.body);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/diff/index.html:\n   29  -        autoMatchBrackets: true\n   30  +        autoMatchBrackets: true,\n   31: +      onGutterClick: function(x){console.log(x);}\n   32         });\n   33       </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/gfm/index.html:\n   37  ```javascript\n   38  for (var i = 0; i &lt; items.length; i++) {\n   39:     console.log(items[i], i); // log them\n   40  }\n   41  ```\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/less/less.js:\n  128          //commment out these 2 comment if you want the minus sign to be parsed as null -500px\n  129          //stream.backUp(stream.current().length-1);\n  130:         //return ret(null, ch); //console.log( stream.current() );\n  131          return ret(\"number\", \"unit\");\n  132        }else if( /\\/|[\\s\\)]/.test(stream.peek() || stream.eol() || (stream.eatSpace() && stream.peek() == \"/\")) && stream.current().indexOf(\".\") !== -1){\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/sass/sass.js:\n   55  \n   56        /*\n   57:       console.log(\"previousChar: \" + previousChar);\n   58:       console.log(\"nextChar: \" + nextChar);\n   59:       console.log(\"peekChar: \" + peekChar);\n   60:       console.log(\"ending: \" + endingString);\n   61        */\n   62  \n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/smarty/index.html:\n   88  <script>\n   89  function test() {\n   90: 	console.log(\"Smarty 3 permits single curly braces followed by whitespace to NOT slip into Smarty mode.\");\n   91  }\n   92  </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/vb/index.html:\n   22    var i = 0;\n   23    function callback(token, style, lineNo, pos){\n   24: 		//console.log(String(token) + \" \" + String(style) + \" \" + String(lineNo) + \" \" + String(pos));\n   25      var result = [String(token), String(style)];\n   26      if (golden[i][0] != result[0] || golden[i][1] != result[1]){\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js:\n   24  \n   25    $scope.use = function () {\n   26:     console.log(\"now using\");\n   27      \n   28      $state.transitionTo('home.connect.use', $stateParams);\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js:\n   17  \n   18    $scope.transpose = function () {\n   19:     console.log('transposing');\n   20      $scope.transposed = !$scope.transposed;\n   21    };\n   22  \n   23    $scope.connect = function (item) {\n   24:     // console.log($scope.activeField, $scope.activeDocument._id);\n   25  \n   26      $state.transitionTo('home.connect', {\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n   33  \n   34    $rootScope.$on('demote', function () {\n   35:     console.log('demote');\n   36    });\n   37    $rootScope.$on('promote', function () {\n   38:     console.log('promote');\n   39    });\n   40    $rootScope.$on('move-right', function () {\n   41:     console.log('move-right');\n   42    });\n   43    $rootScope.$on('move-up', function () {\n   44:     console.log('move-up');\n   45    });\n   46    $rootScope.$on('move-down', function () {\n   47:     console.log('move-down');\n   48    });\n   49    $rootScope.$on('move-left', function () {\n   50:     console.log('move-left');\n   51    });\n   52  \n   ..\n   56      contents.remove('.embedded-context,.CodeMirror');\n   57      var html = elements.html();\n   58:     console.log('Saving', html);\n   59  \n   60      feed.save({\n   ..\n   67  \n   68    $scope.saved = function (err, response) {\n   69:     console.log('saved', err, response);\n   70    };\n   71  \n   ..\n   75  \n   76    $rootScope.$on('embed-field', function (event, field) {\n   77:     console.log('Embedding', field);\n   78      $scope[$scope.activeDocument.fields[field].type](field);\n   79    });\n   ..\n   85      });\n   86      if (node.nodeType !== 3) {\n   87:       console.log(\"Not a text node. Ensuring flattened structure.\", node.parentNode);\n   88        // node = $(node).parentsUntil('.post-body')[0];\n   89        var oneDeep = $(node).parentsUntil('.post-body');\n   ..\n  101          \n  102        } else {\n  103:         console.log(\"Inserting before the selected node\");\n  104         node = node.previousSibling;\n  105        }\n  ...\n  109      \n  110      if (parents.length === 1) {\n  111:       console.log(node.textContent.length);\n  112        if (node.textContent.length === $scope.selection.anchorOffset) {\n  113:         console.log(\"Insert at end of line\");\n  114          var firstParent = $(node).parentsUntil('.post-body')[0];\n  115          $(firstParent).after(newNode);\n  ...\n  120          $(node).wrap(\"<div>\");\n  121          $(remaining).wrap(\"<div>\");\n  122:         console.log(\"Text split at\", $scope.selection.anchorOffset);\n  123        }\n  124      } else {\n  125        $('.post-body').append(newNode);\n  126:       console.log('selection not inside text area');\n  127      }\n  128      if (newNode.nodeType === 3) {\n  ...\n  147      var model;\n  148     if (modelIndex === undefined) {\n  149:       console.log(\"Creating empty model.\");\n  150        model = modelConstructor();\n  151        \n  152        $scope.activeDocument.fields.push(model);\n  153      } else {\n  154:       console.log(\"Using pre-existing model.\");\n  155        model = $scope.activeDocument.fields[modelIndex];\n  156      }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js:\n    6        // $scope.items.push.apply($scope.items, docs);\n    7        $scope.$apply();\n    8:       console.log(\"Retrieved\", docs);\n    9    });\n   10  \n   11    $scope.items = feed.items;\n   12    \n   13:   console.log('loaded feed items', feed.items);\n   14    \n   15  \n   16    $scope.update = function (feedItem) {\n   17:     console.log(JSON.stringify(feedItem, null, 4));\n   18      feed.update(feedItem);\n   19    };\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js:\n    1  angular.module('system').controller('viewer', ['$scope', 'demoData',\n    2    function ($scope, demoData) {\n    3:     console.log('data from promise', demoData.data);\n    4    angular.extend($scope, demoData.data);\n    5  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js:\n    8        var documentIndex = $scope.$eval($attrs.documentIndex);\n    9  \n   10:       console.log(\"linking run angular\", documentIndex);\n   11        var model = $scope.items[documentIndex];\n   12        \n   ..\n   17        var newContent = $.trim(template);\n   18        $compile(newContent)(subDocumentScope, function (rendered) {\n   19:         console.log(rendered);\n   20          $element.append(rendered);\n   21:         console.log(\"DONE angular content\", rendered);\n   22          \n   23          \n\n/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js:\n   12        \n   13        $element.on('keydown', function () {\n   14:         console.log('change');\n   15        });\n   16  \n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    4    function importTemplate(url) {\n    5      $http.get(url).then(function (templateData) {\n    6:       console.log(\"Imported template for\", url);\n    7        $templateCache.put(url, templateData.data);\n    8      });\n    .\n   36          instanceName: $element.attr('href')\n   37        };\n   38:       console.log(\"Active Document is\", $scope.activeDocument);\n   39        model = $scope.activeDocument.fields[metadata.fieldIndex];\n   40:       console.log('Encountered context', model);\n   41  \n   42        contextTemplateUrl = 'views/' + metadata.kind + '.html';\n   ..\n   56          // wait for all the other bindings in the template have finished\n   57          $element.after(embeddedContent);\n   58:         // console.log(\"DONE context insertion\", embeddedContent.html());\n   59          var focusNodes = embeddedContent.find('.focus');\n   60  \n   ..\n   67        \n   68  \n   69:       // console.log(contextTemplateUrl);\n   70:       // console.log('Got template HTML', templateHtml);\n   71      }\n   72    };\n\n/Users/ssquire/Documents/projects/liveinterface/directives/follow.js:\n   16        pos = _.pick(pos, ['left', 'top']);\n   17        \n   18:       // console.log(\"Keypress:\", $(this).text(), sel, sel.focusNode, $(sel.focusNode.parentElement).position());\n   19        var rightEdge = pos.left + dropdown.width();\n   20        \n   ..\n   22        \n   23        if (rightEdge >= windowWidth) {\n   24:         console.log(\"Over the edge,\", rightEdge, windowWidth, pos);\n   25          var newLeft = pos.left - (rightEdge - windowWidth);\n   26          pos.left = newLeft;\n\n/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js:\n   40        var index = event.keyCode - 48;\n   41        var selected = $element.find(validOptions).get(index - 1)\n   42:       console.log(index, selected);\n   43        selected.focus();\n   44        selected.click();\n   ..\n   53  return {\n   54    link: function ($scope, $element, $attrs) {\n   55:     var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);\n   56      var validElement = settings.container;\n   57      var validItems = settings.items;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n   22        docs.forEach(function (doc) {\n   23          if (self.ids.hasOwnProperty(doc._id)) {\n   24:           console.log(\"Change to existing document:\", doc._id);\n   25:           // console.log('already existing doc', doc, doc._id);\n   26            $.extend(true, self.ids[doc._id], doc);\n   27  \n   ..\n   36        \n   37        var opts = {continuous: true, complete: function (err) {\n   38:         // console.log('complete handler', err)\n   39        }};\n   40        db.replicate.to(remoteCouch, opts);\n   ..\n   59            continuous: true,\n   60            onChange: function(change) {\n   61: //            console.log('change occurred', change.doc);\n   62              if (!change.doc._deleted) {\n   63                self.addition([change.doc])\n   ..\n   76  \n   77      self.update = function (feedItem) {\n   78:       console.log('Updated', feedItem);\n   79        var rev = feedItem._rev;\n   80        db.remove(feedItem);\n   81        var revNumber = (parseInt(feedItem._rev.substr(0, 2), 10) + 1);\n   82        feedItem._rev = revNumber + feedItem._rev.substring(feedItem._rev.indexOf(\"-\"));\n   83:       console.log(revNumber, 'From', rev, 'to', feedItem._rev);\n   84        db.put(feedItem, {}, function (err) {\n   85:         console.log(err);\n   86        });\n   87      };\n\n59 matches across 20 files\n\n\nSearching 299 files for \"console.log\"\n\n/Users/ssquire/Documents/projects/liveinterface/components/angular/angular.js:\n 3110   * @param {object} document jQuery wrapped document.\n 3111   * @param {function()} XHR XMLHttpRequest constructor.\n 3112:  * @param {object} $log console.log or an object with the same interface.\n 3113   * @param {object} $sniffer $sniffer service\n 3114   */\n ....\n 5920      function consoleLog(type) {\n 5921        var console = $window.console || {},\n 5922:           logFn = console[type] || console.log || noop;\n 5923  \n 5924        if (logFn.apply) {\n ....\n 5933  \n 5934        // we are IE which either doesn't have window.console => this is noop and we do nothing,\n 5935:       // or we are IE where console.log doesn't have apply so we log at least first 2 args\n 5936        return function(arg1, arg2) {\n 5937          logFn(arg1, arg2);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/search/searchcursor.js:\n  107        for (;;) {\n  108          if (this.pos = this.matches(reverse, pos)) {\n  109:           if (!this.pos.from || !this.pos.to) { console.log(this.matches, this.pos); }\n  110            this.atOccurrence = true;\n  111            return this.pos.match || true;\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/addon/tern/tern.js:\n  591          });\n  592        } else if (data.type == \"debug\") {\n  593:         console.log(data.message);\n  594        } else if (data.id && pending[data.id]) {\n  595          pending[data.id](data.err, data.body);\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/diff/index.html:\n   29  -        autoMatchBrackets: true\n   30  +        autoMatchBrackets: true,\n   31: +      onGutterClick: function(x){console.log(x);}\n   32         });\n   33       </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/gfm/index.html:\n   37  ```javascript\n   38  for (var i = 0; i &lt; items.length; i++) {\n   39:     console.log(items[i], i); // log them\n   40  }\n   41  ```\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/less/less.js:\n  128          //commment out these 2 comment if you want the minus sign to be parsed as null -500px\n  129          //stream.backUp(stream.current().length-1);\n  130:         //return ret(null, ch); //console.log( stream.current() );\n  131          return ret(\"number\", \"unit\");\n  132        }else if( /\\/|[\\s\\)]/.test(stream.peek() || stream.eol() || (stream.eatSpace() && stream.peek() == \"/\")) && stream.current().indexOf(\".\") !== -1){\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/sass/sass.js:\n   55  \n   56        /*\n   57:       console.log(\"previousChar: \" + previousChar);\n   58:       console.log(\"nextChar: \" + nextChar);\n   59:       console.log(\"peekChar: \" + peekChar);\n   60:       console.log(\"ending: \" + endingString);\n   61        */\n   62  \n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/smarty/index.html:\n   88  <script>\n   89  function test() {\n   90: 	console.log(\"Smarty 3 permits single curly braces followed by whitespace to NOT slip into Smarty mode.\");\n   91  }\n   92  </script>\n\n/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/vb/index.html:\n   22    var i = 0;\n   23    function callback(token, style, lineNo, pos){\n   24: 		//console.log(String(token) + \" \" + String(style) + \" \" + String(lineNo) + \" \" + String(pos));\n   25      var result = [String(token), String(style)];\n   26      if (golden[i][0] != result[0] || golden[i][1] != result[1]){\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js:\n   24  \n   25    $scope.use = function () {\n   26:     console.log(\"now using\");\n   27      \n   28      $state.transitionTo('home.connect.use', $stateParams);\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js:\n   17  \n   18    $scope.transpose = function () {\n   19:     console.log('transposing');\n   20      $scope.transposed = !$scope.transposed;\n   21    };\n   22  \n   23    $scope.connect = function (item) {\n   24:     // console.log($scope.activeField, $scope.activeDocument._id);\n   25  \n   26      $state.transitionTo('home.connect', {\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n   33  \n   34    $rootScope.$on('demote', function () {\n   35:     console.log('demote');\n   36    });\n   37    $rootScope.$on('promote', function () {\n   38:     console.log('promote');\n   39    });\n   40    $rootScope.$on('move-right', function () {\n   41:     console.log('move-right');\n   42    });\n   43    $rootScope.$on('move-up', function () {\n   44:     console.log('move-up');\n   45    });\n   46    $rootScope.$on('move-down', function () {\n   47:     console.log('move-down');\n   48    });\n   49    $rootScope.$on('move-left', function () {\n   50:     console.log('move-left');\n   51    });\n   52  \n   ..\n   66  \n   67    $scope.saved = function (err, response) {\n   68:     console.log('saved', err, response);\n   69    };\n   70  \n   ..\n   74  \n   75    $rootScope.$on('embed-field', function (event, field) {\n   76:     console.log('Embedding', field);\n   77      $scope[$scope.activeDocument.fields[field].type](field);\n   78    });\n   ..\n   84      });\n   85      if (node.nodeType !== 3) {\n   86:       console.log(\"Not a text node. Ensuring flattened structure.\", node.parentNode);\n   87        // node = $(node).parentsUntil('.post-body')[0];\n   88        var oneDeep = $(node).parentsUntil('.post-body');\n   ..\n  100          \n  101        } else {\n  102:         console.log(\"Inserting before the selected node\");\n  103         node = node.previousSibling;\n  104        }\n  ...\n  108      \n  109      if (parents.length === 1) {\n  110:       console.log(node.textContent.length);\n  111        if (node.textContent.length === $scope.selection.anchorOffset) {\n  112:         console.log(\"Insert at end of line\");\n  113          var firstParent = $(node).parentsUntil('.post-body')[0];\n  114          $(firstParent).after(newNode);\n  ...\n  119          $(node).wrap(\"<div>\");\n  120          $(remaining).wrap(\"<div>\");\n  121:         console.log(\"Text split at\", $scope.selection.anchorOffset);\n  122        }\n  123      } else {\n  124        $('.post-body').append(newNode);\n  125:       console.log('selection not inside text area');\n  126      }\n  127      if (newNode.nodeType === 3) {\n  ...\n  146      var model;\n  147     if (modelIndex === undefined) {\n  148:       console.log(\"Creating empty model.\");\n  149        model = modelConstructor();\n  150        \n  151        $scope.activeDocument.fields.push(model);\n  152      } else {\n  153:       console.log(\"Using pre-existing model.\");\n  154        model = $scope.activeDocument.fields[modelIndex];\n  155      }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js:\n    6        // $scope.items.push.apply($scope.items, docs);\n    7        $scope.$apply();\n    8:       console.log(\"Retrieved\", docs);\n    9    });\n   10  \n   11    $scope.items = feed.items;\n   12    \n   13:   console.log('loaded feed items', feed.items);\n   14    \n   15  \n   16    $scope.update = function (feedItem) {\n   17:     console.log(JSON.stringify(feedItem, null, 4));\n   18      feed.update(feedItem);\n   19    };\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js:\n    1  angular.module('system').controller('viewer', ['$scope', 'demoData',\n    2    function ($scope, demoData) {\n    3:     console.log('data from promise', demoData.data);\n    4    angular.extend($scope, demoData.data);\n    5  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js:\n    8        var documentIndex = $scope.$eval($attrs.documentIndex);\n    9  \n   10:       console.log(\"linking run angular\", documentIndex);\n   11        var model = $scope.items[documentIndex];\n   12        \n   ..\n   17        var newContent = $.trim(template);\n   18        $compile(newContent)(subDocumentScope, function (rendered) {\n   19:         console.log(rendered);\n   20          $element.append(rendered);\n   21:         console.log(\"DONE angular content\", rendered);\n   22          \n   23          \n\n/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js:\n   12        \n   13        $element.on('keydown', function () {\n   14:         console.log('change');\n   15        });\n   16  \n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    4    function importTemplate(url) {\n    5      $http.get(url).then(function (templateData) {\n    6:       console.log(\"Imported template for\", url);\n    7        $templateCache.put(url, templateData.data);\n    8      });\n    .\n   36          instanceName: $element.attr('href')\n   37        };\n   38:       console.log(\"Active Document is\", $scope.activeDocument);\n   39        model = $scope.activeDocument.fields[metadata.fieldIndex];\n   40:       console.log('Encountered context', model);\n   41  \n   42        contextTemplateUrl = 'views/' + metadata.kind + '.html';\n   ..\n   56          // wait for all the other bindings in the template have finished\n   57          $element.after(embeddedContent);\n   58:         // console.log(\"DONE context insertion\", embeddedContent.html());\n   59          var focusNodes = embeddedContent.find('.focus');\n   60  \n   ..\n   67        \n   68  \n   69:       // console.log(contextTemplateUrl);\n   70:       // console.log('Got template HTML', templateHtml);\n   71      }\n   72    };\n\n/Users/ssquire/Documents/projects/liveinterface/directives/follow.js:\n   16        pos = _.pick(pos, ['left', 'top']);\n   17        \n   18:       // console.log(\"Keypress:\", $(this).text(), sel, sel.focusNode, $(sel.focusNode.parentElement).position());\n   19        var rightEdge = pos.left + dropdown.width();\n   20        \n   ..\n   22        \n   23        if (rightEdge >= windowWidth) {\n   24:         console.log(\"Over the edge,\", rightEdge, windowWidth, pos);\n   25          var newLeft = pos.left - (rightEdge - windowWidth);\n   26          pos.left = newLeft;\n\n/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js:\n   40        var index = event.keyCode - 48;\n   41        var selected = $element.find(validOptions).get(index - 1)\n   42:       console.log(index, selected);\n   43        selected.focus();\n   44        selected.click();\n   ..\n   53  return {\n   54    link: function ($scope, $element, $attrs) {\n   55:     var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);\n   56      var validElement = settings.container;\n   57      var validItems = settings.items;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n   22        docs.forEach(function (doc) {\n   23          if (self.ids.hasOwnProperty(doc._id)) {\n   24:           console.log(\"Change to existing document:\", doc._id);\n   25:           // console.log('already existing doc', doc, doc._id);\n   26            $.extend(true, self.ids[doc._id], doc);\n   27  \n   ..\n   36        \n   37        var opts = {continuous: true, complete: function (err) {\n   38:         // console.log('complete handler', err)\n   39        }};\n   40        db.replicate.to(remoteCouch, opts);\n   ..\n   59            continuous: true,\n   60            onChange: function(change) {\n   61: //            console.log('change occurred', change.doc);\n   62              if (!change.doc._deleted) {\n   63                self.addition([change.doc])\n   ..\n   76  \n   77      self.update = function (feedItem) {\n   78:       console.log('Updated', feedItem);\n   79        var rev = feedItem._rev;\n   80        db.remove(feedItem);\n   81        var revNumber = (parseInt(feedItem._rev.substr(0, 2), 10) + 1);\n   82        feedItem._rev = revNumber + feedItem._rev.substring(feedItem._rev.indexOf(\"-\"));\n   83:       console.log(revNumber, 'From', rev, 'to', feedItem._rev);\n   84        db.put(feedItem, {}, function (err) {\n   85:         console.log(err);\n   86        });\n   87      };\n\n58 matches across 20 files\n",
+			"settings":
+			{
+				"buffer_size": 49247,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "livingdocuments.sublime-project",
+			"settings":
+			{
+				"buffer_size": 131,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"close all",
+				"File: Close All"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"irl",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ssrub",
+				"Set Syntax: Ruby"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/ssquire/Documents/projects/liveinterface/livingdocuments.sublime-project",
+		"/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/perl/perl.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/spaces.css",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js",
+		"/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/context.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/spaces.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/editor.html",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/main.css",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/connect.css",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/embed.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/autocomplete.js",
+		"/Users/ssquire/Documents/projects/liveinterface/services/keybindings.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/follow.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/embed.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/list.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/dataobject.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/when-blur.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js",
+		"/Users/ssquire/Documents/projects/liveinterface/index.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/connect.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/autocomplete.html",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/autocomplete.css",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/target.html",
+		"/Users/ssquire/Documents/projects/liveinterface/models/list.js",
+		"/Users/ssquire/Documents/projects/liveinterface/app.js",
+		"/Users/ssquire/Documents/projects/liveinterface/repositories/document.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/home.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/demo.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js",
+		"/Users/ssquire/Documents/projects/liveinterface/example.json",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/interested-in-focus.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/packery.js",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/embedded.css",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/focus-when.js",
+		"/Users/ssquire/Documents/projects/liveinterface/style.css",
+		"/Users/ssquire/Documents/projects/liveinterface/editor.js",
+		"/Users/ssquire/Documents/flourish/mvndeps",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/collectinator/recipes/default.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/db-collectinator.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/db-member.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/files/default/mongo_sizing.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/krypton/templates/default/krypton_ui.config.yml.erb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/deco.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_hosts/spec/default_spec.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/krypton.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/db.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/flourish-test.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/flourish.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/roles/gold_member.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_hosts/recipes/default.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_app/libraries/manage.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/krypton/attributes/default.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/files/default/infra-dash/lib/node_status.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/collectinator/attributes/default.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/public/css/bootstrap.css",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/group_status.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/health_checker.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/node_finder.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/app.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/spec/group_status_spec.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/views/node_status.erb",
+		"/Users/ssquire/Documents/colinf/knifeDash/config/knife-dash.yml",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/provisioner/files/default/dot-chef/knife.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/views/group_status.erb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/recipes/knifeDash.rb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/files/default/knifeDash-0.0.11.gem",
+		"/Users/ssquire/Documents/colinf/Gemfile",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/version.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/Rakefile",
+		"/Users/ssquire/Documents/colinf/criticize.sh",
+		"/Users/ssquire/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/attributes/default.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/config.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/Gemfile",
+		"/Users/ssquire/Documents/colinf/knifeDash/knifeDash.gemspec",
+		"/Users/ssquire/Documents/colinf/chef-repo/nodes/app.json",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_base/files/default/columbus_env.rb",
+		"/Users/ssquire/Documents/colinf/knifeDash/go.sh",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/templates/default/knife-dash.yml.erb",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/provisioner/files/default/jenkins-deploy.sh",
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/files/default/backup_mongo_to_rackspace.sh",
+		"/Users/ssquire/Documents/colinf/chef-repo/nodes/db.json",
+		"/Users/ssquire/Documents/colinf/knifeDash/config/example-knife-dash.yml",
+		"/Users/ssquire/Documents/krypton/test/frontend/feature/testsClasses/articleTests.clj",
+		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/ArticleSpec.js",
+		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleModel.js",
+		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/articleCommons.js",
+		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleFieldsVM.js",
+		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/articleFieldsSpec.js",
+		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleSectionVM.js",
+		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articles.js",
+		"/Users/ssquire/Documents/krypton/resources/templates/scripts/new-article.html",
+		"/Users/ssquire/Documents/krypton/test/frontend/feature/article.clj",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-52.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-53.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-51.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-49.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-50.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-54.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-48.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-55.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-47.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-46.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-56.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-57.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-45.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-60.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-59.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-58.json",
+		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleVM.js",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-44.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-43.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-42.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-40.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-39.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-38.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-28.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-26.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-25.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-22.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-19.json",
+		"/Users/ssquire/Documents/krypton/db/import/deploy/articles/english/en/article-16.json"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"its",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"console.log",
+			"change",
+			"ui-view",
+			"ng-view",
+			"tableController",
+			"listController",
+			"  <",
+			"id",
+			"model",
+			"home.embed",
+			"transition",
+			"transitionTo",
+			"transposed-parent",
+			"contextScope",
+			"context",
+			"console.log",
+			"codeView",
+			"$scope.key",
+			"field",
+			"JSON",
+			"$element.on(",
+			"return;",
+			"key",
+			"key(",
+			"keydown",
+			"keypress",
+			"items",
+			"subscription",
+			"update",
+			"updated",
+			"window",
+			"already existing",
+			"change occurred",
+			"feed",
+			"'saved'",
+			"listContr",
+			"fields",
+			"$scope.fields",
+			"fields",
+			"();",
+			"\"dropdown\"",
+			".window",
+			"escapeListener",
+			"offset",
+			"nbsp",
+			"tax",
+			"will be inserting",
+			"insertion event",
+			"mongo_nodes",
+			".tar.gz",
+			"'env'",
+			"'role'",
+			"default['columbus']['collectinator']['use_standalone_mongo'] = ['qperf'].include? node['deco']['env']",
+			"end",
+			"include?",
+			"migrate",
+			"'\n",
+			"mongodb_cluster_name",
+			"role",
+			"readPref",
+			"failed_app_checks?",
+			"alert-error",
+			"group.",
+			"its ",
+			"its  ",
+			"it ",
+			"DOWN",
+			"its",
+			"group_status",
+			"fake_ap	",
+			"GroupStatus",
+			"mongodb_statuses",
+			":flourish",
+			"subject",
+			"fake_nodes",
+			"knifeDash.*.gem",
+			"Version",
+			"10.0",
+			"knifeDash.*.gem",
+			"knifeDash*.gem",
+			",",
+			"'name' => 'fake-primary', 'status' => 'OK'",
+			"'status' => 'OK'",
+			" '",
+			"not_replica_set",
+			"node_name",
+			"primary_exists",
+			" if db.command({:replSetGetStatus => 1})['ok'] == 1",
+			"any_primaries",
+			"healthy?",
+			"gem_tasks",
+			"check_app_with_http",
+			"node_status",
+			"require",
+			"apps_on",
+			"fake",
+			"fake_",
+			"group_status",
+			"node_finder",
+			"all_nodes",
+			"group_status",
+			"[:",
+			"          :",
+			"check_apps",
+			"node",
+			"node_status",
+			"node",
+			"group_search_attribute",
+			"nodes_in_group",
+			"check_mongodb",
+			"nodes_in_group",
+			":status",
+			"check_apps",
+			"check_app",
+			"apps_on",
+			"apps_on ",
+			"check_apps",
+			"replicaset",
+			":cluster_name",
+			"replicaset",
+			"replica",
+			"--repl",
+			"--replSet",
+			"colinf",
+			"quote()",
+			"quote",
+			"validateSections",
+			"(),\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"subject.",
+			"it ",
+			"its ",
+			"fetch-by-url",
+			"\"title\"",
+			"\"url\"",
+			":url",
+			":title"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 16,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 11189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9453,
+								9453
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2836.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "controllers/editor.js",
+					"settings":
+					{
+						"buffer_size": 6049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1687,
+								1687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 475.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/code.js",
+					"settings":
+					{
+						"buffer_size": 302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								262,
+								262
+							]
+						],
+						"settings":
+						{
+							"auto_name": "angular.module('system').factory('CodeModel', [fun",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/code.html",
+					"settings":
+					{
+						"buffer_size": 230,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								115,
+								115
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/list.js",
+					"settings":
+					{
+						"buffer_size": 208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								60,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/list.html",
+					"settings":
+					{
+						"buffer_size": 3062,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								468,
+								479
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "controllers/autocomplete.js",
+					"settings":
+					{
+						"buffer_size": 1721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1306,
+								1306
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "directives/context.js",
+					"settings":
+					{
+						"buffer_size": 2196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								436,
+								436
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 1723,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1464,
+								1419
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 517.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "styles/main.css",
+					"settings":
+					{
+						"buffer_size": 1929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								240,
+								240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "controllers/context-controller.js",
+					"settings":
+					{
+						"buffer_size": 819,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								524,
+								524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "views/editor.html",
+					"settings":
+					{
+						"buffer_size": 929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								802,
+								802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "views/connect.html",
+					"settings":
+					{
+						"buffer_size": 870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								853,
+								853
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "views/connect-picker.html",
+					"settings":
+					{
+						"buffer_size": 826,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37,
+								37
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "views/home.html",
+					"settings":
+					{
+						"buffer_size": 194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "controllers/connect.js",
+					"settings":
+					{
+						"buffer_size": 895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								584,
+								584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"settings":
+					{
+						"buffer_size": 49247,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										271,
+										282
+									],
+									[
+										521,
+										532
+									],
+									[
+										733,
+										744
+									],
+									[
+										1113,
+										1124
+									],
+									[
+										1416,
+										1427
+									],
+									[
+										1767,
+										1778
+									],
+									[
+										1999,
+										2010
+									],
+									[
+										2348,
+										2359
+									],
+									[
+										2713,
+										2724
+									],
+									[
+										2772,
+										2783
+									],
+									[
+										2823,
+										2834
+									],
+									[
+										2874,
+										2885
+									],
+									[
+										3082,
+										3093
+									],
+									[
+										3391,
+										3402
+									],
+									[
+										3738,
+										3749
+									],
+									[
+										3997,
+										4008
+									],
+									[
+										4246,
+										4257
+									],
+									[
+										4403,
+										4414
+									],
+									[
+										4659,
+										4670
+									],
+									[
+										4755,
+										4766
+									],
+									[
+										4855,
+										4866
+									],
+									[
+										4955,
+										4966
+									],
+									[
+										5054,
+										5065
+									],
+									[
+										5155,
+										5166
+									],
+									[
+										5319,
+										5330
+									],
+									[
+										5455,
+										5466
+									],
+									[
+										5602,
+										5613
+									],
+									[
+										5788,
+										5799
+									],
+									[
+										6052,
+										6063
+									],
+									[
+										6231,
+										6242
+									],
+									[
+										6362,
+										6373
+									],
+									[
+										6620,
+										6631
+									],
+									[
+										6775,
+										6786
+									],
+									[
+										6959,
+										6970
+									],
+									[
+										7140,
+										7151
+									],
+									[
+										7434,
+										7445
+									],
+									[
+										7542,
+										7553
+									],
+									[
+										7664,
+										7675
+									],
+									[
+										7956,
+										7967
+									],
+									[
+										8235,
+										8246
+									],
+									[
+										8497,
+										8508
+									],
+									[
+										8577,
+										8588
+									],
+									[
+										8815,
+										8826
+									],
+									[
+										9045,
+										9056
+									],
+									[
+										9246,
+										9257
+									],
+									[
+										9389,
+										9400
+									],
+									[
+										9662,
+										9673
+									],
+									[
+										9841,
+										9852
+									],
+									[
+										9890,
+										9901
+									],
+									[
+										10113,
+										10124
+									],
+									[
+										10370,
+										10381
+									],
+									[
+										10734,
+										10745
+									],
+									[
+										10966,
+										10977
+									],
+									[
+										11269,
+										11280
+									],
+									[
+										11343,
+										11354
+									],
+									[
+										11567,
+										11578
+									],
+									[
+										11778,
+										11789
+									],
+									[
+										11992,
+										12003
+									],
+									[
+										12282,
+										12293
+									],
+									[
+										12406,
+										12417
+									],
+									[
+										12756,
+										12767
+									],
+									[
+										13006,
+										13017
+									],
+									[
+										13218,
+										13229
+									],
+									[
+										13598,
+										13609
+									],
+									[
+										13901,
+										13912
+									],
+									[
+										14252,
+										14263
+									],
+									[
+										14484,
+										14495
+									],
+									[
+										14833,
+										14844
+									],
+									[
+										15198,
+										15209
+									],
+									[
+										15257,
+										15268
+									],
+									[
+										15308,
+										15319
+									],
+									[
+										15359,
+										15370
+									],
+									[
+										15567,
+										15578
+									],
+									[
+										15876,
+										15887
+									],
+									[
+										16223,
+										16234
+									],
+									[
+										16482,
+										16493
+									],
+									[
+										16731,
+										16742
+									],
+									[
+										16888,
+										16899
+									],
+									[
+										17144,
+										17155
+									],
+									[
+										17240,
+										17251
+									],
+									[
+										17340,
+										17351
+									],
+									[
+										17440,
+										17451
+									],
+									[
+										17539,
+										17550
+									],
+									[
+										17640,
+										17651
+									],
+									[
+										17804,
+										17815
+									],
+									[
+										17940,
+										17951
+									],
+									[
+										18087,
+										18098
+									],
+									[
+										18273,
+										18284
+									],
+									[
+										18537,
+										18548
+									],
+									[
+										18716,
+										18727
+									],
+									[
+										18847,
+										18858
+									],
+									[
+										19105,
+										19116
+									],
+									[
+										19260,
+										19271
+									],
+									[
+										19444,
+										19455
+									],
+									[
+										19625,
+										19636
+									],
+									[
+										19919,
+										19930
+									],
+									[
+										20027,
+										20038
+									],
+									[
+										20149,
+										20160
+									],
+									[
+										20441,
+										20452
+									],
+									[
+										20720,
+										20731
+									],
+									[
+										20982,
+										20993
+									],
+									[
+										21062,
+										21073
+									],
+									[
+										21300,
+										21311
+									],
+									[
+										21530,
+										21541
+									],
+									[
+										21731,
+										21742
+									],
+									[
+										21874,
+										21885
+									],
+									[
+										22147,
+										22158
+									],
+									[
+										22326,
+										22337
+									],
+									[
+										22375,
+										22386
+									],
+									[
+										22598,
+										22609
+									],
+									[
+										22855,
+										22866
+									],
+									[
+										23219,
+										23230
+									],
+									[
+										23451,
+										23462
+									],
+									[
+										23754,
+										23765
+									],
+									[
+										23828,
+										23839
+									],
+									[
+										24052,
+										24063
+									],
+									[
+										24263,
+										24274
+									],
+									[
+										24477,
+										24488
+									],
+									[
+										24767,
+										24778
+									],
+									[
+										24891,
+										24902
+									],
+									[
+										25241,
+										25252
+									],
+									[
+										25491,
+										25502
+									],
+									[
+										25703,
+										25714
+									],
+									[
+										26083,
+										26094
+									],
+									[
+										26386,
+										26397
+									],
+									[
+										26737,
+										26748
+									],
+									[
+										26969,
+										26980
+									],
+									[
+										27318,
+										27329
+									],
+									[
+										27683,
+										27694
+									],
+									[
+										27742,
+										27753
+									],
+									[
+										27793,
+										27804
+									],
+									[
+										27844,
+										27855
+									],
+									[
+										28052,
+										28063
+									],
+									[
+										28361,
+										28372
+									],
+									[
+										28710,
+										28721
+									],
+									[
+										28959,
+										28970
+									],
+									[
+										29116,
+										29127
+									],
+									[
+										29372,
+										29383
+									],
+									[
+										29468,
+										29479
+									],
+									[
+										29568,
+										29579
+									],
+									[
+										29668,
+										29679
+									],
+									[
+										29767,
+										29778
+									],
+									[
+										29868,
+										29879
+									],
+									[
+										30032,
+										30043
+									],
+									[
+										30168,
+										30179
+									],
+									[
+										30315,
+										30326
+									],
+									[
+										30501,
+										30512
+									],
+									[
+										30765,
+										30776
+									],
+									[
+										30944,
+										30955
+									],
+									[
+										31075,
+										31086
+									],
+									[
+										31333,
+										31344
+									],
+									[
+										31488,
+										31499
+									],
+									[
+										31672,
+										31683
+									],
+									[
+										31853,
+										31864
+									],
+									[
+										32147,
+										32158
+									],
+									[
+										32255,
+										32266
+									],
+									[
+										32377,
+										32388
+									],
+									[
+										32669,
+										32680
+									],
+									[
+										32948,
+										32959
+									],
+									[
+										33210,
+										33221
+									],
+									[
+										33290,
+										33301
+									],
+									[
+										33528,
+										33539
+									],
+									[
+										33758,
+										33769
+									],
+									[
+										33959,
+										33970
+									],
+									[
+										34102,
+										34113
+									],
+									[
+										34375,
+										34386
+									],
+									[
+										34554,
+										34565
+									],
+									[
+										34603,
+										34614
+									],
+									[
+										34826,
+										34837
+									],
+									[
+										35083,
+										35094
+									],
+									[
+										35447,
+										35458
+									],
+									[
+										35679,
+										35690
+									],
+									[
+										35982,
+										35993
+									],
+									[
+										36056,
+										36067
+									],
+									[
+										36280,
+										36291
+									],
+									[
+										36491,
+										36502
+									],
+									[
+										36705,
+										36716
+									],
+									[
+										36995,
+										37006
+									],
+									[
+										37119,
+										37130
+									],
+									[
+										37469,
+										37480
+									],
+									[
+										37719,
+										37730
+									],
+									[
+										37931,
+										37942
+									],
+									[
+										38311,
+										38322
+									],
+									[
+										38614,
+										38625
+									],
+									[
+										38965,
+										38976
+									],
+									[
+										39197,
+										39208
+									],
+									[
+										39546,
+										39557
+									],
+									[
+										39911,
+										39922
+									],
+									[
+										39970,
+										39981
+									],
+									[
+										40021,
+										40032
+									],
+									[
+										40072,
+										40083
+									],
+									[
+										40280,
+										40291
+									],
+									[
+										40589,
+										40600
+									],
+									[
+										40938,
+										40949
+									],
+									[
+										41187,
+										41198
+									],
+									[
+										41344,
+										41355
+									],
+									[
+										41600,
+										41611
+									],
+									[
+										41696,
+										41707
+									],
+									[
+										41796,
+										41807
+									],
+									[
+										41896,
+										41907
+									],
+									[
+										41995,
+										42006
+									],
+									[
+										42096,
+										42107
+									],
+									[
+										42219,
+										42230
+									],
+									[
+										42366,
+										42377
+									],
+									[
+										42552,
+										42563
+									],
+									[
+										42816,
+										42827
+									],
+									[
+										42995,
+										43006
+									],
+									[
+										43126,
+										43137
+									],
+									[
+										43384,
+										43395
+									],
+									[
+										43539,
+										43550
+									],
+									[
+										43723,
+										43734
+									],
+									[
+										43904,
+										43915
+									],
+									[
+										44198,
+										44209
+									],
+									[
+										44306,
+										44317
+									],
+									[
+										44428,
+										44439
+									],
+									[
+										44720,
+										44731
+									],
+									[
+										44999,
+										45010
+									],
+									[
+										45261,
+										45272
+									],
+									[
+										45341,
+										45352
+									],
+									[
+										45579,
+										45590
+									],
+									[
+										45809,
+										45820
+									],
+									[
+										46010,
+										46021
+									],
+									[
+										46153,
+										46164
+									],
+									[
+										46426,
+										46437
+									],
+									[
+										46605,
+										46616
+									],
+									[
+										46654,
+										46665
+									],
+									[
+										46877,
+										46888
+									],
+									[
+										47134,
+										47145
+									],
+									[
+										47498,
+										47509
+									],
+									[
+										47730,
+										47741
+									],
+									[
+										48033,
+										48044
+									],
+									[
+										48107,
+										48118
+									],
+									[
+										48331,
+										48342
+									],
+									[
+										48542,
+										48553
+									],
+									[
+										48756,
+										48767
+									],
+									[
+										49046,
+										49057
+									],
+									[
+										49170,
+										49181
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								30288,
+								30288
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 13101.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "livingdocuments.sublime-project",
+					"settings":
+					{
+						"buffer_size": 131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								131,
+								131
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"liv",
+				"livingdocuments.sublime-project"
+			],
+			[
+				"connect",
+				"controllers/connect.js"
+			],
+			[
+				"",
+				"app.js"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"connect-",
+				"views/connect-picker.html"
+			],
+			[
+				"connect.js",
+				"controllers/connect.js"
+			],
+			[
+				"picker",
+				"views/connect-picker.html"
+			],
+			[
+				"home",
+				"views/home.html"
+			],
+			[
+				"app.js",
+				"app.js"
+			],
+			[
+				"editor",
+				"views/editor.html"
+			],
+			[
+				"conte",
+				"controllers/context-controller.js"
+			],
+			[
+				"context",
+				"controllers/context-controller.js"
+			],
+			[
+				"code",
+				"views/code.html"
+			],
+			[
+				"per",
+				"components/codemirror/mode/perl/perl.js"
+			],
+			[
+				"main",
+				"styles/main.css"
+			],
+			[
+				"list",
+				"views/list.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"auto",
+				"controllers/autocomplete.js"
+			],
+			[
+				"list.h",
+				"views/list.html"
+			],
+			[
+				"edi",
+				"controllers/editor.js"
+			],
+			[
+				"docu",
+				"repositories/document.js"
+			],
+			[
+				"connect.h",
+				"views/connect.html"
+			],
+			[
+				"conne",
+				"controllers/connect.js"
+			],
+			[
+				"context.js",
+				"directives/context.js"
+			],
+			[
+				"conn",
+				"controllers/connect.js"
+			],
+			[
+				"embed",
+				"controllers/embed.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"contxt",
+				"controllers/context-controller.js"
+			],
+			[
+				"list.js",
+				"models/list.js"
+			],
+			[
+				"ma",
+				"styles/main.css"
+			],
+			[
+				"mai",
+				"styles/main.css"
+			],
+			[
+				"tmai",
+				"styles/main.css"
+			],
+			[
+				"cont",
+				"directives/context.js"
+			],
+			[
+				"main.css",
+				"styles/main.css"
+			],
+			[
+				"data",
+				"controllers/dataobject.js"
+			],
+			[
+				"dat",
+				"controllers/dataobject.js"
+			],
+			[
+				"da",
+				"controllers/dataobject.js"
+			],
+			[
+				"li",
+				"views/list.html"
+			],
+			[
+				"editor.js",
+				"controllers/editor.js"
+			],
+			[
+				"content",
+				"directives/contenteditable.js"
+			],
+			[
+				"keyp",
+				"directives/keypress.js"
+			],
+			[
+				"list.",
+				"views/list.html"
+			],
+			[
+				"feed.js",
+				"repositories/feed.js"
+			],
+			[
+				"when-",
+				"directives/when-blur.js"
+			],
+			[
+				"spaces",
+				"controllers/spaces.js"
+			],
+			[
+				"when",
+				"directives/when-blur.js"
+			],
+			[
+				"spaces.js",
+				"controllers/spaces.js"
+			],
+			[
+				"angu",
+				"directives/angular-content.js"
+			],
+			[
+				"angular",
+				"directives/angular-content.js"
+			],
+			[
+				"space",
+				"views/spaces.html"
+			],
+			[
+				"sp",
+				"styles/spaces.css"
+			],
+			[
+				"angular-",
+				"directives/angular-content.js"
+			],
+			[
+				"feed",
+				"repositories/feed.js"
+			],
+			[
+				"spaces.css",
+				"styles/spaces.css"
+			],
+			[
+				"run",
+				"directives/angular-content.js"
+			],
+			[
+				"run-",
+				"directives/run-angular.js"
+			],
+			[
+				"key",
+				"directives/keypress.js"
+			],
+			[
+				"feed.",
+				"repositories/feed.js"
+			],
+			[
+				"spaces.",
+				"styles/spaces.css"
+			],
+			[
+				"viewer",
+				"controllers/viewer.js"
+			],
+			[
+				"view",
+				"views/demo.html"
+			],
+			[
+				"spaces.html",
+				"views/spaces.html"
+			],
+			[
+				"editor.html",
+				"views/editor.html"
+			],
+			[
+				"editab",
+				"directives/contenteditable.js"
+			],
+			[
+				"edito",
+				"controllers/editor.js"
+			],
+			[
+				"autocom",
+				"views/autocomplete.html"
+			],
+			[
+				"autoco",
+				"views/autocomplete.html"
+			],
+			[
+				"exampl",
+				"example.json"
+			],
+			[
+				"edit",
+				"controllers/editor.js"
+			],
+			[
+				"emed",
+				"views/embed.html"
+			],
+			[
+				"embe",
+				"views/embed.html"
+			],
+			[
+				"emb",
+				"views/embed.html"
+			],
+			[
+				"embed.",
+				"views/embed.html"
+			],
+			[
+				"embed.css",
+				"styles/embedded.css"
+			],
+			[
+				"autoc",
+				"controllers/autocomplete.js"
+			],
+			[
+				"embed.js",
+				"controllers/embed.js"
+			],
+			[
+				"packer",
+				"directives/packery.js"
+			],
+			[
+				"inter",
+				"directives/interested-in-focus.js"
+			],
+			[
+				"autocomplete",
+				"controllers/autocomplete.js"
+			],
+			[
+				"focus",
+				"directives/focus-when.js"
+			],
+			[
+				"editor.",
+				"views/editor.html"
+			],
+			[
+				"list.html",
+				"views/list.html"
+			],
+			[
+				"columongo",
+				"chef-repo/cookbooks/columbus_mongodb/files/default/mongo_sizing.rb"
+			],
+			[
+				"collectinator/rec",
+				"chef-repo/cookbooks/collectinator/recipes/default.rb"
+			],
+			[
+				"db-co",
+				"chef-repo/roles/db-collectinator.rb"
+			],
+			[
+				"collectinator/recip",
+				"chef-repo/cookbooks/collectinator/recipes/default.rb"
+			],
+			[
+				"columbus_hosts",
+				"chef-repo/cookbooks/columbus_hosts/recipes/default.rb"
+			],
+			[
+				"chef-repo/cookbooks/collectinator/attributes/default.rb",
+				"chef-repo/cookbooks/collectinator/attributes/default.rb"
+			],
+			[
+				"collectatt",
+				"chef-repo/cookbooks/collectinator/attributes/default.rb"
+			],
+			[
+				"krypton/attributes",
+				"chef-repo/cookbooks/krypton/attributes/default.rb"
+			],
+			[
+				"columbus_hosts/recipes",
+				"chef-repo/cookbooks/columbus_hosts/recipes/default.rb"
+			],
+			[
+				"columbus_hosts/spec/default_spec.rb",
+				"chef-repo/cookbooks/columbus_hosts/spec/default_spec.rb"
+			],
+			[
+				"roles/db",
+				"chef-repo/roles/db-collectinator.rb"
+			],
+			[
+				"collectinator/re",
+				"chef-repo/cookbooks/collectinator/recipes/default.rb"
+			],
+			[
+				"attribut",
+				"chef-repo/cookbooks/krypton/attributes/default.rb"
+			],
+			[
+				"collectinator/reci",
+				"chef-repo/cookbooks/collectinator/recipes/default.rb"
+			],
+			[
+				"deco.rb",
+				"chef-repo/roles/deco.rb"
+			],
+			[
+				"db-col",
+				"chef-repo/roles/db-collectinator.rb"
+			],
+			[
+				"node",
+				"knifeDash/lib/knife_dash/node_finder.rb"
+			],
+			[
+				"knifedashgem",
+				"chef-repo/cookbooks/columbus_monitoring/files/default/knifeDash-0.0.11.gem"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"c",
+				"criticize.sh"
+			],
+			[
+				"group",
+				"knifeDash/lib/knife_dash/group_status.rb"
+			],
+			[
+				"knife-d",
+				"knifeDash/config/knife-dash.yml"
+			],
+			[
+				"knife",
+				"knifeDash/go.sh"
+			],
+			[
+				"knifedash",
+				"chef-repo/cookbooks/columbus_monitoring/recipes/knifeDash.rb"
+			],
+			[
+				"jenkinsde",
+				"chef-repo/cookbooks/provisioner/files/default/jenkins-deploy.sh"
+			],
+			[
+				"article",
+				"test/frontend/feature/article.clj"
+			],
+			[
+				"articlesp",
+				"test/frontend/js/spec/ArticleSpec.js"
+			],
+			[
+				"articlessp",
+				"test/frontend/js/spec/articleFieldsSpec.js"
+			],
+			[
+				"articlemodel",
+				"resources/public/scripts/app/article/articleModel.js"
+			],
+			[
+				"articlecomm",
+				"test/frontend/js/spec/articleCommons.js"
+			],
+			[
+				"fieldspec",
+				"test/frontend/js/spec/articleFieldsSpec.js"
+			],
+			[
+				"spec",
+				"test/frontend/js/SpecRunner.html"
+			],
+			[
+				"articlevm",
+				"resources/public/scripts/app/article/articleFieldsVM.js"
+			],
+			[
+				"articlefi",
+				"test/frontend/js/spec/articleFieldsSpec.js"
+			],
+			[
+				"artifiel",
+				"resources/public/scripts/app/article/articleFieldsVM.js"
+			],
+			[
+				"page",
+				"resources/public/scripts/app/page.js"
+			],
+			[
+				"core",
+				"src/krypton/core.clj"
+			],
+			[
+				"new",
+				"resources/templates/scripts/new-article.html"
+			],
+			[
+				"stati",
+				"src/krypton/controller/static.clj"
+			],
+			[
+				"query",
+				"src/krypton/query.clj"
+			],
+			[
+				"util",
+				"src/krypton/utils.clj"
+			],
+			[
+				"mongo",
+				"src/krypton/mongo.clj"
+			],
+			[
+				"proj",
+				"project.clj"
+			],
+			[
+				"pr",
+				"project.clj"
+			],
+			[
+				"document.",
+				"src/krypton/controller/document.clj"
+			],
+			[
+				"paging",
+				"src/krypton/paging.clj"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true
+}

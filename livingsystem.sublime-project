@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+     "folder_exclude_patterns": ["components"],
+      "file_exclude_patterns": ["*.sublime-workspace"],
+			"path": "./"
+		}
+	]
+}

@@ -16,13 +16,10 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
   };
 
   $scope.transpose = function () {
-    console.log('transposing');
     $scope.transposed = !$scope.transposed;
   };
 
   $scope.connect = function (item) {
-    // console.log($scope.activeField, $scope.activeDocument._id);
-
     $state.transitionTo('home.connect', {
       documentId: $scope.activeDocument._id,
       fieldIndex: metadata.fieldIndex,

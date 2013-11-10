@@ -11,9 +11,7 @@ angular.module('system').factory('contextTemplates',
 
   importTemplate('views/list.html');
   importTemplate('views/table.html');
-  
-
-
+  importTemplate('views/code.html');
 }]);
 
 angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache', 'contextTemplates', '$controller',

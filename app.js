@@ -9,7 +9,10 @@ $('.demo.sidebar')
   .removeClass('disabled')
 ;
 
-angular.module('system', ['ui.router']);
+angular.module('system', [
+  'ui.router',
+  'ui.codemirror'
+]);
 
 
 angular.module('system').config(function($stateProvider, $urlRouterProvider) {
@@ -48,8 +51,21 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     })
     .state('home.connect', {
       url: '/connect/:documentId/:fieldIndex/:instanceName',
-      templateUrl: 'views/connect.html',
-      controller: 'connect'
+      views: {
+        "": {
+          templateUrl: 'views/connect.html',
+          controller: 'connect'
+        },
+        '@picker': {
+          templateUrl: 'views/connect-picker.html'
+        }
+      }
+    })
+    .state('home.connect.use', {
+      url: '/use',
+      data: {
+        madeDecision: true
+      }
     })
     .state('view', {
       url: '/view',

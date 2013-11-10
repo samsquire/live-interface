@@ -9,9 +9,6 @@ angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope',
   });
 
   $scope.items = feed.items;
-  
-  console.log('loaded feed items', feed.items);
-  
 
   $scope.update = function (feedItem) {
     console.log(JSON.stringify(feedItem, null, 4));

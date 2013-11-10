@@ -6,6 +6,7 @@ angular.module('system').controller('connect', ['$rootScope', '$state', '$scope'
   $scope.fieldIndex = $stateParams.fieldIndex;
   $scope.instanceName = $stateParams.instanceName;
 
+  $.extend($scope, $state.current.data);
 
   $scope.close = function () {
     $scope.open = false;
@@ -19,5 +20,14 @@ angular.module('system').controller('connect', ['$rootScope', '$state', '$scope'
   $rootScope.$on('escape-pressed', function () {
     $scope.close();
   });
+
+
+  $scope.use = function () {
+    $state.transitionTo('home.connect.use', $stateParams);
+  };
+
+  $scope.expose = function () {
+    $state.transitionTo('home.connect.expose', $stateParams);
+  };
 
 }]);

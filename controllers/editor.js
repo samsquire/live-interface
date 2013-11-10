@@ -1,19 +1,19 @@
 angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
-  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'ActiveDocument',
+  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
   function ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
-    ListModel, ActiveDocument) {
+    ListModel, CodeModel, ActiveDocument) {
 
   $scope.open = false;
   $scope.body = "";
 
-  var list = ListModel();
+  // var list = ListModel();
 
   $scope.activeDocument = ActiveDocument;
 
-  $scope.activeDocument.fields.push(list);
-  list.items.push({text: "hello"});
-  list.items.push({text: "world"});
-  $scope.activeDocument.instances.push(0);
+  // $scope.activeDocument.fields.push(list);
+  // list.items.push({text: "hello"});
+  // list.items.push({text: "world"});
+  // $scope.activeDocument.instances.push(0);
 
   $scope.list = "";
   $scope.active = true;
@@ -53,9 +53,8 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
   $scope.save = function () {
     var contents = $($.parseHTML($scope.body));
     var elements = $('<div>').append(contents);
-    contents.remove('.embedded-context');
+    contents.remove('.embedded-context,.CodeMirror');
     var html = elements.html();
-    console.log('Saving', html);
 
     feed.save({
       contents: html,
@@ -132,30 +131,6 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     $(newNode).after($('<div>&nbsp;</div>'));
   };
 
-
-  $scope.listController = function (data) {
-    var listScope = $scope.$new();
-    listScope.activeField = data;
-    listScope.$watch('activeField.items', function (newVal) {
-      console.log(newVal, 'and parent scope is now', $scope.activeDocument.fields);
-
-    }, true);
-    listScope.show = function (toggle) {
-      listScope.open = toggle;
-    };
-    return listScope;
-  }
-
-  $scope.tableController = function (data) {
-    var tableScope = $scope.$new();
-    tableScope.activeField = data;
-    
-    tableScope.show = function (toggle) {
-      tableScope.open = toggle;
-    };
-    return tableScope;
-  }
-
   $scope.createEmbedded = function(type, model, instance) {
     var element = $("<a>");
     element.attr("rel", "embedded");
@@ -165,23 +140,52 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     return element[0];
   };
 
-  $scope.list = function (modelIndex) {
+
+
+  $scope.findModel = function (modelConstructor, modelIndex) {
     var model;
-    if (modelIndex === undefined) {
+   if (modelIndex === undefined) {
       console.log("Creating empty model.");
-      model = ListModel();
-      model.items.push({text: "Hello World!"})
+      model = modelConstructor();
+      
       $scope.activeDocument.fields.push(model);
     } else {
       console.log("Using pre-existing model.");
       model = $scope.activeDocument.fields[modelIndex];
     }
+    return model;
+  };
+
+  $scope.createContextElement = function (kind, instance) {
+    return $scope.createEmbedded(kind, $scope.activeDocument.fields.length - 1, instance);
+  };
+
+  $scope.createInstance = function () {
     var instance = $scope.activeDocument.instances.length;
-    var element = $scope.createEmbedded('list', $scope.activeDocument.fields.length - 1, instance);
     $scope.activeDocument.instances.push(instance);
+    return instance;
+  };
+
+  $scope.list = function (modelIndex) {
+    var model = $scope.findModel(ListModel, modelIndex);
+    model.items.push({text: "Hello World!"});
+
+    var instance = $scope.createInstance();
+    var element = $scope.createContextElement('list', instance);
 
     $scope.insertNode(element);
+    $compile(element)($scope);
+    $scope.open = true;
+  };
 
+  $scope.code = function (modelIndex) {
+    var model = $scope.findModel(CodeModel, modelIndex);
+    model.source = "cosole.log('hi')";
+
+    var instance = $scope.createInstance();
+    var element = $scope.createContextElement('code', instance);
+
+    $scope.insertNode(element);
     $compile(element)($scope);
     $scope.open = true;
   };

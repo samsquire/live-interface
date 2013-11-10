@@ -5,6 +5,7 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
   [
     {title: 'Embed', type: 'stateChange', action: 'home.embed'},
     {title: 'Create a list', type: 'insertion', kind: 'list'},
+    {title: 'Insert code', type: 'insertion', kind: 'code'},
     {title: 'Create a table', type: 'insertion', kind: 'table'}
   ],
   [
@@ -51,7 +52,6 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
   
 
   function listen() {
-    console.log('listening to escape events');
     escapeListener = $rootScope.$on('escape-pressed', $scope.toggle);
   }
 
