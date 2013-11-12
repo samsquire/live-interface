@@ -17,17 +17,22 @@ angular.module('system').controller('connect', ['$rootScope', '$state', '$scope'
   $rootScope.$emit('disable-autocomplete');
   $rootScope.$emit('close-autocomplete');
 
-  $rootScope.$on('escape-pressed', function () {
+  var escapeListener = $rootScope.$on('escape-pressed', function () {
     $scope.close();
   });
 
-  $rootScope.$on('')
+  // $rootScope.$on('')
 
 
   var decisionListener = $scope.$on('$stateChangeSuccess',
-    function(event, toState, toParams, fromState, fromParams){
+    function(event, toState, toParams, fromState, fromParams) {
       if ($state.is("home.connect")) {
         $scope.madeDecision = false;
+      }
+      if ($state.is("home.connect.use")) {
+        escapeListener();
+        $scope.madeDecision = true;
+
       }
   });
 
@@ -36,7 +41,6 @@ angular.module('system').controller('connect', ['$rootScope', '$state', '$scope'
   });
 
   $scope.use = function () {
-    $scope.madeDecision = true;
     $state.transitionTo('home.connect.use', $stateParams);
   };
 

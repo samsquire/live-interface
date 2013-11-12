@@ -15,6 +15,9 @@ angular.module('system', [
 ]);
 
 
+CodeMirror.modeURL = "components/codemirror/mode/%N/%N.js";
+
+
 angular.module('system').config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
@@ -62,7 +65,8 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('home.connect.use', {
-      url: '/use'
+      url: '/use',
+      templateUrl: 'views/editor.html'
     })
     .state('view', {
       url: '/view',

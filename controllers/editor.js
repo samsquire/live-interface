@@ -53,8 +53,10 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
   $scope.save = function () {
     var contents = $($.parseHTML($scope.body));
     var elements = $('<div>').append(contents);
-    contents.remove('.embedded-context,.CodeMirror');
+    contents.remove('.embedded-context');
     var html = elements.html();
+
+    console.log(html);
 
     feed.save({
       contents: html,
@@ -180,14 +182,16 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
 
   $scope.code = function (modelIndex) {
     var model = $scope.findModel(CodeModel, modelIndex);
-    model.source = "cosole.log('hi')";
+    model.source = "console.log('hi')";
 
     var instance = $scope.createInstance();
     var element = $scope.createContextElement('code', instance);
+    
 
     $scope.insertNode(element);
     $compile(element)($scope);
     $scope.open = true;
+    model.refresh = true;
   };
 
   $scope.table = function () {

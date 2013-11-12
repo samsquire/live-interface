@@ -11,7 +11,8 @@ angular.module('system').directive('contenteditable', function() {
       });
       
       $element.on('keydown', function () {
-        console.log('change');
+        // can't seem to get this to update the model on each keypress, was hoping
+        // this would change the laggy two way bindings
       });
 
       // Sometimes we want to use the original HTML and other

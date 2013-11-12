@@ -1,0 +1,41 @@
+
+.cont {
+  padding: 0px;
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+}
+
+.idea-item {
+  /*top: -9px;*/
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  height: 43px;
+  overflow: hidden;
+}
+
+.idea-item:hover {
+  color: white;
+}
+
+.idea-item:hover {
+  position: absolute;
+  height: auto;
+  overflow: visible;
+  z-index: 100;
+}
+
+.code .ui.menu .item .menu a.item:hover {
+  /*color: white;*/
+}
+
+.ui.menu .item.idea-action.idea-item {
+  margin: 0px;
+  padding: 0px;
+}
+
+.code .idea-action .ui.menu .item {
+  /*padding: 0;*/
+  /* I like the small look but it does diverge from the general style */
+}

@@ -11,9 +11,7 @@ body {
   /*display: inline-block;*/
 }
 
-.code {
-  
-}
+
 
 .codeView ul, .codeView ul ul {
   list-style-type: none;

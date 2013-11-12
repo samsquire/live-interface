@@ -3,7 +3,7 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
 
   $scope.activeField = model;
   $scope.metadata = metadata;
-      
+  
   $scope.code = false;
   $scope.transposed = false;
 
@@ -27,6 +27,38 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
     });
   };
 
+  $scope.listenEditor = function () {
+    $scope.$watch('activeField.editorOptions', function () {
+      console.log('editor config changed');
+    }, true);
+  };
+
+  $scope.codemirror = function (options) {
+    return angular.extend({
+      onLoad: $scope.codemirrorLoaded
+    }, options);
+  };
+
+ $scope.codemirrorLoaded = function(_editor) {
+    console.log("CodeMirror loaded");
+
+    // Editor part
+    var _doc = _editor.getDoc();
+
+    // Events
+    _editor.on("beforeChange", function(){  });
+    _editor.on("change", function(){  });
+
+    console.log(_editor.getOption("mode"));
+    CodeMirror.autoLoadMode(_editor, _editor.getOption("mode"));
+    
+    _editor.focus();
+
+    setTimeout(function () {
+      _editor.refresh();
+    }, 0);
+    
+  };
 
 
 }]);

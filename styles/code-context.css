@@ -1,0 +1,19 @@
+.ui.grid .CodeMirror {
+  font-size: 10pt;
+}
+
+.ui.grid .code {
+
+}
+
+
+
+/* http://codemirror.net/demo/resize.html */
+.embedded-context .CodeMirror {
+  border: 1px solid #eee;
+  height: auto;
+}
+.embedded-context .CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}

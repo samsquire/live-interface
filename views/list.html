@@ -34,24 +34,7 @@
         </div>
   </div>
 
-<script type="text/ng-template" id="draw_object">
-  <ul ng-app="system" ng-controller="dataobject" ng-init="init($parent.field, $parent.key)" ng-class="{'transposed-child': transposed}">
-      <li ng-repeat="currentKey in keys" ng-switch="type(field[key])" ng-class="{last: $last, 'transposed-child': transposed}">
-        {{ currentKey }}
-        <span ng-switch-when="Object" ng-init="field = field[key]; key = currentKey" ng-include="'draw_object'" ng-class="{'transposed-child': transposed}"></span>
-        <span ng-switch-when="Array"><div ng-init="field = field[key]; key = currentKey" ng-include="'draw_object'" ng-class="{'transposed-child': transposed}"></span>
-      </li>
 
-      <li ng-switch="type(field[key])" ng-show="keys.length == 0" ng-class="{last: $last, 'transposed-child': transposed}" >
-        <span class="ui form" ng-switch-when="String" ng-class="{'transposed-child': transposed}">
-          <span class="field">
-            <input type="text" ng-model="field[key]"/>
-          </span>
-        </span>
-        <input type="checkbox" ng-switch-when="Boolean" ng-model="field[key]"/>
-      </li>
-    </ul>
-</script>
 
       <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
       <div class="ui floating label">
@@ -66,7 +49,7 @@
       
         
         <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
-              <div class="" ng-init="field = this; key = 'activeField'" ng-include="'draw_object'" ng-class="{'transposed-wrapper': transposed}">
+              <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
               </div>
         </div>
   </div>

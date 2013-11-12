@@ -1,0 +1,16 @@
+  <ul ng-app="system" ng-controller="dataobject" ng-init="init($parent.field, $parent.key)" ng-class="{'transposed-child': transposed}">
+      <li ng-repeat="currentKey in keys" ng-switch="type(field[key])" ng-class="{last: $last, 'transposed-child': transposed}">
+        {{ currentKey }}
+        <span ng-switch-when="Object" ng-init="field = field[key]; key = currentKey" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-child': transposed}"></span>
+        <span ng-switch-when="Array"><div ng-init="field = field[key]; key = currentKey" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-child': transposed}"></span>
+      </li>
+
+      <li ng-switch="type(field[key])" ng-show="keys.length == 0" ng-class="{last: $last, 'transposed-child': transposed}" >
+        <span class="ui form" ng-switch-when="String" ng-class="{'transposed-child': transposed}">
+          <span class="field">
+            <input type="text" ng-model="field[key]"/>
+          </span>
+        </span>
+        <input type="checkbox" ng-switch-when="Boolean" ng-model="field[key]"/>
+      </li>
+    </ul>
