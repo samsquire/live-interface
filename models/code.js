@@ -5,11 +5,7 @@ angular.module('system').factory('CodeModel', [function () {
       type: 'code',
       source: "",
       actions: [
-        {'text': 'Reply', icon: 'mail reply'},
-        {'text': 'Question', icon: 'question'},
-        {'text': 'Dislike', icon: 'thumbs down'},
-        {'text': 'Like', icon: 'thumbs up'},
-        {'text': 'Go', icon: 'browser'}
+        {'text': 'Execute', icon: 'play', rel: 'execute'}
       ],
       refresh: false,
       editorOptions: {

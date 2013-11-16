@@ -27,10 +27,19 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
     });
   };
 
-  $scope.listenEditor = function () {
-    $scope.$watch('activeField.editorOptions', function () {
-      console.log('editor config changed');
-    }, true);
+  $scope.follow = function (action, index, event) {
+    console.log(action, index, event);
+    var embeddedContext = $(event.target).parents('.content')[0];
+
+    html2canvas(embeddedContext, {
+      onrendered: function(canvas) {
+        
+        var shelfItem = $(canvas).wrap('<span>');
+        shelfItem.parent().append(action.text + " " + $scope.activeField.type);
+        shelfItem.addClass("shelfItem");
+        $(".shelf").append(shelfItem.parent());
+      }
+    });
   };
 
   $scope.codemirror = function (options) {
@@ -49,9 +58,8 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
     _editor.on("beforeChange", function(){  });
     _editor.on("change", function(){  });
 
-    console.log(_editor.getOption("mode"));
     CodeMirror.autoLoadMode(_editor, _editor.getOption("mode"));
-    
+
     _editor.focus();
 
     setTimeout(function () {

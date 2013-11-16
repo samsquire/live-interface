@@ -1,49 +1,56 @@
 <div tabindex="0" class="ui embedded-context code" contenteditable="false">
-  <textarea ng-init="listenEditor()" ng-model="activeField.source"
-    ui-codemirror="codemirror(activeField.editorOptions)"
-    ui-refresh='activeField.editorOptions'></textarea>
+  <div class="ui grid">
+  <div class="ui fifteen wide column content">
 
-    <div class="ui menu attached bottom stacked">
-          <a class="green item" ng-click="toggleCode()">
-            <i class="code icon"></i>
-          </a>
+        <textarea ng-model="activeField.source"
+          ui-codemirror="codemirror(activeField.editorOptions)"
+          ui-refresh='activeField.editorOptions'></textarea>
 
-          <a class="green item" ng-click="connect()">
-            <i class="wrench icon"></i>
-            <!-- <div class="ui floating label">
-              Connect
-            </div> -->
-          </a>
+          <div class="ui menu attached bottom stacked">
+                <a class="green item" ng-click="toggleCode()">
+                  <i class="code icon"></i>
+                </a>
 
-<div class="idea-action item two wide column right vertically fitted">
-  <div class="cont">
-    <div class="compact idea-item ui vertical transparent menu">
-      <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(linkage, $parent.$index)">
-        <i class="{{action.icon}} icon"></i>
-        {{action.text}}
-      </a>
-    </div>
-  </div>
-</div>
+                <a class="green item" ng-click="connect()">
+                  <i class="wrench icon"></i>
+                  <!-- <div class="ui floating label">
+                    Connect
+                  </div> -->
+                </a>
 
-    </div>
 
-    <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
-      <div class="ui floating label">
-        Structure
+
+
+      <div class="idea-action item three wide column right vertically fitted">
+        <div class="cont">
+          <div class="compact idea-item ui vertical transparent menu">
+            <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
+              <i class="{{action.icon}} icon"></i>
+              {{action.text}}
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div class="ui menu attached top stacked right">
-          <a class="red item" ng-click="transpose()">
-            <i class="undo icon"></i>
-          </a>
+          </div>
 
-      </div>
-      
-        
-        <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
-              <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
+          <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
+            <div class="ui floating label">
+              Structure
+            </div>
+
+            <div class="ui menu attached top stacked right">
+                <a class="red item" ng-click="transpose()">
+                  <i class="undo icon"></i>
+                </a>
+
+            </div>
+            
+              
+              <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
+                    <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
+                    </div>
               </div>
         </div>
-  </div>
+    </div>
 </div>

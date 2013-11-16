@@ -11,6 +11,7 @@ return {
         $rootScope.$emit('caret', $.extend({}, window.getSelection()));
         $rootScope.$emit('escape-pressed');
         $scope.$apply();
+        event.preventDefault();
       }
       
       if (event.keyCode == 13) {
@@ -39,7 +40,6 @@ return {
 
       var index = event.keyCode - 48;
       var selected = $element.find(validOptions).get(index - 1)
-      console.log(index, selected);
       selected.focus();
       selected.click();
       return true;
@@ -52,7 +52,7 @@ return {
 angular.module('system').directive('directionalFocus', [function () {
 return {
   link: function ($scope, $element, $attrs) {
-    var settings = $scope.$eval($attrs.directionalFocus); console.log(settings);
+    var settings = $scope.$eval($attrs.directionalFocus);
     var validElement = settings.container;
     var validItems = settings.items;
 

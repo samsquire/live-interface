@@ -1,7 +1,8 @@
 angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
   '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
+  'DependencyTreeGenerator',
   function ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
-    ListModel, CodeModel, ActiveDocument) {
+    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator) {
 
   $scope.open = false;
   $scope.body = "";
@@ -50,18 +51,27 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     console.log('move-left');
   });
 
-  $scope.save = function () {
+  $scope.tree = function () {
+    var elements = $scope.filteredDocument();
+    console.log(DependencyTreeGenerator.tree(elements));
+  };
+
+  $scope.filteredDocument = function () {
     var contents = $($.parseHTML($scope.body));
     var elements = $('<div>').append(contents);
     contents.remove('.embedded-context');
-    var html = elements.html();
+    return elements;
+  }
 
-    console.log(html);
+  $scope.save = function () {
+    var elements = $scope.filteredDocument();
+    var html = elements.html();
 
     feed.save({
       contents: html,
       fields: $scope.activeDocument.fields,
-      instances: $scope.activeDocument.instances
+      instances: $scope.activeDocument.instances,
+      tree: DependencyTreeGenerator.tree(elements)
     }, $scope.saved);
     $scope.body = "";
   };
@@ -109,7 +119,6 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
 
     
     if (parents.length === 1) {
-      console.log(node.textContent.length);
       if (node.textContent.length === $scope.selection.anchorOffset) {
         console.log("Insert at end of line");
         var firstParent = $(node).parentsUntil('.post-body')[0];
@@ -141,8 +150,6 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     element.attr("href", instance);
     return element[0];
   };
-
-
 
   $scope.findModel = function (modelConstructor, modelIndex) {
     var model;

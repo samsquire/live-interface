@@ -3,8 +3,8 @@
     
       <div class="row">
         <div class="fifteen wide column">
-          <!-- focus-when="active" -->
-          <div  interested-in-focus="active" tabindex="1" ng-model="body" ng-show="true" follow=".dropdown-follow" contenteditable="true" class="post-body segment" ng-class="{open: open}" type="text">
+          <!-- Having performance issues with 'focus-when' focus-when="active" -->
+          <div  interested-in-focus="active" tabindex="1" ng-model="body" ng-show="true" follow=".dropdown-follow" contenteditable="true" class="ui segment attached left post-body segment" ng-class="{open: open}" type="text">
             <div>&nbsp;</div>
             <!-- <a rel="embedded" data-kind="list" data-id="0" href="0" class="ng-scope"></a> -->
             <div>&nbsp;</div>
@@ -13,12 +13,21 @@
             Test
           </textarea> -->
         </div>
-        <div class="one wide column" ng-show="true">
-            <div class="ui hover floated button right" ng-click="save()">
-              Create
-            </div>
-            
-        </div>
+        <!-- <div class="one wide column" ng-show="true"> -->
+              <div class="ui vertical icon menu left attached left">
+                <div class="ui button item" ng-click="save()">
+                  Create
+                </div>
+
+                <a class="red item" ng-click="tree()">
+                  <i class="sitemap icon"></i>
+                </a>
+                
+              </div>
+
+
+
+        <!-- </div> -->
       </div>
       
     

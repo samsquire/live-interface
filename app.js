@@ -44,6 +44,10 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
         '@spaces': {
           templateUrl: 'views/spaces.html',
           controller: 'spaces'
+        },
+        '@shelf': {
+          templateUrl: 'views/shelf.html',
+          controller: 'shelf'
         }
       }
     })

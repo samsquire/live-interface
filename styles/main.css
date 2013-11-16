@@ -12,6 +12,35 @@ body {
 }
 
 
+.shelf {
+  position: static;
+  z-index: 1000000000;
+  bottom: 2em;
+  margin: 1em;
+  padding: 2em;
+  background-color: white;
+  height: 5em;
+  min-width: 200vw;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.orphan-shelf {
+  overflow: auto;
+}
+
+.shelf canvas {
+  -webkit-transition: all .1s ease-in-out;
+  width: 500px;
+  height: auto;
+  display: inline-block;
+}
+
+.shelf canvas:hover {
+  -webkit-transform: scale(1.5);
+  height: auto;
+  width: 700px;
+}
 
 .codeView ul, .codeView ul ul {
   list-style-type: none;
