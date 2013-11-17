@@ -58,7 +58,6 @@ angular.module('system').factory('feed', [function () {
           include_docs: true,
           continuous: true,
           onChange: function(change) {
-//            console.log('change occurred', change.doc);
             if (!change.doc._deleted) {
               self.addition([change.doc])
               callback(self.items);

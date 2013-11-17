@@ -27,7 +27,7 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/home",
-
+      
       views: {
         '': {
           templateUrl: 'views/home.html',
