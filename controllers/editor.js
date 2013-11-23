@@ -1,7 +1,4 @@
-angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
-  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
-  'DependencyTreeGenerator',
-  function ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
+var EditorController = function EditorController ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
     ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator) {
 
   $scope.open = false;
@@ -61,7 +58,7 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     var elements = $('<div>').append(contents);
     contents.remove('.embedded-context');
     return elements;
-  }
+  };
 
   $scope.save = function () {
     var elements = $scope.filteredDocument();
@@ -85,12 +82,18 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
   };
 
   $rootScope.$on('embed-field', function (event, field) {
-    console.log('Embedding', field);
-    $scope[$scope.activeDocument.fields[field].type](field);
+    console.log('Embedding', field.index, 'of type', field.type);
+    $scope[field.type](field.index);
   });
 
   $scope.insertNode = function (newNode) {
-    var node = $scope.selection.anchorNode;
+    var node;
+    if ($scope.selection === null) {
+      $('.post-body').focus();
+      $scope.selection = window.getSelection();
+    }
+    node = $scope.selection.anchorNode;
+    
     var parents = $(node).parents().filter(function () {
       return $(this).hasClass('post-body');
     });
@@ -151,12 +154,14 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     return element[0];
   };
 
-  $scope.findModel = function (modelConstructor, modelIndex) {
+  $scope.findModel = function (modelConstructor, modelIndex, defaults) {
     var model;
    if (modelIndex === undefined) {
       console.log("Creating empty model.");
       model = modelConstructor();
-      
+      if (defaults) {
+        defaults(model);
+      }
       $scope.activeDocument.fields.push(model);
     } else {
       console.log("Using pre-existing model.");
@@ -188,8 +193,9 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
   };
 
   $scope.code = function (modelIndex) {
-    var model = $scope.findModel(CodeModel, modelIndex);
-    model.source = "console.log('hi')";
+    var model = $scope.findModel(CodeModel, modelIndex, function (model) {
+      model.source = "console.log('hi')";
+    });
 
     var instance = $scope.createInstance();
     var element = $scope.createContextElement('code', instance);
@@ -219,4 +225,10 @@ angular.module('system').controller('editor', ['$scope', '$state', '$rootScope',
     $scope.open = !$scope.open;
   });
 
-}]);
+}
+
+
+angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
+  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
+  'DependencyTreeGenerator', EditorController]);
+

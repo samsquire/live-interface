@@ -1,4 +1,4 @@
-angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootScope', function ($scope, $state, $rootScope) {
+angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootScope', 'bucket', function ($scope, $state, $rootScope, bucketService) {
   $scope.open = false;
   var escapeListener = null;
   $scope.options = [
@@ -6,7 +6,8 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
     {title: 'Embed', type: 'stateChange', action: 'home.embed'},
     {title: 'Create a list', type: 'insertion', kind: 'list'},
     {title: 'Insert code', type: 'insertion', kind: 'code'},
-    {title: 'Create a table', type: 'insertion', kind: 'table'}
+    {title: 'Create a table', type: 'insertion', kind: 'table'},
+    {title: 'Create a data bucket', type: 'bucket'}
   ],
   [
     {title: 'Expand', templateUrl: 'views/editor-expand-option.html', type: 'view', kind: 'expand'},
@@ -38,6 +39,11 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
 
   $scope.insertion = function (item) {
     $rootScope.$emit('insertion', item.kind);
+  };
+
+  $scope.bucket = function () {
+    console.log(bucketService);
+    bucketService.createBucket();
   };
 
   $scope.view = function (item) {

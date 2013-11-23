@@ -4,7 +4,6 @@
 <div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
   <ol ng-class="start">
     <li tabindex="0" ng-repeat="field in activeDocument.fields" ng-bind="field.type" ng-click="embed($index)" focus-when="$first"></li>
-    
   </ol>
 </div>
 

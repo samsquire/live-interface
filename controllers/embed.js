@@ -1,5 +1,4 @@
-angular.module('system').controller('embed', ['$scope', '$state', '$rootScope', 'ActiveDocument',
-  function ($scope, $state, $rootScope, ActiveDocument) {
+var EmbedController = function EmbedController ($scope, $state, $rootScope, ActiveDocument) {
   $scope.open = true;
   $scope.activeDocument = ActiveDocument;
 
@@ -13,7 +12,14 @@ angular.module('system').controller('embed', ['$scope', '$state', '$rootScope', 
 
 
   $scope.embed = function (field) {
-    $rootScope.$emit('embed-field', field);
+    var embed = {
+      index: field,
+      type: $scope.activeDocument.fields[field].type
+    };
+    $rootScope.$emit('embed-field', embed);
   };
 
-}]);
+};
+
+angular.module('system').controller('embed', ['$scope', '$state', '$rootScope', 'ActiveDocument',
+EmbedController]);

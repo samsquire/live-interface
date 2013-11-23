@@ -1,5 +1,5 @@
-angular.module('system').controller('contextController', ['$scope', 'model', '$state', 'metadata',
-  function ($scope, model, $state, metadata) {
+angular.module('system').controller('contextController', ['$scope', '$rootScope', 'model', '$state', 'metadata', 'shelfRepository', 'ActiveDocument',
+  function ($scope, $rootScope, model, $state, metadata, shelfRepository, ActiveDocument) {
 
   $scope.activeField = model;
   $scope.metadata = metadata;
@@ -28,18 +28,20 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
   };
 
   $scope.follow = function (action, index, event) {
-    console.log(action, index, event);
+    
     var embeddedContext = $(event.target).parents('.content')[0];
 
-    html2canvas(embeddedContext, {
-      onrendered: function(canvas) {
-        
-        var shelfItem = $(canvas).wrap('<span>');
-        shelfItem.parent().append(action.text + " " + $scope.activeField.type);
-        shelfItem.addClass("shelfItem");
-        $(".shelf").append(shelfItem.parent());
-      }
-    });
+    var shelfData = angular.extend({
+      action: action,
+      documentId: $scope.activeDocument._id
+    }, metadata);
+
+    // insert this field into the currently used document
+    ActiveDocument.fields.push($scope.activeDocument.fields[metadata.fieldIndex]);
+
+    console.log(shelfData);
+    shelfRepository.items.push(shelfData);
+    console.log(shelfRepository.items);
   };
 
   $scope.codemirror = function (options) {
@@ -49,8 +51,6 @@ angular.module('system').controller('contextController', ['$scope', 'model', '$s
   };
 
  $scope.codemirrorLoaded = function(_editor) {
-    console.log("CodeMirror loaded");
-
     // Editor part
     var _doc = _editor.getDoc();
 

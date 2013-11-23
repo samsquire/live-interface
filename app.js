@@ -1,14 +1,3 @@
-$('.ui.sidebar')
-  .sidebar()
-;
-
-$('.demo.sidebar')
-  .sidebar('attach events', '.toggle.sidebar')
-;
-$('.demo.sidebar')
-  .removeClass('disabled')
-;
-
 angular.module('system', [
   'ui.router',
   'ui.codemirror'
@@ -19,6 +8,7 @@ CodeMirror.modeURL = "components/codemirror/mode/%N/%N.js";
 
 
 angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+
   //
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/home");
@@ -27,11 +17,14 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/home",
-      
       views: {
         '': {
           templateUrl: 'views/home.html',
           controller: 'home'
+        },
+        'sidebar@': {
+          templateUrl: 'views/sidebar.html',
+          controller: 'sidebar'
         },
         '@editor': {
           templateUrl: 'views/editor.html',
@@ -86,4 +79,6 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     ;
 
     });
+
+
 

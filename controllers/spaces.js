@@ -1,9 +1,6 @@
-angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope', 'feed',
-  function ($scope, $state, $rootScope, feed, feedRepository) {
+var SpacesController = function SpacesController ($scope, $state, $rootScope, feed, feedRepository) {
 
   feed.fetch(function (docs) {
-      // $scope.items.push.apply($scope.items, docs);
-      // $scope.items.push.apply($scope.items, docs);
       $scope.$apply();
       console.log("Retrieved", docs);
   });
@@ -14,5 +11,9 @@ angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope',
     console.log(JSON.stringify(feedItem, null, 4));
     feed.update(feedItem);
   };
-  
-}]);
+};
+
+
+angular.module('system').controller('spaces', ['$scope', '$state', '$rootScope', 'feed',
+  SpacesController
+]);

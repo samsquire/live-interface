@@ -1,5 +1,6 @@
-angular.module('system').controller('home', ['$scope', '$state', '$rootScope', function ($scope, $state, $rootScope) {
+angular.module('system').controller('home', ['$scope', '$state', '$rootScope', 'analysis',
+  function ($scope, $state, $rootScope, Analysis) {
 
-  
+    
   
 }]);

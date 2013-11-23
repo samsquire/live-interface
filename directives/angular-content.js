@@ -7,7 +7,7 @@ angular.module('system').directive('angularContent', ['$timeout', '$compile', fu
       var data = $attrs.angularContent;
       var documentIndex = $scope.$eval($attrs.documentIndex);
 
-      console.log("linking run angular", documentIndex);
+      // console.log("linking run angular", documentIndex);
       var model = $scope.items[documentIndex];
       
       var subDocumentScope = $scope.$new();
@@ -16,9 +16,9 @@ angular.module('system').directive('angularContent', ['$timeout', '$compile', fu
       var template = $scope.$eval(data);
       var newContent = $.trim(template);
       $compile(newContent)(subDocumentScope, function (rendered) {
-        console.log(rendered);
+        // console.log(rendered);
         $element.append(rendered);
-        console.log("DONE angular content", rendered);
+        // console.log("DONE angular content", rendered);
         
         
       });

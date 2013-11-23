@@ -1,0 +1,24 @@
+  <div class="ui red vertical demo sidebar menu" sidebar>
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="active item">
+    <i class="heart icon"></i>
+    Data
+    <a class="item" ng-repeat="item in structure.fields">
+    <i class="play icon"></i>
+    {{ item.type }}
+    </a>
+  </a>
+  
+
+  <div class="item">
+    <b>More</b>
+    <div class="menu">
+      <a class="item">About</a>
+      <a class="item">Contact Us</a>
+    </div>
+  </div>
+  
+</div>

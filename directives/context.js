@@ -35,9 +35,9 @@ angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache
         kind: $element.attr('data-kind'),
         instanceName: $element.attr('href')
       };
-      console.log("Active Document is", $scope.activeDocument);
+      // console.log("Active Document is", $scope.activeDocument);
       model = $scope.activeDocument.fields[metadata.fieldIndex];
-      console.log('Encountered context', model);
+//      console.log('Encountered context', model);
 
       contextTemplateUrl = 'views/' + metadata.kind + '.html';
       templateHtml = $templateCache.get(contextTemplateUrl);
