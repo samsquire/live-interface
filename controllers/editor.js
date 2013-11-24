@@ -1,5 +1,5 @@
 var EditorController = function EditorController ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
-    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator) {
+    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket) {
 
   $scope.open = false;
   $scope.body = "";
@@ -212,6 +212,22 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
     // $scope.insertNode(element);
   };
 
+  $rootScope.$on('bucket', function () {
+
+    var model = $scope.findModel(BucketModel);
+
+    var instance = $scope.createInstance();
+    var element = $scope.createContextElement('data', instance);
+
+    socket.on('line', function (data) {
+      model.lines.push(data.line);
+      // $scope.$apply();
+    });
+
+    $scope.insertNode(element);
+    $compile(element)($scope);
+    $scope.open = true;
+  });
 
   $rootScope.$on('caret', function (event, newSelection) {
     $scope.selection = selection = newSelection;
@@ -230,5 +246,5 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
 
 angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
   '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
-  'DependencyTreeGenerator', EditorController]);
+  'DependencyTreeGenerator', 'BucketModel', 'socket', EditorController]);
 

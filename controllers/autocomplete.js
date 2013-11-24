@@ -42,8 +42,7 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
   };
 
   $scope.bucket = function () {
-    console.log(bucketService);
-    bucketService.createBucket();
+    $rootScope.$emit('bucket');
   };
 
   $scope.view = function (item) {

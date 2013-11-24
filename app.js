@@ -1,11 +1,16 @@
 angular.module('system', [
   'ui.router',
-  'ui.codemirror'
+  'ui.codemirror',
+  'btford.socket-io'
 ]);
 
 
 CodeMirror.modeURL = "components/codemirror/mode/%N/%N.js";
 
+angular.module('system').config(function (socketProvider) {
+  var shellSocket = io.connect('http://localhost:1445/shell');
+  socketProvider.ioSocket(shellSocket);
+});
 
 angular.module('system').config(function($stateProvider, $urlRouterProvider) {
 
@@ -79,6 +84,8 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     ;
 
     });
+
+
 
 
 
