@@ -13,6 +13,8 @@ angular.module('system').factory('contextTemplates',
   importTemplate('views/table.html');
   importTemplate('views/code.html');
   importTemplate('views/data.html');
+  importTemplate('views/jsonlist.html');
+  importTemplate('views/subdocument.html');
 }]);
 
 angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache', 'contextTemplates', '$controller',
@@ -52,10 +54,11 @@ angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache
 
       embeddedContent = $compile(templateHtml)(contextScope);
       
-
+    
       $timeout(function () {
         // wait for all the other bindings in the template have finished
         $element.after(embeddedContent);
+        /*
         // console.log("DONE context insertion", embeddedContent.html());
         var focusNodes = embeddedContent.find('.focus');
 
@@ -64,7 +67,9 @@ angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache
         if (focusNodes.length > 0) {
           $(focusNodes).focus();
         }
+        */
       });
+    
       
 
       // console.log(contextTemplateUrl);

@@ -4,11 +4,14 @@
       <div class="row">
         <div class="fifteen wide column">
           <!-- Having performance issues with 'focus-when' focus-when="active" -->
-          <div  interested-in-focus="active" tabindex="1" ng-model="body" ng-show="true" follow=".dropdown-follow" contenteditable="true" class="ui segment attached left post-body segment" ng-class="{open: open}" type="text">
-            <div>&nbsp;</div>
-            <!-- <a rel="embedded" data-kind="list" data-id="0" href="0" class="ng-scope"></a> -->
-            <div>&nbsp;</div>
-          </div>
+          <div data-document-id="{{ activeDocument._id }}"
+          interested-in-focus="active"
+          tabindex="1"
+          ng-model="activeDocument.contents" ng-show="true" follow=".dropdown-follow" contenteditable="true"
+          document-model="activeDocument"
+          angular-content="activeDocument.contents"
+          incremental="true"
+          class="ui segment attached left post-body segment" ng-class="{open: open}" type="text"></div>
           <!-- <textarea follow=".dropdown" class="post-body segment" ng-model="body">
             Test
           </textarea> -->

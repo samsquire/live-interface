@@ -1,6 +1,27 @@
 <div class="orphan-shelf">
   <div class="shelf">
     
+  <span ng-repeat="shelfItem in objects" class="shelfItem">
+    {{ shelfItem.name }}
+    {{ shelfItem.type }}
+
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:pencil="http://www.evolus.vn/Namespace/Pencil" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" id="exportedSVG" version="1.1" pencil:version="1.2.2" sodipodi:docname="semantic_interface.ep" width="100"><g xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:label="Cylinder" inkscape:groupmode="layer" id="layer_cylinder"><g><g pencil:type="Shape" pencil:def="Evolus.Common:can" id="0eaa324b97878a45afca9641a49568f1" transform="matrix(1,0,0,1,0,0)"><pencil:metadata><pencil:property name="a">24,13.200000000000001</pencil:property><pencil:property name="box">48,66</pencil:property><pencil:property name="fillColor">#CCCCFFFF</pencil:property><pencil:property name="strokeColor">#1B3280FF</pencil:property><pencil:property name="strokeStyle">2|</pencil:property><pencil:property name="textContent"/><pencil:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</pencil:property><pencil:property name="textColor">#000000FF</pencil:property><pencil:property name="textAlign">1,1</pencil:property></pencil:metadata>
+            <defs>
+                <path style="stroke-linejoin: round; stroke: rgb(27, 50, 128); stroke-opacity: 1; stroke-width: 2;" pencil:name="top" id="cc5fb0bc11ce274abba2cb438f0c4c24" transform="translate(0,0)" d="M 0 6.6000000000000005 C 0 3.3000000000000003 12 0 24 0 S 48 3.3000000000000003 48 6.6000000000000005 C 48 9.9 36 13.200000000000001 24 13.200000000000001 S 0 9.9 0 6.6000000000000005 z"/>
+                <mask pencil:name="mask" id="8494ae000634e64580b310296ced8789">
+                    <rect style="fill: white; stroke-linejoin: round; stroke: rgb(27, 50, 128); stroke-opacity: 1; stroke-width: 2;" pencil:name="markContainer" id="49942ef299da0b49b8b9effbfe010b59" transform="translate(0,0)" x="-100" y="-100" width="248" height="266"/>
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cc5fb0bc11ce274abba2cb438f0c4c24" style="fill: black; stroke-linejoin: round;"/>
+                </mask>
+            </defs>
+            <path mask="url(#8494ae000634e64580b310296ced8789)" style="stroke-linejoin: round; stroke: rgb(27, 50, 128); stroke-opacity: 1; stroke-width: 2; fill: rgb(204, 204, 255); fill-opacity: 1;" pencil:name="path" id="29562f59387fb4439ae7770297ae42b8" transform="translate(0,0)" d="M 0 6.6000000000000005 L 0 59.4 C 0 62.7 12 66 24 66 S 48 62.7 48 59.4 L 48 6.6000000000000005 z"/>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cc5fb0bc11ce274abba2cb438f0c4c24" style="stroke-linejoin: round; stroke: rgb(27, 50, 128); stroke-opacity: 1; stroke-width: 2; fill: rgb(204, 204, 255); fill-opacity: 1;" pencil:name="btop" id="32d436588f19b546b1003b58900ba4f5" transform="translate(0,0)"/>
+            <text pencil:name="text" id="e5b3e4737199af4dac9a59f82401d6ff" style="font-family: &quot;Liberation Sans&quot;,Arial,sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1;" transform="translate(24,40)"/>
+        </g></g></g></svg>
+
+  </span>
+
+
   <span ng-repeat="shelfItem in shelf" class="shelfItem" screenshot of="shelfItem" ng-click="embed(shelfItem)"></span>
     
 

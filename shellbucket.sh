@@ -15,10 +15,8 @@ socket.on('connect', function () {
   process.stdin.on('end', function () {
     console.log("stdin finished");
     stream.end();
+    process.exit();
   });
   var read = process.stdin.pipe(stream);
-
-
-  console.log("callbacks in queue");
 });
 

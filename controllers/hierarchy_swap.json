@@ -1,0 +1,58 @@
+[
+    {
+        "children": {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "name": "fix the gui"
+                        },
+                        {
+                            "name": "connect to the database"
+                        }
+                    ],
+                    "name": "fred"
+                },
+                {
+                    "children": [
+                        {
+                            "name": "overhaul graphics"
+                        }
+                    ],
+                    "name": "bob"
+                }
+            ],
+            "name": "frontend"
+        },
+        "name": "milestone 1"
+    },
+    {
+        "children": [
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "name": "set up new tables"
+                            }
+                        ],
+                        "name": "fred"
+                    }
+                ],
+                "name": "back end"
+            },
+            {
+                "children": [
+                    {
+                        "name": "buy new servers"
+                    },
+                    {
+                        "name": "set up networking"
+                    }
+                ],
+                "name": "bob"
+            }
+        ],
+        "name": "milestone 2"
+    }
+]

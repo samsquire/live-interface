@@ -1,6 +1,12 @@
 <div tabindex="0" class="ui embedded-context code" contenteditable="false">
+
+
+
   <div class="ui grid">
-  <div class="ui fifteen wide column content">
+    <div class="ui one wide column compact">
+      <i class="fa fa-2x fa-chevron-left"></i>
+    </div>
+  <div class="ui fourteen wide column content">
 
         <textarea ng-model="activeField.source"
           ui-codemirror="codemirror(activeField.editorOptions)"
@@ -23,7 +29,7 @@
 
       <div class="idea-action item three wide column right vertically fitted">
         <div class="cont">
-          <div class="compact idea-item ui vertical transparent menu">
+          <div class="idea-item ui vertical transparent menu two wide">
             <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
               <i class="{{action.icon}} icon"></i>
               {{action.text}}
@@ -53,4 +59,11 @@
               </div>
         </div>
     </div>
+    <div class="ui one wide column compact">
+      <i class="fa fa-2x fa-chevron-right"></i>
+</div>
+</div>
+
+
+
 </div>

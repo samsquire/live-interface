@@ -5,14 +5,22 @@ angular.module('system').directive('contenteditable', function() {
       if (!ngModel) {
         return;
       }
+
+
       // view -> model
       $element.on('blur', function () {
           ngModel.$setViewValue($element.html());
       });
+
+      if (attrs.updateViewOnly) {
+        return;
+      }
       
-      $element.on('keydown', function () {
+      $element.on('keyup', function () {
         // can't seem to get this to update the model on each keypress, was hoping
         // this would change the laggy two way bindings
+        ngModel.$setViewValue($element.html());
+        $scope.$apply();
       });
 
       // Sometimes we want to use the original HTML and other

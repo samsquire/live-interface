@@ -53,11 +53,12 @@ var shell = io.of('/shell').on('connection', function(socket) {
     stream.pipe(split()).on('data', function (buf) {
      db.put(outputName + '-' + lexi.pack(seq++, 'hex'), buf)
     }).on('end', function () {
+      var lines = [];
       db.createReadStream({
          start: outputName,
          end: outputName + '-\uffff' }
       ).on('data', function (line) {
-        shell.emit('line', {line: line.value});
+        lines.push(line.value);
       }).on('error', function (err) {
         console.log('Oh my!', err)
       })
@@ -66,6 +67,7 @@ var shell = io.of('/shell').on('connection', function(socket) {
       })
       .on('end', function () {
         console.log('Stream closed')
+        shell.emit('line', {lines: lines});
       });
     });
 

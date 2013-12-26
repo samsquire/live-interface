@@ -17,6 +17,11 @@ angular.module('system').factory('feed', [function () {
 
     self.ids = {};
     self.items = [];
+    self.waiting = {};
+
+    self.waitFor = function (id, callback) {
+      self.waiting[id] = callback;
+    }
 
     self.addition = function (docs) {
       docs.forEach(function (doc) {
@@ -28,6 +33,10 @@ angular.module('system').factory('feed', [function () {
         } else {
           self.ids[doc._id] = doc;
           self.items.push(doc);
+          if (self.waiting[doc._id]) {
+            self.waiting[doc._id](doc);
+            delete self.waiting[doc._id];
+          }
         }
       });
     };
@@ -73,7 +82,7 @@ angular.module('system').factory('feed', [function () {
       db.post(item, callback);
     };
 
-    self.update = function (feedItem) {
+    self.update = function (feedItem, callback) {
       console.log('Updated', feedItem);
       var rev = feedItem._rev;
       db.remove(feedItem);
@@ -83,6 +92,7 @@ angular.module('system').factory('feed', [function () {
       db.put(feedItem, {}, function (err) {
         console.log(err);
       });
+      callback(feedItem);
     };
   }
   return new Feed();

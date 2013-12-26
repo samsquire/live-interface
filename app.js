@@ -22,6 +22,9 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/home",
+      data: {
+        choosing: true
+      },
       views: {
         '': {
           templateUrl: 'views/home.html',
@@ -54,6 +57,17 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/embed.html',
       controller: 'embed'
     })
+    .state('home.create', {
+      url: '/create',
+      templateUrl: 'views/wizard.html',
+      controller: 'wizard',
+      onEnter: ['$rootScope', function ($rootScope) {
+        $rootScope.$emit('caret', null);
+      }],
+      data: {
+        choosing: false
+      }
+    })
     .state('home.connect', {
       url: '/connect/:documentId/:fieldIndex/:instanceName',
       views: {
@@ -77,6 +91,31 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       resolve: {
         demoData: function ($http) {
           return $http.get('example.json');
+        }
+      }
+    })
+    .state('edit', {
+      url: '/edit/:documentId',
+      controller: 'editor',
+      data: {
+        choosing: true,
+        preopened: true
+      },
+      views: {
+        '': {
+          templateUrl: 'views/edit-document.html'
+        },
+        '@editor': {
+          templateUrl: 'views/editor.html',
+          controller: 'editor'
+        },
+        '@dropdown': {
+          templateUrl: 'views/autocomplete.html',
+          controller: 'autocomplete'
+        },
+        '@shelf': {
+          templateUrl: 'views/shelf.html',
+          controller: 'shelf'
         }
       }
     })

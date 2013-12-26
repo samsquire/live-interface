@@ -1,12 +1,23 @@
-var EditorController = function EditorController ($scope, $state, $rootScope, feed, $templateCache, $http, $compile, keybinding,
-    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket) {
+var EditorController = function EditorController ($scope, $state, $stateParams, $rootScope, feed,
+    $templateCache, $http, $compile, keybinding,
+    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,
+    DocumentModel, SubdocumentModel, cleaner) {
 
   $scope.open = false;
-  $scope.body = "";
 
-  // var list = ListModel();
+  if ($state.current.data.preopened) {
+    $scope.open = true;
+  }
 
+  $scope.feedIds = feed.ids;
+
+  if ($stateParams.documentId) {
+    var doc = $scope.feedIds[$stateParams.documentId];
+    console.log("Editing", $stateParams.documentId, "Copying", doc, "into activeDocument");
+    $.extend(true, ActiveDocument, doc);
+  }
   $scope.activeDocument = ActiveDocument;
+  
 
   // $scope.activeDocument.fields.push(list);
   // list.items.push({text: "hello"});
@@ -54,10 +65,7 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
   };
 
   $scope.filteredDocument = function () {
-    var contents = $($.parseHTML($scope.body));
-    var elements = $('<div>').append(contents);
-    contents.remove('.embedded-context');
-    return elements;
+    return cleaner.filter($scope.activeDocument.contents);
   };
 
   $scope.save = function () {
@@ -70,7 +78,43 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
       instances: $scope.activeDocument.instances,
       tree: DependencyTreeGenerator.tree(elements)
     }, $scope.saved);
-    $scope.body = "";
+    $scope.activeDocument.contents = "";
+
+
+  };
+
+  $scope.subdocument = function () {
+    console.log("Inserting sub document");
+
+    var shelfData, subDocument;
+
+    subDocument = new DocumentModel();
+    feed.save({
+      contents: "",
+      fields: subDocument.fields,
+      instances: subDocument.instances,
+      tree: []
+    }, function (err, response) {
+      var id = response.id;
+      console.log("Waiting for", id);
+      feed.waitFor(id, function (savedDoc) {
+        console.log("Finished waiting for", response);
+        var subdocumentRef = SubdocumentModel();
+        subdocumentRef.ref = id;
+        var instance = $scope.createInstance();
+        ActiveDocument.fields.push(subdocumentRef);
+        
+        var element = $scope.createContextElement('subdocument', id);
+
+        $scope.insertNode(element);
+        // $compile(element)($scope);
+        $scope.open = true;
+
+      })
+
+    });
+
+    
   };
 
   $scope.saved = function (err, response) {
@@ -126,6 +170,8 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
         console.log("Insert at end of line");
         var firstParent = $(node).parentsUntil('.post-body')[0];
         $(firstParent).after(newNode);
+      } else if ($scope.selection.anchorOffset === 0) {
+        $($scope.selection.acnhorNode).after(newNode);
       } else {
         $(node).unwrap();
         var remaining = node.splitText($scope.selection.anchorOffset);
@@ -151,6 +197,7 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
     element.attr("data-kind", type);
     element.attr("data-id", model);
     element.attr("href", instance);
+    element.attr("contenteditable", "false");
     return element[0];
   };
 
@@ -188,8 +235,9 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
     var element = $scope.createContextElement('list', instance);
 
     $scope.insertNode(element);
-    $compile(element)($scope);
+    // $compile(element)($scope);
     $scope.open = true;
+
   };
 
   $scope.code = function (modelIndex) {
@@ -202,7 +250,7 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
     
 
     $scope.insertNode(element);
-    $compile(element)($scope);
+    // $compile(element)($scope);
     $scope.open = true;
     model.refresh = true;
   };
@@ -220,12 +268,30 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
     var element = $scope.createContextElement('data', instance);
 
     socket.on('line', function (data) {
-      model.lines.push(data.line);
-      // $scope.$apply();
-    });
+      console.log(data);
+      var headers = data.lines.shift().split(/\s+/);
+      var firstline = data.lines[0].split(/\s+/);
+      console.log(firstline);
+      if (firstline.length > headers.length) {
+        headers = _.range(0, firstline.length);
+      }
+      console.log(headers);
+      model.headings.push.apply(model.headings, headers);
 
+      model.lines.push.apply(model.lines, data.lines.map(function (line) {
+        var cells = line.split(/\s+/);
+        var row = headers.reduce(function (row, column) {
+          row[column] = cells.shift();
+          return row;
+        }, {});
+        return row;
+      }));
+
+      console.log(model.lines);
+    });
+    
     $scope.insertNode(element);
-    $compile(element)($scope);
+    // $compile(element)($scope);
     $scope.open = true;
   });
 
@@ -244,7 +310,8 @@ var EditorController = function EditorController ($scope, $state, $rootScope, fe
 }
 
 
-angular.module('system').controller('editor', ['$scope', '$state', '$rootScope', 'feed',
+angular.module('system').controller('editor', ['$scope', '$state', '$stateParams', '$rootScope', 'feed',
   '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
-  'DependencyTreeGenerator', 'BucketModel', 'socket', EditorController]);
+  'DependencyTreeGenerator', 'BucketModel', 'socket', 'DocumentModel', 'SubdocumentModel', 'cleaner',
+  EditorController]);
 

@@ -4,6 +4,7 @@ angular.module('system').factory('shelfRepository', [function () {
     var self = this;
 
     self.items = [];
+    self.objects = [];
   }
 
   return new ShelfRepository();

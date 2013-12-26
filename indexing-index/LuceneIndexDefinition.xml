@@ -1,0 +1,37 @@
+<map>
+  <entry>
+    <string>FEATURES_TO_EXCLUDE</string>
+    <list>
+      <string>SpaceToken</string>
+      <string>Split</string>
+    </list>
+  </entry>
+  <entry>
+    <string>BASE_TOKEN_ANNOTATION_TYPE</string>
+    <string>Token</string>
+  </entry>
+  <entry>
+    <string>ANNOTATION_SETS_NAMES_TO_INCLUDE</string>
+    <list/>
+  </entry>
+  <entry>
+    <string>CorpusIndexFeature</string>
+    <string>AnnicIR</string>
+  </entry>
+  <entry>
+    <string>INDEX_UNIT_ANNOTATION_TYPE</string>
+    <string></string>
+  </entry>
+  <entry>
+    <string>ANNOTATION_SETS_NAMES_TO_EXCLUDE</string>
+    <list/>
+  </entry>
+  <entry>
+    <string>FEATURES_TO_INCLUDE</string>
+    <list/>
+  </entry>
+  <entry>
+    <string>CREATE_TOKENS_AUTOMATICALLY</string>
+    <boolean>true</boolean>
+  </entry>
+</map>

@@ -1,6 +1,7 @@
 angular.module('system').controller('shelf', ['$scope', '$rootScope', 'shelfRepository', 'feed',
   function ($scope, $rootScope, shelfRepository, feedRepository) {
   $scope.shelf = shelfRepository.items;
+  $scope.objects = shelfRepository.objects;
 
   $scope.embed = function (item) {
 

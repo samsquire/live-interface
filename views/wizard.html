@@ -1,0 +1,29 @@
+<div class="ui small steps">
+  <div class="ui step" ng-class="{active: 'name' == steps[activeStep] }">
+    What is it called?
+  </div>
+  <div class="ui step" ng-class="{active: 'type' == steps[activeStep] }">
+    What type is it?
+  </div>
+  
+  <div class="ui fluid icon input wide">
+    
+
+      <div ng-show="'name' == steps[activeStep]">
+        <form ng-submit="nextStep()">
+          <input ng-model="name" type="text" placeholder="What type is it?" tabindex="0">
+          <input name="submit" type="submit" value="submit"/>
+        </form>
+      </div>
+
+      <div ng-show="'type' == steps[activeStep]">
+        <form ng-submit="nextStep()">
+          <input ng-model="type" type="text" placeholder="What type is it?" tabindex="0">
+          <input name="submit" type="submit" value="submit"/>
+        </form>    
+      </div>
+
+      
+    <i class="search icon"></i>
+  </div>
+</div>

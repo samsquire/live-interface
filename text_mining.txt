@@ -1,0 +1,23 @@
+I want to match on the following things:
+
+250gb
+
+100GiB 50kb 50KB
+
++0778885540
+
+10 minute walk
+
+tomorrow
+yesterday
+
+GIVEN
+WHEN
+THEN
+
+username@host
+
+
+7 Tanker Hill
+UK
+

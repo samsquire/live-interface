@@ -1,0 +1,21 @@
+<script type="text/ng-template" id="parent">
+<ol ng-repeat="node in currentNode.children">
+    <li>
+    <span ng-click="swap(currentNode, parent, $parent.parent, $index, $parent.$index)">
+    {{ node.name }}
+    </span>
+
+    <div ng-init="
+    parent = currentNode;
+    currentNode = node"
+        ng-include="'parent'"></div>
+    </li>
+  </ol>
+</script>
+
+<div class="tree">
+  <div ng-init="parent = activeField.parents; currentNode = activeField.parents" ng-include="'parent'"></div>
+</div>
+
+
+

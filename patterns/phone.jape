@@ -1,0 +1,17 @@
+Phase:	Phone
+Input:  Token Lookup
+Options: control = appelt
+
+// Phone
+
+Rule:phoneNumber
+Priority: 50
+(
+  ({Token.string == "+"})?
+  ({Token.kind == number, Token.length >= 6})
+):phoneNumber
+
+--> :phoneNumber.PhoneNumber= {kind = "phoneNumber", rule = "phoneNumber"}
+
+
+

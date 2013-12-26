@@ -3,6 +3,370 @@
     "fields": [
       {
         "items": [{"text": "hello?"}]
+      },
+      {
+        "type": "jsonlist",
+        "parents":  {
+                  "children": [
+                  {
+                  "name": "milestone 1",
+                    "children": [
+                    {
+                      "name": "frontend",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "fix the gui"
+                                    },
+                                    {
+                                        "name": "connect to the database"
+                                    }
+                                ],
+                                "name": "fred"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "name": "overhaul graphics"
+                                    }
+                                ],
+                                "name": "bob"
+                            }
+                        ]
+                        
+                    },
+                    {
+                      "name": "backend",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "add input forms"
+                                    }
+                                ],
+                                "name": "fred"
+                            }
+                        ]
+                        
+                    }
+                    ]
+                    
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "name": "set up new tables"
+                                        }
+                                    ],
+                                    "name": "fred"
+                                }
+                            ],
+                            "name": "back end"
+                        },
+                        {
+                            "children": [
+                            { "name": "bob",
+                              "children": [
+                                {
+                                    "name": "buy new servers"
+                                },
+                                {
+                                    "name": "set up networking"
+                                }]
+                            }],
+                            "name": "frontend"
+                        }
+                    ],
+                    "name": "milestone 2"
+                }
+            ]
+          }
+
+      },
+
+
+
+
+      {
+        "type": "jsonlist",
+        "parents":  {
+                  "children": [
+                  {
+                  "name": "milestone 1",
+                    "children": [
+                    {
+                      "name": "fred",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "fix the gui"
+                                    },
+                                    {
+                                        "name": "connect to the database"
+                                    }
+                                ],
+                                "name": "frontend"
+                            },
+                            {
+                                  
+                                          "children": [
+                                              {
+                                                  "name": "add input forms"
+                                              }
+                                          ],
+                                          "name": "backend"
+                                      
+                                  
+                              }
+
+                        
+                        ]
+                        
+                    },
+                        {
+                          "name": "frontend",
+                          "children": [
+                                {"children": [
+                                    {
+                                        "name": "overhaul graphics"
+                                    }
+                                ],
+                                "name": "bob"
+                              }]
+                        }
+                    
+                    ]
+                    
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "name": "set up new tables"
+                                        }
+                                    ],
+                                    "name": "fred"
+                                }
+                            ],
+                            "name": "back end"
+                        },
+                        {
+                            "children": [
+                            { "name": "bob",
+                              "children": [
+                                {
+                                    "name": "buy new servers"
+                                },
+                                {
+                                    "name": "set up networking"
+                                }]
+                            }],
+                            "name": "frontend"
+                        }
+                    ],
+                    "name": "milestone 2"
+                }
+            ]
+          }
+
+      },
+
+
+
+      {
+        "type": "jsonlist",
+        "parents":  {
+                  "children": [
+                  {
+                  "name": "fred",
+                    "children": [
+                    {
+                      "name": "milestone 1",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "fix the gui"
+                                    },
+                                    {
+                                        "name": "connect to the database"
+                                    }
+                                ],
+                                "name": "frontend"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "name": "add input forms"
+                                    }
+                                ],
+                                "name": "backend"
+                            }
+                        ]
+                        
+                    },
+                    {
+                      "name": "milestone 2",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "set up new tables"
+                                    }
+                                ],
+                                "name": "backend"
+                            }
+                        ]
+                        
+                    }
+                    ]
+                    
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "name": "set up new tables"
+                                        }
+                                    ],
+                                    "name": "fred"
+                                }
+                            ],
+                            "name": "back end"
+                        },
+                        {
+                            "children": [
+                            { "name": "bob",
+                              "children": [
+                                {
+                                    "name": "buy new servers"
+                                },
+                                {
+                                    "name": "set up networking"
+                                }]
+                            }],
+                            "name": "frontend"
+                        }
+                    ],
+                    "name": "milestone 2"
+                }
+            ]
+          }
+
+      },
+
+
+
+
+
+      
+{
+        "type": "jsonlist",
+        "parents":  {
+                  "children": [
+                  {
+                  "name": "milestone 1",
+                    "children": [
+                    {
+                      "name": "frontend",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "fix the gui"
+                                    },
+                                    {
+                                        "name": "connect to the database"
+                                    }
+                                ],
+                                "name": "fred"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "name": "overhaul graphics"
+                                    }
+                                ],
+                                "name": "bob"
+                            }
+                        ]
+                        
+                    },
+                    {
+                      "name": "backend",
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "name": "add input forms"
+                                    }
+                                ],
+                                "name": "fred"
+                            }
+                        ]
+                        
+                    }
+                    ]
+                    
+                },
+                {
+                    "children": [
+                        {
+                            "children": [
+                                {
+                                    "children": [
+                                        {
+                                            "name": "set up new tables"
+                                        }
+                                    ],
+                                    "name": "fred"
+                                }
+                            ],
+                            "name": "back end"
+                        },
+                        {
+                            "children": [
+                            { "name": "bob",
+                              "children": [
+                                {
+                                    "name": "buy new servers"
+                                },
+                                {
+                                    "name": "set up networking"
+                                }]
+                            }],
+                            "name": "frontend"
+                        }
+                    ],
+                    "name": "milestone 2"
+                }
+            ]
+          }
+
+      }
+
+
+
+,
+
+      {
+        "items":
+        [
+            {"text": "group contacts"},
+            {"text": "email business relationship management"}
+        ]
       }
     ]
   } 

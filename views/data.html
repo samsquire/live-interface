@@ -1,4 +1,8 @@
 <div class="embedded-context">
-    <div ng-repeat="line in activeField.lines | limitTo: 100" ng-bind="line"></div>
-  
+  <table>
+    <th ng-repeat="heading in activeField.headings" ng-bind="heading"></th>
+    <tr ng-repeat="line in activeField.lines">
+      <td ng-repeat="cell in activeField.headings" ng-bind="$parent.line[cell]"></td>
+    </tr>
+  </table>
 </div>

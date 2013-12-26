@@ -81,11 +81,9 @@ return {
             newItemIndex = currentListIndex + 1;
             break;
           case 13:
-            event.preventDefault();
             return true;
-            break;
           default:
-            event.preventDefault();
+            // event.preventDefault();
             return true;
         };
         event.preventDefault();

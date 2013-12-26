@@ -1,5 +1,9 @@
-.dropdown {
+.boxed {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown {
+  
   font-size: 10pt;
   max-width: 600px;
   max-height: 250px;
@@ -9,6 +13,11 @@
   background-color: white;
   margin-top: 1em;
   z-index: 100;
+}
+
+.wizard {
+  width: 600px;
+  height: 400px;
 }
 
 .dropdown .dropheader {

@@ -1,5 +1,11 @@
-angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootScope', 'bucket', function ($scope, $state, $rootScope, bucketService) {
+angular.module('system').controller('autocomplete',
+  ['$scope', '$state', '$rootScope', 'bucket',
+  function ($scope, $state, $rootScope, bucketService) {
   $scope.open = false;
+  $scope.choosing = $state.current.data.choosing;
+
+ 
+
   var escapeListener = null;
   $scope.options = [
   [
@@ -11,7 +17,7 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
   ],
   [
     {title: 'Expand', templateUrl: 'views/editor-expand-option.html', type: 'view', kind: 'expand'},
-    {title: 'Create context', action: ''}
+    {title: 'Create something', type: 'stateChange', action: 'home.create'}
 
   ]];
 
@@ -48,6 +54,10 @@ angular.module('system').controller('autocomplete', ['$scope', '$state', '$rootS
   $scope.view = function (item) {
     $scope[item.kind]();
   }
+
+  $scope.createContext = function (item) {
+    
+  };
 
   $scope.expand = function () {
     $rootScope.$emit('toggle-editor-expand');

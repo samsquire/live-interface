@@ -5,9 +5,14 @@
   <div packery=".context" class="spaces">
 
     <div ng-repeat="feedItem in items" class="context window" prepended data-document-id="{{feedItem._id }}">
+
+      <div class="ui menu">
+        <div class="item" ng-click="openForEditing(feedItem)"><i class="icon medium edit"></i>Open</div>
+      </div>
+
       <div class="fifteen column wide">
       <div class="row">
-        <div angular-content="feedItem.contents" document-index="$index" contenteditable="true" when-blur="update(feedItem)"></div>
+        <div angular-content="feedItem.contents" document-index="$index" contenteditable="true" when-blur="update(feedItem)" incremental="false" update-view-only="true" ng-model="feedItem.html"></div>
       </div>
     </div>
     </div>
