@@ -5,7 +5,8 @@ angular.module('system').factory('CodeModel', [function () {
       type: 'code',
       source: "",
       actions: [
-        {'text': 'Execute', icon: 'play', rel: 'execute'}
+        {'text': 'Execute', icon: 'play', rel: 'execute'},
+        {'text': 'Syntax', icon: 'play', rel: 'execute'}
       ],
       refresh: false,
       editorOptions: {

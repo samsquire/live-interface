@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="styles/code-context.css"/>
   <link rel="stylesheet" href="styles/action-dropdown.css"/>
   <link rel="stylesheet" href="styles/tree.css"/>
+  <link rel="stylesheet" href="styles/relations.css"/>
 
 
 <link rel="stylesheet" href="http://localhost:8000/font-awesome-4.0.3/css/font-awesome.min.css">
@@ -149,7 +150,7 @@
       <a class="toggle sidebar launch item"><i class="icon list layout"></i> Menu</a>
     
       <div class="title item">
-     Living System
+     <a ui-sref="home">Living System</a>
       </div>
    
      
@@ -199,6 +200,7 @@
     <script src="models/bucket.js" type="text/javascript"></script>
     <script src="models/documentModel.js" type="text/javascript"></script>
     <script src="models/subdocument.js" type="text/javascript"></script>
+    <script src="models/relation.js" type="text/javascript"></script>
 
     <script src="directives/follow.js" type="text/javascript"></script>
     <script src="directives/keypress.js" type="text/javascript"></script>
@@ -213,10 +215,14 @@
     <script src="directives/ng-model-onblur.js" type="text/javascript"></script>
     <script src="directives/screenshot.js" type="text/javascript"></script>
     <script src="directives/sidebar.js" type="text/javascript"></script>
+    <script src="directives/carousel.js" type="text/javascript"></script>
+    <script src="directives/carousel-scroll.js" type="text/javascript"></script>
 
     <script src="services/keybindings.js" type="text/javascript"></script>
     <script src="services/dependency-tree-generator.js" type="text/javascript"></script>
     <script src="services/buckets.js" type="text/javascript"></script>
+    <script src="services/sparql.js" type="text/javascript"></script>
+    <script src="services/import-template.js" type="text/javascript"></script>
     
 
     <script src="controllers/viewer.js" type="text/javascript"></script>
@@ -231,6 +237,7 @@
     <script src="controllers/shelf.js" type="text/javascript"></script>
     <script src="controllers/sidebar.js" type="text/javascript"></script>
     <script src="controllers/wizard.js" type="text/javascript"></script>
+    <script src="controllers/create-relation.js" type="text/javascript"></script>
 
 
     

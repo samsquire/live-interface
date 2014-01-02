@@ -1,0 +1,30 @@
+.relation {
+  display: inline;
+}
+
+.keyword {
+  -webkit-border-radius: 0.5em;
+  border: 2px solid #C7DDDB;
+  background-color: #C7DDDB;
+  color: #689098;
+  font-variant: small-caps;
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+.ideacontainer {
+  background-color: #88AEB1;
+  padding: 0.3ex;
+
+  border-radius: 0.5em;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+
+.name {
+  background-color: white;
+  -webkit-border-radius: 0.5em;
+  padding: 0.3ex;
+  padding-top: none;
+  padding-right: none;
+}

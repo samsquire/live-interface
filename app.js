@@ -23,7 +23,9 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: "/home",
       data: {
-        choosing: true
+        choosing: true,
+        editMode: false,
+        createMode: true
       },
       views: {
         '': {
@@ -41,7 +43,7 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
         '@dropdown': {
           templateUrl: 'views/autocomplete.html',
           controller: 'autocomplete'
-        },
+        }, 
         '@spaces': {
           templateUrl: 'views/spaces.html',
           controller: 'spaces'
@@ -59,8 +61,12 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     })
     .state('home.create', {
       url: '/create',
-      templateUrl: 'views/wizard.html',
-      controller: 'wizard',
+      views: {
+        "@wizard": {
+          templateUrl: 'views/wizard.html',
+          controller: 'wizard'
+        }
+      },
       onEnter: ['$rootScope', function ($rootScope) {
         $rootScope.$emit('caret', null);
       }],
@@ -96,10 +102,11 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
     })
     .state('edit', {
       url: '/edit/:documentId',
-      controller: 'editor',
       data: {
         choosing: true,
-        preopened: true
+        preopened: true,
+        editMode: true,
+        createMode: false
       },
       views: {
         '': {
@@ -120,6 +127,16 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       }
     })
     
+    .state('home.relation', {
+      url: '/relation',
+      views: {
+        '@relation': {
+          controller: 'create-relation',
+          templateUrl: 'views/create-relation.html'
+        }
+      }
+    })
+
     ;
 
     });

@@ -11,6 +11,63 @@ body {
   /*display: inline-block;*/
 }
 
+.code .idea-item.compact-action {
+  width: 8rem;
+  z-index: 12;
+  /*margin-top: -19px;*/
+}
+
+.cont {
+  position: relative;
+}
+
+.code .idea-item.compact-action:hover {
+  margin-top: -19px;
+}
+
+.carousel-wrapper {
+  overflow-x: scroll;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-navigation {
+  background-color: white;
+  z-index: 100;
+  height: 100%;
+}
+
+.code-editor {
+}
+
+.type-carousel {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  left: 0px;
+  width: 500%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.render-item {
+  display: inline-block;
+  width: 100%;
+  -webkit-transition: all 2s ease;
+}
+
+.dummy-code-rendering {
+  width: 300px;
+}
+
+.code {
+ 
+}
+
+.code:hover {
+ 
+}
 
 .shelf {
   position: static;
@@ -21,7 +78,7 @@ body {
   background-color: white;
   height: 5em;
   min-width: 200vw;
-  overflow: scroll-y;
+  overflow-y: scroll;
   white-space: nowrap;
 }
 
@@ -31,7 +88,7 @@ body {
 
 .shelf canvas {
   -webkit-transition: all .1s ease-in-out;
-  width: 500px;
+  height: 200px;
   height: auto;
   display: inline-block;
 }
@@ -39,7 +96,7 @@ body {
 .shelf canvas:hover {
   -webkit-transform: scale(1.5);
   height: auto;
-  width: 700px;
+  
 }
 
 .codeView ul, .codeView ul ul {
@@ -100,6 +157,8 @@ body {
   float: left;
 }
 
+
+
 .codeView ul li {
  margin: 0;
  padding: 0 12px;
@@ -139,6 +198,11 @@ body {
   left: 0;
   opacity: 0.5;
 
+}
+
+.subdocument-window {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  font-size: 10pt;
 }
 
 .window {

@@ -8,6 +8,7 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
   
   $scope.code = false;
   $scope.transposed = false;
+  $scope.activeRendering = 0; 
 
   if ($scope.metadata.kind === "subdocument") {
     $scope.documentModel = $scope.feedIds[$scope.metadata.instanceName];
@@ -474,6 +475,15 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
     console.log(shelfData);
     shelfRepository.items.push(shelfData);
     console.log(shelfRepository.items);
+  };
+
+
+  $scope.next = function () {
+    $scope.activeRendering = $scope.activeRendering + 1;
+  };
+
+  $scope.prev = function () {
+    $scope.activeRendering = $scope.activeRendering - 1;
   };
 
   $scope.codemirror = function (options) {

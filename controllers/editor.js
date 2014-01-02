@@ -1,9 +1,10 @@
 var EditorController = function EditorController ($scope, $state, $stateParams, $rootScope, feed,
     $templateCache, $http, $compile, keybinding,
-    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,
+    ListModel, CodeModel, RelationModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,
     DocumentModel, SubdocumentModel, cleaner) {
 
   $scope.open = false;
+  $.extend($scope, $state.current.data);
 
   if ($state.current.data.preopened) {
     $scope.open = true;
@@ -68,6 +69,17 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     return cleaner.filter($scope.activeDocument.contents);
   };
 
+  $scope.update = function () {
+    var elements = $scope.filteredDocument();
+    var html = elements.html();
+    $scope.activeDocument.contents = html;
+    
+    feed.update($scope.activeDocument, function () {
+      console.log("Updated", $scope.activeDocument);
+      $state.transitionTo("home");
+    });
+  };
+
   $scope.save = function () {
     var elements = $scope.filteredDocument();
     var html = elements.html();
@@ -79,40 +91,48 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
       tree: DependencyTreeGenerator.tree(elements)
     }, $scope.saved);
     $scope.activeDocument.contents = "";
-
-
   };
 
-  $scope.subdocument = function () {
+  $scope.subdocument = function (metadata) {
     console.log("Inserting sub document");
 
     var shelfData, subDocument;
 
-    subDocument = new DocumentModel();
-    feed.save({
-      contents: "",
-      fields: subDocument.fields,
-      instances: subDocument.instances,
-      tree: []
-    }, function (err, response) {
-      var id = response.id;
-      console.log("Waiting for", id);
-      feed.waitFor(id, function (savedDoc) {
-        console.log("Finished waiting for", response);
-        var subdocumentRef = SubdocumentModel();
-        subdocumentRef.ref = id;
-        var instance = $scope.createInstance();
-        ActiveDocument.fields.push(subdocumentRef);
-        
-        var element = $scope.createContextElement('subdocument', id);
+    function insertSubDocument(id) {
+      var subdocumentRef = SubdocumentModel();
+      subdocumentRef.ref = id;
+      var instance = $scope.createInstance();
+      ActiveDocument.fields.push(subdocumentRef);
+      
+      var element = $scope.createContextElement('subdocument', id);
 
-        $scope.insertNode(element);
-        // $compile(element)($scope);
-        $scope.open = true;
+      $scope.insertNode(element);
+      // $compile(element)($scope);
+      $scope.open = true;
+    }
 
-      })
+    if (metadata) {
+      insertSubDocument(metadata.document._id);
+    } else {
+      // we need to create the subdocument
+      subDocument = new DocumentModel();
+      feed.save({
+        contents: "",
+        fields: subDocument.fields,
+        instances: subDocument.instances,
+        tree: []
+      }, function (err, response) {
+        var id = response.id;
+        console.log("Waiting for", id);
+        feed.waitFor(id, function (savedDoc) {
+          console.log("Finished waiting for", response);
+          insertSubDocument(id);
+        });
 
-    });
+      });
+    }
+
+    
 
     
   };
@@ -125,10 +145,16 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     $scope[kind]();
   };
 
+  $rootScope.$on('embed', function (event, metadata) {
+    console.log('External embed', metadata, 'of kind', metadata.kind);
+    $scope[metadata.kind](metadata);
+  });
+
   $rootScope.$on('embed-field', function (event, field) {
     console.log('Embedding', field.index, 'of type', field.type);
     $scope[field.type](field.index);
   });
+
 
   $scope.insertNode = function (newNode) {
     var node;
@@ -171,7 +197,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
         var firstParent = $(node).parentsUntil('.post-body')[0];
         $(firstParent).after(newNode);
       } else if ($scope.selection.anchorOffset === 0) {
-        $($scope.selection.acnhorNode).after(newNode);
+        $($(".post-body")[0].lastChild).after(newNode);
       } else {
         $(node).unwrap();
         var remaining = node.splitText($scope.selection.anchorOffset);
@@ -237,7 +263,27 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     $scope.insertNode(element);
     // $compile(element)($scope);
     $scope.open = true;
+  };
 
+  $scope.relation = function (metadata) {
+    var relation = RelationModel();
+    console.log(metadata, relation);
+    relation.subject.type = "";
+    relation.subject.description = metadata.subject;
+
+    relation.predicate.type = "";
+    relation.predicate.description = metadata.predicate;
+    
+    relation.object.type = "";
+    relation.object.description = metadata.object;
+    ActiveDocument.fields.push(relation);
+
+    var instance = $scope.createInstance();
+    var element = $scope.createContextElement('relation', instance);
+
+    $scope.insertNode(element);
+    // $compile(element)($scope);
+    $scope.open = true;
   };
 
   $scope.code = function (modelIndex) {
@@ -297,7 +343,6 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
 
   $rootScope.$on('caret', function (event, newSelection) {
     $scope.selection = selection = newSelection;
-    
   });
   $rootScope.$on('insertion', $scope.insert);
   $rootScope.$on('autocomplete-closed', function () {
@@ -311,7 +356,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
 
 
 angular.module('system').controller('editor', ['$scope', '$state', '$stateParams', '$rootScope', 'feed',
-  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
+  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'RelationModel', 'ActiveDocument',
   'DependencyTreeGenerator', 'BucketModel', 'socket', 'DocumentModel', 'SubdocumentModel', 'cleaner',
   EditorController]);
 

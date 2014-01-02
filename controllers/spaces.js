@@ -33,8 +33,8 @@ $scope.saveIndex = function (id, index) {
       console.log("Applying after update");
       $scope.$apply();
     });
-
   };
+  
 };
 
 

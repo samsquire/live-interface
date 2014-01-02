@@ -1,3 +1,31 @@
+.document-card {
+  width: 250px;
+  height: 90px;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+
+.subdocument {
+  background-color: #F2F2F2;
+}
+
+.available-spaces {
+  width: 100%;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.document-card:hover {
+  width: 250px;
+  height: 400px;
+  overflow: scroll;
+  -webkit-transform: scale(1.5);
+  -webkit-transform-origin: 0 0;
+}
+
 .post-body {
   resize: none;
   margin-left: auto;
@@ -8,7 +36,7 @@
   font-size: 16pt;
   font-family: Tahoma;
   padding-left: 5px;
-  overflow: hidden;
+  overflow-y: scroll;
   margin-bottom: 0.3em;
   padding-top: 0px;
   -webkit-transition: all 0.5s ease;

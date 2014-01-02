@@ -1,8 +1,30 @@
 <div class="focal-window window">
+
+<div class="ui inverted segment">
+Embed
+
+<div class="circular inverted white ui icon button floated right" ng-click="close()">
+  <i class="icon remove"></i>
+</div>
+
+</div>
+
+
+
+
+<div packery=".document-card" class="available-subdocuments">
   
+    <div ng-repeat="feedItem in items" class="document-card window" prepended data-document-id="{{feedItem._id }}" ng-click="embedDocument(feedItem)">
+        <a class="ui orange label">
+          {{ feedItem._id }}
+        </a>
+        <div angular-content="feedItem.contents" document-index="$index" contenteditable="false" incremental="false"></div>
+    </div>
+</div>
 
 <div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
   <ol ng-class="start">
+
     <li tabindex="0" ng-repeat="field in activeDocument.fields" ng-bind="field.type" ng-click="embed($index)" focus-when="$first"></li>
   </ol>
 </div>

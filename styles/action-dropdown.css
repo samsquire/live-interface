@@ -10,13 +10,14 @@
   /*top: -9px;*/
   top: 0px;
   left: 0px;
-  position: absolute;
+  /*position: absolute;*/
   height: 43px;
   overflow: hidden;
 }
 
 .idea-item:hover {
   color: white;
+  
 }
 
 .idea-item:hover {

@@ -22,6 +22,12 @@ return {
 
       return true;
     });
+
+    var ondestruction = $scope.$on('$destroy', function () {
+      console.log('Unbinding');
+      $(document.body).unbind('keydown');
+      ondestruction();
+    });
   }
 
   };
@@ -42,6 +48,7 @@ return {
       var selected = $element.find(validOptions).get(index - 1)
       selected.focus();
       selected.click();
+      event.stopPropagation();
       return true;
     });
   }

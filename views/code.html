@@ -3,65 +3,86 @@
 
 
   <div class="ui grid">
-    <div class="ui one wide column compact">
+    <div class="ui one wide column compact carousel-navigation" ng-click="prev()">
       <i class="fa fa-2x fa-chevron-left"></i>
     </div>
-  <div class="ui fourteen wide column content">
-
-        <textarea ng-model="activeField.source"
-          ui-codemirror="codemirror(activeField.editorOptions)"
-          ui-refresh='activeField.editorOptions'></textarea>
-
-          <div class="ui menu attached bottom stacked">
-                <a class="green item" ng-click="toggleCode()">
-                  <i class="code icon"></i>
-                </a>
-
-                <a class="green item" ng-click="connect()">
-                  <i class="wrench icon"></i>
-                  <!-- <div class="ui floating label">
-                    Connect
-                  </div> -->
-                </a>
 
 
+          <div class="ui eleven wide column content">
+          <div class="carousel-wrapper" carousel-scroll>
+            <ul class="type-carousel" carousel="activeRendering">
+              <li class="render-item">
+                <div class="code-editor">
+                  <textarea ng-model="activeField.source"
+                    ui-codemirror="codemirror(activeField.editorOptions)"
+                    ui-refresh='activeField.editorOptions'></textarea>
+                  </div>
+                  <div class="ui menu attached bottom stacked small">
+                        <a class="green item" ng-click="toggleCode()">
+                          <i class="code icon"></i>
+                        </a>
+
+                        <a class="green item" ng-click="connect()">
+                          <i class="wrench icon"></i>
+                          <!-- <div class="ui floating label">
+                            Connect
+                          </div> -->
+                        </a>
+
+                        <a class="green item" ng-click="inspect()">
+                          <i class="tasks icon"></i>
+                        </a>
 
 
-      <div class="idea-action item three wide column right vertically fitted">
-        <div class="cont">
-          <div class="idea-item ui vertical transparent menu two wide">
-            <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
-              <i class="{{action.icon}} icon"></i>
-              {{action.text}}
-            </a>
-          </div>
-        </div>
-      </div>
 
-          </div>
 
-          <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
-            <div class="ui floating label">
-              Structure
-            </div>
+              <div class="idea-action item vertically fitted">
+                <div class="cont">
+                  <div class="idea-item ui compact-action vertical transparent left menu small right">
+                    <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
+                      {{action.text}}
+                      <i class="{{action.icon}} icon"></i>
+                      
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-            <div class="ui menu attached top stacked right">
-                <a class="red item" ng-click="transpose()">
-                  <i class="undo icon"></i>
-                </a>
+                  </div>
 
+                  <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
+                    <div class="ui floating label">
+                      Structure
+                    </div>
+
+                    <div class="ui menu attached top stacked right">
+                        <a class="red item" ng-click="transpose()">
+                          <i class="undo icon"></i>
+                        </a>
+
+                    </div>
+                    
+                      
+                      <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
+                            <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
+                            </div>
+                      </div>
+                </div>
+                </li>
+                <li class="render-item dummy-code-rendering">
+                  How'd you like your code?
+                </li>
+
+                </ul>
+                </div>
+              
             </div>
             
-              
-              <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
-                    <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
-                    </div>
-              </div>
-        </div>
-    </div>
-    <div class="ui one wide column compact">
-      <i class="fa fa-2x fa-chevron-right"></i>
-</div>
+          <div class="ui one wide column compact" ng-click="next()">
+                <i class="fa fa-2x fa-chevron-right"></i>
+          </div>
+    
+    
 </div>
 
 

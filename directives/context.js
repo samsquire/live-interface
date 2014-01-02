@@ -1,12 +1,13 @@
 angular.module('system').factory('contextTemplates',
-  ['$http', '$templateCache', function ($http, $templateCache) {
+  ['$http', '$templateCache', 'importTemplate',
+  function ($http, $templateCache, importTemplate) {
 
-  function importTemplate(url) {
-    $http.get(url).then(function (templateData) {
-      console.log("Imported template for", url);
-      $templateCache.put(url, templateData.data);
-    });
-  };
+  // function importTemplate(url) {
+  //   $http.get(url).then(function (templateData) {
+  //     console.log("Imported template for", url);
+  //     $templateCache.put(url, templateData.data);
+  //   });
+  // };
    
 
   importTemplate('views/list.html');
@@ -15,6 +16,7 @@ angular.module('system').factory('contextTemplates',
   importTemplate('views/data.html');
   importTemplate('views/jsonlist.html');
   importTemplate('views/subdocument.html');
+  importTemplate('views/relation.html');
 }]);
 
 angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache', 'contextTemplates', '$controller',

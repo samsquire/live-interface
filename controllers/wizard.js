@@ -1,9 +1,12 @@
 angular.module('system').controller('wizard',
   ['$scope', '$rootScope', '$state', 'shelfRepository',
   function ($scope, $rootScope, $state, shelfRepository) {
+
   $scope.$parent.choosing = $state.current.data.choosing;
+  $scope.$parent.createWizard = true
   $scope.$on('$destroy', function () {
     $scope.$parent.choosing = true;
+    $scope.$parent.createWizard = false
   });
 
  $scope.activeStep = 0;

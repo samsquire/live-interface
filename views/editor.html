@@ -7,7 +7,10 @@
           <div data-document-id="{{ activeDocument._id }}"
           interested-in-focus="active"
           tabindex="1"
-          ng-model="activeDocument.contents" ng-show="true" follow=".dropdown-follow" contenteditable="true"
+          ng-model="activeDocument.contents"
+          ng-show="true"
+          follow=".dropdown-follow"
+          contenteditable="true"
           document-model="activeDocument"
           angular-content="activeDocument.contents"
           incremental="true"
@@ -18,8 +21,12 @@
         </div>
         <!-- <div class="one wide column" ng-show="true"> -->
               <div class="ui vertical icon menu left attached left">
-                <div class="ui button item" ng-click="save()">
+                <div ng-show="createMode" class="ui button item" ng-click="save()">
                   Create
+                </div>
+
+                <div ng-show="editMode" class="ui button item" ng-click="update()">
+                  Update
                 </div>
 
                 <a class="red item" ng-click="tree()">
