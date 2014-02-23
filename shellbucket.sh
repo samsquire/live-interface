@@ -15,7 +15,9 @@ socket.on('connect', function () {
   process.stdin.on('end', function () {
     console.log("stdin finished");
     stream.end();
-    process.exit();
+    stream.on('end', function () {
+      process.exit();
+    });
   });
   var read = process.stdin.pipe(stream);
 });

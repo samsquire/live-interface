@@ -2,8 +2,11 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.dropdown-view {
+
+}
+
 .dropdown {
-  
   font-size: 10pt;
   max-width: 600px;
   max-height: 250px;
@@ -11,7 +14,7 @@
   margin-left: 1em;
   overflow: scroll;
   background-color: white;
-  margin-top: 1em;
+  margin-top: 2em;
   z-index: 100;
 }
 
@@ -67,8 +70,6 @@
   /*display: block;*/
 }
 
-
-
 .dropdown li.active, .dropdown li.active>a, .dropdown li.forced>a, .dropdown li.forced  {
   text-decoration: none;
   line-height: 20px;
@@ -76,4 +77,22 @@
   /*display: block;*/
   background-color: #0081C2;
   background-image: linear-gradient(to bottom, #08C, #0077B3);
+}
+
+
+.input-parameters {
+  pointer-events: none;
+  float: left;
+  position: absolute;
+  z-index: 1;
+}
+
+.page-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 960px;
+  height: 2500px;
+  z-index: 101;
 }

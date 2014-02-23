@@ -1,0 +1,6 @@
+{
+  "query": "MATCH (a:Type)-[:Input]->(op:Operation)-[:Output]->(out:Type) WHERE a.name IN { inputs } RETURN DISTINCT op, out",
+  "params": {
+    "inputs": ["JSON", "Mustache HTML"]  
+  }
+}

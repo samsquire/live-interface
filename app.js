@@ -110,7 +110,8 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
       },
       views: {
         '': {
-          templateUrl: 'views/edit-document.html'
+          templateUrl: 'views/edit-document.html',
+          controller: 'edit-document'
         },
         '@editor': {
           templateUrl: 'views/editor.html',

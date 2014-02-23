@@ -8,10 +8,14 @@ var EmbedController = function EmbedController (
   $rootScope.$emit('disable-autocomplete');
   $rootScope.$emit('close-autocomplete');
 
-  $rootScope.$on('escape-pressed', function () {
+  var escapeListner = $rootScope.$on('escape-pressed', function () {
     $state.transitionTo('home');
     $rootScope.$emit('enable-autocomplete');
   });
+
+  $scope.$on('$destroy', function () {
+    escapeListner();
+  })
 
   $scope.embedDocument = function (feedItem) {
     var embed = {
@@ -20,6 +24,14 @@ var EmbedController = function EmbedController (
     };
     $rootScope.$emit('embed', embed);
 
+  };
+
+  $scope.embedExternalField = function (document, fieldIndex) {
+    console.log('Embed external field');
+    $rootScope.$emit('embed-external-field', {
+      document: document,
+      fieldIndex: fieldIndex
+    });
   };
 
   $scope.embed = function (field) {

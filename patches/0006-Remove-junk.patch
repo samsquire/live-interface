@@ -1,0 +1,105 @@
+From da635953d00ee961a8dc0c606a24890db0b4a385 Mon Sep 17 00:00:00 2001
+From: Sam Squire <ssquire@thoughtworks.com>
+Date: Mon, 10 Feb 2014 22:34:07 +0000
+Subject: [PATCH 6/6] Remove junk
+
+---
+ -         |   50 --------------------------------------------------
+ .DS_Store |  Bin 15364 -> 0 bytes
+ 2 files changed, 50 deletions(-)
+ delete mode 100644 -
+ delete mode 100644 .DS_Store
+
+diff --git a/- b/-
+deleted file mode 100644
+index 9c55c2c..0000000
+--- a/-
++++ /dev/null
+@@ -1,50 +0,0 @@
+-COMMAND     PID    USER   FD     TYPE             DEVICE   SIZE/OFF     NODE NAME
+-loginwind    64 ssquire  cwd      DIR               14,2       1496        2 /
+-loginwind    64 ssquire  txt      REG               14,2    1438352 11827086 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow
+-loginwind    64 ssquire  txt      REG               14,2     254896   377627 /System/Library/LoginPlugins/DisplayServices.loginPlugin/Contents/MacOS/DisplayServices
+-loginwind    64 ssquire  txt      REG               14,2     118384 11827220 /System/Library/LoginPlugins/FSDisconnect.loginPlugin/Contents/MacOS/FSDisconnect
+-loginwind    64 ssquire  txt      REG               14,2       3144    13722 /System/Library/ColorSync/Profiles/sRGB Profile.icc
+-loginwind    64 ssquire  txt      REG               14,2      22346 11809839 /System/Library/CoreServices/loginwindow.app/Contents/Resources/MacOSX@2x.png
+-loginwind    64 ssquire  txt      REG               14,2      10813   452318 /System/Library/CoreServices/loginwindow.app/Contents/Resources/MacOSX.png
+-loginwind    64 ssquire  txt      REG               14,2      10264   452321 /System/Library/CoreServices/loginwindow.app/Contents/Resources/ShutDown.png
+-loginwind    64 ssquire  txt      REG               14,2     126648    21259 /System/Library/Frameworks/CoreFoundation.framework/Versions/A/Resources/tokruleLE.data
+-loginwind    64 ssquire  txt      REG               14,2      52904    19421 /System/Library/Frameworks/AppKit.framework/Versions/C/Resources/Latn2.data
+-loginwind    64 ssquire  txt      REG               14,2      64560     5532 /System/Library/PrivateFrameworks/MachineSettings.framework/Versions/A/MachineSettings
+-loginwind    64 ssquire  txt      REG               14,2   16402752 28704912 /usr/share/icu/icudt46l.dat
+-loginwind    64 ssquire  txt      REG               14,2      21048 11809843 /System/Library/CoreServices/loginwindow.app/Contents/Resources/ShutDown@2x.png
+-loginwind    64 ssquire  txt      REG               14,2      17289    26730 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/A/Resources/AirPort0.pdf
+-loginwind    64 ssquire  txt      REG               14,2      50048 11812473 /System/Library/Extensions/IOBluetoothFamily.kext/Contents/PlugIns/IOBluetoothSCOAudioDriver.kext/Contents/Resources/IOBluetoothSCOAudioDriverPlugIn.bundle/Contents/MacOS/IOBluetoothSCOAudioDriverPlugIn
+-loginwind    64 ssquire  txt      REG               14,2     563296 11826847 /System/Library/LoginPlugins/BezelServices.loginPlugin/Contents/MacOS/BezelServices
+-loginwind    64 ssquire  txt      REG               14,2     234064 11812707 /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib
+-loginwind    64 ssquire  txt      REG               14,2     198880 11824478 /System/Library/PrivateFrameworks/UniversalAccess.framework/Versions/A/UniversalAccess
+-loginwind    64 ssquire  txt      REG               14,2      97888 11826920 /System/Library/PrivateFrameworks/UniversalAccess.framework/Versions/A/Frameworks/UniversalAccessCore.framework/Versions/A/UniversalAccessCore
+-loginwind    64 ssquire  txt      REG               14,2     138224   444155 /System/Library/CoreServices/ZoomWindow.app/Contents/Frameworks/ZoomWindowSupport.framework/Versions/A/ZoomWindowSupport
+-loginwind    64 ssquire  txt      REG               14,2      76496 11819384 /System/Library/PrivateFrameworks/BezelServices.framework/Versions/A/BezelServices
+-loginwind    64 ssquire  txt      REG               14,2     166096 11819844 /System/Library/PrivateFrameworks/GPUSupport.framework/Versions/A/Libraries/libGPUSupport.dylib
+-loginwind    64 ssquire  txt      REG               14,2     447472 11826590 /System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLRendererFloat.bundle/GLRendererFloat
+-loginwind    64 ssquire  txt      REG               14,2     134336 11827023 /System/Library/Frameworks/OpenCL.framework/Versions/A/Libraries/libcldcpuengine.dylib
+-loginwind    64 ssquire  txt      REG               14,2      56896 11815637 /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreFSCache.dylib
+-loginwind    64 ssquire  txt      REG               14,2     219510    19420 /System/Library/Frameworks/AppKit.framework/Versions/C/Resources/Latn1.data
+-loginwind    64 ssquire  txt      REG               14,2      51288 36860130 /private/var/folders/3t/36z63d292t11b1w74qfwwvjw0000gp/C/mds/mdsDirectory.db
+-loginwind    64 ssquire  txt      REG               14,2      17461    26734 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/A/Resources/AirPort4.pdf
+-loginwind    64 ssquire  txt      REG               14,2      76768 11812211 /System/Library/Extensions/AudioIPCDriver.kext/Contents/Resources/AudioIPCPlugIn.bundle/Contents/MacOS/AudioIPCPlugIn
+-loginwind    64 ssquire  txt      REG               14,2     827436   394458 /System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/Resources/AppleKeyboardLayouts-L.dat
+-loginwind    64 ssquire  txt      REG               14,2    3859664 11826593 /System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLEngine.bundle/GLEngine
+-loginwind    64 ssquire  txt      REG               14,2    2129920 36798212 /private/var/folders/zz/zyxvpxvq6csfxvn_n0000000000000/C/com.apple.LaunchServices-0340.csstore
+-loginwind    64 ssquire  txt      REG               14,2      17049    26732 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/A/Resources/AirPort2.pdf
+-loginwind    64 ssquire  txt      REG               14,2      16537    26746 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/A/Resources/AirPortOff.pdf
+-loginwind    64 ssquire  txt      REG               14,2     169552   454431 /System/Library/Filesystems/NetFSPlugins/smb.bundle/Contents/MacOS/smb
+-loginwind    64 ssquire  txt      REG               14,2     297680   454402 /System/Library/PrivateFrameworks/SMBClient.framework/Versions/A/SMBClient
+-loginwind    64 ssquire  txt      REG               14,2    1217008    65756 /System/Library/PrivateFrameworks/DCERPC.framework/Versions/A/DCERPC
+-loginwind    64 ssquire  txt      REG               14,2    1766684    46843 /System/Library/Fonts/LucidaGrande.ttc
+-loginwind    64 ssquire  txt      REG               14,2     171696   372468 /System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/Resources/com.apple.datadetectorscore.cache.urlifier.system
+-loginwind    64 ssquire  txt      REG               14,2      17284    26733 /System/Library/PrivateFrameworks/CoreWLANKit.framework/Versions/A/Resources/AirPort3.pdf
+-loginwind    64 ssquire  txt      REG               14,2       1024   680405 /Users/ssquire/Library/Caches/com.apple.loginwindow/com.apple.opencl/com.apple.ocl.64.maps
+-loginwind    64 ssquire  txt      REG               14,2      49376   434304 /System/Library/KerberosPlugins/KerberosFrameworkPlugins/heimdalodpac.bundle/Contents/MacOS/heimdalodpac
+-loginwind    64 ssquire  txt      REG               14,2      48016   386231 /System/Library/KerberosPlugins/KerberosFrameworkPlugins/Reachability.bundle/Contents/MacOS/Reachability
+-loginwind    64 ssquire  txt      REG               14,2      48016   386239 /System/Library/KerberosPlugins/KerberosFrameworkPlugins/SCKerberosConfig.bundle/Contents/MacOS/SCKerberosConfig
+-loginwind    64 ssquire  txt      REG               14,2    5425538    20707 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/Resources/Extras2.rsrc
+-loginwind    64 ssquire  txt      REG               14,2    3275504 11826592 /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLProgrammability.dylib
+-loginwind    64 ssquire  txt      REG               14,2    6164912 11824838 /System/Library/Extensions/ATIRadeonX3000GLDriver.bundle/Contents/MacOS/ATIRadeonX3000GLDriver
+-loginwind    64 ssquire  txt      REG               14,2   10056208 11824818 /System/Library/Extensions/AppleIntelHD3000GraphicsGLDriver.bundle/Contents/MacOS/AppleIntelHD3000GraphicsGLDriver
+-loginwind    64 ssquire  txt      REG               14,2      65536   680406 /Users/ssquire/Libr
+\ No newline at end of file
+diff --git a/.DS_Store b/.DS_Store
+deleted file mode 100644
+index 1017be0ec4e89c1eda2ad9ef81655b9975349698..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 15364
+zcmeHM&2A$_5U$COGtL?|7bFe{Mx6E#BCj`&vl0g@S`ge2S!t12w0L3@&oc2up7A;m
+z0v6A}Vc&uW;L3pmXT&4$7U8R!$*Q|&hLt5`(5gD>u69pVb@x|4Gu<H~?`Sr>OB4{1
+zkIHnXg{GqLbFQVbR*ZB&J;)QCQT%b7oP==_mbi655l{pa0YyL&Pz3%D2;iN~#lMwP
+zZ507UKoNL>0OyAQm1)1Ai=0a8KqE&0&<zYrK_BM;kqHXgFX$qtA_|@P>A@>Rz2b=B
+z<>GiAFgs|!po^U5;^gJx<P|e}#R<ie*&!DQJ9+(_YO4q+0%ZjF?B1XO?a`Pr=lss0
+z^gBZ7;#!IbGw(V6_UI|4##x_vKSaG_@rHGJy-!PeLz>YEeN7|EY`xx}4sVkT-nx}|
+ze;F%rB~lvObI3kTi7jgmXQ#4yle>YH*B~gXH+i?gn*ix^v=i)h0^A+_jO5y9#`<rG
+z40BE)72|J&o+|}gS@_pT4bzi2Op=)GxlKcgplXB(GW4FI=cwh)T52n0!g+dLT>JbS
+zp2ty|wcCGqYwH`EjV-^~^jnV~MU!DNKT2kkVfy*;IGG<u!%;Yxej)vAkj>Jg!Bn1n
+zGRVewBK?P0Df*8K?nluu8$a23^YZfGes?$M?DwvAgUep8y&LS`JG{DT`hIigSO1N7
+z_ul{L;o!Tg?|)eEKH)*di-TUvf4^vdM6Ys7FU9HE@pKX=lT+4?+5&bL2oE+b8%RQg
+zjcmIbJA{Sj7JUWeW8hz9R1T`=hAV8*DdzYVyctW_y4j5_$7w+G8Te1Z@7R@j={c%*
+zeT|mWfWf<Zdv-gpVYl0^u;)+9+SA&~jUCxW)&s|W+t~jE@xWHB3ucZ5(;Dx<ZX7i%
+zc?#JCaWn(sMOZ^mir=Ad@#uT-4G!U_=p*86>v5!6)_cp+p3*na#$Ix^q+WQOrT6V6
+z^v<!`DbjL^l@G9H*W)-<{bu-Q1FK5}#n|;Y@q80Ki}%J%?25ijCJv6tCzP(<9XtC6
+zNH5*{|Asr3wsW&rcFEF1$1PjpG6>(osRnR?2oO7IMMB>+M6H}Tc?<B4FhK(K5frnn
+zBaFDY0#^2X!^*xaXDXf#pD6JoxBN5ze_+r9Ht4-7gD(BPC~e=d+3SF33|RP0{gQ7L
+zkAvQ{TfJ=QtAzu~l5Jw%3~3^N{hZ*JV@RIOGEBpeaCxD<p4arE+me+o&^|%*b1uyD
+z;T}dXYG*nAxLH3md}$LIl3lu#FW99WPR_I=n!DR#oz`dSrg)}suHMt`_B!|)>Frmf
+zj-@@#*ofm}O~An6Is|Z$Skbi~Y`uPn46|0e;436n4^F2(41ZbnHD9qI2PA%(Xi)?d
+zfeHlH^Ra;M|39ez|9^#~4k-ePz^j6QxAEZk!4Y<Ib4B8AjPKe5)GtxFFyA7lB7#P)
+z<3Z&*9zXax{thbhwwZE4zhBTrPBDVA`hNz<eTeg|py&Updj&oJm#!C=zK$v#@y)|i
+z>7nD6wdZ)}SjAU=<~g!fE}vWiPa8!*5l{pa0YyL&Py`eKML-cy1QY>9KoL*`6ahs*
+J5qKpL_#2uFEj|DM
+
+-- 
+1.7.10.2 (Apple Git-33)
+

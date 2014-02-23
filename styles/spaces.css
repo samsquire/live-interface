@@ -2,9 +2,11 @@
  
  width: 250px;
  height: 300px;
- -webkit-transition: width 2s ease, width, height 2s ease;
+ overflow-y: hidden;
+ -webkit-transition: width 2s ease;
+ -webkit-transition: height 2s ease;
 /*   height: 400px;
-  overflow: scroll;
+  
   white-space: pre-wrap;
   */
   z-index: 0;

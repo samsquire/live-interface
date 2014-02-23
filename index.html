@@ -5,24 +5,25 @@
 <meta charset=utf-8 />
 <title>Living System</title>
   
-  <script src="http://localhost:8000/jquery.min.js"></script>
-  <script src="http://localhost:8000/angular.min.js"></script>
-  <script src="http://localhost:8000/angular-ui-router.min.js"></script>
-  <script src="http://localhost:8000/Bacon.min.js"></script>
-  <script src="http://localhost:8000/pouchdb-nightly.min.js"></script>
-  <script src="http://localhost:8000/packery/packery.pkgd.js"></script>
-  <script src="http://localhost:8000/q.min.js"></script>
-  <script src="http://localhost:8000/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
-  <script src="http://localhost:8000/tween.min.js"></script>
-  <script src="http://localhost:8000/keymaster.js"></script>
-  <script src="http://localhost:8000/html2canvas.js"></script>
-  <script src="http://localhost:7003/components/esprima/esprima.js"></script>
+  <script src="http://sampc:8000/jquery.min.js"></script>
+  <script src="http://sampc:8000/angular.min.js"></script>
+  <script src="http://sampc:8000/angular-ui-router.min.js"></script>
+  <script src="http://sampc:8000/Bacon.min.js"></script>
+  <script src="http://sampc:8000/pouchdb-nightly.min.js"></script>
+  <script src="http://sampc:8000/packery/packery.pkgd.js"></script>
+  <script src="http://sampc:8000/q.min.js"></script>
+  <script src="http://sampc:8000/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+  <script src="http://sampc:8000/tween.min.js"></script>
+  <script src="http://sampc:8000/keymaster.js"></script>
+  <script src="http://sampc:8000/html2canvas.js"></script>
+  <script src="http://sampc:7003/components/esprima/esprima.js"></script>
+  <script type="text/javascript" src="http://localhost:8000/paperjs-v0.9.9/dist/paper-full.js"></script>  
 
-  <script src="http://localhost:1445/socket.io/socket.io.js"></script>
-  <script src="http://localhost:7003/components/angular-socket-io/socket.js"></script>
+  <script src="http://sampc:1445/socket.io/socket.io.js"></script>
+  <script src="http://sampc:7003/components/angular-socket-io/socket.js"></script>
 
 
-
+  <script src="angular-dependency-finder.js"></script>
   
   <link rel="stylesheet" href="styles/autocomplete.css"/>
   <link rel="stylesheet" href="styles/feed.css"/>
@@ -36,48 +37,48 @@
   <link rel="stylesheet" href="styles/relations.css"/>
 
 
-<link rel="stylesheet" href="http://localhost:8000/font-awesome-4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://sampc:8000/font-awesome-4.0.3/css/font-awesome.min.css">
 
   <link rel="stylesheet" type="text/css" class="ui" href="style.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/basic.icon.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/icon.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/basic.icon.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/icon.css">
 
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/button.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/divider.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/header.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/image.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/input.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/label.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/loader.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/progress.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/segment.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/elements/step.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/button.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/divider.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/header.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/image.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/input.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/label.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/loader.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/progress.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/segment.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/elements/step.css">
 
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/breadcrumb.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/form.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/grid.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/menu.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/message.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/collections/table.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/breadcrumb.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/form.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/grid.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/menu.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/message.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/collections/table.css">
 
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/views/comment.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/views/list.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/views/feed.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/views/item.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/views/statistic.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/views/comment.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/views/list.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/views/feed.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/views/item.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/views/statistic.css">
 
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/modal.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/accordion.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/dropdown.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/popup.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/reveal.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/rating.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/sidebar.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/shape.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/tab.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/checkbox.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/dimmer.css">
-  <link rel="stylesheet" type="text/css" class="ui" href="http://localhost:8000/semantic/uncompressed/modules/transition.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/modal.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/accordion.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/dropdown.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/popup.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/reveal.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/rating.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/sidebar.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/shape.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/tab.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/checkbox.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/dimmer.css">
+  <link rel="stylesheet" type="text/css" class="ui" href="http://sampc:8000/semantic/uncompressed/modules/transition.css">
 
 
   <link rel="stylesheet" href="components/codemirror/theme/3024-day.css">
@@ -114,22 +115,22 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
 
 
-  <script src="http://localhost:8000/semantic/uncompressed/modules/behavior/api.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/behavior/state.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/accordion.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/checkbox.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/dimmer.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/dropdown.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/modal.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/popup.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/rating.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/sidebar.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/tab.js"></script>
-  <script src="http://localhost:8000/semantic/uncompressed/modules/transition.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/behavior/api.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/behavior/state.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/accordion.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/checkbox.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/dimmer.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/dropdown.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/modal.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/popup.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/rating.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/sidebar.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/tab.js"></script>
+  <script src="http://sampc:8000/semantic/uncompressed/modules/transition.js"></script>
 
-  <script src="http://localhost:8000/semantic/packaged/javascript/semantic.js"></script>
+  <script src="http://sampc:8000/semantic/packaged/javascript/semantic.js"></script>
   
-  <script src="http://localhost:8000/underscore-min.js"></script>
+  <script src="http://sampc:8000/underscore-min.js"></script>
 
 
   <link rel="stylesheet" type="text/css" href="components/codemirror/lib/codemirror.css">
@@ -184,7 +185,9 @@
     </h2>  
 
       <div ui-view></div>
-
+      <div ng-controller="ElementLines">
+        <canvas class="page-lines" paper ng-show="visible"></canvas>
+      </div>
     </div>    
   </div>
   
@@ -217,6 +220,11 @@
     <script src="directives/sidebar.js" type="text/javascript"></script>
     <script src="directives/carousel.js" type="text/javascript"></script>
     <script src="directives/carousel-scroll.js" type="text/javascript"></script>
+    <script src="directives/embedded-context.js" type="text/javascript"></script>
+    <script src="directives/autoannotate.js" type="text/javascript"></script>
+    <script src="directives/semantic-search.js" type="text/javascript"></script>
+    <script src="directives/paper.js" type="text/javascript"></script>
+    <script src="directives/save-position.js" type="text/javascript"></script>
 
     <script src="services/keybindings.js" type="text/javascript"></script>
     <script src="services/dependency-tree-generator.js" type="text/javascript"></script>
@@ -238,12 +246,17 @@
     <script src="controllers/sidebar.js" type="text/javascript"></script>
     <script src="controllers/wizard.js" type="text/javascript"></script>
     <script src="controllers/create-relation.js" type="text/javascript"></script>
+    <script src="controllers/input-graph.js" type="text/javascript"></script>
+    <script src="controllers/element-lines.js" type="text/javascript"></script>
+    <script src="controllers/edit-document.js" type="text/javascript"></script>
+    
 
 
     
     <script src="repositories/feed.js" type="text/javascript"></script>
     <script src="repositories/document.js" type="text/javascript"></script>
     <script src="repositories/shelf.js" type="text/javascript"></script>
+    <script src="repositories/page-lines.js" type="text/javascript"></script>
 
     <script src="filters/reverse.js" type="text/javascript"></script>
 

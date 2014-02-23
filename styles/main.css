@@ -4,6 +4,12 @@ body {
     padding: 0;
 }
 
+.embed-section {
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+
 .hide {visibility: hidden;}
 .reshow {visibility: visible;}
 
@@ -11,10 +17,10 @@ body {
   /*display: inline-block;*/
 }
 
-.code .idea-item.compact-action {
+.idea-item.compact-action {
   width: 8rem;
   z-index: 12;
-  /*margin-top: -19px;*/
+  margin-top: -19px !important;
 }
 
 .cont {
@@ -26,10 +32,14 @@ body {
 }
 
 .carousel-wrapper {
-  overflow-x: scroll;
   height: 100%;
   width: 100%;
   position: relative;
+  overflow-x: scroll;
+}
+
+.carousel-wrapper:hover {
+
 }
 
 .carousel-navigation {
@@ -46,7 +56,7 @@ body {
   padding: 0;
   margin: 0;
   left: 0px;
-  width: 500%;
+  width: 100%;
   position: relative;
   white-space: nowrap;
 }
@@ -55,6 +65,11 @@ body {
   display: inline-block;
   width: 100%;
   -webkit-transition: all 2s ease;
+  /*overflow: hidden;*/
+}
+
+.render-item:hover {
+  /*overflow: visible;*/
 }
 
 .dummy-code-rendering {
@@ -95,6 +110,7 @@ body {
 
 .shelf canvas:hover {
   -webkit-transform: scale(1.5);
+  -webkit-transform-origin: 0 0;
   height: auto;
   
 }
@@ -180,13 +196,18 @@ body {
   top: 10%;
   left: 5%;
   width: 90vw;
-  height: 75vh;
+  height: 100vh;
   z-index: 10000;
   margin-left: 1em;
   margin-top: 1em;
   padding: 0.5em;
-  overflow: hidden;
+  overflow-y: scroll;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
 }
+
+
 
 .mask {
   background-color: black;
@@ -203,6 +224,7 @@ body {
 .subdocument-window {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   font-size: 10pt;
+  background-color: #F2F2F2;
 }
 
 .window {

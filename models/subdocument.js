@@ -2,7 +2,8 @@ angular.module('system').factory('SubdocumentModel', [function () {
 
   function Subdocument() {
     return {
-      ref: ""
+      ref: "",
+      type: "subdocument"
     };
   }
   return Subdocument;

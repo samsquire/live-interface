@@ -12,9 +12,8 @@ angular.module('system').controller('autocomplete',
   function ($scope, $state, $rootScope, bucketService, sparqlQuery, importTemplate) {
   $scope.open = false;
   $scope.choosing = $state.current.data.choosing;
-  console.log("Autocomplete initialized", $scope.open);
   $scope.createRelation = false;
-
+  $scope.searching = false;
 
   importTemplate('queries/query.sparql');
 
@@ -30,7 +29,7 @@ angular.module('system').controller('autocomplete',
   [
     {title: 'Expand', templateUrl: 'views/editor-expand-option.html', type: 'view', kind: 'expand'},
     {title: 'Create something', type: 'stateChange', action: 'home.create'},
-    {title: 'Insert relation', type: 'stateChange', action: 'relation'},
+    {title: 'Insert relation', type: 'stateChange', action: 'home.relation'},
     {title: 'Sparql Query', type: 'run', kind: 'sparql'}
   ]];
 
@@ -40,6 +39,18 @@ angular.module('system').controller('autocomplete',
   
   $scope.run = function (item) {
     $scope[item.kind](item);
+  };
+
+  $scope.activateSearch = function () {
+    if ($scope.searching) {
+      console.log("Cancelled");
+      $rootScope.$emit('stop-dependency');
+      $scope.searching = false;
+      return;
+    }
+    
+    $scope.searching = !$scope.searching;
+    $rootScope.$emit('toggle-lines');
   };
 
   $scope.sparql = function (item) {
@@ -55,7 +66,6 @@ angular.module('system').controller('autocomplete',
   };
 
   $scope.toggle = function () {
-    console.log("toggling autocomplete");
     $scope.open = !$scope.open;
     if (!$scope.open) {
       $rootScope.$emit('autocomplete-closed');

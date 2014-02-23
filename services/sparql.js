@@ -22,7 +22,7 @@ angular.module('system').service('sparql-query',
       console.log(rendered);
 
 
-        $.ajax("http://localhost:3030/tdb/sparql", {
+        $.ajax("http://sampc:3030/tdb/sparql", {
           type: "POST",
           data: {query: rendered},
           headers:

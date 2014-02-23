@@ -9,7 +9,7 @@ $scope.saveIndex = function (id, index) {
       // $scope.$apply();
       console.log("Retrieved", docs);
       $scope.items.forEach(function (feedItem, index) {
-        $scope.saveIndex(feedItem._id, index)
+        // $scope.saveIndex(feedItem._id, index)
       });
       $rootScope.$apply();
   });
@@ -24,16 +24,10 @@ $scope.saveIndex = function (id, index) {
     });
   };
 
-  $scope.update = function (feedItem) {
-    console.log(cleaner);
-    feedItem.contents = cleaner.filter(feedItem.html).html();
-    delete feedItem.html;
-    console.log(JSON.stringify(feedItem, null, 4));
-    feed.update(feedItem, function () {
-      console.log("Applying after update");
-      $scope.$apply();
-    });
-  };
+  $scope.update = feed.inplaceUpdate(function () {
+    console.log("Applying after update");
+    $scope.$apply();
+  });
   
 };
 

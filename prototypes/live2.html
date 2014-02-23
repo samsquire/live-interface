@@ -1,0 +1,368 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+<style>
+
+  body {
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0;
+      width: 3000px;
+  }
+
+  section {
+    margin: auto;
+    margin-left: 15%;
+    font-family: Lora, serif;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .content {
+    height: 100%;
+    max-width: 900px;
+  }
+
+  .page {
+    padding-right: 1em;
+    width: 100%;
+    height: 100%;
+    padding-top: 0.3em;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .define-panel {
+    width: 1000px;
+    position: relative;
+    float: left;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .define-panel.open {
+    width: 300px;
+  }
+
+  .versions {
+    padding: 0.5em;
+    height: 100%;
+    margin-left: 1em;
+    margin: auto;
+    position: relative;
+    float: left;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .versions.open {
+    width: 100vw;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  .page.open {
+    width: 600px;
+    
+  }
+
+  .row {
+    float: left;
+    position: relative;
+    
+  }
+
+  .mask {
+    pointer-events: none;
+  }
+
+  .mask.open {
+    z-index: 2;
+    background-color: white;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+
+  }
+
+  .highlight {
+    z-index: 3;
+    background-color: white;
+    position: relative;
+    border: 1px solid black;
+
+  }
+
+
+
+  .column {
+    float: left;
+    margin-right: 1em;
+    
+  }
+
+  header {
+    font-size: 38px;
+  }
+
+  .define {
+    width: 100%;
+    background-color: #E8E8E6;
+    padding: 0.2em;
+    border-radius: 0.3em;
+    margin: 0.05em;
+  }
+
+  .question {
+    /*padding-top: 150px;*/
+    padding: 0;
+    border-radius: 0.3em; 
+    color: rgba(0, 0, 0, 0.5);
+    background-color: white;
+  }
+
+  .answer p {
+    line-height: 15px;
+  }
+
+  .data {
+    width: 760px;
+  }
+
+  .open .data th {
+    font-size: 20px;
+  }
+
+  .data th {
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.5); 
+    text-align: left;
+  }
+
+  .instance {
+    width: 100%;
+    margin: 0.05em;
+  }
+
+  .instance th {
+    background-color: #E8E8E6;
+  }
+
+  .instance table {
+    border: 1px solid #E8E8E6;
+  }
+
+  .open .data {
+    position: relative;
+    width: auto;
+  }
+
+  .relationships {
+    text-align: center;
+  }
+
+  .open .relationships img {
+    width: 300px;
+    height: auto;
+  }
+
+  .define {
+    display: none;
+  }
+
+  .define.on {
+    display: block;
+  }
+
+  .define-panel.open .horizontal {
+    display: none;
+  }
+
+  .define-panel .vertical {
+    display: none;
+  }
+
+  .define-panel.open .vertical {
+    display: block;
+  }
+
+  .next-page {
+    
+
+  }
+  .stars {
+    font-size: 25px;
+  }
+
+</style>
+</head>
+
+<body>
+<div class="mask"></div>
+<div class="column page">
+<section class="content" contenteditable="true">
+  <header>Product Reviews</header>
+        <p>
+          Today I will be reviewing the following products. I'll be comparing various factors. This is a living document so you can contribute to this document.
+        </p>
+        <ul>
+          <li>Product 1 - Rating: 86%</li>
+        </ul>
+
+        <h3>First up: Product 1</h3>
+        <p>Designed by design pants and manufactured by Blah. The newest Product 1 is the smallest offering.</p>
+</section>
+  </div>
+
+<div class="next-page">
+<div class="define-panel">
+<div class="row">
+
+    <div class="instance">
+      <header>My Products</header>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>product name</th>
+              <th>price</th>
+              <th>rating</th>
+              <th>review body text</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">Product 1</td>
+              <td contenteditable="true">?</td>
+              <td contenteditable="true">86%</td>
+              <td contenteditable="true">?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+  </div>
+
+
+  <div class="relationships">
+    <img class="horizontal" src="graph.png"/>
+    <img class="vertical" src="graph_tb.png"/>
+  </div>
+
+  
+
+    <div class="row">
+        <div class="column">
+          <section class="define">
+            <div class="question">What is product 1?</div>
+            <div class="answer" contenteditable="">
+            product name
+            </div>
+            </section>
+        </div>
+
+        <div class="column">
+          <section class="define">
+            <div class="question">What is a product name?</div>
+            <div class="answer" contenteditable="">
+            product
+            </div>
+          </section>
+        </div>
+
+        <div class="column">
+          <section class="define">
+            <div class="question">What is a product?</div>
+            <div class="answer" contenteditable="">
+              <p>product name</p>
+              <p>price</p>
+              <p>review</p>
+            </div>
+          </section>
+        </div>
+
+    <div class="column">
+      <section class="define">
+        <div class="question">What is a review?</div>
+        <div class="answer" contenteditable="">
+          <p>review body text</p>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+
+
+    
+
+
+
+
+</div>
+
+<div class="versions">
+  <div class="row">
+    <header>Appearance of Rating</header>
+    <section>
+    Variations of 'rating':
+      <dl>
+        <dt>as a percentage</dt>
+        <dd>86%</dd>
+        <dt>stars</dt>
+        <dd class="stars">
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          
+        </dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+
+</div>
+
+
+<script>
+  var maskFocus = $(".define");
+  maskFocus.each(function (index, question) { question.shouldToggle = ["highlight", "on"]; });
+
+  var toggleClasses = [[".page", ".mask"]];
+  toggleClasses.push.apply(toggleClasses, maskFocus);
+  
+
+  toggleClasses.push([".define-panel", ".mask", ".versions"]);
+  toggleClasses.push([".page"]);
+
+  var $previous = $("<div>");
+
+  $(document).on("keypress", function (event) {
+  console.log(event.which);
+    if (event.which === 61) {
+      var next = toggleClasses.shift();
+      console.log(next);
+      if (next.shouldToggle) {
+        $next = $(next);
+        $previous.toggleClass(next.shouldToggle);
+        next.shouldToggle.forEach(function (clazz) {
+          $next.toggleClass(clazz);  
+        });
+        
+        $previous = $next;
+      } else {
+        $(next.join(",")).toggleClass("open");
+      }
+      toggleClasses.push(next);
+      console.log(toggleClasses);
+    }
+  }
+  )
+</script>
+</body>
+</html>

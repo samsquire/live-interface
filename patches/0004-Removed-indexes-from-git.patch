@@ -1,0 +1,247 @@
+From 727c9989d9d87b29bcf0cfdabd2070f5483dd3a4 Mon Sep 17 00:00:00 2001
+From: Sam Squire <ssquire@thoughtworks.com>
+Date: Mon, 10 Feb 2014 22:33:03 +0000
+Subject: [PATCH 4/6] Removed indexes from git.
+
+---
+ indexing-index/LuceneIndexDefinition.xml           |   37 --------------------
+ indexing-index/_a.cfs                              |  Bin 2357 -> 0 bytes
+ indexing-index/deletable                           |  Bin 4 -> 0 bytes
+ indexing-index/segments                            |  Bin 27 -> 0 bytes
+ ...mining.txt_00026___1387804771932___5114-0.annic |  Bin 4152 -> 0 bytes
+ ...mining.txt_00026___1387804771932___5114-1.annic |  Bin 3313 -> 0 bytes
+ indexing/__GATE_SerialDataStore__                  |    2 --
+ .../text_mining.txt_00026___1387804771932___5114   |  Bin 1621 -> 0 bytes
+ ...or text_mining.txt_00026___1387804771932___3580 |  Bin 539 -> 0 bytes
+ 9 files changed, 39 deletions(-)
+ delete mode 100644 indexing-index/LuceneIndexDefinition.xml
+ delete mode 100644 indexing-index/_a.cfs
+ delete mode 100644 indexing-index/deletable
+ delete mode 100644 indexing-index/segments
+ delete mode 100644 indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-0.annic
+ delete mode 100644 indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-1.annic
+ delete mode 100644 indexing/__GATE_SerialDataStore__
+ delete mode 100644 indexing/gate.corpora.DocumentImpl/text_mining.txt_00026___1387804771932___5114
+ delete mode 100644 indexing/gate.corpora.SerialCorpusImpl/Corpus for text_mining.txt_00026___1387804771932___3580
+
+diff --git a/indexing-index/LuceneIndexDefinition.xml b/indexing-index/LuceneIndexDefinition.xml
+deleted file mode 100644
+index 8671018..0000000
+--- a/indexing-index/LuceneIndexDefinition.xml
++++ /dev/null
+@@ -1,37 +0,0 @@
+-<map>
+-  <entry>
+-    <string>FEATURES_TO_EXCLUDE</string>
+-    <list>
+-      <string>SpaceToken</string>
+-      <string>Split</string>
+-    </list>
+-  </entry>
+-  <entry>
+-    <string>BASE_TOKEN_ANNOTATION_TYPE</string>
+-    <string>Token</string>
+-  </entry>
+-  <entry>
+-    <string>ANNOTATION_SETS_NAMES_TO_INCLUDE</string>
+-    <list/>
+-  </entry>
+-  <entry>
+-    <string>CorpusIndexFeature</string>
+-    <string>AnnicIR</string>
+-  </entry>
+-  <entry>
+-    <string>INDEX_UNIT_ANNOTATION_TYPE</string>
+-    <string></string>
+-  </entry>
+-  <entry>
+-    <string>ANNOTATION_SETS_NAMES_TO_EXCLUDE</string>
+-    <list/>
+-  </entry>
+-  <entry>
+-    <string>FEATURES_TO_INCLUDE</string>
+-    <list/>
+-  </entry>
+-  <entry>
+-    <string>CREATE_TOKENS_AUTOMATICALLY</string>
+-    <boolean>true</boolean>
+-  </entry>
+-</map>
+\ No newline at end of file
+diff --git a/indexing-index/_a.cfs b/indexing-index/_a.cfs
+deleted file mode 100644
+index 46e9c52fc28f05f247596b73249193c3c922e6cb..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 2357
+zcmcIkTT|0O7|m`jG=)OBUuGQhC?GZIh1SbBatV+DTL)Toe8~g|ZKi2blkETw5B@S=
+zeD^2#Q^YUXP-#*fad6vga?aWF?YCcclVNE4BIri$%;`{smP6=$jNqpLcD)M<aXwT}
+zZ{Q|{gsSY<020fJ;CBjr3dLnUm`I7xYKZa?S_@GjLQg_ejF1wdQiKX2S|4E;ajSOt
+zrg5Ze+bDJ7I>dB{kFr{ITYax?>pSX3y>X}>q0#NyR^zo=tp@`qH>%ZIeWR|`s``-{
+zQV(zG`cCZ-_(N^uK>H8`(GFC^BKX5Eyi?TY0x8hKj#<J>!4(pr1+k3SN6{$Y`fY4%
+zER)HIqL@mhMn}`>xw*Nisi}np7%($4KhL1wwfj{T7pJEMfn~?XIgUvM31b%V{KyE#
+z*=%-pc6MR{p~=a9+VtTY&oPgQc|r7!<ycNLN8nMG<@~y?>q?<guE@o5S$SH>11>2_
+zQDAa+8NMd7%!97s8BNdVwsJo4V3Ox`w{1ERKumed^}0P@I&(egZ(|oq6`5zUHP32V
+zj$un3!)y1t{{LQ$!ZKs`mAvr6>Dl(n>+9<u(Mv&a{|r}_;+b1g?na7S{ElVXr#v{4
+zHHajH{<*MW1cVW~)7GFlaTwz}ZV_q}&|QtnjS-=Nw?b(+&*;xv@7K7|Rk>WQR4S!X
+zQ630|p$NCdY<w?c$Qmn2)3_o_aHM*~l+F#iJ=7;Cvb<|;CML{MUMk7$W9arbhr0QE
+zNp2n|%#<GL;DT5Q1F-FQ7+7{WHV{4|WvOmBZPSzXEZa^u_J>Zw?`m(=YRrt#L`bLK
+z?Wxst9lD`jE(n~kA}vN?{78eUIz%EaoP2W9l3Yh3EfYQ=w(Xw7Ck7Do{<GoJ1PR1q
+zA|%ko#dwVQ@W7)Lc+YrHTmg<N;>P|U4ICG&Gsa>p_R~v9e7KAREzm8L;IZo@II+Jq
+zAy?RyEEFU@NF0gk5*IKgZh}h@x8r)Ad!A6HZj|(;=@ZjCH7<u%I@9w_&oMgYtCs7N
+hSQvx`<)IO{;PfPnz&i18P~UzsF$2a|SB`rXwV%o~O2hyF
+
+diff --git a/indexing-index/deletable b/indexing-index/deletable
+deleted file mode 100644
+index 593f4708db84ac8fd0f5cc47c634f38c013fe9e4..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 4
+LcmZQzU|;|M00aO5
+
+diff --git a/indexing-index/segments b/indexing-index/segments
+deleted file mode 100644
+index b665f4a46a01b7bf03cb6b3bffa55141556179df..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 27
+ZcmezW|Nnmm2w($J+(6986rTvBm;h?f1k(Tj
+
+diff --git a/indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-0.annic b/indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-0.annic
+deleted file mode 100644
+index 6d0e8662a27b00e2259326c387f5b14b07666417..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 4152
+zcmai1T~8ZF6ulVChao_qDeXh0&09nyV^>AC+D2*`MTr$eqe5FX4-p$@us5uCo!uc|
+z9uieml=n($)Q3b>qQ2#S^u2$f&;1WQcg-xl)7fRDy9UmgbLQNc^)B!Kp=z4Y>LdS&
+zUq94ASihbm{%9*m_3=-Cee&C%{_9Da=+IOeoT%d=5$zpK@fDNmJzuMOH&Jn@>V6aj
+z-MT;YyM0v;54$Sjzxm-P4bu8<e4wJ<?{9<mFaCZ}q3I6Isp#Q1`}?WV9hx1+X`q8R
+z>d?jf#|XLu6#<@4wV&uQd5dPXN(Q^?SZi9@;#F^ie$?C8(Mb^XzSyEEJsPUV^pqyE
+z)lOioJhD$s)odl2Ce~BtR1A`FZ~@ZMw2-mtX{K336eLZR^)tyUMvgx<%?<s;?<M}Q
+z&z{q{phdgV@s9jRdph<8zV7zDIP!E~dHZn~#z#np-*8Po*R-4~+KZfqBWLBRuw7Mp
+z8XPcHG)=K%QDBQJ0<-Euo@9>IQ0zM6a5Xq!nnAC0T;ypnOFWmLHHl)+n#0rJfT@O^
+z&w5&9YmrNAS0KkX0NXA*Yz+>WmJv0Miaaf5iRXvVs-oC))!}Jyz_hAq5~rrf)S{M{
+zdJr=wV9jA_aL{NChde)~Mb_4Y5^KIOW>B2>vcuZofa$Wvi8A+v(9BP#MHeJiKRd@8
+z5S&G^@j63`d^x*g4Gx&rai%`qZ1f(K-Hu{{BZ<Jz1jQ2b92QxSWR4cr$9EFvXgX{S
+z4w#ynrkjn%t>EjTjkDM#zSp70zC1EttA7GV-^RY)X5-)iE_bkk;%~Mup;<$5rnV!K
+z!2wen-)t;el*r<qlW6|b^_s(#6EV)?TIR|rgkZjZ7FUqu{%u2T0mWHwFl6=7;DG6d
+zrunOlR;%4^Z*G3pC~KjZ<_IHjTUIPL&ty#zB$?@3tn~tlGu?HV8yqm*#TRE2QG{IX
+zX)y&!dftZ?d-BLUtv(7|(_*vX4T9)UD?EwAgR)ls2*pJdr`d6&F*sn_!5uc1ElOmu
+z&q=g&>U+=O%ZV80aW8wma}FVx_tD}ClI&w2YRf22yXSB<IAGe-ct?u|agxMGMa~w#
+z#5sW?JM+k#tsN9NUI~qJZKP7XDL(W^WxL3;FQPbC;K*fgz!cya_a9NQ=DelW1VNH5
+z9YJyh#n#$kZE(PZH?-=l&i6OBi~4DiOKg9J9NY59Y^{C@T+>o!Tl?Ym&F$JQE@jPp
+z3dvOzCpvK?GB{v5!O>*VqCgh+oIoF(x;}Hbav;WeJcH{vg%Hel&*BP_+`V6*b_vB<
+zpEG2&(cpmTxuy$;sY)V$puXzIDR#5?DJLd6;t2fz!eYsJE^Cq?$y~o;z5I&Exn4T#
+z4Gx%I;-95f(FR(?63agz#g;rWORJRvN9$VNt{)w!#Je4YVePv+W!-!Y%{3IqdF6;>
+zaKQ8m-_m2{qD&UMB-2~yeS~7)Hx6He1Ex1PlpLkV)#8@8a;H8<vFkgBtHA-&J3L{z
+QcS0^dFcwpgSa{+1UkH>m#sB~S
+
+diff --git a/indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-1.annic b/indexing-index/serialized-files/text_mining.txt_00026___1387804771932___5114/text_mining.txt_00026___1387804771932___5114-1.annic
+deleted file mode 100644
+index f1412c90dcacd3393fc55e5ab72c9b5084a693bf..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 3313
+zcmaKuPfyf97{*_AS^lH^QPG2m+zcjVF%mW^iAW4=*dP(q$iYyTVYhC##dZ*u1H>4@
+z-2{mTh=F+HdwBONc=kK^ysLv@oEeh05PnaeU)$|Yd-jWRX+nc<{rA4NA%oDHN)o?O
+z3R1cC;m6G{-~FR3wG^o}4YtMBIuXrpw(=G`c@<v@ubhZD6rLYNLD}=y{c=@!;YL|R
+z{69Zzq(SN}#WfLCzMceU`#<+H)K;WU5v@L5TT6v3Qpb9n1~Q1FBK4pD8KJi>BH->+
+z`icA#E>VXRNqtFdNl61GKI+lXk1C^!G6|x}gA%pM#=3Y%JCto6Z3~W-f11A~<(fw#
+zsbwVPOh%Dr1{;u~q@HHVOPigx;DwN+%*emWw!gJ3&9EoOo3`^N#o3yX)Vk?MIGqcH
+zw(NxvxAvSTJGl+R)^>wcabRl40n6Ct)RGS8WprgR?Cdf)6$hp+T>iQ*%T=3J3p=y}
+zsN=hkwS5My;=t60Q;j2=Q%gFW*U**2uyfGhR2-NFC1qt**rZz2A-#n%b+-%|q>3X(
+zLy|hz;xLRi@lCL)wH+Ml+o){E@c9lK)QSVsu*4lzg*Lr!6KipYcoc;l7#5Eh#EJvc
+z2=1x7<N3-Pn^p@uv=gY~8=tjf2Cd@2G$yHSET5kV9^1TH+TneOzAg-V3kI*^z*N9u
+zF`lnk&sNJitW#*~#;|qLU{xHLCY#nd>$z%KhjkupJs7r58?1^0)3l`SJNb!;LZL7|
+zelKsk(Aq8z`7@OEVpzUlkSh*M3s^M9tWGWIaK1v<B@8<k4Nk>@X%RP7J%~1>b=}a?
+z4)1I9@p8)EWrJ67U|McIfx?>Y3Ts)1wTiYr3|m(WR>gs7MdDE&*W)CKH*IDu?=UB5
+z?8mS<FqjnwrU2_?L!@|*SoIq=wYGyp-9Y64hSk!bRveh{l+Vo+Up$$&X|=FJyMwwx
+z3~RRyTE&5B8=vsYS-VxsI;<bjb_K)MU4vC|VA_Rs$zj#94(lhhUB$3<&tO#?nD!*~
+zZlofK{JMBljZ^E3m9~>Z{~5LX$Y%Y4L9aM49pDXe!uIKEL5K1PRYMq79vYO21Jfba
+zjU_*-iNxmB(hlzl`mSTxdu;G34ot`Rd}o6&v{|*R!}<+vH!y5HHCPn~rc<oU&*yAT
+JE&0E5>o=K{g!KRb
+
+diff --git a/indexing/__GATE_SerialDataStore__ b/indexing/__GATE_SerialDataStore__
+deleted file mode 100644
+index 47ff181..0000000
+--- a/indexing/__GATE_SerialDataStore__
++++ /dev/null
+@@ -1,2 +0,0 @@
+-1.1
+-../indexing-index
+\ No newline at end of file
+diff --git a/indexing/gate.corpora.DocumentImpl/text_mining.txt_00026___1387804771932___5114 b/indexing/gate.corpora.DocumentImpl/text_mining.txt_00026___1387804771932___5114
+deleted file mode 100644
+index 71be0bcf9f8f180882e81ea9e4148db1946309e4..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 1621
+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
+Tr2=ydy2$<o5G~ru?F|3`5GNGB
+
+diff --git a/indexing/gate.corpora.SerialCorpusImpl/Corpus for text_mining.txt_00026___1387804771932___3580 b/indexing/gate.corpora.SerialCorpusImpl/Corpus for text_mining.txt_00026___1387804771932___3580
+deleted file mode 100644
+index 98a19a7fec1f5ca3b1174d2eddec227029e96dee..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 539
+zcmV+$0_6Q4iwFP!000000BuseYZO5ge|NVriKd7i5&}lAunEZSeI#D=Ku`~1agE@K
+z2q&DA_2sf*Z+Dz|t9y!xRyGz9Y%Ek11PdXxe?dAyi-1^Ih@gUvt&KCgo5aW!JM5eJ
+zeY~%?zhFoTnCdb@(+vd=1v6VHJm#NOQ6%ji_p9FX&)*+DS<6GtfqgeZx5<b(o+N^C
+zXPMn%Rz#j}>6=C@;Ako)F!a$py&y?2mmC&!Bi6-BD8op&Xcq6jY5iQimj_UkLxU(=
+z(EHbG_~`e<Mq+OStcL^#QeR)GS}hV@(ACaI5*eM$w#YeT6bU?oOrY5OI{j{C^23ir
+zX=E{dk_7u5O|&xX1;!gOS6w;0BiHg&A8-et+w$ql=KQJ0g=Sj9#Q)$7_3GN6)t5Pq
+zGHe)e8E39XeH(_{Fbb#*!?c9wv9Gcyw*M*W;=(ez)M&$~dcVT_2<1&!fxR&YfP(rU
+z5?c&YGt7*!_WtUNaXIbltP(8eJkr#$EFdVQqb)6lqC^-|r{@K#gC?opa=BbRu4*qP
+z!f7joV0}H@_`%1iryJ~90dh7N(z}C+L+-YrPeq#CwMNa*jd~c6-j<Wr`s+RG@>?DX
+z4ve}!lk#$(qt454U|8+cyqaqkj&T%H`6;g5+&$~8$XHb|*i5&a;NZZr2#yWB?{qqq
+d+FX6EJX5b%PSmO@o~=}7;=e3FqVF98001k+2893s
+
+-- 
+1.7.10.2 (Apple Git-33)
+

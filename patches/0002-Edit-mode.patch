@@ -1,0 +1,1450 @@
+From 861679faab892de020a43d9f175b4539837f512a Mon Sep 17 00:00:00 2001
+From: Sam Squire <ssquire@thoughtworks.com>
+Date: Thu, 2 Jan 2014 16:19:24 +0000
+Subject: [PATCH 2/6] Edit mode.
+
+---
+ .DS_Store                         |  Bin 15364 -> 15364 bytes
+ app.js                            |   29 +++++++--
+ controllers/autocomplete.js       |   62 ++++++++++++++++---
+ controllers/context-controller.js |   10 +++
+ controllers/create-relation.js    |   28 +++++++++
+ controllers/editor.js             |  103 ++++++++++++++++++++++---------
+ controllers/embed.js              |   22 ++++++-
+ controllers/spaces.js             |    2 +-
+ controllers/wizard.js             |    3 +
+ directives/carousel-scroll.js     |   19 ++++++
+ directives/carousel.js            |   37 ++++++++++++
+ directives/context.js             |   16 ++---
+ directives/keypress.js            |    7 +++
+ index.html                        |    9 ++-
+ livingsystem.sublime-project      |    2 +-
+ models/code.js                    |    3 +-
+ models/relation.js                |   21 +++++++
+ queries/query.sparql              |   17 ++++++
+ services/.DS_Store                |  Bin 0 -> 6148 bytes
+ services/import-template.js       |   11 ++++
+ services/sparql.js                |   67 ++++++++++++++++++++
+ styles/action-dropdown.css        |    3 +-
+ styles/feed.css                   |   30 ++++++++-
+ styles/main.css                   |   70 ++++++++++++++++++++-
+ styles/relations.css              |   30 +++++++++
+ styles/spaces.css                 |    8 +++
+ views/autocomplete.html           |    6 +-
+ views/code.html                   |  121 ++++++++++++++++++++++---------------
+ views/create-relation.html        |    6 ++
+ views/editor.html                 |   11 +++-
+ views/embed.html                  |   22 +++++++
+ views/relation.html               |   13 ++++
+ views/subdocument.html            |    2 +-
+ 33 files changed, 671 insertions(+), 119 deletions(-)
+ create mode 100644 controllers/create-relation.js
+ create mode 100644 directives/carousel-scroll.js
+ create mode 100644 directives/carousel.js
+ create mode 100644 models/relation.js
+ create mode 100644 queries/query.sparql
+ create mode 100644 services/.DS_Store
+ create mode 100644 services/import-template.js
+ create mode 100644 services/sparql.js
+ create mode 100644 styles/relations.css
+ create mode 100644 views/create-relation.html
+ create mode 100644 views/relation.html
+
+diff --git a/.DS_Store b/.DS_Store
+index a580efa9dff2b4166dabc5f5b2caae233a652e6f..1017be0ec4e89c1eda2ad9ef81655b9975349698 100644
+GIT binary patch
+delta 117
+zcmZpvXsMXs&uFwUU^hRb(PkcjiENAvo9BsLVdUjtC}v1yC}JpM$Ye;K>@QR{xkOre
+z@&h45Sri$dn&PtHqP(2^ymSTz2FA(x5;rHyNb+)~6es5-<>%)xZg!R2#k!eYVH((I
+HwKP!x*482F
+
+delta 63
+zcmZpvXsMXs&#1pKU^hRb{$?J5iENWQ#YHDKOB8Qb758PFoG5v1bAZ%#){PAujGNgN
+LrXfkI-xmP@!BrL3
+
+diff --git a/app.js b/app.js
+index a6c8154..9c390f6 100644
+--- a/app.js
++++ b/app.js
+@@ -23,7 +23,9 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+     .state('home', {
+       url: "/home",
+       data: {
+-        choosing: true
++        choosing: true,
++        editMode: false,
++        createMode: true
+       },
+       views: {
+         '': {
+@@ -41,7 +43,7 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+         '@dropdown': {
+           templateUrl: 'views/autocomplete.html',
+           controller: 'autocomplete'
+-        },
++        }, 
+         '@spaces': {
+           templateUrl: 'views/spaces.html',
+           controller: 'spaces'
+@@ -59,8 +61,12 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+     })
+     .state('home.create', {
+       url: '/create',
+-      templateUrl: 'views/wizard.html',
+-      controller: 'wizard',
++      views: {
++        "@wizard": {
++          templateUrl: 'views/wizard.html',
++          controller: 'wizard'
++        }
++      },
+       onEnter: ['$rootScope', function ($rootScope) {
+         $rootScope.$emit('caret', null);
+       }],
+@@ -96,10 +102,11 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+     })
+     .state('edit', {
+       url: '/edit/:documentId',
+-      controller: 'editor',
+       data: {
+         choosing: true,
+-        preopened: true
++        preopened: true,
++        editMode: true,
++        createMode: false
+       },
+       views: {
+         '': {
+@@ -120,6 +127,16 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
+       }
+     })
+     
++    .state('home.relation', {
++      url: '/relation',
++      views: {
++        '@relation': {
++          controller: 'create-relation',
++          templateUrl: 'views/create-relation.html'
++        }
++      }
++    })
++
+     ;
+ 
+     });
+diff --git a/controllers/autocomplete.js b/controllers/autocomplete.js
+index fe21a71..3646a37 100644
+--- a/controllers/autocomplete.js
++++ b/controllers/autocomplete.js
+@@ -1,10 +1,22 @@
++angular.module('system').run(function () {
++
++  _.templateSettings = {
++  interpolate: /\{\{(.+?)\}\}/g
++};
++
++
++});
++
+ angular.module('system').controller('autocomplete',
+-  ['$scope', '$state', '$rootScope', 'bucket',
+-  function ($scope, $state, $rootScope, bucketService) {
++  ['$scope', '$state', '$rootScope', 'bucket', 'sparql-query', 'importTemplate',
++  function ($scope, $state, $rootScope, bucketService, sparqlQuery, importTemplate) {
+   $scope.open = false;
+   $scope.choosing = $state.current.data.choosing;
++  console.log("Autocomplete initialized", $scope.open);
++  $scope.createRelation = false;
++
+ 
+- 
++  importTemplate('queries/query.sparql');
+ 
+   var escapeListener = null;
+   $scope.options = [
+@@ -13,20 +25,37 @@ angular.module('system').controller('autocomplete',
+     {title: 'Create a list', type: 'insertion', kind: 'list'},
+     {title: 'Insert code', type: 'insertion', kind: 'code'},
+     {title: 'Create a table', type: 'insertion', kind: 'table'},
+-    {title: 'Create a data bucket', type: 'bucket'}
++    {title: 'Create a data bucket', type: 'bucket'},
+   ],
+   [
+     {title: 'Expand', templateUrl: 'views/editor-expand-option.html', type: 'view', kind: 'expand'},
+-    {title: 'Create something', type: 'stateChange', action: 'home.create'}
+-
++    {title: 'Create something', type: 'stateChange', action: 'home.create'},
++    {title: 'Insert relation', type: 'stateChange', action: 'relation'},
++    {title: 'Sparql Query', type: 'run', kind: 'sparql'}
+   ]];
+ 
+   $scope.close = function () {
+     $scope.open = false;
+   };
+-    
++  
++  $scope.run = function (item) {
++    $scope[item.kind](item);
++  };
++
++  $scope.sparql = function (item) {
++    sparqlQuery.send('queries/query.sparql', {
++      a: "?a",
++      search: "?a <http://samsquire.com/worksFor> ?c.",
++      b: "<http://samsquire.com/worksFor>",
++      restriction: "?a ?c",
++      unknownClass: "?a"
++    }, function (results) {
++      console.log(results);
++    });
++  };
+ 
+   $scope.toggle = function () {
++    console.log("toggling autocomplete");
+     $scope.open = !$scope.open;
+     if (!$scope.open) {
+       $rootScope.$emit('autocomplete-closed');
+@@ -34,6 +63,7 @@ angular.module('system').controller('autocomplete',
+   };
+ 
+   $scope.stateChange = function (item) {
++    console.log($state.current);
+     $state.transitionTo(item.action);
+     $scope.toggle();
+   };
+@@ -70,20 +100,32 @@ angular.module('system').controller('autocomplete',
+     escapeListener = $rootScope.$on('escape-pressed', $scope.toggle);
+   }
+ 
+-  $rootScope.$on('enable-autocomplete', function () {
++
++
++  var enableListener = $rootScope.$on('enable-autocomplete', function () {
+     if (!escapeListener) {
+      listen();
+     }
+   });
+ 
+-  $rootScope.$on('disable-autocomplete', function () {
++  var disableListener = $rootScope.$on('disable-autocomplete', function () {
+     if (escapeListener) {
+       escapeListener();
+       escapeListener = null;
+     }
+   });
+-  $rootScope.$on('close-autocomplete', function () {
++
++  var closeListener = $rootScope.$on('close-autocomplete', function () {
+     $scope.close();
+   });
+ 
++
++  $scope.$on('$destroy', function () {
++    console.log("Destroying listeners.");
++    escapeListener();
++    closeListener();
++    enableListener();
++    disableListener();
++  });
++
+ }]);
+\ No newline at end of file
+diff --git a/controllers/context-controller.js b/controllers/context-controller.js
+index 46d11af..73b09a9 100644
+--- a/controllers/context-controller.js
++++ b/controllers/context-controller.js
+@@ -8,6 +8,7 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
+   
+   $scope.code = false;
+   $scope.transposed = false;
++  $scope.activeRendering = 0; 
+ 
+   if ($scope.metadata.kind === "subdocument") {
+     $scope.documentModel = $scope.feedIds[$scope.metadata.instanceName];
+@@ -476,6 +477,15 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
+     console.log(shelfRepository.items);
+   };
+ 
++
++  $scope.next = function () {
++    $scope.activeRendering = $scope.activeRendering + 1;
++  };
++
++  $scope.prev = function () {
++    $scope.activeRendering = $scope.activeRendering - 1;
++  };
++
+   $scope.codemirror = function (options) {
+     return angular.extend({
+       onLoad: $scope.codemirrorLoaded
+diff --git a/controllers/create-relation.js b/controllers/create-relation.js
+new file mode 100644
+index 0000000..21554ba
+--- /dev/null
++++ b/controllers/create-relation.js
+@@ -0,0 +1,28 @@
++angular.module('system').controller('create-relation',
++  ['$scope', '$rootScope', '$state',
++  function ($scope, $rootScope, $state) {
++
++    $scope.$parent.choosing = false;
++    $scope.$parent.createRelation = true;
++
++    $scope.$on('$destroy', function () {
++      $scope.$parent.choosing = true;      
++      $scope.$parent.createRelation = false;
++    });
++
++    $scope.subject = "";
++    $scope.predicate = "";
++    $scope.object = "";
++
++
++    $scope.createRelation = function () {
++
++      $rootScope.$emit('embed', {
++        kind: 'relation',
++        subject: $scope.subject,
++        predicate: $scope.predicate,
++        object: $scope.object
++      });
++      $state.transitionTo('home');
++    };
++}]);
+\ No newline at end of file
+diff --git a/controllers/editor.js b/controllers/editor.js
+index 008f315..0bd936b 100644
+--- a/controllers/editor.js
++++ b/controllers/editor.js
+@@ -1,9 +1,10 @@
+ var EditorController = function EditorController ($scope, $state, $stateParams, $rootScope, feed,
+     $templateCache, $http, $compile, keybinding,
+-    ListModel, CodeModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,
++    ListModel, CodeModel, RelationModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,
+     DocumentModel, SubdocumentModel, cleaner) {
+ 
+   $scope.open = false;
++  $.extend($scope, $state.current.data);
+ 
+   if ($state.current.data.preopened) {
+     $scope.open = true;
+@@ -68,6 +69,17 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+     return cleaner.filter($scope.activeDocument.contents);
+   };
+ 
++  $scope.update = function () {
++    var elements = $scope.filteredDocument();
++    var html = elements.html();
++    $scope.activeDocument.contents = html;
++    
++    feed.update($scope.activeDocument, function () {
++      console.log("Updated", $scope.activeDocument);
++      $state.transitionTo("home");
++    });
++  };
++
+   $scope.save = function () {
+     var elements = $scope.filteredDocument();
+     var html = elements.html();
+@@ -79,40 +91,48 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+       tree: DependencyTreeGenerator.tree(elements)
+     }, $scope.saved);
+     $scope.activeDocument.contents = "";
+-
+-
+   };
+ 
+-  $scope.subdocument = function () {
++  $scope.subdocument = function (metadata) {
+     console.log("Inserting sub document");
+ 
+     var shelfData, subDocument;
+ 
+-    subDocument = new DocumentModel();
+-    feed.save({
+-      contents: "",
+-      fields: subDocument.fields,
+-      instances: subDocument.instances,
+-      tree: []
+-    }, function (err, response) {
+-      var id = response.id;
+-      console.log("Waiting for", id);
+-      feed.waitFor(id, function (savedDoc) {
+-        console.log("Finished waiting for", response);
+-        var subdocumentRef = SubdocumentModel();
+-        subdocumentRef.ref = id;
+-        var instance = $scope.createInstance();
+-        ActiveDocument.fields.push(subdocumentRef);
+-        
+-        var element = $scope.createContextElement('subdocument', id);
++    function insertSubDocument(id) {
++      var subdocumentRef = SubdocumentModel();
++      subdocumentRef.ref = id;
++      var instance = $scope.createInstance();
++      ActiveDocument.fields.push(subdocumentRef);
++      
++      var element = $scope.createContextElement('subdocument', id);
+ 
+-        $scope.insertNode(element);
+-        // $compile(element)($scope);
+-        $scope.open = true;
++      $scope.insertNode(element);
++      // $compile(element)($scope);
++      $scope.open = true;
++    }
+ 
+-      })
++    if (metadata) {
++      insertSubDocument(metadata.document._id);
++    } else {
++      // we need to create the subdocument
++      subDocument = new DocumentModel();
++      feed.save({
++        contents: "",
++        fields: subDocument.fields,
++        instances: subDocument.instances,
++        tree: []
++      }, function (err, response) {
++        var id = response.id;
++        console.log("Waiting for", id);
++        feed.waitFor(id, function (savedDoc) {
++          console.log("Finished waiting for", response);
++          insertSubDocument(id);
++        });
++
++      });
++    }
+ 
+-    });
++    
+ 
+     
+   };
+@@ -125,11 +145,17 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+     $scope[kind]();
+   };
+ 
++  $rootScope.$on('embed', function (event, metadata) {
++    console.log('External embed', metadata, 'of kind', metadata.kind);
++    $scope[metadata.kind](metadata);
++  });
++
+   $rootScope.$on('embed-field', function (event, field) {
+     console.log('Embedding', field.index, 'of type', field.type);
+     $scope[field.type](field.index);
+   });
+ 
++
+   $scope.insertNode = function (newNode) {
+     var node;
+     if ($scope.selection === null) {
+@@ -171,7 +197,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+         var firstParent = $(node).parentsUntil('.post-body')[0];
+         $(firstParent).after(newNode);
+       } else if ($scope.selection.anchorOffset === 0) {
+-        $($scope.selection.acnhorNode).after(newNode);
++        $($(".post-body")[0].lastChild).after(newNode);
+       } else {
+         $(node).unwrap();
+         var remaining = node.splitText($scope.selection.anchorOffset);
+@@ -237,7 +263,27 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+     $scope.insertNode(element);
+     // $compile(element)($scope);
+     $scope.open = true;
++  };
++
++  $scope.relation = function (metadata) {
++    var relation = RelationModel();
++    console.log(metadata, relation);
++    relation.subject.type = "";
++    relation.subject.description = metadata.subject;
++
++    relation.predicate.type = "";
++    relation.predicate.description = metadata.predicate;
++    
++    relation.object.type = "";
++    relation.object.description = metadata.object;
++    ActiveDocument.fields.push(relation);
++
++    var instance = $scope.createInstance();
++    var element = $scope.createContextElement('relation', instance);
+ 
++    $scope.insertNode(element);
++    // $compile(element)($scope);
++    $scope.open = true;
+   };
+ 
+   $scope.code = function (modelIndex) {
+@@ -297,7 +343,6 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+ 
+   $rootScope.$on('caret', function (event, newSelection) {
+     $scope.selection = selection = newSelection;
+-    
+   });
+   $rootScope.$on('insertion', $scope.insert);
+   $rootScope.$on('autocomplete-closed', function () {
+@@ -311,7 +356,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams,
+ 
+ 
+ angular.module('system').controller('editor', ['$scope', '$state', '$stateParams', '$rootScope', 'feed',
+-  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'ActiveDocument',
++  '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'RelationModel', 'ActiveDocument',
+   'DependencyTreeGenerator', 'BucketModel', 'socket', 'DocumentModel', 'SubdocumentModel', 'cleaner',
+   EditorController]);
+ 
+diff --git a/controllers/embed.js b/controllers/embed.js
+index be0cd7d..f495a9a 100644
+--- a/controllers/embed.js
++++ b/controllers/embed.js
+@@ -1,6 +1,9 @@
+-var EmbedController = function EmbedController ($scope, $state, $rootScope, ActiveDocument) {
++var EmbedController = function EmbedController (
++  $scope, $state, $rootScope, ActiveDocument, feed) {
+   $scope.open = true;
+   $scope.activeDocument = ActiveDocument;
++  $scope.items = feed.items;
++  $scope.feedIds = feed.ids;
+ 
+   $rootScope.$emit('disable-autocomplete');
+   $rootScope.$emit('close-autocomplete');
+@@ -10,6 +13,14 @@ var EmbedController = function EmbedController ($scope, $state, $rootScope, Acti
+     $rootScope.$emit('enable-autocomplete');
+   });
+ 
++  $scope.embedDocument = function (feedItem) {
++    var embed = {
++      document: feedItem,
++      kind: "subdocument"
++    };
++    $rootScope.$emit('embed', embed);
++
++  };
+ 
+   $scope.embed = function (field) {
+     var embed = {
+@@ -19,7 +30,14 @@ var EmbedController = function EmbedController ($scope, $state, $rootScope, Acti
+     $rootScope.$emit('embed-field', embed);
+   };
+ 
++  $scope.close = function () {
++    $scope.open = false;
++    $state.transitionTo('home');
++    $rootScope.$emit('enable-autocomplete');
++  }
++
+ };
+ 
+-angular.module('system').controller('embed', ['$scope', '$state', '$rootScope', 'ActiveDocument',
++angular.module('system').controller('embed', ['$scope', '$state', '$rootScope',
++  'ActiveDocument', 'feed',
+ EmbedController]);
+\ No newline at end of file
+diff --git a/controllers/spaces.js b/controllers/spaces.js
+index d43dce6..c803c40 100644
+--- a/controllers/spaces.js
++++ b/controllers/spaces.js
+@@ -33,8 +33,8 @@ $scope.saveIndex = function (id, index) {
+       console.log("Applying after update");
+       $scope.$apply();
+     });
+-
+   };
++  
+ };
+ 
+ 
+diff --git a/controllers/wizard.js b/controllers/wizard.js
+index dd376c6..4cdbad5 100644
+--- a/controllers/wizard.js
++++ b/controllers/wizard.js
+@@ -1,9 +1,12 @@
+ angular.module('system').controller('wizard',
+   ['$scope', '$rootScope', '$state', 'shelfRepository',
+   function ($scope, $rootScope, $state, shelfRepository) {
++
+   $scope.$parent.choosing = $state.current.data.choosing;
++  $scope.$parent.createWizard = true
+   $scope.$on('$destroy', function () {
+     $scope.$parent.choosing = true;
++    $scope.$parent.createWizard = false
+   });
+ 
+  $scope.activeStep = 0;
+diff --git a/directives/carousel-scroll.js b/directives/carousel-scroll.js
+new file mode 100644
+index 0000000..d3db3e1
+--- /dev/null
++++ b/directives/carousel-scroll.js
+@@ -0,0 +1,19 @@
++angular.module('system').directive('carousel-scroll', function () {
++
++  return {
++    restrict: 'A',
++    link: function ($scope, $element, $attrs) {
++
++
++      $element.bind('scroll', function () {
++        console.log("scrolling");
++      });
++      $scope.$on('$destroy', function () {
++        $element.unbind('scroll');
++      });;
++
++    }
++
++  };
++
++});
+\ No newline at end of file
+diff --git a/directives/carousel.js b/directives/carousel.js
+new file mode 100644
+index 0000000..d3a2395
+--- /dev/null
++++ b/directives/carousel.js
+@@ -0,0 +1,37 @@
++angular.module('system').directive('carousel', function () {
++
++  return {
++    restrict: 'A',
++    link: function ($scope, $element, $attrs) {
++
++      var carouselPosition = $attrs.carousel;
++
++      $scope.$watch($attrs.carousel, function (next, prev) {
++        var last = 0;
++        $element.children().each(function () {
++          $(this).css('left', last);
++          last += $(this).outerWidth();
++        });
++
++
++        if (next < prev) {
++          console.log("prev item in carousel", $element.css('left'));
++          var nextWidth = $element.children().eq(next).outerWidth();
++          $element.animate({left: parseInt($element.css('left'), 10) + nextWidth + 'px'});
++        } else if (next > prev) {
++          console.log("next item in carousel", $element.css('left'));
++          var nextWidth = $element.children().eq(prev).outerWidth();
++          $element.animate({left: parseInt($element.css('left'), 10) - nextWidth + 'px'});
++          // $element.children().eq(1).prependTo($element);
++        }
++
++
++
++
++      });
++
++    }
++
++  };
++
++});
+\ No newline at end of file
+diff --git a/directives/context.js b/directives/context.js
+index d64ce6d..ee7fa11 100644
+--- a/directives/context.js
++++ b/directives/context.js
+@@ -1,12 +1,13 @@
+ angular.module('system').factory('contextTemplates',
+-  ['$http', '$templateCache', function ($http, $templateCache) {
++  ['$http', '$templateCache', 'importTemplate',
++  function ($http, $templateCache, importTemplate) {
+ 
+-  function importTemplate(url) {
+-    $http.get(url).then(function (templateData) {
+-      console.log("Imported template for", url);
+-      $templateCache.put(url, templateData.data);
+-    });
+-  };
++  // function importTemplate(url) {
++  //   $http.get(url).then(function (templateData) {
++  //     console.log("Imported template for", url);
++  //     $templateCache.put(url, templateData.data);
++  //   });
++  // };
+    
+ 
+   importTemplate('views/list.html');
+@@ -15,6 +16,7 @@ angular.module('system').factory('contextTemplates',
+   importTemplate('views/data.html');
+   importTemplate('views/jsonlist.html');
+   importTemplate('views/subdocument.html');
++  importTemplate('views/relation.html');
+ }]);
+ 
+ angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache', 'contextTemplates', '$controller',
+diff --git a/directives/keypress.js b/directives/keypress.js
+index 7809166..e4c4886 100644
+--- a/directives/keypress.js
++++ b/directives/keypress.js
+@@ -22,6 +22,12 @@ return {
+ 
+       return true;
+     });
++
++    var ondestruction = $scope.$on('$destroy', function () {
++      console.log('Unbinding');
++      $(document.body).unbind('keydown');
++      ondestruction();
++    });
+   }
+ 
+   };
+@@ -42,6 +48,7 @@ return {
+       var selected = $element.find(validOptions).get(index - 1)
+       selected.focus();
+       selected.click();
++      event.stopPropagation();
+       return true;
+     });
+   }
+diff --git a/index.html b/index.html
+index 314ef7b..5d9fea6 100644
+--- a/index.html
++++ b/index.html
+@@ -33,6 +33,7 @@
+   <link rel="stylesheet" href="styles/code-context.css"/>
+   <link rel="stylesheet" href="styles/action-dropdown.css"/>
+   <link rel="stylesheet" href="styles/tree.css"/>
++  <link rel="stylesheet" href="styles/relations.css"/>
+ 
+ 
+ <link rel="stylesheet" href="http://localhost:8000/font-awesome-4.0.3/css/font-awesome.min.css">
+@@ -149,7 +150,7 @@
+       <a class="toggle sidebar launch item"><i class="icon list layout"></i> Menu</a>
+     
+       <div class="title item">
+-     Living System
++     <a ui-sref="home">Living System</a>
+       </div>
+    
+      
+@@ -199,6 +200,7 @@
+     <script src="models/bucket.js" type="text/javascript"></script>
+     <script src="models/documentModel.js" type="text/javascript"></script>
+     <script src="models/subdocument.js" type="text/javascript"></script>
++    <script src="models/relation.js" type="text/javascript"></script>
+ 
+     <script src="directives/follow.js" type="text/javascript"></script>
+     <script src="directives/keypress.js" type="text/javascript"></script>
+@@ -213,10 +215,14 @@
+     <script src="directives/ng-model-onblur.js" type="text/javascript"></script>
+     <script src="directives/screenshot.js" type="text/javascript"></script>
+     <script src="directives/sidebar.js" type="text/javascript"></script>
++    <script src="directives/carousel.js" type="text/javascript"></script>
++    <script src="directives/carousel-scroll.js" type="text/javascript"></script>
+ 
+     <script src="services/keybindings.js" type="text/javascript"></script>
+     <script src="services/dependency-tree-generator.js" type="text/javascript"></script>
+     <script src="services/buckets.js" type="text/javascript"></script>
++    <script src="services/sparql.js" type="text/javascript"></script>
++    <script src="services/import-template.js" type="text/javascript"></script>
+     
+ 
+     <script src="controllers/viewer.js" type="text/javascript"></script>
+@@ -231,6 +237,7 @@
+     <script src="controllers/shelf.js" type="text/javascript"></script>
+     <script src="controllers/sidebar.js" type="text/javascript"></script>
+     <script src="controllers/wizard.js" type="text/javascript"></script>
++    <script src="controllers/create-relation.js" type="text/javascript"></script>
+ 
+ 
+     
+diff --git a/livingsystem.sublime-project b/livingsystem.sublime-project
+index 37d76cb..fd645b1 100644
+--- a/livingsystem.sublime-project
++++ b/livingsystem.sublime-project
+@@ -2,7 +2,7 @@
+ 	"folders":
+ 	[
+ 		{
+-     "folder_exclude_patterns": ["components", "presentation/node_modules/"],
++     "folder_exclude_patterns": ["components", "presentation"],
+       "file_exclude_patterns": ["*.sublime-workspace"],
+ 			"path": "./"
+ 		}
+diff --git a/models/code.js b/models/code.js
+index 846018c..809a4e6 100644
+--- a/models/code.js
++++ b/models/code.js
+@@ -5,7 +5,8 @@ angular.module('system').factory('CodeModel', [function () {
+       type: 'code',
+       source: "",
+       actions: [
+-        {'text': 'Execute', icon: 'play', rel: 'execute'}
++        {'text': 'Execute', icon: 'play', rel: 'execute'},
++        {'text': 'Syntax', icon: 'play', rel: 'execute'}
+       ],
+       refresh: false,
+       editorOptions: {
+diff --git a/models/relation.js b/models/relation.js
+new file mode 100644
+index 0000000..c2225fd
+--- /dev/null
++++ b/models/relation.js
+@@ -0,0 +1,21 @@
++angular.module('system').factory('RelationModel', [function () {
++
++  function Property() {
++    return {
++      type: '',
++      description: ''
++    }
++  }
++
++  function RelationModel() {
++    return {
++      subject: Property(),
++      predicate: Property(),
++      object: Property(),
++      type: 'relation'
++    };
++  }
++
++  return RelationModel;
++
++}]);
+\ No newline at end of file
+diff --git a/queries/query.sparql b/queries/query.sparql
+new file mode 100644
+index 0000000..593419a
+--- /dev/null
++++ b/queries/query.sparql
+@@ -0,0 +1,17 @@
++PREFIX : <http://samsquire.com/>
++PREFIX owl: <http://www.w3.org/2002/07/owl#>
++PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
++PREFIX xml: <http://www.w3.org/XML/1998/namespace>
++PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
++PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
++PREFIX samsquire: <http://samsquire.com/>
++PREFIX dc: <http://purl.org/dc/elements/1.1/>
++BASE <http://samsquire.com/>
++SELECT DISTINCT {{ restriction }} WHERE { 
++  {{ search }}
++  {{ unknownClass }} a owl:Class.
++  {{ b }} a owl:ObjectProperty.
++  FILTER(STRSTARTS(STR({{ unknownClass }}), "http://samsquire.com/"))
++  FILTER(STRSTARTS(STR({{ unknownClass }}), "http://samsquire.com/"))
++
++}
+\ No newline at end of file
+diff --git a/services/.DS_Store b/services/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..5008ddfcf53c02e82d7eee2e57c38e5672ef89f6
+GIT binary patch
+literal 6148
+zcmeH~Jr2S!425mzP>H1@V-^m;4Wg<&0T*E43hX&L&p$$qDprKhvt+--jT7}7np#A3
+zem<@ulZcFPQ@L2!n>{z**<q8>++&mCkOWA81W14cNZ<zv;LbK1Poaz?KmsK2CSc!(
+z0ynLxE!0092;Krf2c+FF_Fe*7ECH>lEfg7;MkzE(HCqgga^y>{tEnwC%0;vJ&^%eQ
+zLs35+`xjp>T0<F0fCPF1$Cyrb|F7^5{eNG?83~ZUUlGt@xh*qZDeu<Z%US-OSsOPv
+j)R!Z4KLME7ReXlK;d!wEw5GODWMKRea10D2@KpjYNUI8I
+
+literal 0
+HcmV?d00001
+
+diff --git a/services/import-template.js b/services/import-template.js
+new file mode 100644
+index 0000000..283f2a1
+--- /dev/null
++++ b/services/import-template.js
+@@ -0,0 +1,11 @@
++angular.module('system').factory('importTemplate',
++  ['$http', '$templateCache', function ($http, $templateCache) {
++
++return function importTemplate(url) {
++    $http.get(url).then(function (templateData) {
++      console.log("Imported template for", url);
++      $templateCache.put(url, templateData.data);
++    });
++  };
++  
++}])
+\ No newline at end of file
+diff --git a/services/sparql.js b/services/sparql.js
+new file mode 100644
+index 0000000..c7c6d62
+--- /dev/null
++++ b/services/sparql.js
+@@ -0,0 +1,67 @@
++angular.module('system').service('sparql-query',
++  ['$templateCache','$compile',
++  function SPARQLQuery($templateCache, $compile) {
++    var self = this;
++
++
++  self.queryObject = function (subject, predicate, object) {
++    return {a: subject, b: predicate, c: object};
++  };
++
++  self.send = function (query, data, callback) {
++
++
++
++    var parameters = self.queryObject();
++
++    var template = $templateCache.get(query);
++    console.log(template);
++    
++    var rendered = _.template(template)(data);
++    
++      console.log(rendered);
++
++
++        $.ajax("http://localhost:3030/tdb/sparql", {
++          type: "POST",
++          data: {query: rendered},
++          headers:
++          {
++            Accept: "application/sparql-results+json"
++          }
++        }).then(function (data) {
++          // console.log(data.results.bindings);
++          
++            if (data.results.length === 0) {
++              // console.log("No results");
++             return; 
++            }
++
++          var results = data.results.bindings.reduce(
++            
++            function (pullout, current) {
++              if (current.a)
++              pullout.a.push(current.a.value);
++              if (current.b)
++              pullout.b.push(current.b.value);
++              if (current.c)
++              pullout.c.push(current.c.value);
++              return pullout;
++            }, {a: [], b: [], c: []} );
++          
++          // console.log(results.a);
++          // console.log(results.b);
++          // console.log(results.c);
++          results.raw = data;
++          callback(results);
++        },
++                function (error) {
++                console.log(error);  
++                });
++    
++
++
++
++}
++
++}]);
+\ No newline at end of file
+diff --git a/styles/action-dropdown.css b/styles/action-dropdown.css
+index 9c1ee14..b2da85a 100644
+--- a/styles/action-dropdown.css
++++ b/styles/action-dropdown.css
+@@ -10,13 +10,14 @@
+   /*top: -9px;*/
+   top: 0px;
+   left: 0px;
+-  position: absolute;
++  /*position: absolute;*/
+   height: 43px;
+   overflow: hidden;
+ }
+ 
+ .idea-item:hover {
+   color: white;
++  
+ }
+ 
+ .idea-item:hover {
+diff --git a/styles/feed.css b/styles/feed.css
+index bed55d6..9102f79 100644
+--- a/styles/feed.css
++++ b/styles/feed.css
+@@ -1,3 +1,31 @@
++.document-card {
++  width: 250px;
++  height: 90px;
++  overflow: hidden;
++  -webkit-transition: all 0.2s ease;
++  transition: all 0.2s ease;
++  -moz-transition: all 0.2s ease;
++  -o-transition: all 0.2s ease;
++}
++
++.subdocument {
++  background-color: #F2F2F2;
++}
++
++.available-spaces {
++  width: 100%;
++  height: 700px;
++  overflow-y: scroll;
++}
++
++.document-card:hover {
++  width: 250px;
++  height: 400px;
++  overflow: scroll;
++  -webkit-transform: scale(1.5);
++  -webkit-transform-origin: 0 0;
++}
++
+ .post-body {
+   resize: none;
+   margin-left: auto;
+@@ -8,7 +36,7 @@
+   font-size: 16pt;
+   font-family: Tahoma;
+   padding-left: 5px;
+-  overflow: hidden;
++  overflow-y: scroll;
+   margin-bottom: 0.3em;
+   padding-top: 0px;
+   -webkit-transition: all 0.5s ease;
+diff --git a/styles/main.css b/styles/main.css
+index f55cf81..6118fc9 100644
+--- a/styles/main.css
++++ b/styles/main.css
+@@ -11,6 +11,63 @@ body {
+   /*display: inline-block;*/
+ }
+ 
++.code .idea-item.compact-action {
++  width: 8rem;
++  z-index: 12;
++  /*margin-top: -19px;*/
++}
++
++.cont {
++  position: relative;
++}
++
++.code .idea-item.compact-action:hover {
++  margin-top: -19px;
++}
++
++.carousel-wrapper {
++  overflow-x: scroll;
++  height: 100%;
++  width: 100%;
++  position: relative;
++}
++
++.carousel-navigation {
++  background-color: white;
++  z-index: 100;
++  height: 100%;
++}
++
++.code-editor {
++}
++
++.type-carousel {
++  list-style: none;
++  padding: 0;
++  margin: 0;
++  left: 0px;
++  width: 500%;
++  position: relative;
++  white-space: nowrap;
++}
++
++.render-item {
++  display: inline-block;
++  width: 100%;
++  -webkit-transition: all 2s ease;
++}
++
++.dummy-code-rendering {
++  width: 300px;
++}
++
++.code {
++ 
++}
++
++.code:hover {
++ 
++}
+ 
+ .shelf {
+   position: static;
+@@ -21,7 +78,7 @@ body {
+   background-color: white;
+   height: 5em;
+   min-width: 200vw;
+-  overflow: scroll-y;
++  overflow-y: scroll;
+   white-space: nowrap;
+ }
+ 
+@@ -31,7 +88,7 @@ body {
+ 
+ .shelf canvas {
+   -webkit-transition: all .1s ease-in-out;
+-  width: 500px;
++  height: 200px;
+   height: auto;
+   display: inline-block;
+ }
+@@ -39,7 +96,7 @@ body {
+ .shelf canvas:hover {
+   -webkit-transform: scale(1.5);
+   height: auto;
+-  width: 700px;
++  
+ }
+ 
+ .codeView ul, .codeView ul ul {
+@@ -100,6 +157,8 @@ body {
+   float: left;
+ }
+ 
++
++
+ .codeView ul li {
+  margin: 0;
+  padding: 0 12px;
+@@ -141,6 +200,11 @@ body {
+ 
+ }
+ 
++.subdocument-window {
++  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
++  font-size: 10pt;
++}
++
+ .window {
+   margin-left: auto;
+   margin-right: auto;
+diff --git a/styles/relations.css b/styles/relations.css
+new file mode 100644
+index 0000000..26205c7
+--- /dev/null
++++ b/styles/relations.css
+@@ -0,0 +1,30 @@
++.relation {
++  display: inline;
++}
++
++.keyword {
++  -webkit-border-radius: 0.5em;
++  border: 2px solid #C7DDDB;
++  background-color: #C7DDDB;
++  color: #689098;
++  font-variant: small-caps;
++  font-size: 9pt;
++  font-weight: bold;
++}
++
++.ideacontainer {
++  background-color: #88AEB1;
++  padding: 0.3ex;
++
++  border-radius: 0.5em;
++  border: 1px solid black;
++  white-space: nowrap;
++}
++
++.name {
++  background-color: white;
++  -webkit-border-radius: 0.5em;
++  padding: 0.3ex;
++  padding-top: none;
++  padding-right: none;
++}
+\ No newline at end of file
+diff --git a/styles/spaces.css b/styles/spaces.css
+index 1a6a999..a002ffb 100644
+--- a/styles/spaces.css
++++ b/styles/spaces.css
+@@ -2,10 +2,18 @@
+  
+  width: 250px;
+  height: 300px;
++ -webkit-transition: width 2s ease, width, height 2s ease;
+ /*   height: 400px;
+   overflow: scroll;
+   white-space: pre-wrap;
+   */
++  z-index: 0;
++}
++
++.context:hovera {
++  width: 700px;
++  height: 500px;
++  z-index: 1;
+ }
+ 
+ .spaces {
+diff --git a/views/autocomplete.html b/views/autocomplete.html
+index daf2ebc..d69003a 100644
+--- a/views/autocomplete.html
++++ b/views/autocomplete.html
+@@ -1,5 +1,5 @@
+ <div class="dropdown-follow boxed dropdown" ng-show="open" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
+   <div ng-include="'views/dropdown.html'"></div>
+-  <div ng-show="!choosing" class="boxed wizard" ui-view></div>
+-</div>
+-
++  <div ng-show="createWizard" class="boxed wizard" ui-view="@wizard"></div>
++  <div ng-show="createRelation" class="boxed" ui-view="@relation"></div>
++</div>
+\ No newline at end of file
+diff --git a/views/code.html b/views/code.html
+index 97f9d86..9dfaefc 100644
+--- a/views/code.html
++++ b/views/code.html
+@@ -3,67 +3,88 @@
+ 
+ 
+   <div class="ui grid">
+-    <div class="ui one wide column compact">
++    <div class="ui one wide column compact carousel-navigation" ng-click="prev()">
+       <i class="fa fa-2x fa-chevron-left"></i>
+     </div>
+-  <div class="ui fourteen wide column content">
+ 
+-        <textarea ng-model="activeField.source"
+-          ui-codemirror="codemirror(activeField.editorOptions)"
+-          ui-refresh='activeField.editorOptions'></textarea>
+ 
+-          <div class="ui menu attached bottom stacked">
+-                <a class="green item" ng-click="toggleCode()">
+-                  <i class="code icon"></i>
+-                </a>
+-
+-                <a class="green item" ng-click="connect()">
+-                  <i class="wrench icon"></i>
+-                  <!-- <div class="ui floating label">
+-                    Connect
+-                  </div> -->
+-                </a>
+-
+-
+-
+-
+-      <div class="idea-action item three wide column right vertically fitted">
+-        <div class="cont">
+-          <div class="idea-item ui vertical transparent menu two wide">
+-            <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
+-              <i class="{{action.icon}} icon"></i>
+-              {{action.text}}
+-            </a>
+-          </div>
+-        </div>
+-      </div>
++          <div class="ui eleven wide column content">
++          <div class="carousel-wrapper" carousel-scroll>
++            <ul class="type-carousel" carousel="activeRendering">
++              <li class="render-item">
++                <div class="code-editor">
++                  <textarea ng-model="activeField.source"
++                    ui-codemirror="codemirror(activeField.editorOptions)"
++                    ui-refresh='activeField.editorOptions'></textarea>
++                  </div>
++                  <div class="ui menu attached bottom stacked small">
++                        <a class="green item" ng-click="toggleCode()">
++                          <i class="code icon"></i>
++                        </a>
++
++                        <a class="green item" ng-click="connect()">
++                          <i class="wrench icon"></i>
++                          <!-- <div class="ui floating label">
++                            Connect
++                          </div> -->
++                        </a>
++
++                        <a class="green item" ng-click="inspect()">
++                          <i class="tasks icon"></i>
++                        </a>
++
++
++
++
++              <div class="idea-action item vertically fitted">
++                <div class="cont">
++                  <div class="idea-item ui compact-action vertical transparent left menu small right">
++                    <a class="item" ng-repeat="action in activeField.actions" ng-click="follow(action, $index, $event)">
++                      {{action.text}}
++                      <i class="{{action.icon}} icon"></i>
++                      
++                    </a>
++                  </div>
++                </div>
++              </div>
+ 
+-          </div>
++                  </div>
+ 
+-          <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
+-            <div class="ui floating label">
+-              Structure
+-            </div>
++                  <div class="ui segment codeView" ng-show="code" ng-class="{'five wide column': !transposed, 'nine wide column': transposed}">
++                    <div class="ui floating label">
++                      Structure
++                    </div>
+ 
+-            <div class="ui menu attached top stacked right">
+-                <a class="red item" ng-click="transpose()">
+-                  <i class="undo icon"></i>
+-                </a>
++                    <div class="ui menu attached top stacked right">
++                        <a class="red item" ng-click="transpose()">
++                          <i class="undo icon"></i>
++                        </a>
+ 
++                    </div>
++                    
++                      
++                      <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
++                            <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
++                            </div>
++                      </div>
++                </div>
++                </li>
++                <li class="render-item dummy-code-rendering">
++                  How'd you like your code?
++                </li>
++
++                </ul>
++                </div>
++              
+             </div>
+             
+-              
+-              <div class="ui segment attached bottom" ng-class="{'transposed-parent': transposed}">
+-                    <div class="" ng-init="field = this; key = 'activeField'" ng-include="'views/structural-tree-view.html'" ng-class="{'transposed-wrapper': transposed}">
+-                    </div>
+-              </div>
+-        </div>
+-    </div>
+-    <div class="ui one wide column compact">
+-      <i class="fa fa-2x fa-chevron-right"></i>
+-</div>
++          <div class="ui one wide column compact" ng-click="next()">
++                <i class="fa fa-2x fa-chevron-right"></i>
++          </div>
++    
++    
+ </div>
+ 
+ 
+ 
+-</div>
+\ No newline at end of file
++</div>
+diff --git a/views/create-relation.html b/views/create-relation.html
+new file mode 100644
+index 0000000..637bdaf
+--- /dev/null
++++ b/views/create-relation.html
+@@ -0,0 +1,6 @@
++<form ng-submit="createRelation()">
++  <input focus-when="createRelation" ng-model="subject" type="text" placeholder="What is the subject?" tabindex="0">
++  <input ng-model="predicate" type="text" placeholder="What is the predicate?" tabindex="0">
++  <input ng-model="object" type="text" placeholder="What is the object" tabindex="0">
++  <input name="submit" type="submit" value="submit"/>
++</form>
+\ No newline at end of file
+diff --git a/views/editor.html b/views/editor.html
+index 9729cf0..9766037 100644
+--- a/views/editor.html
++++ b/views/editor.html
+@@ -7,7 +7,10 @@
+           <div data-document-id="{{ activeDocument._id }}"
+           interested-in-focus="active"
+           tabindex="1"
+-          ng-model="activeDocument.contents" ng-show="true" follow=".dropdown-follow" contenteditable="true"
++          ng-model="activeDocument.contents"
++          ng-show="true"
++          follow=".dropdown-follow"
++          contenteditable="true"
+           document-model="activeDocument"
+           angular-content="activeDocument.contents"
+           incremental="true"
+@@ -18,10 +21,14 @@
+         </div>
+         <!-- <div class="one wide column" ng-show="true"> -->
+               <div class="ui vertical icon menu left attached left">
+-                <div class="ui button item" ng-click="save()">
++                <div ng-show="createMode" class="ui button item" ng-click="save()">
+                   Create
+                 </div>
+ 
++                <div ng-show="editMode" class="ui button item" ng-click="update()">
++                  Update
++                </div>
++
+                 <a class="red item" ng-click="tree()">
+                   <i class="sitemap icon"></i>
+                 </a>
+diff --git a/views/embed.html b/views/embed.html
+index 5932250..5d79249 100644
+--- a/views/embed.html
++++ b/views/embed.html
+@@ -1,8 +1,30 @@
+ <div class="focal-window window">
++
++<div class="ui inverted segment">
++Embed
++
++<div class="circular inverted white ui icon button floated right" ng-click="close()">
++  <i class="icon remove"></i>
++</div>
++
++</div>
++
++
++
++
++<div packery=".document-card" class="available-subdocuments">
+   
++    <div ng-repeat="feedItem in items" class="document-card window" prepended data-document-id="{{feedItem._id }}" ng-click="embedDocument(feedItem)">
++        <a class="ui orange label">
++          {{ feedItem._id }}
++        </a>
++        <div angular-content="feedItem.contents" document-index="$index" contenteditable="false" incremental="false"></div>
++    </div>
++</div>
+ 
+ <div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
+   <ol ng-class="start">
++
+     <li tabindex="0" ng-repeat="field in activeDocument.fields" ng-bind="field.type" ng-click="embed($index)" focus-when="$first"></li>
+   </ol>
+ </div>
+diff --git a/views/relation.html b/views/relation.html
+new file mode 100644
+index 0000000..7462800
+--- /dev/null
++++ b/views/relation.html
+@@ -0,0 +1,13 @@
++<div class="embedded-context relation" contenteditable="false">
++  <span class="ideacontainer">
++    <span class="idea">{{ activeField.subject.type }}</span>
++    <span class="name">{{ activeField.subject.description }}</span>
++  </span>
++
++  {{ activeField.predicate.description }}
++
++  <span class="ideacontainer">
++    <span class="idea">{{ activeField.object.type }}</span>
++    <span class="name">{{ activeField.object.description }}</span>
++  </span>
++<div>
+\ No newline at end of file
+diff --git a/views/subdocument.html b/views/subdocument.html
+index 0791e9e..a735308 100644
+--- a/views/subdocument.html
++++ b/views/subdocument.html
+@@ -1,4 +1,4 @@
+-<div class="embedded-context"
++<div class="embedded-context subdocument subdocument-window"
+     angular-content="documentModel.contents"
+     document-model="documentModel"
+     incremental="false"></div>
+\ No newline at end of file
+-- 
+1.7.10.2 (Apple Git-33)
+

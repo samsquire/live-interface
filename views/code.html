@@ -5,12 +5,15 @@
   <div class="ui grid">
     <div class="ui one wide column compact carousel-navigation" ng-click="prev()">
       <i class="fa fa-2x fa-chevron-left"></i>
+      <i class="circle icon" ng-click="dependencyAdded(activeField)"></i>
     </div>
 
 
           <div class="ui eleven wide column content">
-          <div class="carousel-wrapper" carousel-scroll>
-            <ul class="type-carousel" carousel="activeRendering">
+          <div class="carousel-wrapper" carousel-scroll carousel-scroll-left="prev()" 
+          carousel-scroll-right="next()"
+          carousel="activeRendering">
+            <ul class="type-carousel">
               <li class="render-item">
                 <div class="code-editor">
                   <textarea ng-model="activeField.source"
@@ -69,6 +72,7 @@
                       </div>
                 </div>
                 </li>
+
                 <li class="render-item dummy-code-rendering">
                   How'd you like your code?
                 </li>

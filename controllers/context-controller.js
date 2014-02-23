@@ -1,5 +1,8 @@
-angular.module('system').controller('contextController', ['$scope', '$rootScope', 'model', '$state', 'metadata', 'shelfRepository', 'ActiveDocument',
-  function ($scope, $rootScope, model, $state, metadata, shelfRepository, ActiveDocument) {
+angular.module('system').controller('contextController',
+  ['$scope', '$rootScope', 'model', '$state', 'metadata', 'shelfRepository',
+  'ActiveDocument', 'feed', 'page-lines',
+  function ($scope, $rootScope, model, $state, metadata,
+    shelfRepository, ActiveDocument, feed, pageLines) {
 
   $scope.activeField = model;
   // this is anything that is a data attribute
@@ -9,6 +12,7 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
   $scope.code = false;
   $scope.transposed = false;
   $scope.activeRendering = 0; 
+  $scope.renderingCount = 2;
 
   if ($scope.metadata.kind === "subdocument") {
     $scope.documentModel = $scope.feedIds[$scope.metadata.instanceName];
@@ -440,6 +444,21 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
 
   };
 
+
+
+  // $scope.update = feed.inplaceUpdate(function () {
+  //   console.log("Update from subdocument.");
+  //   $scope.$apply();
+  // });
+
+  $scope.update = function () {
+    console.log("update from subdocument");
+  };
+
+  $scope.openForEditing = function(feedItem) {
+    console.log("open for editing from subdocument");
+  };
+
   $scope.toggleCode = function () {
     $scope.code = !$scope.code;
   };
@@ -460,6 +479,11 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
     });
   };
 
+  $scope.dependencyAdded = function (field) {
+    pageLines.finishLine(field);
+    pageLines.addLine();
+  };
+
   $scope.follow = function (action, index, event) {
     
     var embeddedContext = $(event.target).parents('.content')[0];
@@ -469,8 +493,19 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
       documentId: $scope.activeDocument._id
     }, metadata);
 
+    // original fieldIndex is from the source document
+    shelfData.activeDocumentFieldIndex = ActiveDocument.fields.length;
     // insert this field into the currently used document
-    ActiveDocument.fields.push($scope.activeDocument.fields[metadata.fieldIndex]);
+
+    var field;
+    if (metadata.inclusionType === "external") {
+      field = $scope.feedIds[metadata.instanceName].fields[metadata.fieldIndex];
+    } else {
+      field = $scope.activeDocument.fields[metadata.fieldIndex];
+    }
+    
+
+    ActiveDocument.fields.push(field);
 
     console.log(shelfData);
     shelfRepository.items.push(shelfData);
@@ -479,11 +514,13 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
 
 
   $scope.next = function () {
-    $scope.activeRendering = $scope.activeRendering + 1;
+    var next = $scope.activeRendering + 1;
+    $scope.activeRendering = (next > $scope.renderingCount ? 0 : next);
   };
 
   $scope.prev = function () {
-    $scope.activeRendering = $scope.activeRendering - 1;
+    var prev = $scope.activeRendering - 1;
+    $scope.activeRendering = (prev < 0 ? 0 : prev);
   };
 
   $scope.codemirror = function (options) {
@@ -502,7 +539,8 @@ angular.module('system').controller('contextController', ['$scope', '$rootScope'
 
     CodeMirror.autoLoadMode(_editor, _editor.getOption("mode"));
 
-    _editor.focus();
+    // _editor.focus();
+    _editor.setOption("cursorBlinkRate", 1000000000)
 
     setTimeout(function () {
       _editor.refresh();

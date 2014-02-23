@@ -1,0 +1,51 @@
+(import [sqlalchemy [Table Column Integer String MetaData Text]])
+(def user_definition {"name" "products" "children" [{"name" "rating"} {"name" "review" "children" [{"name" "review body text"}]}]})
+
+(defn lflatten [coll]
+  "Return a single flat list expanding all members of coll"
+  (if (and (instance? list coll) (not (string? coll)))
+    (_flatten coll [])
+    (raise (TypeError (.format "{0!r} is not a collection" coll)))))
+(defn _flatten [coll result]
+  (if (and (instance? list coll) (not (string? coll)))
+    (do (for* [b coll]
+          (_flatten b result)))
+    (.append result coll))
+  result)
+(defmacro multitable [table fields] `(Table ~table (MetaData) ~@fields))
+(defn walk [tree] (if (tree.has-key "children") (multitable (get tree "name") (lflatten (map walk (get tree "children")))) (Column (get tree "name") Text)))
+(walk user_definition)
+
+
+To splice a list as-is use ~@
+
+í ½í¸±
+
+(defn walk [tree] (if (tree.has-key "children") (map walk (get tree "children")) (Column (get tree "name") Text)))
+
+(defn walk [tree] (if (tree.has-key "children") (map walk (get tree "children")) (Column (get tree "name") Text)))
+
+(defn walk [tree] (if (tree.has-key "children") (apply Table [(get tree "name") (MetaData) (map walk (get tree "children"))]) (Column (get tree "name") Text)))
+
+
+
+
+
+
+
+Problem with the built-in flatten considers Column an iterable so it cannot flatten it.
+
+
+
+
+
+
+
+
+(defn walk [tree] (if (tree.has-key "children") [] (quasiquote (quote (Column (get ~tree "name") Text)))))
+
+
+
+
+
+

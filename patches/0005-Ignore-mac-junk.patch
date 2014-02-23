@@ -1,0 +1,20 @@
+From 985b70a9f1b1bd30f74dbf4a29d1f24ea3369387 Mon Sep 17 00:00:00 2001
+From: Sam Squire <ssquire@thoughtworks.com>
+Date: Mon, 10 Feb 2014 22:33:39 +0000
+Subject: [PATCH 5/6] Ignore mac junk
+
+---
+ .gitignore |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitignore b/.gitignore
+index da96147..fd63c15 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,2 +1,3 @@
+ buckets
+ indexing-index/
++.DS_Store
+-- 
+1.7.10.2 (Apple Git-33)
+

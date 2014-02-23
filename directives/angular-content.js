@@ -26,7 +26,7 @@ angular.module('system').directive('angularContent', ['$timeout', '$compile', fu
       loadContexts(subDocumentScope);
 
       function loadContexts(subDocumentScope) {
-        var freshContexts = $element.find("[rel=embedded]").not(".ng-scope");
+        var freshContexts = $element.find("[rel=embedded],[rel=external]").not(".ng-scope");
         freshContexts.each(function (i, embed) {
             $compile(embed)(subDocumentScope, function (rendered) {
               // $timeout(function () {

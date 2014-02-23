@@ -1,46 +1,55 @@
 <div class="container" keypress>
-  <div class="ui grid">
-    
-      <div class="row">
-        <div class="fifteen wide column">
-          <!-- Having performance issues with 'focus-when' focus-when="active" -->
-          <div data-document-id="{{ activeDocument._id }}"
-          interested-in-focus="active"
-          tabindex="1"
-          ng-model="activeDocument.contents"
-          ng-show="true"
-          follow=".dropdown-follow"
-          contenteditable="true"
-          document-model="activeDocument"
-          angular-content="activeDocument.contents"
-          incremental="true"
-          class="ui segment attached left post-body segment" ng-class="{open: open}" type="text"></div>
-          <!-- <textarea follow=".dropdown" class="post-body segment" ng-model="body">
-            Test
-          </textarea> -->
+  <div class="ui grid one column middle aligned">
+
+    <div class="row">
+          <!-- <div class="one wide column" ng-show="true"> -->
+      <div class="ui vertical icon menu left attached left">
+        <div ng-show="createMode" class="ui button item" ng-click="save()">
+          Create
         </div>
-        <!-- <div class="one wide column" ng-show="true"> -->
-              <div class="ui vertical icon menu left attached left">
-                <div ng-show="createMode" class="ui button item" ng-click="save()">
-                  Create
-                </div>
 
-                <div ng-show="editMode" class="ui button item" ng-click="update()">
-                  Update
-                </div>
+        <div ng-show="editMode" class="ui button item" ng-click="update()">
+          Update
+        </div>
 
-                <a class="red item" ng-click="tree()">
-                  <i class="sitemap icon"></i>
-                </a>
-                
-              </div>
+        <a class="red item" ng-click="tree()">
+          <i class="sitemap icon"></i>
+        </a>
+        
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="three wide column"></div>
+        <div class="thirteen wide column">
+          
+            <!-- Having performance issues with 'focus-when' focus-when="active" -->
+            <div data-document-id="{{ activeDocument._id }}"
+            focus-when="active"
+            interested-in-focus="active"
+            tabindex="1"
+            ng-model="activeDocument.contents"
+            ng-show="true"
+            follow=".dropdown-follow"
+            contenteditable="true"
+            document-model="activeDocument"
+            angular-content="activeDocument.contents"
+            incremental="true"
+            class="ui segment attached left post-body segment" ng-class="{open: open}"
+            type="text"
+            autoannotate="scan"
+            autoannotate-delay="500"></div>
+            <!-- <textarea follow=".dropdown" class="post-body segment" ng-model="body">
+              Test
+            </textarea> -->
+          </div>
 
 
 
         <!-- </div> -->
-      </div>
+      
       
     
-    
+    </div>
   </div>
 </div>

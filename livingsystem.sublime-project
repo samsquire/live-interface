@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-     "folder_exclude_patterns": ["components", "presentation"],
+     "folder_exclude_patterns": ["components", "presentation", "langident/sourceclassifier"],
       "file_exclude_patterns": ["*.sublime-workspace"],
 			"path": "./"
 		}

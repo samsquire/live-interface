@@ -1,4 +1,4 @@
-<div class="focal-window window">
+<div class="focal-window">
 
 <div class="ui inverted segment">
 Embed
@@ -10,74 +10,72 @@ Embed
 </div>
 
 
+<h2 class="ui header">
+  <i class="sitemap icon"></i>
+  <div class="content">
+    Embed Data
+    <div class="sub header">Reuse data from another document.</div>
+  </div>
+</h2>
+
+ <div class="ui large header">Other Documents</div>
+<div class="embed-section">
+  <div packery=".document-card" class="available-subdocuments">
+    
+      <div ng-repeat="feedItem in items" class="document-card window" prepended data-document-id="{{feedItem._id }}" ng-click="embedDocument(feedItem)">
+          <a class="ui orange label">
+            {{ feedItem._id }}
+          </a>
+          <div angular-content="feedItem.contents" document-index="$index" contenteditable="false" incremental="false"></div>
+      </div>
+  </div>
+
+</div>
+
+
+<div class="embed-section">
+<div class="ui large header">Fields from this document</div>
+
+
+  <div packery=".document-card" class="available-subdocuments">
+    
+      <div ng-repeat="field in activeDocument.fields"
+      class="document-card window"
+      prepended
+      ng-click="embed($index)">
+      {{$index}}
+      {{field.type}}
+      <a href="" rel="embedded" data-kind="{{field.type}}" data-id="{{$index}}"></a>
+          <a class="ui blue label">{{ field.type }}</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="embed-section">
+<div class="ui large header">Fields from other documents</div>
 
 
 <div packery=".document-card" class="available-subdocuments">
-  
-    <div ng-repeat="feedItem in items" class="document-card window" prepended data-document-id="{{feedItem._id }}" ng-click="embedDocument(feedItem)">
+    
+      <div ng-repeat="feedItem in items" class="document-card window" prepended data-document-id="{{feedItem._id }}" ng-show="feedItem.fields.length > 0">
         <a class="ui orange label">
-          {{ feedItem._id }}
+            {{ feedItem._id }}
         </a>
-        <div angular-content="feedItem.contents" document-index="$index" contenteditable="false" incremental="false"></div>
+        <li ng-repeat="field in feedItem.fields">
+          <a class="ui purple label" ng-click="embedExternalField(feedItem, $index)">
+            {{ field.type }}
+          </a>
+        </li>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
+<!-- <div class="dropdown" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
   <ol ng-class="start">
 
     <li tabindex="0" ng-repeat="field in activeDocument.fields" ng-bind="field.type" ng-click="embed($index)" focus-when="$first"></li>
   </ol>
-</div>
+</div> -->
 
-
-
-
-<!--
-<div class="ui vertical menu" directional-focus="{container: '.menu', items: '.item'}" numbered-focus=".item">
-  <div taxbindex="0" class="header item">
-    <i class="user icon"></i>
-    Communities
-  </div>
-  <div taxbindex="0"  class="item">
-    College
-    <div class="menu">
-      <a focus-when="open" tabindex="0" class="item">Baseball</a>
-      <a tabindex="0" class="item">Basketball</a>
-      <a tabindex="0" class="item">Golf</a>
-    </div>
-  </div>
-  <a tabindex="0" class="item">
-    Dance
-  </a>
-  <a tabindex="0" class="item">
-    Aerobics
-  </a>
-  <div tabindex="0" class="header item">
-    <i class="globe icon"></i>
-    Cities
-  </div>
-  <a tabindex="0" class="item">
-    New York
-  </a>
-  <a tabindex="0" class="item">
-    Montreal
-  </a>
-  <a tabindex="0" class="item">
-    Los Angeles
-  </a>
-  <a tabindex="0" class="item">
-    San Francisco
-  </a>
-  <div tabindex="0" class="header item">
-    <i class="icon calendar"></i>
-    Months
-  </div>
-  <a tabindex="0" class="item">
-    August
-  </a>
-  <a tabindex="0" class="item">
-    June
-  </a>
-</div>
--->
 </div>

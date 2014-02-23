@@ -1,7 +1,7 @@
 <div class="embedded-context">
   <table>
     <th ng-repeat="heading in activeField.headings" ng-bind="heading"></th>
-    <tr ng-repeat="line in activeField.lines">
+    <tr ng-repeat="line in activeField.lines | limitTo: 100">
       <td ng-repeat="cell in activeField.headings" ng-bind="$parent.line[cell]"></td>
     </tr>
   </table>

@@ -27,22 +27,25 @@ angular.module('system').directive('a', ['$timeout', '$compile', '$templateCache
     replace: false,
     link: function ($scope, $element, $attrs) {
 
-      var kind = $element.attr('rel'),
+      var inclusionType = $element.attr('rel'),
         model, contextTemplateUrl, templateHtml, contextScope, contextScope, embeddedContent, metadata;
 
-      if (kind !== "embedded") {
+      if (inclusionType !== "embedded" && inclusionType !== "external") {
         return false;
       }
-
       
       metadata = {
         fieldIndex: parseInt($element.attr('data-id'), 10),
         kind: $element.attr('data-kind'),
-        instanceName: $element.attr('href')
+        instanceName: $element.attr('href'),
+        inclusionType: inclusionType
       };
-      // console.log("Active Document is", $scope.activeDocument);
-      model = $scope.activeDocument.fields[metadata.fieldIndex];
-//      console.log('Encountered context', model);
+
+      if (inclusionType === "external") {
+        model = $scope.feedIds[metadata.instanceName].fields[metadata.fieldIndex];
+      } else {
+        model = $scope.activeDocument.fields[metadata.fieldIndex];
+      }
 
       contextTemplateUrl = 'views/' + metadata.kind + '.html';
       templateHtml = $templateCache.get(contextTemplateUrl);

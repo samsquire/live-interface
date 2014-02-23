@@ -1,0 +1,6 @@
+{
+  "template": "hello {{ name }}",
+  "data": {
+   "name": "world" 
+  }
+}

@@ -7,7 +7,7 @@ angular.module('system').controller('shelf', ['$scope', '$rootScope', 'shelfRepo
 
     var embed = {
       type: feedRepository.ids[item.documentId].fields[item.fieldIndex].type,
-      index: item.fieldIndex
+      index: item.activeDocumentFieldIndex
     };
     $rootScope.$emit('embed-field', embed);
   };

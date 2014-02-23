@@ -1,4 +1,8 @@
-<div class="dropdown-follow boxed dropdown" ng-show="open" directional-focus="{container: 'ol', items: 'li'}" numbered-focus="li">
+<div class="dropdown-follow boxed dropdown" ng-show="open" directional-focus="
+  {container: 'ol', items: 'li'}" numbered-focus="li"
+  save-position="open"
+  semantic-search="activateSearch()"
+  >
   <div ng-include="'views/dropdown.html'"></div>
   <div ng-show="createWizard" class="boxed wizard" ui-view="@wizard"></div>
   <div ng-show="createRelation" class="boxed" ui-view="@relation"></div>

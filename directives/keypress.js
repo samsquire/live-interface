@@ -1,14 +1,28 @@
 angular.module('system').directive('keypress', ['$parse', '$rootScope', function ($parse, $rootScope) {
 return {
   link: function ($scope, $element, $attrs) {
+    jQuery.data($element, "escape-toggle", false);
 
+    function selectionChanged() {
+      var escape = !jQuery.data($element, "escape-toggle");
+        jQuery.data($element, "escape-toggle", escape);
+        if (escape) {
+          if (window.getSelection().rangeCount > 0) {
+            $scope.range = window.getSelection().getRangeAt(0);
+          }
+          $rootScope.$emit('caret', $.extend({}, window.getSelection()));
+        }
+    }
+
+    $(document).bind('selectionchange', function () {
+      selectionChanged();
+    });
     $(document.body).bind('keydown', function (event) {
       // var model = $parse($attrs['keypress']);
       // model($scope, {$event: event});
       
       if (event.keyCode == 27) {
-
-        $rootScope.$emit('caret', $.extend({}, window.getSelection()));
+        selectionChanged();
         $rootScope.$emit('escape-pressed');
         $scope.$apply();
         event.preventDefault();
@@ -49,6 +63,7 @@ return {
       selected.focus();
       selected.click();
       event.stopPropagation();
+      event.preventDefault();
       return true;
     });
   }

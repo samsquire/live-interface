@@ -69,6 +69,13 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     return cleaner.filter($scope.activeDocument.contents);
   };
 
+  $scope.scan = function (text, promise) {
+    $http.post('http://sampc:4567/identify', text)
+    .success(function (data) {
+      promise.resolve(data.language);
+    });
+  };
+
   $scope.update = function () {
     var elements = $scope.filteredDocument();
     var html = elements.html();
@@ -130,11 +137,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
         });
 
       });
-    }
-
-    
-
-    
+    }    
   };
 
   $scope.saved = function (err, response) {
@@ -155,10 +158,14 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     $scope[field.type](field.index);
   });
 
+  $rootScope.$on('embed-external-field', function (event, reference) {
+    console.log('External embed of', reference);
+    $scope.external(reference);
+  });
 
   $scope.insertNode = function (newNode) {
     var node;
-    if ($scope.selection === null) {
+    if ($scope.selection === null || $scope.selection.anchorNode === null) {
       $('.post-body').focus();
       $scope.selection = window.getSelection();
     }
@@ -217,6 +224,16 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     $(newNode).after($('<div>&nbsp;</div>'));
   };
 
+  $scope.createExternal = function(type, model, documentId) {
+    var element = $("<a>");
+    element.attr("rel", "external");
+    element.attr("data-kind", type);
+    element.attr("data-id", model);
+    element.attr("href", documentId);
+    element.attr("contenteditable", "false");
+    return element[0];
+  };
+
   $scope.createEmbedded = function(type, model, instance) {
     var element = $("<a>");
     element.attr("rel", "embedded");
@@ -263,6 +280,14 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
     $scope.insertNode(element);
     // $compile(element)($scope);
     $scope.open = true;
+  };
+
+  $scope.external = function (reference) {
+    var externalField = reference.document.fields[reference.fieldIndex];
+    var element = $scope.createExternal(externalField.type, reference.fieldIndex, reference.document._id);
+    $scope.insertNode(element);
+    $scope.open = true; 
+    $rootScope.$emit('escape-pressed');
   };
 
   $scope.relation = function (metadata) {
@@ -332,7 +357,7 @@ var EditorController = function EditorController ($scope, $state, $stateParams, 
         }, {});
         return row;
       }));
-
+      $scope.$apply();
       console.log(model.lines);
     });
     

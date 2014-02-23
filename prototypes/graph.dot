@@ -1,0 +1,15 @@
+digraph D {
+  rankdir="LR";
+  product [label="Product"];
+  productName [label="Product Name"];
+  productName2 [label="Product Name"];
+  rating [label="Rating"];
+  review [label="Review"];
+  body [label="Review Body Text"];
+  
+  productName -> product;
+  product -> productName2;
+  product -> rating; 
+  product -> review; 
+  review -> body;
+}

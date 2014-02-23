@@ -1,4 +1,12 @@
-<div class="embedded-context subdocument subdocument-window"
-    angular-content="documentModel.contents"
-    document-model="documentModel"
-    incremental="false"></div>
+<div class="embedded-context subdocument-window">
+  <div class="label" ng-click="openForEditing(documentModel)"><i class="icon tiny edit"></i>
+    Subdocument
+  </div>
+  <div class="subdocument"
+      contenteditable="true"
+      angular-content="documentModel.contents"
+      document-model="documentModel"
+      incremental="false"
+      when-blur="update(documentModel)"
+      ></div>
+  </div>

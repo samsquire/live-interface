@@ -6,7 +6,7 @@ angular.module('system').directive('screenshot', [function () {
 
       var metadata = $scope.$eval($attrs.of);
       console.log(metadata);
-      var embeddedSelector = "[data-document-id=" + metadata.documentId + " ] a[rel=embedded][data-id=" + metadata.fieldIndex + "][href=" + metadata.instanceName + "]";
+      var embeddedSelector = "[data-document-id=" + metadata.documentId + "] a[rel=embedded][data-id=" + metadata.fieldIndex + "][href=" + metadata.instanceName + "]";
       console.log(embeddedSelector);
       var embeddedContext = $(embeddedSelector).next().find('.content');
 

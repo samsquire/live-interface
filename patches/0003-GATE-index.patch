@@ -1,0 +1,19 @@
+From 446fb8ece7695ba61865385744e82b91ae9b9b10 Mon Sep 17 00:00:00 2001
+From: Sam Squire <ssquire@thoughtworks.com>
+Date: Mon, 10 Feb 2014 22:18:57 +0000
+Subject: [PATCH 3/6] GATE index
+
+---
+ .gitignore |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitignore b/.gitignore
+index aa012ab..da96147 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,2 @@
+ buckets
++indexing-index/
+-- 
+1.7.10.2 (Apple Git-33)
+

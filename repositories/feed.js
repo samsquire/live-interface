@@ -1,8 +1,8 @@
-angular.module('system').factory('feed', [function () {
+angular.module('system').factory('feed', ['cleaner', function (cleaner) {
   function Feed() {
     var self = this;
     var db = new PouchDB('feed');
-    var remoteCouch = 'http://localhost:5984/livesystem';
+    var remoteCouch = 'http://sampc:5984/livesystem';
     
 
     var subscription = null;
@@ -94,6 +94,18 @@ angular.module('system').factory('feed', [function () {
       });
       callback(feedItem);
     };
+
+    self.inplaceUpdate = function (callback) {
+      return function (feedItem) {
+        console.log(cleaner);
+        feedItem.contents = cleaner.filter(feedItem.html).html();
+        delete feedItem.html;
+        console.log(JSON.stringify(feedItem, null, 4));
+        self.update(feedItem, callback);
+      }
+    };
+
+
   }
   return new Feed();
 
