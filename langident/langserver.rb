@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sourceclassifier'
 require 'json'
 
-s = SourceClassifier.new('/Users/ssquire/Documents/projects/liveinterface/langident/sourceclassifier/trainer.bin')
+s = SourceClassifier.new('/gluster/sda10/brick/mac/projects/liveinterface/langident/sourceclassifier/trainer.bin')
 
 options '/*' do
   response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"

@@ -3,21 +3,21 @@ var express = require('express')
 var app = express();
 var server = app.listen(1445);
 var io = require('socket.io').listen(server);
+var leveldown = require('leveldown')
 var levelup = require('levelup')
 var util = require('util');
 var concat = require('concat-stream');
 var lexi = require('lexicographic-integer');
-
-app.configure(function(){
-  app.use(express.logger('dev'));
+var logger = require('morgan');
+var bodyparser = require('body-parser');
+var methodoverride = require('method-override');
+  app.use(logger);
   app.use(express.static(__dirname + '/public'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-});
+  app.use(bodyparser);
+  app.use(methodoverride);
 var ss = require('socket.io-stream');
-
-var db = levelup('./buckets', {
+var ab2str = require('arraybuffer-to-string')
+var db = levelup(leveldown('./buckets'), {
   valueEncoding: 'json'
 })
 
@@ -58,7 +58,7 @@ var shell = io.of('/shell').on('connection', function(socket) {
          start: outputName,
          end: outputName + '-\uffff' }
       ).on('data', function (line) {
-        lines.push(line.value);
+        lines.push(ab2str (line.value));
       }).on('error', function (err) {
         console.log('Oh my!', err)
       })

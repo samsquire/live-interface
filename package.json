@@ -1,0 +1,30 @@
+{
+  "name": "liveinterface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "arraybuffer-to-string": "^1.0.2",
+    "body-parser": "^1.19.0",
+    "concat-stream": "^2.0.0",
+    "express": "^4.17.1",
+    "lexicographic-integer": "^1.1.0",
+    "method-override": "^3.0.0",
+    "node-uuid": "^1.4.8",
+    "socket.io-stream": "^0.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/fuz/liveinterface.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fuz/liveinterface#readme"
+}
