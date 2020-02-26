@@ -1,0 +1,4 @@
+Flask==0.10.1
+sh==1.09
+BeautifulSoup4==4.2.0
+Markdown==2.4.2

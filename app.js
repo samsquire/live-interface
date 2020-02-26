@@ -100,6 +100,13 @@ angular.module('system').config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+    .state('recursive', {
+      url: '/recursive',
+      templateUrl: 'views/recursive.html',
+      controller: 'recursive'
+    })
+
     .state('edit', {
       url: '/edit/:documentId',
       data: {

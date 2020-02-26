@@ -53,6 +53,7 @@ angular.module('system').factory('feed', ['cleaner', function (cleaner) {
     self.fetch = function (callback) {
       self.sync();
       db.info(function(err, info) {
+        console.log(info);
         var seq = info.update_seq;
         
         db.allDocs({include_docs: true, ascending: false}, function (err, docs) {

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"active",
+				"activeRendering"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"update",
+				"updateCallback"
+			],
+			[
 				"item",
 				"items"
 			],
@@ -96,58 +108,10 @@
 	"buffers":
 	[
 		{
-			"file": "presentation/index.html",
-			"settings":
-			{
-				"buffer_size": 3417,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 14209,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/code.html",
-			"settings":
-			{
-				"buffer_size": 2012,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "shellbucket.js",
-			"settings":
-			{
-				"buffer_size": 2045,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "directives/angular-content.js",
-			"settings":
-			{
-				"buffer_size": 849,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "directives/keypress.js",
-			"settings":
-			{
-				"buffer_size": 3352,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "controllers/spaces.js",
-			"settings":
-			{
-				"buffer_size": 472,
+				"buffer_size": 16272,
 				"line_ending": "Unix"
 			}
 		},
@@ -155,105 +119,41 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 2032,
+				"buffer_size": 3462,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "controllers/autocomplete.js",
+			"contents": "Searching 47 files for \"ng-app\" (regex)\n\n/Users/ssquire/Documents/projects/liveinterface/index.html:\n  146  \n  147  </head>\n  148: <body ng-app=\"system\">\n  149    \n  150    \n\n/Users/ssquire/Documents/projects/liveinterface/views/structural-tree-view.html:\n    1:   <ul ng-app=\"system\" ng-controller=\"dataobject\" ng-init=\"init($parent.field, $parent.key)\" ng-class=\"{'transposed-child': transposed}\">\n    2        <li ng-repeat=\"currentKey in keys\" ng-switch=\"type(field[key])\" ng-class=\"{last: $last, 'transposed-child': transposed}\">\n    3          {{ currentKey }}\n\n2 matches across 2 files\n\n\nSearching 47 files for \"ng-controller\" (regex)\n\n/Users/ssquire/Documents/projects/liveinterface/index.html:\n  190  \n  191        <div ui-view></div>\n  192:       <div ng-controller=\"ElementLines\">\n  193          <canvas class=\"page-lines\" paper ng-show=\"visible\"></canvas>\n  194        </div>\n\n/Users/ssquire/Documents/projects/liveinterface/views/dropdown.html:\n    1  <div class=\"ui grid\">\n    2      <div class=\"three wide column\">\n    3:         <canvas ng-controller=\"InputGraph\" paper\n    4          class=\"input-parameters\"></canvas>\n    5      </div>\n\n/Users/ssquire/Documents/projects/liveinterface/views/structural-tree-view.html:\n    1:   <ul ng-app=\"system\" ng-controller=\"dataobject\" ng-init=\"init($parent.field, $parent.key)\" ng-class=\"{'transposed-child': transposed}\">\n    2        <li ng-repeat=\"currentKey in keys\" ng-switch=\"type(field[key])\" ng-class=\"{last: $last, 'transposed-child': transposed}\">\n    3          {{ currentKey }}\n\n3 matches across 3 files\n\n\nSearching 47 files for \"ng-repeat\" (regex)\n\n/Users/ssquire/Documents/projects/liveinterface/views/code.html:\n   43                  <div class=\"cont\">\n   44                    <div class=\"idea-item ui compact-action vertical transparent left menu small right\">\n   45:                     <a class=\"item\" ng-repeat=\"action in activeField.actions\" ng-click=\"follow(action, $index, $event)\">\n   46                        {{action.text}}\n   47                        <i class=\"{{action.icon}} icon\"></i>\n\n/Users/ssquire/Documents/projects/liveinterface/views/data.html:\n    1  <div class=\"embedded-context\">\n    2    <table>\n    3:     <th ng-repeat=\"heading in activeField.headings\" ng-bind=\"heading\"></th>\n    4:     <tr ng-repeat=\"line in activeField.lines | limitTo: 100\">\n    5:       <td ng-repeat=\"cell in activeField.headings\" ng-bind=\"$parent.line[cell]\"></td>\n    6      </tr>\n    7    </table>\n\n/Users/ssquire/Documents/projects/liveinterface/views/dropdown.html:\n   15  </div>\n   16  \n   17: <ol ng-show=\"choosing\" ng-class=\"{start: $first}\" ng-repeat=\"optionList in options\">\n   18      <li focus-when=\"$parent.$first && $first && $parent.open\"\n   19      tabindex=\"{{$index + 1 + options[$parent.$index - 1].length}}\"\n   20:     ng-repeat=\"item in optionList\" \n   21      ng-click=\"execute(item)\"\n   22      >\n\n/Users/ssquire/Documents/projects/liveinterface/views/embed.html:\n   23    <div packery=\".document-card\" class=\"available-subdocuments\">\n   24      \n   25:       <div ng-repeat=\"feedItem in items\" class=\"document-card window\" prepended data-document-id=\"{{feedItem._id }}\" ng-click=\"embedDocument(feedItem)\">\n   26            <a class=\"ui orange label\">\n   27              {{ feedItem._id }}\n   ..\n   40    <div packery=\".document-card\" class=\"available-subdocuments\">\n   41      \n   42:       <div ng-repeat=\"field in activeDocument.fields\"\n   43        class=\"document-card window\"\n   44        prepended\n   ..\n   59  <div packery=\".document-card\" class=\"available-subdocuments\">\n   60      \n   61:       <div ng-repeat=\"feedItem in items\" class=\"document-card window\" prepended data-document-id=\"{{feedItem._id }}\" ng-show=\"feedItem.fields.length > 0\">\n   62          <a class=\"ui orange label\">\n   63              {{ feedItem._id }}\n   64          </a>\n   65:         <li ng-repeat=\"field in feedItem.fields\">\n   66            <a class=\"ui purple label\" ng-click=\"embedExternalField(feedItem, $index)\">\n   67              {{ field.type }}\n   ..\n   75    <ol ng-class=\"start\">\n   76  \n   77:     <li tabindex=\"0\" ng-repeat=\"field in activeDocument.fields\" ng-bind=\"field.type\" ng-click=\"embed($index)\" focus-when=\"$first\"></li>\n   78    </ol>\n   79  </div> -->\n\n/Users/ssquire/Documents/projects/liveinterface/views/jsonlist.html:\n    1  <script type=\"text/ng-template\" id=\"parent\">\n    2: <ol ng-repeat=\"node in currentNode.children\">\n    3      <li>\n    4      <span ng-click=\"swap(currentNode, parent, $parent.parent, $index, $parent.$index)\">\n\n/Users/ssquire/Documents/projects/liveinterface/views/list.html:\n    9                <ol contenteditable=\"true\" class=\"focus reshow\" ng-mouseover=\"show(true)\">\n   10  \n   11:                 <li ng-repeat=\"listText in activeField.items\" ng-model=\"listText.text\" tabindex=\"0\" ng-class=\"{focus: $first, reshow: open}\" contenteditable=\"true\"></li>\n   12  \n   13                </ol>\n\n/Users/ssquire/Documents/projects/liveinterface/views/recursive.html:\n   68      <span class=\"create-button\" ng-click=\"create()\">+</span>\n   69  \n   70:     <div class=\"recursive-row\" ng-repeat=\"query in questions\">\n   71          <div class=\"recursive-column\">\n   72            <section class=\"define on\">\n\n/Users/ssquire/Documents/projects/liveinterface/views/shelf.html:\n    2    <div class=\"shelf\">\n    3      \n    4:   <span ng-repeat=\"shelfItem in objects\" class=\"shelfItem\">\n    5      {{ shelfItem.name }}\n    6      {{ shelfItem.type }}\n    .\n   23  \n   24  \n   25:   <span ng-repeat=\"shelfItem in shelf\" class=\"shelfItem\" screenshot of=\"shelfItem\" ng-click=\"embed(shelfItem)\"></span>\n   26      \n   27  \n\n/Users/ssquire/Documents/projects/liveinterface/views/sidebar.html:\n    7      <i class=\"heart icon\"></i>\n    8      Data\n    9:     <a class=\"item\" ng-repeat=\"item in structure.fields\">\n   10      <i class=\"play icon\"></i>\n   11      {{ item.type }}\n\n/Users/ssquire/Documents/projects/liveinterface/views/spaces.html:\n   16    <div packery=\".context\" class=\"spaces\">\n   17  \n   18:     <div ng-repeat=\"feedItem in items\" class=\"context window\" prepended data-document-id=\"{{feedItem._id }}\">\n   19  \n   20        <div class=\"ui menu\">\n\n/Users/ssquire/Documents/projects/liveinterface/views/structural-tree-view.html:\n    1    <ul ng-app=\"system\" ng-controller=\"dataobject\" ng-init=\"init($parent.field, $parent.key)\" ng-class=\"{'transposed-child': transposed}\">\n    2:       <li ng-repeat=\"currentKey in keys\" ng-switch=\"type(field[key])\" ng-class=\"{last: $last, 'transposed-child': transposed}\">\n    3          {{ currentKey }}\n    4          <span ng-switch-when=\"Object\" ng-init=\"field = field[key]; key = currentKey\" ng-include=\"'views/structural-tree-view.html'\" ng-class=\"{'transposed-child': transposed}\"></span>\n\n/Users/ssquire/Documents/projects/liveinterface/views/table.html:\n    2    <thead>\n    3      <tr>\n    4:       <th ng-repeat=\"field in activeField.fields\">{{field}}</th>\n    5    </tr>\n    6  </thead>\n    7    <tbody>\n    8:     <tr ng-repeat=\"row in activeField.rows\">\n    9:       <td ng-repeat=\"cell in row\">{{cell}}</td>\n   10      </tr>\n   11      \n\n22 matches across 12 files\n\n\nSearching 72 files for \".service\" (regex)\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/autocomplete.js:\n   10  angular.module('system').controller('autocomplete',\n   11    ['$scope', '$state', '$rootScope', 'bucket', 'sparql-query', 'importTemplate',\n   12:   function ($scope, $state, $rootScope, bucketService, sparqlQuery, importTemplate) {\n   13    $scope.open = false;\n   14    $scope.choosing = $state.current.data.choosing;\n\n/Users/ssquire/Documents/projects/liveinterface/services/buckets.js:\n    1: angular.module('system').service('bucket', ['$http', function BucketService ($http) {\n    2    \n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/services/dependency-tree-generator.js:\n    1: angular.module('system').service('DependencyTreeGenerator', [function () {\n    2    \n    3    function DependencyTreeGenerator() {\n\n/Users/ssquire/Documents/projects/liveinterface/services/sparql.js:\n    1: angular.module('system').service('sparql-query',\n    2    ['$templateCache','$compile',\n    3    function SPARQLQuery($templateCache, $compile) {\n\n/Users/ssquire/Documents/projects/liveinterface/utils/analysis.js:\n    1: angular.module('system').service('analysis', ['$http',\n    2    function ($http) {\n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/utils/cleaner.js:\n    1: angular.module('system').service('cleaner', function () {\n    2    this.filter = function (text) {\n    3      var contents = $($.parseHTML(text));\n\n7 matches across 6 files\n\n\nSearching 72 files for \"$http\" (regex)\n\n0 matches across 0 files\n\n\nSearching 72 files for \"$.\" (regex)\n\n0 matches across 0 files\n\n\nSearching 72 files for \"$http\"\n\n/Users/ssquire/Documents/projects/liveinterface/app.js:\n   96        controller: 'viewer',\n   97        resolve: {\n   98:         demoData: function ($http) {\n   99:           return $http.get('example.json');\n  100          }\n  101        }\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n    1  var EditorController = function EditorController ($scope, $state, $stateParams, $rootScope, feed,\n    2:     $templateCache, $http, $compile, keybinding,\n    3      ListModel, CodeModel, RelationModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,\n    4      DocumentModel, SubdocumentModel, cleaner) {\n    .\n   71  \n   72    $scope.scan = function (text, promise) {\n   73:     $http.post('http://sampc:4567/identify', text)\n   74      .success(function (data) {\n   75        promise.resolve(data.language);\n   ..\n  382  \n  383  angular.module('system').controller('editor', ['$scope', '$state', '$stateParams', '$rootScope', 'feed',\n  384:   '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'RelationModel', 'ActiveDocument',\n  385    'DependencyTreeGenerator', 'BucketModel', 'socket', 'DocumentModel', 'SubdocumentModel', 'cleaner',\n  386    EditorController]);\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/recursive.js:\n    1: angular.module('system').controller('recursive', ['$rootScope', '$scope', '$http',\n    2:   function ($rootScope, $scope, $http) {\n    3  \n    4      console.log(\"questions\");\n    .\n   75        var data = JSON.stringify($scope.questions);\n   76        console.log(data);\n   77:       $http.post('http://127.0.0.1:4442/rd', data).success(function (response) {\n   78          $scope.diagram = response;\n   79        });\n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    1  angular.module('system').factory('contextTemplates',\n    2:   ['$http', '$templateCache', 'importTemplate',\n    3:   function ($http, $templateCache, importTemplate) {\n    4  \n    5    // function importTemplate(url) {\n    6:   //   $http.get(url).then(function (templateData) {\n    7    //     console.log(\"Imported template for\", url);\n    8    //     $templateCache.put(url, templateData.data);\n\n/Users/ssquire/Documents/projects/liveinterface/services/buckets.js:\n    1: angular.module('system').service('bucket', ['$http', function BucketService ($http) {\n    2    \n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/services/import-template.js:\n    1  angular.module('system').factory('importTemplate',\n    2:   ['$http', '$templateCache', function ($http, $templateCache) {\n    3  \n    4  return function importTemplate(url) {\n    5:     $http.get(url).then(function (templateData) {\n    6        console.log(\"Imported template for\", url);\n    7        $templateCache.put(url, templateData.data);\n\n/Users/ssquire/Documents/projects/liveinterface/utils/analysis.js:\n    1: angular.module('system').service('analysis', ['$http',\n    2:   function ($http) {\n    3  \n    4:     $http\n    5  \n    6    }\n\n19 matches across 7 files\n\n\nSearching 72 files for \".service\"\n\n/Users/ssquire/Documents/projects/liveinterface/services/buckets.js:\n    1: angular.module('system').service('bucket', ['$http', function BucketService ($http) {\n    2    \n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/services/dependency-tree-generator.js:\n    1: angular.module('system').service('DependencyTreeGenerator', [function () {\n    2    \n    3    function DependencyTreeGenerator() {\n\n/Users/ssquire/Documents/projects/liveinterface/services/sparql.js:\n    1: angular.module('system').service('sparql-query',\n    2    ['$templateCache','$compile',\n    3    function SPARQLQuery($templateCache, $compile) {\n\n/Users/ssquire/Documents/projects/liveinterface/utils/analysis.js:\n    1: angular.module('system').service('analysis', ['$http',\n    2    function ($http) {\n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/utils/cleaner.js:\n    1: angular.module('system').service('cleaner', function () {\n    2    this.filter = function (text) {\n    3      var contents = $($.parseHTML(text));\n\n5 matches across 5 files\n\n\nSearching 74 files for \"factory\"\n\n/Users/ssquire/Documents/projects/liveinterface/dashboard/assets/javascripts/rickshaw-1.4.3.min.js:\n    1  var Rickshaw={namespace:function(namespace,obj){var parts=namespace.split(\".\");var parent=Rickshaw;for(var i=1,length=parts.length;i<length;i++){var currentPart=parts[i];parent[currentPart]=parent[currentPart]||{};parent=parent[currentPart]}return parent},keys:function(obj){var keys=[];for(var key in obj)keys.push(key);return keys},extend:function(destination,source){for(var property in source){destination[property]=source[property]}return destination},clone:function(obj){return JSON.parse(JSON.stringify(obj))}};if(typeof module!==\"undefined\"&&module.exports){var d3=require(\"d3\");module.exports=Rickshaw}(function(globalContext){var _toString=Object.prototype.toString,NULL_TYPE=\"Null\",UNDEFINED_TYPE=\"Undefined\",BOOLEAN_TYPE=\"Boolean\",NUMBER_TYPE=\"Number\",STRING_TYPE=\"String\",OBJECT_TYPE=\"Object\",FUNCTION_CLASS=\"[object Function]\";function isFunction(object){return _toString.call(object)===FUNCTION_CLASS}function extend(destination,source){for(var property in source)if(source.hasOwnProperty(property))destination[property]=source[property];return destination}function keys(object){if(Type(object)!==OBJECT_TYPE){throw new TypeError}var results=[];for(var property in object){if(object.hasOwnProperty(property)){results.push(property)}}return results}function Type(o){switch(o){case null:return NULL_TYPE;case void 0:return UNDEFINED_TYPE}var type=typeof o;switch(type){case\"boolean\":return BOOLEAN_TYPE;case\"number\":return NUMBER_TYPE;case\"string\":return STRING_TYPE}return OBJECT_TYPE}function isUndefined(object){return typeof object===\"undefined\"}var slice=Array.prototype.slice;function argumentNames(fn){var names=fn.toString().match(/^[\\s\\(]*function[^(]*\\(([^)]*)\\)/)[1].replace(/\\/\\/.*?[\\r\\n]|\\/\\*(?:.|[\\r\\n])*?\\*\\//g,\"\").replace(/\\s+/g,\"\").split(\",\");return names.length==1&&!names[0]?[]:names}function wrap(fn,wrapper){var __method=fn;return function(){var a=update([bind(__method,this)],arguments);return wrapper.apply(this,a)}}function update(array,args){var arrayLength=array.length,length=args.length;while(length--)array[arrayLength+length]=args[length];return array}function merge(array,args){array=slice.call(array,0);return update(array,args)}function bind(fn,context){if(arguments.length<2&&isUndefined(arguments[0]))return this;var __method=fn,args=slice.call(arguments,2);return function(){var a=merge(args,arguments);return __method.apply(context,a)}}var emptyFunction=function(){};var Class=function(){var IS_DONTENUM_BUGGY=function(){for(var p in{toString:1}){if(p===\"toString\")return false}return true}();function subclass(){}function create(){var parent=null,properties=[].slice.apply(arguments);if(isFunction(properties[0]))parent=properties.shift();function klass(){this.initialize.apply(this,arguments)}extend(klass,Class.Methods);klass.superclass=parent;klass.subclasses=[];if(parent){subclass.prototype=parent.prototype;klass.prototype=new subclass;try{parent.subclasses.push(klass)}catch(e){}}for(var i=0,length=properties.length;i<length;i++)klass.addMethods(properties[i]);if(!klass.prototype.initialize)klass.prototype.initialize=emptyFunction;klass.prototype.constructor=klass;return klass}function addMethods(source){var ancestor=this.superclass&&this.superclass.prototype,properties=keys(source);if(IS_DONTENUM_BUGGY){if(source.toString!=Object.prototype.toString)properties.push(\"toString\");if(source.valueOf!=Object.prototype.valueOf)properties.push(\"valueOf\")}for(var i=0,length=properties.length;i<length;i++){var property=properties[i],value=source[property];if(ancestor&&isFunction(value)&&argumentNames(value)[0]==\"$super\"){var method=value;value=wrap(function(m){return function(){return ancestor[m].apply(this,arguments)}}(property),method);value.valueOf=bind(method.valueOf,method);value.toString=bind(method.toString,method)}this.prototype[property]=value}return this}return{create:create,Methods:{addMethods:addMethods}}}();if(globalContext.exports){globalContext.exports.Class=Class}else{globalContext.Class=Class}})(Rickshaw);Rickshaw.namespace(\"Rickshaw.Compat.ClassList\");Rickshaw.Compat.ClassList=function(){if(typeof document!==\"undefined\"&&!(\"classList\"in document.createElement(\"a\"))){(function(view){\"use strict\";var classListProp=\"classList\",protoProp=\"prototype\",elemCtrProto=(view.HTMLElement||view.Element)[protoProp],objCtr=Object,strTrim=String[protoProp].trim||function(){return this.replace(/^\\s+|\\s+$/g,\"\")},arrIndexOf=Array[protoProp].indexOf||function(item){var i=0,len=this.length;for(;i<len;i++){if(i in this&&this[i]===item){return i}}return-1},DOMEx=function(type,message){this.name=type;this.code=DOMException[type];this.message=message},checkTokenAndGetIndex=function(classList,token){if(token===\"\"){throw new DOMEx(\"SYNTAX_ERR\",\"An invalid or illegal string was specified\")}if(/\\s/.test(token)){throw new DOMEx(\"INVALID_CHARACTER_ERR\",\"String contains an invalid character\")}return arrIndexOf.call(classList,token)},ClassList=function(elem){var trimmedClasses=strTrim.call(elem.className),classes=trimmedClasses?trimmedClasses.split(/\\s+/):[],i=0,len=classes.length;for(;i<len;i++){this.push(classes[i])}this._updateClassName=function(){elem.className=this.toString()}},classListProto=ClassList[protoProp]=[],classListGetter=function(){return new ClassList(this)};DOMEx[protoProp]=Error[protoProp];classListProto.item=function(i){return this[i]||null};classListProto.contains=function(token){token+=\"\";return checkTokenAndGetIndex(this,token)!==-1};classListProto.add=function(token){token+=\"\";if(checkTokenAndGetIndex(this,token)===-1){this.push(token);this._updateClassName()}};classListProto.remove=function(token){token+=\"\";var index=checkTokenAndGetIndex(this,token);if(index!==-1){this.splice(index,1);this._updateClassName()}};classListProto.toggle=function(token){token+=\"\";if(checkTokenAndGetIndex(this,token)===-1){this.add(token)}else{this.remove(token)}};classListProto.toString=function(){return this.join(\" \")};if(objCtr.defineProperty){var classListPropDesc={get:classListGetter,enumerable:true,configurable:true};try{objCtr.defineProperty(elemCtrProto,classListProp,classListPropDesc)}catch(ex){if(ex.number===-2146823252){classListPropDesc.enumerable=false;objCtr.defineProperty(elemCtrProto,classListProp,classListPropDesc)}}}else if(objCtr[protoProp].__defineGetter__){elemCtrProto.__defineGetter__(classListProp,classListGetter)}})(window)}};if(typeof RICKSHAW_NO_COMPAT!==\"undefined\"&&!RICKSHAW_NO_COMPAT||typeof RICKSHAW_NO_COMPAT===\"undefined\"){new Rickshaw.Compat.ClassList}Rickshaw.namespace(\"Rickshaw.Graph\");Rickshaw.Graph=function(args){if(!args.element)throw\"Rickshaw.Graph needs a reference to an element\";this.element=args.element;this.series=args.series;this.defaults={interpolation:\"cardinal\",offset:\"zero\",min:undefined,max:undefined,preserve:false};Rickshaw.keys(this.defaults).forEach(function(k){this[k]=args[k]||this.defaults[k]},this);this.window={};this.updateCallbacks=[];var self=this;this.initialize=function(args){this.validateSeries(args.series);this.series.active=function(){return self.series.filter(function(s){return!s.disabled})};this.setSize({width:args.width,height:args.height});this.element.classList.add(\"rickshaw_graph\");this.vis=d3.select(this.element).append(\"svg:svg\").attr(\"width\",this.width).attr(\"height\",this.height);for(var name in Rickshaw.Graph.Renderer){if(!name||!Rickshaw.Graph.Renderer.hasOwnProperty(name))continue;var r=Rickshaw.Graph.Renderer[name];if(!r||!r.prototype||!r.prototype.render)continue;self.registerRenderer(new r({graph:self}))}this.setRenderer(args.renderer||\"stack\",args);this.discoverRange()};this.validateSeries=function(series){if(!Array.isArray(series)&&!(series instanceof Rickshaw.Series)){var seriesSignature=Object.prototype.toString.apply(series);throw\"series is not an array: \"+seriesSignature}var pointsCount;series.forEach(function(s){if(!(s instanceof Object)){throw\"series element is not an object: \"+s}if(!s.data){throw\"series has no data: \"+JSON.stringify(s)}if(!Array.isArray(s.data)){throw\"series data is not an array: \"+JSON.stringify(s.data)}var x=s.data[0].x;var y=s.data[0].y;if(typeof x!=\"number\"||typeof y!=\"number\"&&y!==null){throw\"x and y properties of points should be numbers instead of \"+typeof x+\" and \"+typeof y}if(s.data.length>=3){if(s.data[2].x<s.data[1].x||s.data[1].x<s.data[0].x||s.data[s.data.length-1].x<s.data[0].x){throw\"series data needs to be sorted on x values for series name: \"+s.name}}},this)};this.dataDomain=function(){var data=this.series.map(function(s){return s.data});var min=d3.min(data.map(function(d){return d[0].x}));var max=d3.max(data.map(function(d){return d[d.length-1].x}));return[min,max]};this.discoverRange=function(){var domain=this.renderer.domain();this.x=d3.scale.linear().domain(domain.x).range([0,this.width]);this.y=d3.scale.linear().domain(domain.y).range([this.height,0]);this.y.magnitude=d3.scale.linear().domain([domain.y[0]-domain.y[0],domain.y[1]-domain.y[0]]).range([0,this.height])};this.render=function(){var stackedData=this.stackData();this.discoverRange();this.renderer.render();this.updateCallbacks.forEach(function(callback){callback()})};this.update=this.render;this.stackData=function(){var data=this.series.active().map(function(d){return d.data}).map(function(d){return d.filter(function(d){return this._slice(d)},this)},this);var preserve=this.preserve;if(!preserve){this.series.forEach(function(series){if(series.scale){preserve=true}})}data=preserve?Rickshaw.clone(data):data;this.series.active().forEach(function(series,index){if(series.scale){var seriesData=data[index];if(seriesData){seriesData.forEach(function(d){d.y=series.scale(d.y)})}}});this.stackData.hooks.data.forEach(function(entry){data=entry.f.apply(self,[data])});var stackedData;if(!this.renderer.unstack){this._validateStackable();var layout=d3.layout.stack();layout.offset(self.offset);stackedData=layout(data)}stackedData=stackedData||data;this.stackData.hooks.after.forEach(function(entry){stackedData=entry.f.apply(self,[data])});var i=0;this.series.forEach(function(series){if(series.disabled)return;series.stack=stackedData[i++]});this.stackedData=stackedData;return stackedData};this._validateStackable=function(){var series=this.series;var pointsCount;series.forEach(function(s){pointsCount=pointsCount||s.data.length;if(pointsCount&&s.data.length!=pointsCount){throw\"stacked series cannot have differing numbers of points: \"+pointsCount+\" vs \"+s.data.length+\"; see Rickshaw.Series.fill()\"}},this)};this.stackData.hooks={data:[],after:[]};this._slice=function(d){if(this.window.xMin||this.window.xMax){var isInRange=true;if(this.window.xMin&&d.x<this.window.xMin)isInRange=false;if(this.window.xMax&&d.x>this.window.xMax)isInRange=false;return isInRange}return true};this.onUpdate=function(callback){this.updateCallbacks.push(callback)};this.registerRenderer=function(renderer){this._renderers=this._renderers||{};this._renderers[renderer.name]=renderer};this.configure=function(args){if(args.width||args.height){this.setSize(args)}Rickshaw.keys(this.defaults).forEach(function(k){this[k]=k in args?args[k]:k in this?this[k]:this.defaults[k]},this);this.setRenderer(args.renderer||this.renderer.name,args)};this.setRenderer=function(r,args){if(typeof r==\"function\"){this.renderer=new r({graph:self});this.registerRenderer(this.renderer)}else{if(!this._renderers[r]){throw\"couldn't find renderer \"+r}this.renderer=this._renderers[r]}if(typeof args==\"object\"){this.renderer.configure(args)}};this.setSize=function(args){args=args||{};if(typeof window!==undefined){var style=window.getComputedStyle(this.element,null);var elementWidth=parseInt(style.getPropertyValue(\"width\"),10);var elementHeight=parseInt(style.getPropertyValue(\"height\"),10)}this.width=args.width||elementWidth||400;this.height=args.height||elementHeight||250;this.vis&&this.vis.attr(\"width\",this.width).attr(\"height\",this.height)};this.initialize(args)};Rickshaw.namespace(\"Rickshaw.Fixtures.Color\");Rickshaw.Fixtures.Color=function(){this.schemes={};this.schemes.spectrum14=[\"#ecb796\",\"#dc8f70\",\"#b2a470\",\"#92875a\",\"#716c49\",\"#d2ed82\",\"#bbe468\",\"#a1d05d\",\"#e7cbe6\",\"#d8aad6\",\"#a888c2\",\"#9dc2d3\",\"#649eb9\",\"#387aa3\"].reverse();this.schemes.spectrum2000=[\"#57306f\",\"#514c76\",\"#646583\",\"#738394\",\"#6b9c7d\",\"#84b665\",\"#a7ca50\",\"#bfe746\",\"#e2f528\",\"#fff726\",\"#ecdd00\",\"#d4b11d\",\"#de8800\",\"#de4800\",\"#c91515\",\"#9a0000\",\"#7b0429\",\"#580839\",\"#31082b\"];this.schemes.spectrum2001=[\"#2f243f\",\"#3c2c55\",\"#4a3768\",\"#565270\",\"#6b6b7c\",\"#72957f\",\"#86ad6e\",\"#a1bc5e\",\"#b8d954\",\"#d3e04e\",\"#ccad2a\",\"#cc8412\",\"#c1521d\",\"#ad3821\",\"#8a1010\",\"#681717\",\"#531e1e\",\"#3d1818\",\"#320a1b\"];this.schemes.classic9=[\"#423d4f\",\"#4a6860\",\"#848f39\",\"#a2b73c\",\"#ddcb53\",\"#c5a32f\",\"#7d5836\",\"#963b20\",\"#7c2626\",\"#491d37\",\"#2f254a\"].reverse();this.schemes.httpStatus={503:\"#ea5029\",502:\"#d23f14\",500:\"#bf3613\",410:\"#efacea\",409:\"#e291dc\",403:\"#f457e8\",408:\"#e121d2\",401:\"#b92dae\",405:\"#f47ceb\",404:\"#a82a9f\",400:\"#b263c6\",301:\"#6fa024\",302:\"#87c32b\",307:\"#a0d84c\",304:\"#28b55c\",200:\"#1a4f74\",206:\"#27839f\",201:\"#52adc9\",202:\"#7c979f\",203:\"#a5b8bd\",204:\"#c1cdd1\"};this.schemes.colorwheel=[\"#b5b6a9\",\"#858772\",\"#785f43\",\"#96557e\",\"#4682b4\",\"#65b9ac\",\"#73c03a\",\"#cb513a\"].reverse();this.schemes.cool=[\"#5e9d2f\",\"#73c03a\",\"#4682b4\",\"#7bc3b8\",\"#a9884e\",\"#c1b266\",\"#a47493\",\"#c09fb5\"];this.schemes.munin=[\"#00cc00\",\"#0066b3\",\"#ff8000\",\"#ffcc00\",\"#330099\",\"#990099\",\"#ccff00\",\"#ff0000\",\"#808080\",\"#008f00\",\"#00487d\",\"#b35a00\",\"#b38f00\",\"#6b006b\",\"#8fb300\",\"#b30000\",\"#bebebe\",\"#80ff80\",\"#80c9ff\",\"#ffc080\",\"#ffe680\",\"#aa80ff\",\"#ee00cc\",\"#ff8080\",\"#666600\",\"#ffbfff\",\"#00ffcc\",\"#cc6699\",\"#999900\"]};Rickshaw.namespace(\"Rickshaw.Fixtures.RandomData\");Rickshaw.Fixtures.RandomData=function(timeInterval){var addData;timeInterval=timeInterval||1;var lastRandomValue=200;var timeBase=Math.floor((new Date).getTime()/1e3);this.addData=function(data){var randomValue=Math.random()*100+15+lastRandomValue;var index=data[0].length;var counter=1;data.forEach(function(series){var randomVariance=Math.random()*20;var v=randomValue/25+counter++ +(Math.cos(index*counter*11/960)+2)*15+(Math.cos(index/7)+2)*7+(Math.cos(index/17)+2)*1;series.push({x:index*timeInterval+timeBase,y:v+randomVariance})});lastRandomValue=randomValue*.85};this.removeData=function(data){data.forEach(function(series){series.shift()});timeBase+=timeInterval}};Rickshaw.namespace(\"Rickshaw.Fixtures.Time\");Rickshaw.Fixtures.Time=function(){var tzOffset=(new Date).getTimezoneOffset()*60;var self=this;this.months=[\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"];this.units=[{name:\"decade\",seconds:86400*365.25*10,formatter:function(d){return parseInt(d.getUTCFullYear()/10,10)*10}},{name:\"year\",seconds:86400*365.25,formatter:function(d){return d.getUTCFullYear()}},{name:\"month\",seconds:86400*30.5,formatter:function(d){return self.months[d.getUTCMonth()]}},{name:\"week\",seconds:86400*7,formatter:function(d){return self.formatDate(d)}},{name:\"day\",seconds:86400,formatter:function(d){return d.getUTCDate()}},{name:\"6 hour\",seconds:3600*6,formatter:function(d){return self.formatTime(d)}},{name:\"hour\",seconds:3600,formatter:function(d){return self.formatTime(d)}},{name:\"15 minute\",seconds:60*15,formatter:function(d){return self.formatTime(d)}},{name:\"minute\",seconds:60,formatter:function(d){return d.getUTCMinutes()}},{name:\"15 second\",seconds:15,formatter:function(d){return d.getUTCSeconds()+\"s\"}},{name:\"second\",seconds:1,formatter:function(d){return d.getUTCSeconds()+\"s\"}}];this.unit=function(unitName){return this.units.filter(function(unit){return unitName==unit.name}).shift()};this.formatDate=function(d){return d3.time.format(\"%b %e\")(d)};this.formatTime=function(d){return d.toUTCString().match(/(\\d+:\\d+):/)[1]};this.ceil=function(time,unit){var nearFuture;var rounded;if(unit.name==\"month\"){nearFuture=new Date((time+unit.seconds-1)*1e3);rounded=new Date(0);rounded.setUTCFullYear(nearFuture.getUTCFullYear());rounded.setUTCMonth(nearFuture.getUTCMonth());rounded.setUTCDate(1);rounded.setUTCHours(0);rounded.setUTCMinutes(0);rounded.setUTCSeconds(0);rounded.setUTCMilliseconds(0);return rounded.getTime()/1e3}if(unit.name==\"year\"){nearFuture=new Date((time+unit.seconds-1)*1e3);rounded=new Date(0);rounded.setUTCFullYear(nearFuture.getUTCFullYear());rounded.setUTCMonth(0);rounded.setUTCDate(1);rounded.setUTCHours(0);rounded.setUTCMinutes(0);rounded.setUTCSeconds(0);rounded.setUTCMilliseconds(0);return rounded.getTime()/1e3}return Math.ceil(time/unit.seconds)*unit.seconds}};Rickshaw.namespace(\"Rickshaw.Fixtures.Time.Local\");Rickshaw.Fixtures.Time.Local=function(){var tzOffset=(new Date).getTimezoneOffset()*60;var self=this;this.months=[\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"];this.units=[{name:\"decade\",seconds:86400*365.25*10,formatter:function(d){return parseInt(d.getFullYear()/10,10)*10}},{name:\"year\",seconds:86400*365.25,formatter:function(d){return d.getFullYear()}},{name:\"month\",seconds:86400*30.5,formatter:function(d){return self.months[d.getMonth()]}},{name:\"week\",seconds:86400*7,formatter:function(d){return self.formatDate(d)}},{name:\"day\",seconds:86400,formatter:function(d){return d.getDate()}},{name:\"6 hour\",seconds:3600*6,formatter:function(d){return self.formatTime(d)}},{name:\"hour\",seconds:3600,formatter:function(d){return self.formatTime(d)}},{name:\"15 minute\",seconds:60*15,formatter:function(d){return self.formatTime(d)}},{name:\"minute\",seconds:60,formatter:function(d){return d.getMinutes()}},{name:\"15 second\",seconds:15,formatter:function(d){return d.getSeconds()+\"s\"}},{name:\"second\",seconds:1,formatter:function(d){return d.getSeconds()+\"s\"}}];this.unit=function(unitName){return this.units.filter(function(unit){return unitName==unit.name}).shift()};this.formatDate=function(d){return d3.time.format(\"%b %e\")(d)};this.formatTime=function(d){return d.toString().match(/(\\d+:\\d+):/)[1]};this.ceil=function(time,unit){var nearFuture;var rounded;if(unit.name==\"day\"){nearFuture=new Date((time+unit.seconds-1)*1e3);rounded=new Date(0);rounded.setMilliseconds(0);rounded.setSeconds(0);rounded.setMinutes(0);rounded.setHours(0);rounded.setDate(nearFuture.getDate());rounded.setMonth(nearFuture.getMonth());rounded.setFullYear(nearFuture.getFullYear());return rounded.getTime()/1e3}if(unit.name==\"month\"){nearFuture=new Date((time+unit.seconds-1)*1e3);rounded=new Date(0);rounded.setMilliseconds(0);rounded.setSeconds(0);rounded.setMinutes(0);rounded.setHours(0);rounded.setDate(1);rounded.setMonth(nearFuture.getMonth());rounded.setFullYear(nearFuture.getFullYear());return rounded.getTime()/1e3}if(unit.name==\"year\"){nearFuture=new Date((time+unit.seconds-1)*1e3);rounded=new Date(0);rounded.setFullYear(nearFuture.getFullYear());rounded.setMilliseconds(0);rounded.setSeconds(0);rounded.setMinutes(0);rounded.setHours(0);rounded.setDate(1);rounded.setMonth(0);return rounded.getTime()/1e3}return Math.ceil(time/unit.seconds)*unit.seconds}};Rickshaw.namespace(\"Rickshaw.Fixtures.Number\");Rickshaw.Fixtures.Number.formatKMBT=function(y){var abs_y=Math.abs(y);if(abs_y>=1e12){return y/1e12+\"T\"}else if(abs_y>=1e9){return y/1e9+\"B\"}else if(abs_y>=1e6){return y/1e6+\"M\"}else if(abs_y>=1e3){return y/1e3+\"K\"}else if(abs_y<1&&y>0){return y.toFixed(2)}else if(abs_y===0){return\"\"}else{return y}};Rickshaw.Fixtures.Number.formatBase1024KMGTP=function(y){var abs_y=Math.abs(y);if(abs_y>=0x4000000000000){return y/0x4000000000000+\"P\"}else if(abs_y>=1099511627776){return y/1099511627776+\"T\"}else if(abs_y>=1073741824){return y/1073741824+\"G\"}else if(abs_y>=1048576){return y/1048576+\"M\"}else if(abs_y>=1024){return y/1024+\"K\"}else if(abs_y<1&&y>0){return y.toFixed(2)}else if(abs_y===0){return\"\"}else{return y}};Rickshaw.namespace(\"Rickshaw.Color.Palette\");Rickshaw.Color.Palette=function(args){var color=new Rickshaw.Fixtures.Color;args=args||{};this.schemes={};this.scheme=color.schemes[args.scheme]||args.scheme||color.schemes.colorwheel;this.runningIndex=0;this.generatorIndex=0;if(args.interpolatedStopCount){var schemeCount=this.scheme.length-1;var i,j,scheme=[];for(i=0;i<schemeCount;i++){scheme.push(this.scheme[i]);var generator=d3.interpolateHsl(this.scheme[i],this.scheme[i+1]);for(j=1;j<args.interpolatedStopCount;j++){scheme.push(generator(1/args.interpolatedStopCount*j))}}scheme.push(this.scheme[this.scheme.length-1]);this.scheme=scheme}this.rotateCount=this.scheme.length;this.color=function(key){return this.scheme[key]||this.scheme[this.runningIndex++]||this.interpolateColor()||\"#808080\"};this.interpolateColor=function(){if(!Array.isArray(this.scheme))return;var color;if(this.generatorIndex==this.rotateCount*2-1){color=d3.interpolateHsl(this.scheme[this.generatorIndex],this.scheme[0])(.5);this.generatorIndex=0;this.rotateCount*=2}else{color=d3.interpolateHsl(this.scheme[this.generatorIndex],this.scheme[this.generatorIndex+1])(.5);this.generatorIndex++}this.scheme.push(color);return color}};Rickshaw.namespace(\"Rickshaw.Graph.Ajax\");Rickshaw.Graph.Ajax=Rickshaw.Class.create({initialize:function(args){this.dataURL=args.dataURL;this.onData=args.onData||function(d){return d};this.onComplete=args.onComplete||function(){};this.onError=args.onError||function(){};this.args=args;this.request()},request:function(){$.ajax({url:this.dataURL,dataType:\"json\",success:this.success.bind(this),error:this.error.bind(this)})},error:function(){console.log(\"error loading dataURL: \"+this.dataURL);this.onError(this)},success:function(data,status){data=this.onData(data);this.args.series=this._splice({data:data,series:this.args.series});this.graph=this.graph||new Rickshaw.Graph(this.args);this.graph.render();this.onComplete(this)},_splice:function(args){var data=args.data;var series=args.series;if(!args.series)return data;series.forEach(function(s){var seriesKey=s.key||s.name;if(!seriesKey)throw\"series needs a key or a name\";data.forEach(function(d){var dataKey=d.key||d.name;if(!dataKey)throw\"data needs a key or a name\";if(seriesKey==dataKey){var properties=[\"color\",\"name\",\"data\"];properties.forEach(function(p){if(d[p])s[p]=d[p]})}})});return series}});Rickshaw.namespace(\"Rickshaw.Graph.Annotate\");Rickshaw.Graph.Annotate=function(args){var graph=this.graph=args.graph;this.elements={timeline:args.element};var self=this;this.data={};this.elements.timeline.classList.add(\"rickshaw_annotation_timeline\");this.add=function(time,content,end_time){self.data[time]=self.data[time]||{boxes:[]};self.data[time].boxes.push({content:content,end:end_time})};this.update=function(){Rickshaw.keys(self.data).forEach(function(time){var annotation=self.data[time];var left=self.graph.x(time);if(left<0||left>self.graph.x.range()[1]){if(annotation.element){annotation.line.classList.add(\"offscreen\");annotation.element.style.display=\"none\"}annotation.boxes.forEach(function(box){if(box.rangeElement)box.rangeElement.classList.add(\"offscreen\")});return}if(!annotation.element){var element=annotation.element=document.createElement(\"div\");element.classList.add(\"annotation\");this.elements.timeline.appendChild(element);element.addEventListener(\"click\",function(e){element.classList.toggle(\"active\");annotation.line.classList.toggle(\"active\");annotation.boxes.forEach(function(box){if(box.rangeElement)box.rangeElement.classList.toggle(\"active\")})},false)}annotation.element.style.left=left+\"px\";annotation.element.style.display=\"block\";annotation.boxes.forEach(function(box){var element=box.element;if(!element){element=box.element=document.createElement(\"div\");element.classList.add(\"content\");element.innerHTML=box.content;annotation.element.appendChild(element);annotation.line=document.createElement(\"div\");annotation.line.classList.add(\"annotation_line\");self.graph.element.appendChild(annotation.line);if(box.end){box.rangeElement=document.createElement(\"div\");box.rangeElement.classList.add(\"annotation_range\");self.graph.element.appendChild(box.rangeElement)}}if(box.end){var annotationRangeStart=left;var annotationRangeEnd=Math.min(self.graph.x(box.end),self.graph.x.range()[1]);if(annotationRangeStart>annotationRangeEnd){annotationRangeEnd=left;annotationRangeStart=Math.max(self.graph.x(box.end),self.graph.x.range()[0])}var annotationRangeWidth=annotationRangeEnd-annotationRangeStart;box.rangeElement.style.left=annotationRangeStart+\"px\";box.rangeElement.style.width=annotationRangeWidth+\"px\";box.rangeElement.classList.remove(\"offscreen\")}annotation.line.classList.remove(\"offscreen\");annotation.line.style.left=left+\"px\"})},this)};this.graph.onUpdate(function(){self.update()})};Rickshaw.namespace(\"Rickshaw.Graph.Axis.Time\");Rickshaw.Graph.Axis.Time=function(args){var self=this;this.graph=args.graph;this.elements=[];this.ticksTreatment=args.ticksTreatment||\"plain\";this.fixedTimeUnit=args.timeUnit;var time=args.timeFixture||new Rickshaw.Fixtures.Time;this.appropriateTimeUnit=function(){var unit;var units=time.units;var domain=this.graph.x.domain();var rangeSeconds=domain[1]-domain[0];units.forEach(function(u){if(Math.floor(rangeSeconds/u.seconds)>=2){unit=unit||u}});return unit||time.units[time.units.length-1]};this.tickOffsets=function(){var domain=this.graph.x.domain();var unit=this.fixedTimeUnit||this.appropriateTimeUnit();var count=Math.ceil((domain[1]-domain[0])/unit.seconds);var runningTick=domain[0];var offsets=[];for(var i=0;i<count;i++){var tickValue=time.ceil(runningTick,unit);runningTick=tickValue+unit.seconds/2;offsets.push({value:tickValue,unit:unit})}return offsets};this.render=function(){this.elements.forEach(function(e){e.parentNode.removeChild(e)});this.elements=[];var offsets=this.tickOffsets();offsets.forEach(function(o){if(self.graph.x(o.value)>self.graph.x.range()[1])return;var element=document.createElement(\"div\");element.style.left=self.graph.x(o.value)+\"px\";element.classList.add(\"x_tick\");element.classList.add(self.ticksTreatment);var title=document.createElement(\"div\");title.classList.add(\"title\");title.innerHTML=o.unit.formatter(new Date(o.value*1e3));element.appendChild(title);self.graph.element.appendChild(element);self.elements.push(element)})};this.graph.onUpdate(function(){self.render()})};Rickshaw.namespace(\"Rickshaw.Graph.Axis.X\");Rickshaw.Graph.Axis.X=function(args){var self=this;var berthRate=.1;this.initialize=function(args){this.graph=args.graph;this.orientation=args.orientation||\"top\";this.pixelsPerTick=args.pixelsPerTick||75;if(args.ticks)this.staticTicks=args.ticks;if(args.tickValues)this.tickValues=args.tickValues;this.tickSize=args.tickSize||4;this.ticksTreatment=args.ticksTreatment||\"plain\";if(args.element){this.element=args.element;this._discoverSize(args.element,args);this.vis=d3.select(args.element).append(\"svg:svg\").attr(\"height\",this.height).attr(\"width\",this.width).attr(\"class\",\"rickshaw_graph x_axis_d3\");this.element=this.vis[0][0];this.element.style.position=\"relative\";this.setSize({width:args.width,height:args.height})}else{this.vis=this.graph.vis}this.graph.onUpdate(function(){self.render()})};this.setSize=function(args){args=args||{};if(!this.element)return;this._discoverSize(this.element.parentNode,args);this.vis.attr(\"height\",this.height).attr(\"width\",this.width*(1+berthRate));var berth=Math.floor(this.width*berthRate/2);this.element.style.left=-1*berth+\"px\"};this.render=function(){if(this.graph.width!==this._renderWidth)this.setSize({auto:true});var axis=d3.svg.axis().scale(this.graph.x).orient(this.orientation);axis.tickFormat(args.tickFormat||function(x){return x});if(this.tickValues)axis.tickValues(this.tickValues);this.ticks=this.staticTicks||Math.floor(this.graph.width/this.pixelsPerTick);var berth=Math.floor(this.width*berthRate/2)||0;var transform;if(this.orientation==\"top\"){var yOffset=this.height||this.graph.height;transform=\"translate(\"+berth+\",\"+yOffset+\")\"}else{transform=\"translate(\"+berth+\", 0)\"}if(this.element){this.vis.selectAll(\"*\").remove()}this.vis.append(\"svg:g\").attr(\"class\",[\"x_ticks_d3\",this.ticksTreatment].join(\" \")).attr(\"transform\",transform).call(axis.ticks(this.ticks).tickSubdivide(0).tickSize(this.tickSize));var gridSize=(this.orientation==\"bottom\"?1:-1)*this.graph.height;this.graph.vis.append(\"svg:g\").attr(\"class\",\"x_grid_d3\").call(axis.ticks(this.ticks).tickSubdivide(0).tickSize(gridSize));this._renderHeight=this.graph.height};this._discoverSize=function(element,args){if(typeof window!==\"undefined\"){var style=window.getComputedStyle(element,null);var elementHeight=parseInt(style.getPropertyValue(\"height\"),10);if(!args.auto){var elementWidth=parseInt(style.getPropertyValue(\"width\"),10)}}this.width=(args.width||elementWidth||this.graph.width)*(1+berthRate);this.height=args.height||elementHeight||40};this.initialize(args)};Rickshaw.namespace(\"Rickshaw.Graph.Axis.Y\");Rickshaw.Graph.Axis.Y=Rickshaw.Class.create({initialize:function(args){this.graph=args.graph;this.orientation=args.orientation||\"right\";this.pixelsPerTick=args.pixelsPerTick||75;if(args.ticks)this.staticTicks=args.ticks;if(args.tickValues)this.tickValues=args.tickValues;this.tickSize=args.tickSize||4;this.ticksTreatment=args.ticksTreatment||\"plain\";this.tickFormat=args.tickFormat||function(y){return y};this.berthRate=.1;if(args.element){this.element=args.element;this.vis=d3.select(args.element).append(\"svg:svg\").attr(\"class\",\"rickshaw_graph y_axis\");this.element=this.vis[0][0];this.element.style.position=\"relative\";this.setSize({width:args.width,height:args.height})}else{this.vis=this.graph.vis}var self=this;this.graph.onUpdate(function(){self.render()})},setSize:function(args){args=args||{};if(!this.element)return;if(typeof window!==\"undefined\"){var style=window.getComputedStyle(this.element.parentNode,null);var elementWidth=parseInt(style.getPropertyValue(\"width\"),10);if(!args.auto){var elementHeight=parseInt(style.getPropertyValue(\"height\"),10)}}this.width=args.width||elementWidth||this.graph.width*this.berthRate;this.height=args.height||elementHeight||this.graph.height;this.vis.attr(\"width\",this.width).attr(\"height\",this.height*(1+this.berthRate));var berth=this.height*this.berthRate;if(this.orientation==\"left\"){this.element.style.top=-1*berth+\"px\"}},render:function(){if(this.graph.height!==this._renderHeight)this.setSize({auto:true});this.ticks=this.staticTicks||Math.floor(this.graph.height/this.pixelsPerTick);var axis=this._drawAxis(this.graph.y);this._drawGrid(axis);this._renderHeight=this.graph.height},_drawAxis:function(scale){var axis=d3.svg.axis().scale(scale).orient(this.orientation);axis.tickFormat(this.tickFormat);if(this.tickValues)axis.tickValues(this.tickValues);if(this.orientation==\"left\"){var berth=this.height*this.berthRate;var transform=\"translate(\"+this.width+\", \"+berth+\")\"}if(this.element){this.vis.selectAll(\"*\").remove()}this.vis.append(\"svg:g\").attr(\"class\",[\"y_ticks\",this.ticksTreatment].join(\" \")).attr(\"transform\",transform).call(axis.ticks(this.ticks).tickSubdivide(0).tickSize(this.tickSize));return axis},_drawGrid:function(axis){var gridSize=(this.orientation==\"right\"?1:-1)*this.graph.width;this.graph.vis.append(\"svg:g\").attr(\"class\",\"y_grid\").call(axis.ticks(this.ticks).tickSubdivide(0).tickSize(gridSize))}});Rickshaw.namespace(\"Rickshaw.Graph.Axis.Y.Scaled\");Rickshaw.Graph.Axis.Y.Scaled=Rickshaw.Class.create(Rickshaw.Graph.Axis.Y,{initialize:function($super,args){if(typeof args.scale===\"undefined\"){throw new Error(\"Scaled requires scale\")}this.scale=args.scale;if(typeof args.grid===\"undefined\"){this.grid=true}else{this.grid=args.grid}$super(args)},_drawAxis:function($super,scale){var adjustedScale=this.scale.copy().range(scale.range());return $super(adjustedScale)},_drawGrid:function($super,axis){if(this.grid){$super(axis)}}});Rickshaw.namespace(\"Rickshaw.Graph.Behavior.Series.Highlight\");Rickshaw.Graph.Behavior.Series.Highlight=function(args){this.graph=args.graph;this.legend=args.legend;var self=this;var colorSafe={};var activeLine=null;var disabledColor=args.disabledColor||function(seriesColor){return d3.interpolateRgb(seriesColor,d3.rgb(\"#d8d8d8\"))(.8).toString()};this.addHighlightEvents=function(l){l.element.addEventListener(\"mouseover\",function(e){if(activeLine)return;else activeLine=l;self.legend.lines.forEach(function(line,index){if(l===line){if(index>0&&self.graph.renderer.unstack&&(line.series.renderer?line.series.renderer.unstack:true)){var seriesIndex=self.graph.series.length-index-1;\n    2: line.originalIndex=seriesIndex;var series=self.graph.series.splice(seriesIndex,1)[0];self.graph.series.push(series)}return}colorSafe[line.series.name]=colorSafe[line.series.name]||line.series.color;line.series.color=disabledColor(line.series.color)});self.graph.update()},false);l.element.addEventListener(\"mouseout\",function(e){if(!activeLine)return;else activeLine=null;self.legend.lines.forEach(function(line){if(l===line&&line.hasOwnProperty(\"originalIndex\")){var series=self.graph.series.pop();self.graph.series.splice(line.originalIndex,0,series);delete line.originalIndex}if(colorSafe[line.series.name]){line.series.color=colorSafe[line.series.name]}});self.graph.update()},false)};if(this.legend){this.legend.lines.forEach(function(l){self.addHighlightEvents(l)})}};Rickshaw.namespace(\"Rickshaw.Graph.Behavior.Series.Order\");Rickshaw.Graph.Behavior.Series.Order=function(args){this.graph=args.graph;this.legend=args.legend;var self=this;if(typeof window.$==\"undefined\"){throw\"couldn't find jQuery at window.$\"}if(typeof window.$.ui==\"undefined\"){throw\"couldn't find jQuery UI at window.$.ui\"}$(function(){$(self.legend.list).sortable({containment:\"parent\",tolerance:\"pointer\",update:function(event,ui){var series=[];$(self.legend.list).find(\"li\").each(function(index,item){if(!item.series)return;series.push(item.series)});for(var i=self.graph.series.length-1;i>=0;i--){self.graph.series[i]=series.shift()}self.graph.update()}});$(self.legend.list).disableSelection()});this.graph.onUpdate(function(){var h=window.getComputedStyle(self.legend.element).height;self.legend.element.style.height=h})};Rickshaw.namespace(\"Rickshaw.Graph.Behavior.Series.Toggle\");Rickshaw.Graph.Behavior.Series.Toggle=function(args){this.graph=args.graph;this.legend=args.legend;var self=this;this.addAnchor=function(line){var anchor=document.createElement(\"a\");anchor.innerHTML=\"&#10004;\";anchor.classList.add(\"action\");line.element.insertBefore(anchor,line.element.firstChild);anchor.onclick=function(e){if(line.series.disabled){line.series.enable();line.element.classList.remove(\"disabled\")}else{if(this.graph.series.filter(function(s){return!s.disabled}).length<=1)return;line.series.disable();line.element.classList.add(\"disabled\")}}.bind(this);var label=line.element.getElementsByTagName(\"span\")[0];label.onclick=function(e){var disableAllOtherLines=line.series.disabled;if(!disableAllOtherLines){for(var i=0;i<self.legend.lines.length;i++){var l=self.legend.lines[i];if(line.series===l.series){}else if(l.series.disabled){}else{disableAllOtherLines=true;break}}}if(disableAllOtherLines){line.series.enable();line.element.classList.remove(\"disabled\");self.legend.lines.forEach(function(l){if(line.series===l.series){}else{l.series.disable();l.element.classList.add(\"disabled\")}})}else{self.legend.lines.forEach(function(l){l.series.enable();l.element.classList.remove(\"disabled\")})}}};if(this.legend){if(typeof $!=\"undefined\"&&$(this.legend.list).sortable){$(this.legend.list).sortable({start:function(event,ui){ui.item.bind(\"no.onclick\",function(event){event.preventDefault()})},stop:function(event,ui){setTimeout(function(){ui.item.unbind(\"no.onclick\")},250)}})}this.legend.lines.forEach(function(l){self.addAnchor(l)})}this._addBehavior=function(){this.graph.series.forEach(function(s){s.disable=function(){if(self.graph.series.length<=1){throw\"only one series left\"}s.disabled=true;self.graph.update()};s.enable=function(){s.disabled=false;self.graph.update()}})};this._addBehavior();this.updateBehaviour=function(){this._addBehavior()}};Rickshaw.namespace(\"Rickshaw.Graph.HoverDetail\");Rickshaw.Graph.HoverDetail=Rickshaw.Class.create({initialize:function(args){var graph=this.graph=args.graph;this.xFormatter=args.xFormatter||function(x){return new Date(x*1e3).toUTCString()};this.yFormatter=args.yFormatter||function(y){return y===null?y:y.toFixed(2)};var element=this.element=document.createElement(\"div\");element.className=\"detail\";this.visible=true;graph.element.appendChild(element);this.lastEvent=null;this._addListeners();this.onShow=args.onShow;this.onHide=args.onHide;this.onRender=args.onRender;this.formatter=args.formatter||this.formatter},formatter:function(series,x,y,formattedX,formattedY,d){return series.name+\":&nbsp;\"+formattedY},update:function(e){e=e||this.lastEvent;if(!e)return;this.lastEvent=e;if(!e.target.nodeName.match(/^(path|svg|rect|circle)$/))return;var graph=this.graph;var eventX=e.offsetX||e.layerX;var eventY=e.offsetY||e.layerY;var j=0;var points=[];var nearestPoint;this.graph.series.active().forEach(function(series){var data=this.graph.stackedData[j++];if(!data.length)return;var domainX=graph.x.invert(eventX);var domainIndexScale=d3.scale.linear().domain([data[0].x,data.slice(-1)[0].x]).range([0,data.length-1]);var approximateIndex=Math.round(domainIndexScale(domainX));if(approximateIndex==data.length-1)approximateIndex--;var dataIndex=Math.min(approximateIndex||0,data.length-1);for(var i=approximateIndex;i<data.length-1;){if(!data[i]||!data[i+1])break;if(data[i].x<=domainX&&data[i+1].x>domainX){dataIndex=Math.abs(domainX-data[i].x)<Math.abs(domainX-data[i+1].x)?i:i+1;break}if(data[i+1].x<=domainX){i++}else{i--}}if(dataIndex<0)dataIndex=0;var value=data[dataIndex];var distance=Math.sqrt(Math.pow(Math.abs(graph.x(value.x)-eventX),2)+Math.pow(Math.abs(graph.y(value.y+value.y0)-eventY),2));var xFormatter=series.xFormatter||this.xFormatter;var yFormatter=series.yFormatter||this.yFormatter;var point={formattedXValue:xFormatter(value.x),formattedYValue:yFormatter(series.scale?series.scale.invert(value.y):value.y),series:series,value:value,distance:distance,order:j,name:series.name};if(!nearestPoint||distance<nearestPoint.distance){nearestPoint=point}points.push(point)},this);if(!nearestPoint)return;nearestPoint.active=true;var domainX=nearestPoint.value.x;var formattedXValue=nearestPoint.formattedXValue;this.element.innerHTML=\"\";this.element.style.left=graph.x(domainX)+\"px\";this.visible&&this.render({points:points,detail:points,mouseX:eventX,mouseY:eventY,formattedXValue:formattedXValue,domainX:domainX})},hide:function(){this.visible=false;this.element.classList.add(\"inactive\");if(typeof this.onHide==\"function\"){this.onHide()}},show:function(){this.visible=true;this.element.classList.remove(\"inactive\");if(typeof this.onShow==\"function\"){this.onShow()}},render:function(args){var graph=this.graph;var points=args.points;var point=points.filter(function(p){return p.active}).shift();if(point.value.y===null)return;var formattedXValue=point.formattedXValue;var formattedYValue=point.formattedYValue;this.element.innerHTML=\"\";this.element.style.left=graph.x(point.value.x)+\"px\";var xLabel=document.createElement(\"div\");xLabel.className=\"x_label\";xLabel.innerHTML=formattedXValue;this.element.appendChild(xLabel);var item=document.createElement(\"div\");item.className=\"item\";var series=point.series;var actualY=series.scale?series.scale.invert(point.value.y):point.value.y;item.innerHTML=this.formatter(series,point.value.x,actualY,formattedXValue,formattedYValue,point);item.style.top=this.graph.y(point.value.y0+point.value.y)+\"px\";this.element.appendChild(item);var dot=document.createElement(\"div\");dot.className=\"dot\";dot.style.top=item.style.top;dot.style.borderColor=series.color;this.element.appendChild(dot);if(point.active){item.className=\"item active\";dot.className=\"dot active\"}this.show();if(typeof this.onRender==\"function\"){this.onRender(args)}},_addListeners:function(){this.graph.element.addEventListener(\"mousemove\",function(e){this.visible=true;this.update(e)}.bind(this),false);this.graph.onUpdate(function(){this.update()}.bind(this));this.graph.element.addEventListener(\"mouseout\",function(e){if(e.relatedTarget&&!(e.relatedTarget.compareDocumentPosition(this.graph.element)&Node.DOCUMENT_POSITION_CONTAINS)){this.hide()}}.bind(this),false)}});Rickshaw.namespace(\"Rickshaw.Graph.JSONP\");Rickshaw.Graph.JSONP=Rickshaw.Class.create(Rickshaw.Graph.Ajax,{request:function(){$.ajax({url:this.dataURL,dataType:\"jsonp\",success:this.success.bind(this),error:this.error.bind(this)})}});Rickshaw.namespace(\"Rickshaw.Graph.Legend\");Rickshaw.Graph.Legend=function(args){var element=this.element=args.element;var graph=this.graph=args.graph;var self=this;element.classList.add(\"rickshaw_legend\");var list=this.list=document.createElement(\"ul\");element.appendChild(list);var series=graph.series.map(function(s){return s});if(!args.naturalOrder){series=series.reverse()}this.lines=[];this.addLine=function(series){var line=document.createElement(\"li\");line.className=\"line\";if(series.disabled){line.className+=\" disabled\"}var swatch=document.createElement(\"div\");swatch.className=\"swatch\";swatch.style.backgroundColor=series.color;line.appendChild(swatch);var label=document.createElement(\"span\");label.className=\"label\";label.innerHTML=series.name;line.appendChild(label);list.appendChild(line);line.series=series;if(series.noLegend){line.style.display=\"none\"}var _line={element:line,series:series};if(self.shelving){self.shelving.addAnchor(_line);self.shelving.updateBehaviour()}if(self.highlighter){self.highlighter.addHighlightEvents(_line)}self.lines.push(_line)};series.forEach(function(s){self.addLine(s)});graph.onUpdate(function(){})};Rickshaw.namespace(\"Rickshaw.Graph.RangeSlider\");Rickshaw.Graph.RangeSlider=Rickshaw.Class.create({initialize:function(args){var element=this.element=args.element;var graph=this.graph=args.graph;this.build();graph.onUpdate(function(){this.update()}.bind(this))},build:function(){var element=this.element;var graph=this.graph;var domain=graph.dataDomain();$(function(){$(element).slider({range:true,min:domain[0],max:domain[1],values:[domain[0],domain[1]],slide:function(event,ui){if(ui.values[1]<=ui.values[0])return;graph.window.xMin=ui.values[0];graph.window.xMax=ui.values[1];graph.update();var domain=graph.dataDomain();if(domain[0]==ui.values[0]){graph.window.xMin=undefined}if(domain[1]==ui.values[1]){graph.window.xMax=undefined}}})});element[0].style.width=graph.width+\"px\"},update:function(){var element=this.element;var graph=this.graph;var values=$(element).slider(\"option\",\"values\");var domain=graph.dataDomain();$(element).slider(\"option\",\"min\",domain[0]);$(element).slider(\"option\",\"max\",domain[1]);if(graph.window.xMin==null){values[0]=domain[0]}if(graph.window.xMax==null){values[1]=domain[1]}$(element).slider(\"option\",\"values\",values)}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer\");Rickshaw.Graph.Renderer=Rickshaw.Class.create({initialize:function(args){this.graph=args.graph;this.tension=args.tension||this.tension;this.graph.unstacker=this.graph.unstacker||new Rickshaw.Graph.Unstacker({graph:this.graph});this.configure(args)},seriesPathFactory:function(){},seriesStrokeFactory:function(){},defaults:function(){return{tension:.8,strokeWidth:2,unstack:true,padding:{top:.01,right:0,bottom:.01,left:0},stroke:false,fill:false}},domain:function(data){var stackedData=data||this.graph.stackedData||this.graph.stackData();var firstPoint=stackedData[0][0];if(firstPoint===undefined){return{x:[null,null],y:[null,null]}}var xMin=firstPoint.x;var xMax=firstPoint.x;var yMin=firstPoint.y+firstPoint.y0;var yMax=firstPoint.y+firstPoint.y0;stackedData.forEach(function(series){series.forEach(function(d){if(d.y==null)return;var y=d.y+d.y0;if(y<yMin)yMin=y;if(y>yMax)yMax=y});if(series[0].x<xMin)xMin=series[0].x;if(series[series.length-1].x>xMax)xMax=series[series.length-1].x});xMin-=(xMax-xMin)*this.padding.left;xMax+=(xMax-xMin)*this.padding.right;yMin=this.graph.min===\"auto\"?yMin:this.graph.min||0;yMax=this.graph.max===undefined?yMax:this.graph.max;if(this.graph.min===\"auto\"||yMin<0){yMin-=(yMax-yMin)*this.padding.bottom}if(this.graph.max===undefined){yMax+=(yMax-yMin)*this.padding.top}return{x:[xMin,xMax],y:[yMin,yMax]}},render:function(args){args=args||{};var graph=this.graph;var series=args.series||graph.series;var vis=args.vis||graph.vis;vis.selectAll(\"*\").remove();var data=series.filter(function(s){return!s.disabled}).map(function(s){return s.stack});var nodes=vis.selectAll(\"path\").data(data).enter().append(\"svg:path\").attr(\"d\",this.seriesPathFactory());var i=0;series.forEach(function(series){if(series.disabled)return;series.path=nodes[0][i++];this._styleSeries(series)},this)},_styleSeries:function(series){var fill=this.fill?series.color:\"none\";var stroke=this.stroke?series.color:\"none\";series.path.setAttribute(\"fill\",fill);series.path.setAttribute(\"stroke\",stroke);series.path.setAttribute(\"stroke-width\",this.strokeWidth);series.path.setAttribute(\"class\",series.className)},configure:function(args){args=args||{};Rickshaw.keys(this.defaults()).forEach(function(key){if(!args.hasOwnProperty(key)){this[key]=this[key]||this.graph[key]||this.defaults()[key];return}if(typeof this.defaults()[key]==\"object\"){Rickshaw.keys(this.defaults()[key]).forEach(function(k){this[key][k]=args[key][k]!==undefined?args[key][k]:this[key][k]!==undefined?this[key][k]:this.defaults()[key][k]},this)}else{this[key]=args[key]!==undefined?args[key]:this[key]!==undefined?this[key]:this.graph[key]!==undefined?this.graph[key]:this.defaults()[key]}},this)},setStrokeWidth:function(strokeWidth){if(strokeWidth!==undefined){this.strokeWidth=strokeWidth}},setTension:function(tension){if(tension!==undefined){this.tension=tension}}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.Line\");Rickshaw.Graph.Renderer.Line=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"line\",defaults:function($super){return Rickshaw.extend($super(),{unstack:true,fill:false,stroke:true})},seriesPathFactory:function(){var graph=this.graph;var factory=d3.svg.line().x(function(d){return graph.x(d.x)}).y(function(d){return graph.y(d.y)}).interpolate(this.graph.interpolation).tension(this.tension);factory.defined&&factory.defined(function(d){return d.y!==null});return factory}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.Stack\");Rickshaw.Graph.Renderer.Stack=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"stack\",defaults:function($super){return Rickshaw.extend($super(),{fill:true,stroke:false,unstack:false})},seriesPathFactory:function(){var graph=this.graph;var factory=d3.svg.area().x(function(d){return graph.x(d.x)}).y0(function(d){return graph.y(d.y0)}).y1(function(d){return graph.y(d.y+d.y0)}).interpolate(this.graph.interpolation).tension(this.tension);factory.defined&&factory.defined(function(d){return d.y!==null});return factory}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.Bar\");Rickshaw.Graph.Renderer.Bar=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"bar\",defaults:function($super){var defaults=Rickshaw.extend($super(),{gapSize:.05,unstack:false});delete defaults.tension;return defaults},initialize:function($super,args){args=args||{};this.gapSize=args.gapSize||this.gapSize;$super(args)},domain:function($super){var domain=$super();var frequentInterval=this._frequentInterval(this.graph.stackedData.slice(-1).shift());domain.x[1]+=Number(frequentInterval.magnitude);return domain},barWidth:function(series){var frequentInterval=this._frequentInterval(series.stack);var barWidth=this.graph.x(series.stack[0].x+frequentInterval.magnitude*(1-this.gapSize));return barWidth},render:function(args){args=args||{};var graph=this.graph;var series=args.series||graph.series;var vis=args.vis||graph.vis;vis.selectAll(\"*\").remove();var barWidth=this.barWidth(series.active()[0]);var barXOffset=0;var activeSeriesCount=series.filter(function(s){return!s.disabled}).length;var seriesBarWidth=this.unstack?barWidth/activeSeriesCount:barWidth;var transform=function(d){var matrix=[1,0,0,d.y<0?-1:1,0,d.y<0?graph.y.magnitude(Math.abs(d.y))*2:0];return\"matrix(\"+matrix.join(\",\")+\")\"};series.forEach(function(series){if(series.disabled)return;var barWidth=this.barWidth(series);var nodes=vis.selectAll(\"path\").data(series.stack.filter(function(d){return d.y!==null})).enter().append(\"svg:rect\").attr(\"x\",function(d){return graph.x(d.x)+barXOffset}).attr(\"y\",function(d){return graph.y(d.y0+Math.abs(d.y))*(d.y<0?-1:1)}).attr(\"width\",seriesBarWidth).attr(\"height\",function(d){return graph.y.magnitude(Math.abs(d.y))}).attr(\"transform\",transform);Array.prototype.forEach.call(nodes[0],function(n){n.setAttribute(\"fill\",series.color)});if(this.unstack)barXOffset+=seriesBarWidth},this)},_frequentInterval:function(data){var intervalCounts={};for(var i=0;i<data.length-1;i++){var interval=data[i+1].x-data[i].x;intervalCounts[interval]=intervalCounts[interval]||0;intervalCounts[interval]++}var frequentInterval={count:0,magnitude:1};Rickshaw.keys(intervalCounts).forEach(function(i){if(frequentInterval.count<intervalCounts[i]){frequentInterval={count:intervalCounts[i],magnitude:i}}});return frequentInterval}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.Area\");Rickshaw.Graph.Renderer.Area=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"area\",defaults:function($super){return Rickshaw.extend($super(),{unstack:false,fill:false,stroke:false})},seriesPathFactory:function(){var graph=this.graph;var factory=d3.svg.area().x(function(d){return graph.x(d.x)}).y0(function(d){return graph.y(d.y0)}).y1(function(d){return graph.y(d.y+d.y0)}).interpolate(graph.interpolation).tension(this.tension);factory.defined&&factory.defined(function(d){return d.y!==null});return factory},seriesStrokeFactory:function(){var graph=this.graph;var factory=d3.svg.line().x(function(d){return graph.x(d.x)}).y(function(d){return graph.y(d.y+d.y0)}).interpolate(graph.interpolation).tension(this.tension);factory.defined&&factory.defined(function(d){return d.y!==null});return factory},render:function(){var graph=this.graph;graph.vis.selectAll(\"*\").remove();var method=this.unstack?\"append\":\"insert\";var nodes=graph.vis.selectAll(\"path\").data(this.graph.stackedData).enter()[method](\"svg:g\",\"g\");nodes.append(\"svg:path\").attr(\"d\",this.seriesPathFactory()).attr(\"class\",\"area\");if(this.stroke){nodes.append(\"svg:path\").attr(\"d\",this.seriesStrokeFactory()).attr(\"class\",\"line\")}var i=0;graph.series.forEach(function(series){if(series.disabled)return;series.path=nodes[0][i++];this._styleSeries(series)},this)},_styleSeries:function(series){if(!series.path)return;d3.select(series.path).select(\".area\").attr(\"fill\",series.color);if(this.stroke){d3.select(series.path).select(\".line\").attr(\"fill\",\"none\").attr(\"stroke\",series.stroke||d3.interpolateRgb(series.color,\"black\")(.125)).attr(\"stroke-width\",this.strokeWidth)}if(series.className){series.path.setAttribute(\"class\",series.className)}}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.ScatterPlot\");Rickshaw.Graph.Renderer.ScatterPlot=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"scatterplot\",defaults:function($super){return Rickshaw.extend($super(),{unstack:true,fill:true,stroke:false,padding:{top:.01,right:.01,bottom:.01,left:.01},dotSize:4})},initialize:function($super,args){$super(args)},render:function(args){args=args||{};var graph=this.graph;var series=args.series||graph.series;var vis=args.vis||graph.vis;var dotSize=this.dotSize;vis.selectAll(\"*\").remove();series.forEach(function(series){if(series.disabled)return;var nodes=vis.selectAll(\"path\").data(series.stack.filter(function(d){return d.y!==null})).enter().append(\"svg:circle\").attr(\"cx\",function(d){return graph.x(d.x)}).attr(\"cy\",function(d){return graph.y(d.y)}).attr(\"r\",function(d){return\"r\"in d?d.r:dotSize});Array.prototype.forEach.call(nodes[0],function(n){n.setAttribute(\"fill\",series.color)})},this)}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.Multi\");Rickshaw.Graph.Renderer.Multi=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"multi\",initialize:function($super,args){$super(args)},defaults:function($super){return Rickshaw.extend($super(),{unstack:true,fill:false,stroke:true})},domain:function($super){this.graph.stackData();var domains=[];var groups=this._groups();this._stack(groups);groups.forEach(function(group){var data=group.series.filter(function(s){return!s.disabled}).map(function(s){return s.stack});if(!data.length)return;var domain=$super(data);domains.push(domain)});var xMin=d3.min(domains.map(function(d){return d.x[0]}));var xMax=d3.max(domains.map(function(d){return d.x[1]}));var yMin=d3.min(domains.map(function(d){return d.y[0]}));var yMax=d3.max(domains.map(function(d){return d.y[1]}));return{x:[xMin,xMax],y:[yMin,yMax]}},_groups:function(){var graph=this.graph;var renderGroups={};graph.series.forEach(function(series){if(series.disabled)return;if(!renderGroups[series.renderer]){var ns=\"http://www.w3.org/2000/svg\";var vis=document.createElementNS(ns,\"g\");graph.vis[0][0].appendChild(vis);var renderer=graph._renderers[series.renderer];renderGroups[series.renderer]={renderer:renderer,series:[],vis:d3.select(vis)}}renderGroups[series.renderer].series.push(series)},this);var groups=[];Object.keys(renderGroups).forEach(function(key){var group=renderGroups[key];groups.push(group)});return groups},_stack:function(groups){groups.forEach(function(group){var series=group.series.filter(function(series){return!series.disabled});var data=series.map(function(series){return series.stack});if(!group.renderer.unstack){var layout=d3.layout.stack();var stackedData=Rickshaw.clone(layout(data));series.forEach(function(series,index){series._stack=Rickshaw.clone(stackedData[index])})}},this);return groups},render:function(){this.graph.series.forEach(function(series){if(!series.renderer){throw new Error(\"Each series needs a renderer for graph 'multi' renderer\")}});this.graph.vis.selectAll(\"*\").remove();var groups=this._groups();groups=this._stack(groups);groups.forEach(function(group){var series=group.series.filter(function(series){return!series.disabled});group.renderer.render({series:series,vis:group.vis});series.forEach(function(s){s.stack=s._stack||s.stack||s.data})})}});Rickshaw.namespace(\"Rickshaw.Graph.Renderer.LinePlot\");Rickshaw.Graph.Renderer.LinePlot=Rickshaw.Class.create(Rickshaw.Graph.Renderer,{name:\"lineplot\",defaults:function($super){return Rickshaw.extend($super(),{unstack:true,fill:false,stroke:true,padding:{top:.01,right:.01,bottom:.01,left:.01},dotSize:3,strokeWidth:2})},initialize:function($super,args){$super(args)},seriesPathFactory:function(){var graph=this.graph;var factory=d3.svg.line().x(function(d){return graph.x(d.x)}).y(function(d){return graph.y(d.y)}).interpolate(this.graph.interpolation).tension(this.tension);factory.defined&&factory.defined(function(d){return d.y!==null});return factory},_renderDots:function(){var graph=this.graph;graph.series.forEach(function(series){if(series.disabled)return;var nodes=graph.vis.selectAll(\"x\").data(series.stack.filter(function(d){return d.y!==null})).enter().append(\"svg:circle\").attr(\"cx\",function(d){return graph.x(d.x)}).attr(\"cy\",function(d){return graph.y(d.y)}).attr(\"r\",function(d){return\"r\"in d?d.r:graph.renderer.dotSize});Array.prototype.forEach.call(nodes[0],function(n){if(!n)return;n.setAttribute(\"data-color\",series.color);n.setAttribute(\"fill\",\"white\");n.setAttribute(\"stroke\",series.color);n.setAttribute(\"stroke-width\",this.strokeWidth)}.bind(this))},this)},_renderLines:function(){var graph=this.graph;var nodes=graph.vis.selectAll(\"path\").data(this.graph.stackedData).enter().append(\"svg:path\").attr(\"d\",this.seriesPathFactory());var i=0;graph.series.forEach(function(series){if(series.disabled)return;series.path=nodes[0][i++];this._styleSeries(series)},this)},render:function(){var graph=this.graph;graph.vis.selectAll(\"*\").remove();this._renderLines();this._renderDots()}});Rickshaw.namespace(\"Rickshaw.Graph.Smoother\");Rickshaw.Graph.Smoother=Rickshaw.Class.create({initialize:function(args){this.graph=args.graph;this.element=args.element;this.aggregationScale=1;this.build();this.graph.stackData.hooks.data.push({name:\"smoother\",orderPosition:50,f:this.transformer.bind(this)})},build:function(){var self=this;if(this.element){$(function(){$(self.element).slider({min:1,max:100,slide:function(event,ui){self.setScale(ui.value);self.graph.update()}})})}},setScale:function(scale){if(scale<1){throw\"scale out of range: \"+scale}this.aggregationScale=scale;this.graph.update()},transformer:function(data){if(this.aggregationScale==1)return data;var aggregatedData=[];data.forEach(function(seriesData){var aggregatedSeriesData=[];while(seriesData.length){var avgX=0,avgY=0;var slice=seriesData.splice(0,this.aggregationScale);slice.forEach(function(d){avgX+=d.x/slice.length;avgY+=d.y/slice.length});aggregatedSeriesData.push({x:avgX,y:avgY})}aggregatedData.push(aggregatedSeriesData)}.bind(this));return aggregatedData}});Rickshaw.namespace(\"Rickshaw.Graph.Unstacker\");Rickshaw.Graph.Unstacker=function(args){this.graph=args.graph;var self=this;this.graph.stackData.hooks.after.push({name:\"unstacker\",f:function(data){if(!self.graph.renderer.unstack)return data;data.forEach(function(seriesData){seriesData.forEach(function(d){d.y0=0})});return data}})};Rickshaw.namespace(\"Rickshaw.Series\");Rickshaw.Series=Rickshaw.Class.create(Array,{initialize:function(data,palette,options){options=options||{};this.palette=new Rickshaw.Color.Palette(palette);this.timeBase=typeof options.timeBase===\"undefined\"?Math.floor((new Date).getTime()/1e3):options.timeBase;var timeInterval=typeof options.timeInterval==\"undefined\"?1e3:options.timeInterval;this.setTimeInterval(timeInterval);if(data&&typeof data==\"object\"&&Array.isArray(data)){data.forEach(function(item){this.addItem(item)},this)}},addItem:function(item){if(typeof item.name===\"undefined\"){throw\"addItem() needs a name\"}item.color=item.color||this.palette.color(item.name);item.data=item.data||[];if(item.data.length===0&&this.length&&this.getIndex()>0){this[0].data.forEach(function(plot){item.data.push({x:plot.x,y:0})})}else if(item.data.length===0){item.data.push({x:this.timeBase-(this.timeInterval||0),y:0})}this.push(item);if(this.legend){this.legend.addLine(this.itemByName(item.name))}},addData:function(data,x){var index=this.getIndex();Rickshaw.keys(data).forEach(function(name){if(!this.itemByName(name)){this.addItem({name:name})}},this);this.forEach(function(item){item.data.push({x:x||(index*this.timeInterval||1)+this.timeBase,y:data[item.name]||0})},this)},getIndex:function(){return this[0]&&this[0].data&&this[0].data.length?this[0].data.length:0},itemByName:function(name){for(var i=0;i<this.length;i++){if(this[i].name==name)return this[i]}},setTimeInterval:function(iv){this.timeInterval=iv/1e3},setTimeBase:function(t){this.timeBase=t},dump:function(){var data={timeBase:this.timeBase,timeInterval:this.timeInterval,items:[]};this.forEach(function(item){var newItem={color:item.color,name:item.name,data:[]};item.data.forEach(function(plot){newItem.data.push({x:plot.x,y:plot.y})});data.items.push(newItem)});return data},load:function(data){if(data.timeInterval){this.timeInterval=data.timeInterval}if(data.timeBase){this.timeBase=data.timeBase}if(data.items){data.items.forEach(function(item){this.push(item);if(this.legend){this.legend.addLine(this.itemByName(item.name))}},this)}}});Rickshaw.Series.zeroFill=function(series){Rickshaw.Series.fill(series,0)};Rickshaw.Series.fill=function(series,fill){var x;var i=0;var data=series.map(function(s){return s.data});while(i<Math.max.apply(null,data.map(function(d){return d.length}))){x=Math.min.apply(null,data.filter(function(d){return d[i]}).map(function(d){return d[i].x}));data.forEach(function(d){if(!d[i]||d[i].x!=x){d.splice(i,0,{x:x,y:fill})}});i++}};Rickshaw.namespace(\"Rickshaw.Series.FixedDuration\");Rickshaw.Series.FixedDuration=Rickshaw.Class.create(Rickshaw.Series,{initialize:function(data,palette,options){options=options||{};if(typeof options.timeInterval===\"undefined\"){throw new Error(\"FixedDuration series requires timeInterval\")}if(typeof options.maxDataPoints===\"undefined\"){throw new Error(\"FixedDuration series requires maxDataPoints\")}this.palette=new Rickshaw.Color.Palette(palette);this.timeBase=typeof options.timeBase===\"undefined\"?Math.floor((new Date).getTime()/1e3):options.timeBase;this.setTimeInterval(options.timeInterval);if(this[0]&&this[0].data&&this[0].data.length){this.currentSize=this[0].data.length;this.currentIndex=this[0].data.length}else{this.currentSize=0;this.currentIndex=0}this.maxDataPoints=options.maxDataPoints;if(data&&typeof data==\"object\"&&Array.isArray(data)){data.forEach(function(item){this.addItem(item)},this);this.currentSize+=1;this.currentIndex+=1}this.timeBase-=(this.maxDataPoints-this.currentSize)*this.timeInterval;if(typeof this.maxDataPoints!==\"undefined\"&&this.currentSize<this.maxDataPoints){for(var i=this.maxDataPoints-this.currentSize-1;i>1;i--){this.currentSize+=1;this.currentIndex+=1;this.forEach(function(item){item.data.unshift({x:((i-1)*this.timeInterval||1)+this.timeBase,y:0,i:i})},this)}}},addData:function($super,data,x){$super(data,x);this.currentSize+=1;this.currentIndex+=1;if(this.maxDataPoints!==undefined){while(this.currentSize>this.maxDataPoints){this.dropData()}}},dropData:function(){this.forEach(function(item){item.data.splice(0,1)});this.currentSize-=1},getIndex:function(){return this.currentIndex}});\n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    1: angular.module('system').factory('contextTemplates',\n    2    ['$http', '$templateCache', 'importTemplate',\n    3    function ($http, $templateCache, importTemplate) {\n\n/Users/ssquire/Documents/projects/liveinterface/models/bucket.js:\n    1: angular.module('system').factory('BucketModel', [function () {\n    2  \n    3    function BucketModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/code.js:\n    1: angular.module('system').factory('CodeModel', [function () {\n    2    \n    3    function CodeModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/documentModel.js:\n    1: angular.module('system').factory('DocumentModel', function () {\n    2  \n    3    function Document() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/external-reference.js:\n    1: angular.module('sytem').factory('ExternalReference', function () {\n    2    function ExternalReference() {\n    3      return {\n\n/Users/ssquire/Documents/projects/liveinterface/models/list.js:\n    1: angular.module('system').factory('ListModel', [function () {\n    2  \n    3    function ListModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/relation.js:\n    1: angular.module('system').factory('RelationModel', [function () {\n    2  \n    3    function Property() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/subdocument.js:\n    1: angular.module('system').factory('SubdocumentModel', [function () {\n    2  \n    3    function Subdocument() {\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/document.js:\n    1: angular.module('system').factory('ActiveDocument', ['DocumentModel', function (DocumentModel) {\n    2    return new DocumentModel();\n    3  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n    1: angular.module('system').factory('feed', ['cleaner', function (cleaner) {\n    2    function Feed() {\n    3      var self = this;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/page-lines.js:\n    1: angular.module('system').factory('page-lines', function () {\n    2  \n    3    function Lines() {\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/shelf.js:\n    1: angular.module('system').factory('shelfRepository', [function () {\n    2    \n    3    function ShelfRepository() {\n\n/Users/ssquire/Documents/projects/liveinterface/services/import-template.js:\n    1: angular.module('system').factory('importTemplate',\n    2    ['$http', '$templateCache', function ($http, $templateCache) {\n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/services/keybindings.js:\n    1: angular.module('system').factory('keybinding', ['$rootScope', function ($rootScope) {\n    2    function Keybindings() {\n    3      var self = this;\n\n45 matches across 15 files\n\n\nSearching 74 files for \".factory\"\n\n/Users/ssquire/Documents/projects/liveinterface/directives/context.js:\n    1: angular.module('system').factory('contextTemplates',\n    2    ['$http', '$templateCache', 'importTemplate',\n    3    function ($http, $templateCache, importTemplate) {\n\n/Users/ssquire/Documents/projects/liveinterface/models/bucket.js:\n    1: angular.module('system').factory('BucketModel', [function () {\n    2  \n    3    function BucketModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/code.js:\n    1: angular.module('system').factory('CodeModel', [function () {\n    2    \n    3    function CodeModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/documentModel.js:\n    1: angular.module('system').factory('DocumentModel', function () {\n    2  \n    3    function Document() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/external-reference.js:\n    1: angular.module('sytem').factory('ExternalReference', function () {\n    2    function ExternalReference() {\n    3      return {\n\n/Users/ssquire/Documents/projects/liveinterface/models/list.js:\n    1: angular.module('system').factory('ListModel', [function () {\n    2  \n    3    function ListModel() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/relation.js:\n    1: angular.module('system').factory('RelationModel', [function () {\n    2  \n    3    function Property() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/subdocument.js:\n    1: angular.module('system').factory('SubdocumentModel', [function () {\n    2  \n    3    function Subdocument() {\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/document.js:\n    1: angular.module('system').factory('ActiveDocument', ['DocumentModel', function (DocumentModel) {\n    2    return new DocumentModel();\n    3  }]);\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js:\n    1: angular.module('system').factory('feed', ['cleaner', function (cleaner) {\n    2    function Feed() {\n    3      var self = this;\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/page-lines.js:\n    1: angular.module('system').factory('page-lines', function () {\n    2  \n    3    function Lines() {\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/shelf.js:\n    1: angular.module('system').factory('shelfRepository', [function () {\n    2    \n    3    function ShelfRepository() {\n\n/Users/ssquire/Documents/projects/liveinterface/services/import-template.js:\n    1: angular.module('system').factory('importTemplate',\n    2    ['$http', '$templateCache', function ($http, $templateCache) {\n    3  \n\n/Users/ssquire/Documents/projects/liveinterface/services/keybindings.js:\n    1: angular.module('system').factory('keybinding', ['$rootScope', function ($rootScope) {\n    2    function Keybindings() {\n    3      var self = this;\n\n14 matches across 14 files\n\n\nSearching 74 files for \"DocumentModel\"\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js:\n   16  \n   17    if ($scope.metadata.kind === \"subdocument\") {\n   18:     $scope.documentModel = $scope.feedIds[$scope.metadata.instanceName];\n   19      // $scope.documentId = \n   20      // $scope.itemIndex = $scope.nameToIndex[$scope.metadata.instanceName];\n\n/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js:\n    2      $templateCache, $http, $compile, keybinding,\n    3      ListModel, CodeModel, RelationModel, ActiveDocument, DependencyTreeGenerator, BucketModel, socket,\n    4:     DocumentModel, SubdocumentModel, cleaner) {\n    5  \n    6    $scope.open = false;\n    .\n  107  \n  108      function insertSubDocument(id) {\n  109:       var subdocumentRef = SubdocumentModel();\n  110        subdocumentRef.ref = id;\n  111        var instance = $scope.createInstance();\n  ...\n  123      } else {\n  124        // we need to create the subdocument\n  125:       subDocument = new DocumentModel();\n  126        feed.save({\n  127          contents: \"\",\n  ...\n  383  angular.module('system').controller('editor', ['$scope', '$state', '$stateParams', '$rootScope', 'feed',\n  384    '$templateCache', '$http', '$compile', 'keybinding', 'ListModel', 'CodeModel', 'RelationModel', 'ActiveDocument',\n  385:   'DependencyTreeGenerator', 'BucketModel', 'socket', 'DocumentModel', 'SubdocumentModel', 'cleaner',\n  386    EditorController]);\n  387  \n\n/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js:\n   11          model = $scope.items[documentIndex];\n   12        } else {\n   13:         model = $scope.$eval($attrs.documentModel);\n   14        }\n   15  \n\n/Users/ssquire/Documents/projects/liveinterface/models/documentModel.js:\n    1: angular.module('system').factory('DocumentModel', function () {\n    2  \n    3    function Document() {\n\n/Users/ssquire/Documents/projects/liveinterface/models/subdocument.js:\n    1: angular.module('system').factory('SubdocumentModel', [function () {\n    2  \n    3    function Subdocument() {\n\n/Users/ssquire/Documents/projects/liveinterface/repositories/document.js:\n    1: angular.module('system').factory('ActiveDocument', ['DocumentModel', function (DocumentModel) {\n    2:   return new DocumentModel();\n    3  }]);\n\n13 matches across 6 files\n",
 			"settings":
 			{
-				"buffer_size": 1869,
-				"line_ending": "Unix"
+				"buffer_size": 82208,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
 			"file": "controllers/editor.js",
 			"settings":
 			{
-				"buffer_size": 7723,
+				"buffer_size": 11529,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "controllers/hierarchy_swap.json",
+			"file": "models/documentModel.js",
 			"settings":
 			{
-				"buffer_size": 1487,
-				"line_ending": "Unix",
-				"name": "[ {"
-			}
-		},
-		{
-			"file": "views/data.html",
-			"settings":
-			{
-				"buffer_size": 292,
+				"buffer_size": 243,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "bucket.js",
+			"file": "services/sparql.js",
 			"settings":
 			{
-				"buffer_size": 1083,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/bucket.js",
-			"settings":
-			{
-				"buffer_size": 179,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "example.json",
-			"settings":
-			{
-				"buffer_size": 12173,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/demo.html",
-			"settings":
-			{
-				"buffer_size": 761,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/jsonlist.html",
-			"settings":
-			{
-				"buffer_size": 495,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "styles/tree.css",
-			"settings":
-			{
-				"buffer_size": 121,
-				"line_ending": "Unix",
-				"name": ".tree li {"
-			}
-		},
-		{
-			"file": "directives/context.js",
-			"settings":
-			{
-				"buffer_size": 2279,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "controllers/context-controller.js",
-			"settings":
-			{
-				"buffer_size": 12793,
+				"buffer_size": 1659,
 				"line_ending": "Unix"
 			}
 		}
@@ -261,11 +161,15 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 47.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"close all",
+				"close",
+				"File: Close All"
+			],
+			[
+				"clos",
 				"File: Close All"
 			],
 			[
@@ -273,11 +177,11 @@
 				"File: Close All"
 			],
 			[
-				"closeall",
+				"close all",
 				"File: Close All"
 			],
 			[
-				"close",
+				"closeall",
 				"File: Close All"
 			],
 			[
@@ -297,7 +201,7 @@
 				"Set Syntax: Ruby"
 			]
 		],
-		"width": 575.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -314,62 +218,122 @@
 	},
 	"file_history":
 	[
-		"/Users/ssquire/Documents/projects/liveinterface/views/structural-tree-view.html",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/dataobject.js",
-		"/Users/ssquire/Documents/projects/liveinterface/styles/main.css",
-		"/Users/ssquire/Documents/projects/liveinterface/styles/feed.css",
-		"/Users/ssquire/Documents/projects/liveinterface/index.html",
-		"/Users/ssquire/Documents/projects/liveinterface/app.js",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/data.html",
-		"/Users/ssquire/Documents/projects/liveinterface/presentation/index.html",
-		"/Users/ssquire/Documents/projects/liveinterface/models/bucket.js",
 		"/Users/ssquire/Documents/projects/liveinterface/controllers/autocomplete.js",
-		"/Users/ssquire/Documents/projects/liveinterface/services/buckets.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/relation.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/create-relation.html",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/relations.css",
+		"/Users/ssquire/Documents/projects/liveinterface/views/embed.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/embedded-context.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/context.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/spaces.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/embed.js",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/feed.css",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/action-dropdown.css",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/spaces.css",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/carousel.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/carousel-scroll.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/connect.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/main.css",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/autocomplete.css",
+		"/Users/ssquire/Documents/projects/liveinterface/services/sparql.js",
+		"/Users/ssquire/Documents/projects/liveinterface/services/import-template.js",
+		"/Users/ssquire/Documents/projects/liveinterface/index.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/editor.js",
+		"/Users/ssquire/Documents/projects/liveinterface/models/external-reference.js",
+		"/Users/ssquire/Documents/projects/liveinterface/models/relation.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/subdocument.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/packery.js",
 		"/Users/ssquire/Documents/projects/liveinterface/directives/context.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/list.html",
-		"/Users/ssquire/Documents/projects/liveinterface/bucket.js",
-		"/Users/ssquire/Documents/projects/liveinterface/models/list.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/code.html",
-		"/Users/ssquire/Documents/projects/liveinterface/-",
-		"/Users/ssquire/Documents/projects/liveinterface/utils/analysis.js",
-		"/Users/ssquire/Documents/projects/liveinterface/repositories/shelf.js",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/sidebar.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/sidebar.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/autocomplete.html",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/focus-when.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/home.html",
-		"/Users/ssquire/Documents/projects/liveinterface/views/editor.html",
-		"/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js",
 		"/Users/ssquire/Documents/projects/liveinterface/controllers/context-controller.js",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/ui.json",
+		"/Users/ssquire/Documents/projects/liveinterface/models/code.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/element-lines.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/recursive.js",
+		"/Users/ssquire/Documents/projects/liveinterface/app.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/recursive.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/focal-selectable.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/rescan.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/edit-document.js",
+		"/Users/ssquire/Documents/projects/liveinterface/shellbucket.sh",
+		"/Users/ssquire/Documents/projects/liveinterface/views/home.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/wizard.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/create-relation.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/wizard.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/angular-content.js",
+		"/Users/ssquire/Documents/projects/liveinterface/models/subdocument.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/editor.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/autoannotate.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js",
+		"/Users/ssquire/Documents/projects/liveinterface/repositories/feed.js",
+		"/Users/ssquire/Documents/projects/liveinterface/repositories/page-lines.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/edit-document.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/home.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/code.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/shelf.html",
 		"/Users/ssquire/Documents/projects/liveinterface/directives/screenshot.js",
 		"/Users/ssquire/Documents/projects/liveinterface/controllers/shelf.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/shelf.html",
-		"/Users/ssquire/Documents/projects/liveinterface/views/spaces.html",
-		"/Users/ssquire/Documents/projects/liveinterface/styles/spaces.css",
-		"/Users/ssquire/Documents/projects/liveinterface/views/embed.html",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/embed.js",
 		"/Users/ssquire/Documents/projects/liveinterface/views/demo.html",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/spaces.js",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/home.js",
-		"/Users/ssquire/Documents/projects/liveinterface/views/target.html",
-		"/Users/ssquire/Documents/projects/liveinterface/views/sidebar.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/data.html",
+		"/Users/ssquire/Documents/projects/liveinterface/views/structural-tree-view.html",
+		"/Users/ssquire/Documents/projects/liveinterface/services/buckets.js",
+		"/Users/ssquire/Documents/projects/liveinterface/models/bucket.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js",
 		"/Users/ssquire/Documents/projects/liveinterface/repositories/document.js",
-		"/Users/ssquire/Documents/projects/liveinterface/bucket",
-		"/Users/ssquire/Documents/projects/liveinterface/example.json",
+		"/Users/ssquire/Documents/projects/liveinterface/models/documentModel.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/when-blur.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/dropdown.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/save-position.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/paper.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/focus-when.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/input-graph.js",
 		"/Users/ssquire/Documents/projects/liveinterface/livingsystem.sublime-project",
-		"/Users/ssquire/Documents/projects/liveinterface/models/code.js",
-		"/Users/ssquire/Documents/projects/liveinterface/components/ui-codemirror/ui-codemirror.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/follow.js",
+		"/Users/ssquire/Documents/projects/liveinterface/langident/langserver.rb",
+		"/Users/ssquire/Documents/projects/liveinterface/langident/classifier.rb",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/live2.html",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/questions.css",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/mysystem.html",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/live2.js",
+		"/Users/ssquire/Documents/projects/liveinterface/utils/cleaner.js",
+		"/Users/ssquire/Documents/projects/liveinterface/wordlists/storage.lst",
+		"/Users/ssquire/Documents/projects/liveinterface/liveproxy/liveproxy.py",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/live2.css",
+		"/Users/ssquire/Documents/projects/liveinterface/views/autocomplete.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/semantic-search.js",
+		"/Users/ssquire/Documents/projects/liveinterface/queries/query.sparql",
+		"/Users/ssquire/Documents/projects/liveinterface/services/item-updater.js",
+		"/Users/ssquire/Documents/projects/liveinterface/services/query.sparql",
+		"/Users/ssquire/Documents/projects/liveinterface/repositories/shelf.js",
+		"/Users/ssquire/Documents/projects/liveinterface/prototypes/index.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/interested-in-focus.js",
+		"/Users/ssquire/Documents/projects/liveinterface/models/list.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/sidebar.html",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js",
 		"/Users/ssquire/Documents/projects/liveinterface/directives/ng-model-onblur.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/keypress.js",
-		"/Users/ssquire/Documents/projects/liveinterface/styles/action-dropdown.css",
+		"/Users/ssquire/Documents/projects/liveinterface/views/edit-document.js",
+		"/Users/ssquire/Documents/projects/liveinterface/indexing/gate.corpora.SerialCorpusImpl/Corpus for text_mining.txt_00026___1387804771932___3580",
+		"/Users/ssquire/Documents/projects/liveinterface/bucket.js",
+		"/Users/ssquire/Documents/projects/liveinterface/presentation/index.html",
+		"/Users/ssquire/Documents/projects/liveinterface/shellbucket.js",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/hierarchy_swap.json",
+		"/Users/ssquire/Documents/projects/liveinterface/example.json",
+		"/Users/ssquire/Documents/projects/liveinterface/views/jsonlist.html",
+		"/Users/ssquire/Documents/projects/liveinterface/styles/tree.css",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/sidebar.js",
+		"/Users/ssquire/Documents/projects/liveinterface/directives/sidebar.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/nested.html",
+		"/Users/ssquire/Documents/projects/liveinterface/controllers/dataobject.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/list.html",
+		"/Users/ssquire/Documents/projects/liveinterface/-",
+		"/Users/ssquire/Documents/projects/liveinterface/utils/analysis.js",
+		"/Users/ssquire/Documents/projects/liveinterface/views/target.html",
+		"/Users/ssquire/Documents/projects/liveinterface/bucket",
+		"/Users/ssquire/Documents/projects/liveinterface/components/ui-codemirror/ui-codemirror.js",
 		"/Users/ssquire/Documents/projects/liveinterface/services/dependency-tree-generator.js",
 		"/Users/ssquire/Documents/projects/liveinterface/styles/code-context.css",
-		"/Users/ssquire/Documents/projects/liveinterface/views/connect.html",
 		"/Users/ssquire/Documents/projects/liveinterface/views/connect-picker.html",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/connect.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/contenteditable.js",
 		"/Users/ssquire/Documents/projects/liveinterface/components/angular-ui-codemirror/ui-codemirror.js",
 		"/Users/ssquire/Documents/projects/liveinterface/directives/iframe.js",
 		"/Users/ssquire/Documents/projects/liveinterface/livingsystem.sublime-workspace",
@@ -377,71 +341,11 @@
 		"/Users/ssquire/Documents/projects/liveinterface/components/codemirror/mode/perl/perl.js",
 		"/Users/ssquire/Documents/projects/liveinterface/styles/connect.css",
 		"/Users/ssquire/Documents/projects/liveinterface/services/keybindings.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/follow.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/when-blur.js",
-		"/Users/ssquire/Documents/projects/liveinterface/styles/autocomplete.css",
-		"/Users/ssquire/Documents/projects/liveinterface/controllers/viewer.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/interested-in-focus.js",
-		"/Users/ssquire/Documents/projects/liveinterface/directives/packery.js",
 		"/Users/ssquire/Documents/projects/liveinterface/styles/embedded.css",
 		"/Users/ssquire/Documents/projects/liveinterface/style.css",
 		"/Users/ssquire/Documents/projects/liveinterface/editor.js",
 		"/Users/ssquire/Documents/flourish/mvndeps",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/collectinator/recipes/default.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/db-collectinator.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/db-member.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/files/default/mongo_sizing.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/krypton/templates/default/krypton_ui.config.yml.erb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/deco.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_hosts/spec/default_spec.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/krypton.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/db.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/flourish-test.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/flourish.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/roles/gold_member.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_hosts/recipes/default.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_app/libraries/manage.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/krypton/attributes/default.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/files/default/infra-dash/lib/node_status.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/collectinator/attributes/default.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/public/css/bootstrap.css",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/group_status.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/health_checker.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/node_finder.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/app.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/spec/group_status_spec.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/views/node_status.erb",
-		"/Users/ssquire/Documents/colinf/knifeDash/config/knife-dash.yml",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/provisioner/files/default/dot-chef/knife.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/views/group_status.erb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/recipes/knifeDash.rb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/files/default/knifeDash-0.0.11.gem",
-		"/Users/ssquire/Documents/colinf/Gemfile",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/version.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/Rakefile",
-		"/Users/ssquire/Documents/colinf/criticize.sh",
-		"/Users/ssquire/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/attributes/default.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/lib/knife_dash/config.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/Gemfile",
-		"/Users/ssquire/Documents/colinf/knifeDash/knifeDash.gemspec",
-		"/Users/ssquire/Documents/colinf/chef-repo/nodes/app.json",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_base/files/default/columbus_env.rb",
-		"/Users/ssquire/Documents/colinf/knifeDash/go.sh",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_monitoring/templates/default/knife-dash.yml.erb",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/provisioner/files/default/jenkins-deploy.sh",
-		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/columbus_mongodb/files/default/backup_mongo_to_rackspace.sh",
-		"/Users/ssquire/Documents/colinf/chef-repo/nodes/db.json",
-		"/Users/ssquire/Documents/colinf/knifeDash/config/example-knife-dash.yml",
-		"/Users/ssquire/Documents/krypton/test/frontend/feature/testsClasses/articleTests.clj",
-		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/ArticleSpec.js",
-		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleModel.js",
-		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/articleCommons.js",
-		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleFieldsVM.js",
-		"/Users/ssquire/Documents/krypton/test/frontend/js/spec/articleFieldsSpec.js",
-		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articleSectionVM.js",
-		"/Users/ssquire/Documents/krypton/resources/public/scripts/app/article/articles.js",
-		"/Users/ssquire/Documents/krypton/resources/templates/scripts/new-article.html"
+		"/Users/ssquire/Documents/colinf/chef-repo/cookbooks/collectinator/recipes/default.rb"
 	],
 	"find":
 	{
@@ -449,9 +353,35 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
+			"*.js",
+			"*.html",
+			"*.js",
+			"*.css",
+			"*.js",
+			"*.css",
+			"*.html",
+			"*.js",
+			"p",
+			"*.js",
+			"*.html",
+			"*.js",
+			"*.css",
+			"*.js",
+			"*.css",
+			"*.html",
+			"*.css",
+			"*.js",
+			"*.css",
+			"",
+			"*.js",
+			"*.css",
+			"*.html",
+			"*.css",
+			"*.js",
+			"*.css",
 			"",
 			"its",
 			""
@@ -462,134 +392,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"    <a href=\"\" rel=\"embedded\" data-kind=\"jsonlist\" data-id=\"4\"></a>",
-			"fredChildren",
+			"DocumentModel",
+			".factory",
+			"factory",
+			".service",
+			"$http",
+			"$.",
+			"$http",
+			".service",
+			"ng-repeat",
+			"ng-controller",
+			"ng-app",
 			"parents",
-			"swap",
-			"newChildren",
-			"a",
-			"deleteLonelyParents",
-			"collapse",
-			"(a",
-			"a)",
-			"a ",
-			"a",
-			"structural",
-			"structure-",
-			"underscore",
-			"on('line'",
-			"line",
-			"link:",
-			"$apply",
-			"$digest",
-			"$apply",
-			"theme",
-			"bucket",
-			"shell",
-			"$rootScope.$on",
-			"$rootScope.on",
-			"$rootScope",
-			"DONE",
-			"Active",
-			"encountered",
+			";\n",
+			"input-question",
+			"jQuery.map",
+			"parsed",
+			".define",
+			"background-color",
+			"page-lines",
+			"column",
+			"row",
+			"width",
+			"column",
+			"row",
+			"filter",
+			"nodeTyp",
+			"filter",
+			"resu",
+			"question",
+			"live2",
+			"var .*Controller =",
+			"var *Controller =",
+			".mask",
+			".define",
+			"th",
+			".versions",
+			"content",
+			".instance",
+			"mask",
+			"define-panel",
+			"Product",
+			"scale",
+			"embed-se",
+			"embed-section",
+			"autoannotate",
+			"focus",
+			".scan",
+			"autoannotate",
+			"semantic-",
+			"semantic-search",
+			"stop-dependency",
+			"toggle-lines",
+			"paper",
+			"activating search",
+			"toggling auto",
 			"console.log",
-			"components",
-			"findModel",
-			".source ",
-			"embed-field",
-			"anchorNode",
-			"insertNode",
-			"ActiveDocument",
-			"follow",
-			"embed-field",
-			"shelfRepository",
-			"embed(",
-			"embed-field",
-			"embed(",
-			"embed-field",
-			"$timeout",
-			"html",
-			"toggle-editor-expand",
-			"key",
-			"rasterize",
-			"orphan.screenshot",
-			"$('",
-			"listenEditor",
-			"escape-pressed",
-			"angular",
-			"refresh",
-			".code",
-			"'change'",
+			"dropdown",
+			"@dropdown",
+			"dropdown",
+			"'pageLines'",
+			"pageLines",
+			"activ",
+			"save-",
+			"savePosition",
+			"save-position",
+			"paper",
 			"console.log",
-			"relative",
-			"console.log",
-			"change",
-			"ui-view",
-			"ng-view",
-			"tableController",
-			"listController",
-			"  <",
-			"id",
-			"model",
-			"home.embed",
-			"transition",
-			"transitionTo",
-			"transposed-parent",
-			"contextScope",
-			"context",
-			"console.log",
-			"codeView",
-			"$scope.key",
-			"field",
-			"JSON",
-			"$element.on(",
-			"return;",
-			"key",
-			"key(",
-			"keydown",
+			"jQuery.data",
 			"keypress",
-			"items",
-			"subscription",
+			"'caret'",
+			"$scope.selection",
+			"class",
+			"preventDefa",
 			"update",
-			"updated",
-			"window",
-			"already existing",
-			"change occurred",
-			"feed",
-			"'saved'",
-			"listContr",
-			"fields",
-			"$scope.fields",
-			"fields",
-			"();",
-			"\"dropdown\"",
-			".window",
-			"escapeListener",
-			"offset",
-			"nbsp",
-			"tax",
-			"will be inserting",
-			"insertion event",
-			"mongo_nodes",
-			".tar.gz",
-			"'env'",
-			"'role'",
-			"default['columbus']['collectinator']['use_standalone_mongo'] = ['qperf'].include? node['deco']['env']",
-			"end",
-			"include?",
-			"migrate",
-			"'\n",
-			"mongodb_cluster_name",
-			"role",
-			"readPref",
-			"failed_app_checks?",
-			"alert-error",
-			"group.",
-			"its ",
-			"its  ",
-			"it ",
-			"DOWN",
-			"its"
+			"carousel-wrapper",
+			"external",
+			"compile",
+			"._id",
+			"external(",
+			"external",
+			"createExternal",
+			"external =",
+			"createContextElement",
+			"external",
+			"external(",
+			"$rootScope",
+			"$emit",
+			".idea-item",
+			"overflow",
+			"post-body",
+			"sampc:1445",
+			"bucket",
+			".idea-action",
+			"code",
+			"\"{{",
+			".available-subdocuments",
+			".idea-action",
+			"position: absolute",
+			"content",
+			"escape-pressed",
+			"subdocument",
+			"shelfData",
+			"fieldIndex",
+			":hover",
+			"position: absolute",
+			":hover",
+			".idea-item",
+			"shelfItem",
+			".shelfItem",
+			"context",
+			"opaci",
+			"localhost",
+			"openForEditing",
+			".context",
+			".subdocument",
+			"document-card",
+			"children",
+			"wrapper",
+			"carousel",
+			"post-bod",
+			":hover",
+			"fixed",
+			"overflow",
+			"idea-item",
+			"overflow:",
+			"overflow",
+			":hover",
+			"hover"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -597,6 +527,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"p",
+			"sampc",
 			"subject.",
 			"it ",
 			"its ",
@@ -615,29 +547,30 @@
 	"groups":
 	[
 		{
-			"selected": 19,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "presentation/index.html",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 3417,
+						"buffer_size": 16272,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1542,
-								1542
+								330,
+								330
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -647,74 +580,606 @@
 				},
 				{
 					"buffer": 1,
-					"file": "index.html",
+					"file": "app.js",
 					"settings":
 					{
-						"buffer_size": 14209,
+						"buffer_size": 3462,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1532,
-								1532
+								643,
+								643
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 293.0,
+						"translation.y": 1918.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "views/code.html",
 					"settings":
 					{
-						"buffer_size": 2012,
+						"buffer_size": 82208,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										137,
+										143
+									],
+									[
+										269,
+										275
+									],
+									[
+										762,
+										775
+									],
+									[
+										1053,
+										1066
+									],
+									[
+										1265,
+										1278
+									],
+									[
+										1879,
+										1888
+									],
+									[
+										2211,
+										2220
+									],
+									[
+										2294,
+										2303
+									],
+									[
+										2365,
+										2374
+									],
+									[
+										2625,
+										2634
+									],
+									[
+										2814,
+										2823
+									],
+									[
+										3063,
+										3072
+									],
+									[
+										3395,
+										3404
+									],
+									[
+										3608,
+										3617
+									],
+									[
+										3872,
+										3881
+									],
+									[
+										4112,
+										4121
+									],
+									[
+										4393,
+										4402
+									],
+									[
+										4743,
+										4752
+									],
+									[
+										5113,
+										5122
+									],
+									[
+										5359,
+										5368
+									],
+									[
+										5512,
+										5521
+									],
+									[
+										5793,
+										5802
+									],
+									[
+										6036,
+										6045
+									],
+									[
+										6423,
+										6432
+									],
+									[
+										6881,
+										6890
+									],
+									[
+										6999,
+										7008
+									],
+									[
+										7053,
+										7062
+									],
+									[
+										7469,
+										7477
+									],
+									[
+										7698,
+										7706
+									],
+									[
+										7741,
+										7749
+									],
+									[
+										7897,
+										7905
+									],
+									[
+										8104,
+										8112
+									],
+									[
+										8325,
+										8333
+									],
+									[
+										8490,
+										8498
+									],
+									[
+										8954,
+										8959
+									],
+									[
+										8987,
+										8992
+									],
+									[
+										9250,
+										9255
+									],
+									[
+										9519,
+										9524
+									],
+									[
+										9803,
+										9808
+									],
+									[
+										10193,
+										10198
+									],
+									[
+										10240,
+										10245
+									],
+									[
+										10403,
+										10408
+									],
+									[
+										10680,
+										10685
+									],
+									[
+										10743,
+										10748
+									],
+									[
+										10849,
+										10854
+									],
+									[
+										11136,
+										11141
+									],
+									[
+										11168,
+										11173
+									],
+									[
+										11342,
+										11347
+									],
+									[
+										11378,
+										11383
+									],
+									[
+										11467,
+										11472
+									],
+									[
+										11748,
+										11753
+									],
+									[
+										11775,
+										11780
+									],
+									[
+										11803,
+										11808
+									],
+									[
+										11992,
+										12000
+									],
+									[
+										12191,
+										12199
+									],
+									[
+										12398,
+										12406
+									],
+									[
+										12619,
+										12627
+									],
+									[
+										12784,
+										12792
+									],
+									[
+										55934,
+										55941
+									],
+									[
+										55967,
+										55974
+									],
+									[
+										57351,
+										57358
+									],
+									[
+										58770,
+										58777
+									],
+									[
+										58814,
+										58821
+									],
+									[
+										58968,
+										58975
+									],
+									[
+										58985,
+										58992
+									],
+									[
+										59040,
+										59047
+									],
+									[
+										59302,
+										59309
+									],
+									[
+										59346,
+										59353
+									],
+									[
+										59544,
+										59551
+									],
+									[
+										59561,
+										59568
+									],
+									[
+										59616,
+										59623
+									],
+									[
+										62151,
+										62158
+									],
+									[
+										62195,
+										62202
+									],
+									[
+										62388,
+										62395
+									],
+									[
+										62405,
+										62412
+									],
+									[
+										62460,
+										62467
+									],
+									[
+										62481,
+										62488
+									],
+									[
+										62525,
+										62532
+									],
+									[
+										62679,
+										62686
+									],
+									[
+										62696,
+										62703
+									],
+									[
+										62751,
+										62758
+									],
+									[
+										63020,
+										63027
+									],
+									[
+										63119,
+										63126
+									],
+									[
+										67305,
+										67312
+									],
+									[
+										67349,
+										67356
+									],
+									[
+										67503,
+										67510
+									],
+									[
+										67520,
+										67527
+									],
+									[
+										67575,
+										67582
+									],
+									[
+										68372,
+										68379
+									],
+									[
+										74284,
+										74291
+									],
+									[
+										74526,
+										74533
+									],
+									[
+										74703,
+										74710
+									],
+									[
+										74887,
+										74894
+									],
+									[
+										75075,
+										75082
+									],
+									[
+										75275,
+										75282
+									],
+									[
+										75452,
+										75459
+									],
+									[
+										75635,
+										75642
+									],
+									[
+										75827,
+										75834
+									],
+									[
+										76050,
+										76057
+									],
+									[
+										76263,
+										76270
+									],
+									[
+										76439,
+										76446
+									],
+									[
+										76639,
+										76646
+									],
+									[
+										76851,
+										76858
+									],
+									[
+										77141,
+										77149
+									],
+									[
+										77383,
+										77391
+									],
+									[
+										77560,
+										77568
+									],
+									[
+										77744,
+										77752
+									],
+									[
+										77932,
+										77940
+									],
+									[
+										78132,
+										78140
+									],
+									[
+										78309,
+										78317
+									],
+									[
+										78492,
+										78500
+									],
+									[
+										78684,
+										78692
+									],
+									[
+										78907,
+										78915
+									],
+									[
+										79120,
+										79128
+									],
+									[
+										79296,
+										79304
+									],
+									[
+										79496,
+										79504
+									],
+									[
+										79708,
+										79716
+									],
+									[
+										80066,
+										80079
+									],
+									[
+										80495,
+										80508
+									],
+									[
+										80513,
+										80526
+									],
+									[
+										80672,
+										80685
+									],
+									[
+										80887,
+										80900
+									],
+									[
+										81261,
+										81274
+									],
+									[
+										81281,
+										81294
+									],
+									[
+										81542,
+										81555
+									],
+									[
+										81696,
+										81709
+									],
+									[
+										81881,
+										81894
+									],
+									[
+										82089,
+										82102
+									],
+									[
+										82115,
+										82128
+									],
+									[
+										82152,
+										82165
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								1760,
-								1760
+								81264,
+								81264
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"output_tag": 11,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 216.0,
+						"translation.y": 19209.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "shellbucket.js",
+					"file": "controllers/editor.js",
 					"settings":
 					{
-						"buffer_size": 2045,
+						"buffer_size": 11529,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1637,
-								1637
+								2952,
+								2952
 							]
 						],
 						"settings":
@@ -724,274 +1189,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 468.0,
+						"translation.y": 559.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "directives/angular-content.js",
+					"file": "models/documentModel.js",
 					"settings":
 					{
-						"buffer_size": 849,
+						"buffer_size": 243,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								589,
-								589
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "directives/keypress.js",
-					"settings":
-					{
-						"buffer_size": 3352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								463,
-								463
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "controllers/spaces.js",
-					"settings":
-					{
-						"buffer_size": 472,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								156,
-								156
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app.js",
-					"settings":
-					{
-						"buffer_size": 2032,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								81,
-								81
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "controllers/autocomplete.js",
-					"settings":
-					{
-						"buffer_size": 1869,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "controllers/editor.js",
-					"settings":
-					{
-						"buffer_size": 7723,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6579,
-								6579
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3610.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "controllers/hierarchy_swap.json",
-					"settings":
-					{
-						"buffer_size": 1487,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								1487
-							]
-						],
-						"settings":
-						{
-							"auto_name": "[ {",
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "views/data.html",
-					"settings":
-					{
-						"buffer_size": 292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								247,
-								247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "bucket.js",
-					"settings":
-					{
-						"buffer_size": 1083,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								194,
-								194
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/bucket.js",
-					"settings":
-					{
-						"buffer_size": 179,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								136,
-								128
+								243,
+								243
 							]
 						],
 						"settings":
@@ -1005,124 +1221,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "example.json",
+					"buffer": 5,
+					"file": "services/sparql.js",
 					"settings":
 					{
-						"buffer_size": 12173,
+						"buffer_size": 1659,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1154,
-								1154
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 100.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "views/demo.html",
-					"settings":
-					{
-						"buffer_size": 761,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								482,
-								482
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "views/jsonlist.html",
-					"settings":
-					{
-						"buffer_size": 495,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								162,
-								162
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "styles/tree.css",
-					"settings":
-					{
-						"buffer_size": 121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								119,
-								119
-							]
-						],
-						"settings":
-						{
-							"auto_name": ".tree li {",
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "directives/context.js",
-					"settings":
-					{
-						"buffer_size": 2279,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								313,
-								313
+								131,
+								131
 							]
 						],
 						"settings":
@@ -1132,35 +1243,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "controllers/context-controller.js",
-					"settings":
-					{
-						"buffer_size": 12793,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4668,
-								4668
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2596.0,
+						"translation.y": 92.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1214,171 +1297,7 @@
 		"selected_items":
 		[
 			[
-				"cont",
-				"controllers/context-controller.js"
-			],
-			[
-				"exa",
-				"example.json"
-			],
-			[
-				"dem",
-				"views/demo.html"
-			],
-			[
-				"",
-				"controllers/context-controller.js"
-			],
-			[
-				"de",
-				"views/demo.html"
-			],
-			[
-				"context",
-				"controllers/context-controller.js"
-			],
-			[
-				"demo",
-				"views/demo.html"
-			],
-			[
-				"exam",
-				"example.json"
-			],
-			[
-				"code",
-				"views/code.html"
-			],
-			[
-				"stru",
-				"views/structural-tree-view.html"
-			],
-			[
-				"str",
-				"views/structural-tree-view.html"
-			],
-			[
-				"json",
-				"views/jsonlist.html"
-			],
-			[
-				"ind",
-				"index.html"
-			],
-			[
-				"demo.",
-				"views/demo.html"
-			],
-			[
-				"examp",
-				"example.json"
-			],
-			[
-				"bucket.js",
-				"bucket.js"
-			],
-			[
-				"bucket",
-				"models/bucket.js"
-			],
-			[
-				"data",
-				"views/data.html"
-			],
-			[
-				"ucket",
-				"bucket.js"
-			],
-			[
-				"data.js",
-				"controllers/dataobject.js"
-			],
-			[
-				"data.ht",
-				"views/data.html"
-			],
-			[
-				"editor",
-				"controllers/editor.js"
-			],
-			[
-				"auto",
-				"controllers/autocomplete.js"
-			],
-			[
 				"app",
-				"app.js"
-			],
-			[
-				"presentation/",
-				"presentation/index.html"
-			],
-			[
-				"list",
-				"models/list.js"
-			],
-			[
-				"list.",
-				"views/list.html"
-			],
-			[
-				"context.js",
-				"directives/context.js"
-			],
-			[
-				"dit",
-				"controllers/editor.js"
-			],
-			[
-				"edit",
-				"controllers/editor.js"
-			],
-			[
-				"bucke",
-				"services/buckets.js"
-			],
-			[
-				"inde",
-				"index.html"
-			],
-			[
-				"feed.cs",
-				"styles/feed.css"
-			],
-			[
-				"main",
-				"styles/main.css"
-			],
-			[
-				"aut",
-				"controllers/autocomplete.js"
-			],
-			[
-				"buckets",
-				"services/buckets.js"
-			],
-			[
-				"buc",
-				"bucket.js"
-			],
-			[
-				"side",
-				"views/sidebar.html"
-			],
-			[
-				"angular",
-				"directives/angular-content.js"
-			],
-			[
-				"docu",
-				"repositories/document.js"
-			],
-			[
-				"sidebar",
-				"views/sidebar.html"
-			],
-			[
-				"app.js",
 				"app.js"
 			],
 			[
@@ -1386,344 +1305,508 @@
 				"index.html"
 			],
 			[
-				"feed.css",
-				"styles/feed.css"
+				"context",
+				"directives/context.js"
 			],
 			[
-				"mai",
-				"styles/main.css"
+				"",
+				"styles/questions.css"
 			],
 			[
-				"anal",
-				"utils/analysis.js"
+				"recu",
+				"views/recursive.html"
 			],
 			[
-				"app.",
-				"app.js"
+				"questions",
+				"styles/questions.css"
 			],
 			[
-				"home.js",
-				"controllers/home.js"
+				"qe",
+				"styles/questions.css"
 			],
 			[
-				"shelf",
-				"controllers/shelf.js"
+				"rec",
+				"views/recursive.html"
 			],
 			[
-				"context-",
-				"controllers/context-controller.js"
+				"que",
+				"styles/questions.css"
 			],
 			[
-				"edito",
-				"controllers/editor.js"
+				"in",
+				"index.html"
+			],
+			[
+				"ques",
+				"styles/questions.css"
+			],
+			[
+				"recursiveht",
+				"views/recursive.html"
+			],
+			[
+				"questio",
+				"styles/questions.css"
+			],
+			[
+				"recurs",
+				"views/recursive.html"
+			],
+			[
+				"recur",
+				"views/recursive.html"
+			],
+			[
+				"ind",
+				"index.html"
 			],
 			[
 				"feed",
 				"repositories/feed.js"
 			],
 			[
-				"spaces",
+				"feedjs",
+				"repositories/feed.js"
+			],
+			[
+				"space",
 				"controllers/spaces.js"
 			],
 			[
-				"embed",
-				"controllers/embed.js"
+				"cleaner.js",
+				"utils/cleaner.js"
 			],
 			[
-				"shel",
-				"views/shelf.html"
+				"elementl",
+				"controllers/element-lines.js"
 			],
 			[
-				"scre",
-				"directives/screenshot.js"
+				"eleme",
+				"controllers/element-lines.js"
 			],
 			[
-				"she",
-				"repositories/shelf.js"
+				"question",
+				"styles/questions.css"
 			],
 			[
-				"scree",
-				"directives/screenshot.js"
+				"live2",
+				"prototypes/live2.css"
 			],
 			[
-				"shelf.html",
-				"views/shelf.html"
+				"editor",
+				"controllers/editor.js"
 			],
 			[
-				"structural-tree-view",
-				"views/structural-tree-view.html"
+				"rescan",
+				"directives/rescan.js"
 			],
 			[
-				"listht",
-				"views/list.html"
+				"au",
+				"directives/autoannotate.js"
 			],
 			[
-				"editor.ht",
-				"views/editor.html"
+				"recujs",
+				"controllers/recursive.js"
 			],
 			[
-				"home",
-				"views/home.html"
+				"autoanno",
+				"directives/autoannotate.js"
 			],
 			[
-				"focu",
-				"directives/focus-when.js"
+				"rescanjs",
+				"directives/rescan.js"
 			],
 			[
-				"autoco",
-				"views/autocomplete.html"
+				"questc",
+				"styles/questions.css"
 			],
 			[
-				"autoc",
-				"controllers/autocomplete.js"
+				"quest",
+				"styles/questions.css"
 			],
 			[
-				"ma",
-				"styles/main.css"
+				"lie2j",
+				"prototypes/live2.js"
 			],
 			[
-				"shelf.ht",
-				"views/shelf.html"
+				"inde",
+				"index.html"
 			],
 			[
-				"conte",
-				"directives/context.js"
+				"sys",
+				"prototypes/mysystem.html"
+			],
+			[
+				"appjs",
+				"app.js"
 			],
 			[
 				"contr",
 				"controllers/context-controller.js"
 			],
 			[
-				"tree",
-				"services/dependency-tree-generator.js"
+				"lang",
+				"langident/classifier.rb"
 			],
 			[
-				"dep",
-				"services/dependency-tree-generator.js"
+				"lan",
+				"langident/langserver.rb"
 			],
 			[
-				"spaces.css",
-				"styles/spaces.css"
+				"mainc",
+				"styles/main.css"
 			],
 			[
-				"code.",
-				"views/code.html"
+				"feedc",
+				"styles/feed.css"
+			],
+			[
+				"input-gr",
+				"controllers/input-graph.js"
+			],
+			[
+				"editjs",
+				"controllers/editor.js"
+			],
+			[
+				"edit-do",
+				"views/edit-document.html"
+			],
+			[
+				"edi",
+				"controllers/edit-document.js"
+			],
+			[
+				"edit",
+				"controllers/editor.js"
+			],
+			[
+				"spac",
+				"controllers/spaces.js"
 			],
 			[
 				"key",
 				"directives/keypress.js"
 			],
 			[
-				"edi",
+				"autoan",
+				"directives/autoannotate.js"
+			],
+			[
+				"document",
+				"models/documentModel.js"
+			],
+			[
+				"editorjs",
 				"controllers/editor.js"
 			],
 			[
-				"edto",
-				"controllers/editor.js"
+				"input",
+				"controllers/input-graph.js"
 			],
 			[
-				"list.ht",
-				"views/list.html"
+				"drop",
+				"views/dropdown.html"
 			],
 			[
-				"ng-mo",
-				"directives/ng-model-onblur.js"
+				"auto",
+				"views/autocomplete.html"
 			],
 			[
-				"index.",
-				"index.html"
+				"page",
+				"repositories/page-lines.js"
 			],
 			[
-				"ng-",
-				"directives/ng-model-onblur.js"
+				"inpu",
+				"controllers/input-graph.js"
 			],
 			[
-				"st",
-				"views/structural-tree-view.html"
+				"autocc",
+				"styles/autocomplete.css"
 			],
 			[
-				"codem",
-				"views/code.html"
+				"maic",
+				"styles/main.css"
 			],
 			[
-				"list.js",
-				"models/list.js"
+				"follow",
+				"directives/follow.js"
 			],
 			[
-				"mode",
-				"models/code.js"
+				"autoco",
+				"controllers/autocomplete.js"
 			],
 			[
-				"code.ht",
-				"views/code.html"
+				"sa",
+				"directives/save-position.js"
 			],
 			[
-				"code.js",
-				"models/code.js"
-			],
-			[
-				"code.html",
-				"views/code.html"
-			],
-			[
-				"iframe",
-				"directives/iframe.js"
-			],
-			[
-				"editor.js",
-				"controllers/editor.js"
-			],
-			[
-				"connect.js",
-				"controllers/connect.js"
-			],
-			[
-				"connect",
-				"views/connect.html"
-			],
-			[
-				"liv",
-				"livingdocuments.sublime-project"
-			],
-			[
-				"connect-",
-				"views/connect-picker.html"
-			],
-			[
-				"picker",
-				"views/connect-picker.html"
-			],
-			[
-				"per",
-				"components/codemirror/mode/perl/perl.js"
-			],
-			[
-				"list.h",
-				"views/list.html"
-			],
-			[
-				"connect.h",
-				"views/connect.html"
-			],
-			[
-				"conne",
-				"controllers/connect.js"
-			],
-			[
-				"conn",
-				"controllers/connect.js"
-			],
-			[
-				"contxt",
+				"conext-co",
 				"controllers/context-controller.js"
 			],
 			[
-				"tmai",
-				"styles/main.css"
+				"save",
+				"directives/save-position.js"
 			],
 			[
-				"main.css",
-				"styles/main.css"
+				"elem",
+				"controllers/element-lines.js"
 			],
 			[
-				"dat",
-				"controllers/dataobject.js"
+				"seman",
+				"directives/semantic-search.js"
 			],
 			[
-				"da",
-				"controllers/dataobject.js"
+				"elemene",
+				"controllers/element-lines.js"
 			],
 			[
-				"li",
-				"views/list.html"
+				"save-",
+				"directives/save-position.js"
 			],
 			[
-				"content",
-				"directives/contenteditable.js"
+				"context-co",
+				"controllers/context-controller.js"
+			],
+			[
+				"paperjs",
+				"directives/paper.js"
+			],
+			[
+				"input-g",
+				"controllers/input-graph.js"
+			],
+			[
+				"aper",
+				"directives/paper.js"
+			],
+			[
+				"page-",
+				"repositories/page-lines.js"
+			],
+			[
+				"pagel",
+				"repositories/page-lines.js"
+			],
+			[
+				"context-",
+				"controllers/context-controller.js"
+			],
+			[
+				"followjs",
+				"directives/follow.js"
+			],
+			[
+				"input-",
+				"controllers/input-graph.js"
+			],
+			[
+				"code",
+				"views/code.html"
+			],
+			[
+				"home",
+				"views/home.html"
+			],
+			[
+				"edit-doc",
+				"views/edit-document.html"
+			],
+			[
+				"autocomc",
+				"styles/autocomplete.css"
+			],
+			[
+				"follojs",
+				"directives/follow.js"
+			],
+			[
+				"fl",
+				"Find Results"
+			],
+			[
+				"conte",
+				"directives/context.js"
+			],
+			[
+				"ele",
+				"controllers/element-lines.js"
+			],
+			[
+				"dropd",
+				"views/dropdown.html"
+			],
+			[
+				"autoc",
+				"controllers/autocomplete.js"
+			],
+			[
+				"autocjs",
+				"controllers/autocomplete.js"
+			],
+			[
+				"autococ",
+				"styles/autocomplete.css"
+			],
+			[
+				"dropdo",
+				"views/dropdown.html"
+			],
+			[
+				"element-",
+				"controllers/element-lines.js"
+			],
+			[
+				"hom",
+				"views/home.html"
+			],
+			[
+				"elemen",
+				"controllers/element-lines.js"
+			],
+			[
+				"autocojs",
+				"controllers/autocomplete.js"
+			],
+			[
+				"context-con",
+				"controllers/context-controller.js"
+			],
+			[
+				"autocs",
+				"styles/autocomplete.css"
+			],
+			[
+				"lines",
+				"repositories/page-lines.js"
+			],
+			[
+				"paper",
+				"controllers/paper-graph.js"
 			],
 			[
 				"keyp",
 				"directives/keypress.js"
 			],
 			[
-				"feed.js",
-				"repositories/feed.js"
+				"focus",
+				"directives/focus-when.js"
+			],
+			[
+				"anno",
+				"directives/autoannotate.js"
+			],
+			[
+				"focus-",
+				"directives/focus-when.js"
+			],
+			[
+				"focuswh",
+				"directives/focus-when.js"
+			],
+			[
+				"focus-w",
+				"directives/focus-when.js"
+			],
+			[
+				"wizardht",
+				"views/wizard.html"
+			],
+			[
+				"create",
+				"views/create-relation.html"
+			],
+			[
+				"dropdow",
+				"views/dropdown.html"
+			],
+			[
+				"autocht",
+				"views/autocomplete.html"
+			],
+			[
+				"creat",
+				"views/create-relation.html"
+			],
+			[
+				"dro",
+				"views/dropdown.html"
+			],
+			[
+				"indeht",
+				"index.html"
+			],
+			[
+				"autocomht",
+				"views/autocomplete.html"
+			],
+			[
+				"editorht",
+				"views/editor.html"
+			],
+			[
+				"embedht",
+				"views/embed.html"
 			],
 			[
 				"when-",
 				"directives/when-blur.js"
 			],
 			[
-				"when",
-				"directives/when-blur.js"
+				"spacesht",
+				"views/spaces.html"
 			],
 			[
-				"spaces.js",
+				"spacjs",
 				"controllers/spaces.js"
 			],
 			[
-				"angu",
+				"subdo",
+				"views/subdocument.html"
+			],
+			[
+				"contextjs",
+				"directives/context.js"
+			],
+			[
+				"embedjs",
+				"controllers/embed.js"
+			],
+			[
+				"main",
+				"styles/main.css"
+			],
+			[
+				"angular-c",
 				"directives/angular-content.js"
 			],
 			[
-				"space",
-				"views/spaces.html"
+				"context.js",
+				"directives/context.js"
 			],
 			[
-				"sp",
-				"styles/spaces.css"
-			],
-			[
-				"angular-",
-				"directives/angular-content.js"
-			],
-			[
-				"run",
-				"directives/angular-content.js"
-			],
-			[
-				"run-",
-				"directives/run-angular.js"
-			],
-			[
-				"feed.",
-				"repositories/feed.js"
-			],
-			[
-				"spaces.",
-				"styles/spaces.css"
-			],
-			[
-				"viewer",
-				"controllers/viewer.js"
-			],
-			[
-				"view",
-				"views/demo.html"
-			],
-			[
-				"spaces.html",
-				"views/spaces.html"
-			],
-			[
-				"editor.html",
-				"views/editor.html"
-			],
-			[
-				"editab",
-				"directives/contenteditable.js"
-			],
-			[
-				"autocom",
-				"views/autocomplete.html"
-			],
-			[
-				"exampl",
-				"example.json"
-			],
-			[
-				"emed",
+				"embed",
 				"views/embed.html"
+			],
+			[
+				"documentjs",
+				"repositories/document.js"
+			],
+			[
+				"editojs",
+				"controllers/editor.js"
+			],
+			[
+				"context-contr",
+				"controllers/context-controller.js"
+			],
+			[
+				"shelf",
+				"controllers/shelf.js"
+			],
+			[
+				"feedcss",
+				"styles/feed.css"
 			]
 		],
 		"width": 0.0
@@ -1739,7 +1822,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 226.0,
 	"status_bar_visible": true
 }

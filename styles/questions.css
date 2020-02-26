@@ -1,0 +1,258 @@
+body {
+    font-family: 'Lora', serif;   
+}
+
+.create-button {
+  font-size: 30pt;
+  background-color: #E8E8E6;
+  color: white;
+  border-radius: 0.5em;
+
+}
+
+.input-question {
+  border-left: 4px solid #00BFFF;
+}
+
+.inclusion {
+  border-right: 4px solid #00BFFF;
+  margin-left: -19px;
+  padding-left: 15px;
+  margin-right: 0px;
+  width: 225px;
+  color: white;
+  
+  overflow: hidden;
+  position: absolute;
+  left: 1em;
+  -webkit-transition: all 0.5s ease;
+}
+
+.inclusion:hover {
+  width: 200px;
+  border-right: none;
+  border-left: 4px solid #00BFFF;
+  color: black;
+}
+
+.content .leftward {
+  left: -200px;
+  width: 450px;
+  opacity: 0.5;
+}
+
+.content .rightward {
+  left: 800px;
+  width: 450px;
+  opacity: 0.5;
+  /*top: -500px;*/
+}
+
+.content .focal-point {
+  left: 250px;
+  width: 960px;  
+}
+
+
+
+
+section {
+  margin: auto;
+  margin-left: 15%;
+  font-family: Lora, serif;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+.content {
+  height: 100%;
+  max-width: 900px;
+}
+
+.included-content {
+  border-left: 4px solid #00BFFF;
+}
+
+.content p, .content header, .included-content, h3, ul {
+  width: 900px;
+  position: relative;
+  left: 0px;
+  top: 0px;
+  -webkit-transition: all 0.5s ease;
+}
+
+.page {
+  padding-right: 1em;
+  width: 100%;
+  height: 100%;
+  padding-top: 0.3em;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.define-panel {
+  width: 1000px;
+  position: relative;
+  float: left;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.define-panel.open {
+  width: 300px;
+}
+
+.versions {
+  padding: 0.5em;
+  height: 100%;
+  margin-left: 1em;
+  margin: auto;
+  position: relative;
+  float: left;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.versions.open {
+  width: 100vw;
+  overflow: hidden;
+  background-color: white;
+}
+
+.page.open {
+  width: 600px;
+  
+}
+
+.recursive-row {
+  float: left;
+  position: relative;
+  
+}
+
+.recursive-mask {
+  pointer-events: none;
+}
+
+.recursive-mask.open {
+  z-index: 2;
+  background-color: white;
+  opacity: 0.7;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+
+}
+
+.highlight {
+  z-index: 3;
+  background-color: white;
+  position: relative;
+  border: 1px solid black;
+
+}
+
+
+
+.recursive-column {
+  float: left;
+  margin-right: 1em;
+  
+}
+
+header {
+  font-size: 38px;
+}
+
+.define {
+  width: 100%;
+  background-color: #E8E8E6;
+  padding: 0.2em;
+  border-radius: 0.3em;
+  margin: 0.05em;
+}
+
+.question {
+  /*padding-top: 150px;*/
+  padding: 0;
+  border-radius: 0.3em; 
+  color: rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+.answer p {
+  line-height: 15px;
+}
+
+.data {
+  width: 760px;
+}
+
+.open .data th {
+  font-size: 20px;
+}
+
+.data th {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.5); 
+  text-align: left;
+}
+
+.instance {
+  width: 100%;
+  margin: 0.05em;
+}
+
+.instance th {
+  background-color: #E8E8E6;
+}
+
+.instance table {
+  border: 1px solid #E8E8E6;
+}
+
+.open .data {
+  position: relative;
+  width: auto;
+}
+
+.relationships {
+  text-align: center;
+}
+
+.open .relationships img {
+  width: 300px;
+  height: auto;
+}
+
+.define {
+  display: none;
+}
+
+.define.on {
+  display: block;
+}
+
+.define-panel.open .horizontal {
+  display: none;
+}
+
+.define-panel .vertical {
+  display: none;
+}
+
+.define-panel.open .vertical {
+  display: block;
+}
+
+.next-page {
+  
+
+}
+.stars {
+  font-size: 25px;
+}
+
+

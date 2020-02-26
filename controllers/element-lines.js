@@ -1,7 +1,7 @@
 angular.module('system').controller('ElementLines', ['$q', '$rootScope', '$scope', 'page-lines',
   function ($q, $rootScope, $scope, pageLines) {
 
-$scope.width = '960';
+$scope.width = '2000';
 $scope.height = '2500';
 $scope.visible = false;
 

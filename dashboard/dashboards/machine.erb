@@ -1,0 +1,35 @@
+<% content_for(:title) { "System status" } %>
+<div class="gridster">
+  <ul>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <div data-id="battery" data-view="Number" data-title="Battery Level" style="background-color:#EC663C;"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="2">
+      <div data-id="cpu" data-view="List" data-title="CPU Core" style="background-color:#12B0C5;"></div>
+    </li>
+
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+    <div data-id="charge_time" data-view="Text" data-title="Time to charge" style="background-color:#96bf48;"></div>
+    </li>
+    <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+    <div data-id="source" data-view="Text" data-title="Source" style="background-color:#96bf48;"></div>
+    </li>
+
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="CPU Core 1_temperature" data-view="Number" data-title="CPU Core" style="background-color:#96bf48;"></div>
+    </li>
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="CPU Core 3_temperature" data-view="Number" data-title="CPU Core" style="background-color:#96bf48;"></div>
+    </li>
+    <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="CPU Core 5_temperature" data-view="Number" data-title="CPU Core" style="background-color:#96bf48;"></div>
+    </li>
+    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="CPU Core 6_temperature" data-view="Number" data-title="CPU Core" style="background-color:#96bf48;"></div>
+    </li>
+    <li data-row="3" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="CPU Core 7_temperature" data-view="Number" data-title="CPU Core" style="background-color:#96bf48;"></div>
+    </li>
+  </ul>
+</div>

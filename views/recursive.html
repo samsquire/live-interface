@@ -1,0 +1,149 @@
+<script type="text/javascript" src="prototypes/live2.js"></script>
+
+
+<div class="recursive-mask"></div>
+<div class="recursive-column page">
+<section class="content" contenteditable="true">
+  <header>Product Reviews</header>
+        <p>
+          Today I will be reviewing the following products. I'll be comparing various factors. This is a living document so you can contribute to this document.
+        </p>
+        <ul>
+          <li>Product 1 - Rating: 86%</li>
+        </ul>
+
+        <div class="inclusion">favourite list</div><div class="included-content" focal-selectable>Inclusion from another document</div>
+
+        <h3>First up: Product 1</h3>
+        <p>Designed by design pants and manufactured by Blah. The newest Product 1 is the smallest offering.</p>
+
+        <div class="inclusion">favourite list</div><div class="included-content" focal-selectable>
+        <p>Inclusion from another document</p>
+        <p>Some useful information.</p>
+        </div>
+
+        <h3>Some other product</h3>
+        <p>Another amazing product somewhat hampled by its lack of handles and prone to vibrate out of your hands. Perhaps its back to the drawing board.</p>
+</section>
+  </div>
+
+<div class="next-page">
+<div class="define-panel">
+<div class="recursive-row">
+
+    <!-- <div class="instance">
+      <header>My Products</header>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>product name</th>
+              <th>price</th>
+              <th>rating</th>
+              <th>review body text</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">Product 1</td>
+              <td contenteditable="true">?</td>
+              <td contenteditable="true">86%</td>
+              <td contenteditable="true">?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+  </div>
+
+
+  <div class="relationships">
+    <!-- <img class="horizontal" src="graph.png"/>
+    <img class="vertical" src="graph_tb.png"/> -->
+  </div>
+
+    <div ng-bind-html-unsafe="diagram">
+
+    </div>  
+
+    <span class="create-button" ng-click="create()">+</span>
+
+    <div class="recursive-row" ng-repeat="query in questions">
+        <div class="recursive-column">
+          <section class="define on">
+            <div class="question">What is
+              <span class="input-question" contenteditable="true" ng-model="query.question"></span>?</div>
+            <div class="answer" ng-model="query.answer"
+            rescan="question.answer"
+            rescan-target="rescan()"
+            contenteditable="true"></div>
+            </section>
+        </div>
+
+<!--         <div class="column">
+          <section class="define">
+            <div class="question">What is a product name?</div>
+            <div class="answer" contenteditable="">
+            product
+            </div>
+          </section>
+        </div>
+
+        <div class="column">
+          <section class="define">
+            <div class="question">What is a product?</div>
+            <div class="answer" contenteditable="">
+              <p>product name</p>
+              <p>price</p>
+              <p>review</p>
+            </div>
+          </section>
+        </div>
+
+    <div class="column">
+      <section class="define">
+        <div class="question">What is a review?</div>
+        <div class="answer" contenteditable="">
+          <p>review body text</p>
+        </div>
+      </section>
+    </div> -->
+
+    </div>
+
+
+
+    
+
+
+
+
+</div>
+
+<div class="versions">
+  <div class="recursive-row">
+    <header>Appearance of Rating</header>
+    <section>
+    Variations of 'rating':
+      <dl>
+        <dt>as a percentage</dt>
+        <dd>86%</dd>
+        <dt>stars</dt>
+        <dd class="stars">
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          
+        </dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+
+</div>
+
+
+<script src="live2.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="live2.css" type="text/css">
+</head>
+
+<style>
+  .serverBlock {
+    background-color: lightgrey;
+  }
+
+  .type:hover {
+    visibility: visible;
+  }
+  .type {
+    float: right;
+    background-color: white;
+  }
+</style>
+
+<body>
+<div class="recursive-mask"></div>
+<div class="column page">
+<section class="content" contenteditable="true">
+  <header>Web Servers</header>
+  <pre><code>
+          <div class="serverBlock"><div class="type">server block</div>
+          server {
+            listen 80;
+            server_name samsquire.com;
+          }</div>
+          server {
+            listen 5155;
+            api.samsquire.com;
+          }
+        </code></pre>
+
+</section>
+  </div>
+
+<div class="next-page">
+<div class="define-panel">
+<div class="row">
+
+    <div class="instance">
+      <header>Servers</header>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>description</th>
+              <th>hostname</th>
+              <th>port</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">front facing</td>
+              <td contenteditable="true">samsquire.com</td>
+              <td contenteditable="true">80</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    <div class="instance">
+      <header>Ports</header>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>port</th>
+              <th>purpose</th>
+              <th>details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">80</td>
+              <td contenteditable="true">web server</td>
+              <td contenteditable="true">samsquire.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+
+  <div class="relationships">
+    <img class="horizontal" src="graph.png"/>
+    <img class="vertical" src="graph_tb.png"/>
+  </div>
+
+  
+
+    <div class="row">
+        <div class="column">
+          <section class="define">
+            <div class="question">What is product 1?</div>
+            <div class="answer" contenteditable="">
+            product name
+            </div>
+            </section>
+        </div>
+
+        <div class="column">
+          <section class="define">
+            <div class="question">What is a product name?</div>
+            <div class="answer" contenteditable="">
+            product
+            </div>
+          </section>
+        </div>
+
+        <div class="column">
+          <section class="define">
+            <div class="question">What is a product?</div>
+            <div class="answer" contenteditable="">
+              <p>product name</p>
+              <p>price</p>
+              <p>review</p>
+            </div>
+          </section>
+        </div>
+
+    <div class="column">
+      <section class="define">
+        <div class="question">What is a review?</div>
+        <div class="answer" contenteditable="">
+          <p>review body text</p>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+
+
+    
+
+
+
+
+</div>
+
+<div class="versions">
+  <div class="row">
+    <header>Appearance of Rating</header>
+    <section>
+    Variations of 'rating':
+      <dl>
+        <dt>as a percentage</dt>
+        <dd>86%</dd>
+        <dt>stars</dt>
+        <dd class="stars">
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          &#x2605;
+          
+        </dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+
+</div>
+
+
+<script src="live2.js"></script>
+</body>
+</html>
