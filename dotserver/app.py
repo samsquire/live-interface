@@ -1,9 +1,10 @@
 from flask import Flask, request, Response
 import json
 import subprocess
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/rd",methods=["POST"])
 def recursivediagram():
@@ -30,4 +31,4 @@ def recursivediagram():
     return Response(generate(), mimetype="image/svg")
 
 if __name__ == '__main__':
-   app.run(port=4443, debug=True) 
+   app.run(port=4442, debug=True) 
