@@ -1,4 +1,4 @@
-This is an old living documents attempt.
+This is an old living documents attempt. See my [definition of living documents here](https://github.com/samsquire/ideas#4-living-documents)
 
 See screencast of this software in action:
 https://github.com/samsquire/live-interface/blob/master/screencasts/screencast1.mp4?raw=true
@@ -10,4 +10,4 @@ https://github.com/samsquire/live-interface/blob/master/screencasts/screencast2.
 Tree hierarchy swap
 https://github.com/samsquire/live-interface/blob/master/screencasts/screencast3.mp4?raw=true
 
-Go back to my list of ideas here: https://github.com/samsquire/ideas
+[Go back to my list of ideas here](https://github.com/samsquire/ideas)
